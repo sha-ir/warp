@@ -1,0 +1,33 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {"path": "crates/vim/src/find_char.rs", "language": "rust", "sizeLines": 96, "fileCategory": "code"},
+    {"path": "crates/vim/src/lib.rs", "language": "rust", "sizeLines": 17, "fileCategory": "code"},
+    {"path": "crates/vim/src/matching_brackets.rs", "language": "rust", "sizeLines": 50, "fileCategory": "code"},
+    {"path": "crates/vim/src/paragraph_iterator.rs", "language": "rust", "sizeLines": 66, "fileCategory": "code"},
+    {"path": "crates/vim/src/register.rs", "language": "rust", "sizeLines": 8, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/block.rs", "language": "rust", "sizeLines": 130, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/mod.rs", "language": "rust", "sizeLines": 14, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/paragraph.rs", "language": "rust", "sizeLines": 102, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/quote.rs", "language": "rust", "sizeLines": 118, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/quote_tests.rs", "language": "rust", "sizeLines": 114, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/word.rs", "language": "rust", "sizeLines": 153, "fileCategory": "code"},
+    {"path": "crates/vim/src/vim.rs", "language": "rust", "sizeLines": 2064, "fileCategory": "code"},
+    {"path": "crates/vim/src/word_iterator.rs", "language": "rust", "sizeLines": 251, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "crates/vim/src/find_char.rs": ["crates/vim/src/vim.rs"],
+    "crates/vim/src/lib.rs": ["crates/vim/src/find_char.rs","crates/vim/src/matching_brackets.rs","crates/vim/src/paragraph_iterator.rs","crates/vim/src/register.rs","crates/vim/src/text_objects/mod.rs","crates/vim/src/vim.rs","crates/vim/src/word_iterator.rs"],
+    "crates/vim/src/matching_brackets.rs": ["crates/vim/src/vim.rs"],
+    "crates/vim/src/paragraph_iterator.rs": [],
+    "crates/vim/src/register.rs": [],
+    "crates/vim/src/text_objects/block.rs": ["crates/vim/src/vim.rs"],
+    "crates/vim/src/text_objects/mod.rs": ["crates/vim/src/text_objects/block.rs","crates/vim/src/text_objects/paragraph.rs","crates/vim/src/text_objects/quote.rs","crates/vim/src/text_objects/word.rs"],
+    "crates/vim/src/text_objects/paragraph.rs": [],
+    "crates/vim/src/text_objects/quote.rs": ["crates/vim/src/vim.rs"],
+    "crates/vim/src/text_objects/quote_tests.rs": ["crates/vim/src/vim.rs"],
+    "crates/vim/src/text_objects/word.rs": ["crates/vim/src/vim.rs","crates/vim/src/word_iterator.rs"],
+    "crates/vim/src/vim.rs": ["crates/vim/src/register.rs"],
+    "crates/vim/src/word_iterator.rs": ["crates/vim/src/vim.rs"]
+  }
+}

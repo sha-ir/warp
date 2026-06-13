@@ -1,0 +1,995 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/core/autotracking/autotracking_tests.rs",
+      "type": "file",
+      "name": "autotracking_tests.rs",
+      "filePath": "crates/warpui_core/src/core/autotracking/autotracking_tests.rs",
+      "summary": "Unit tests for the reactive autotracking system, verifying that views and models re-render only when a tracked dependency actually changes.",
+      "tags": [
+        "test",
+        "autotracking",
+        "reactivity",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/core/view/context_tests.rs",
+      "type": "file",
+      "name": "context_tests.rs",
+      "filePath": "crates/warpui_core/src/core/view/context_tests.rs",
+      "summary": "Unit tests for the view context's task-spawning API, covering spawn, abortable spawn, and the view spawner.",
+      "tags": [
+        "test",
+        "view-context",
+        "async",
+        "task-spawning"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/debug/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/debug/mod.rs",
+      "summary": "Module barrel for the debug view-tree tooling, re-exporting the root debug view and the view-tree inspector.",
+      "tags": [
+        "barrel",
+        "module",
+        "debug"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/debug/root_view.rs",
+      "type": "file",
+      "name": "root_view.rs",
+      "filePath": "crates/warpui_core/src/debug/root_view.rs",
+      "summary": "Top-level debug overlay view that hosts the view-tree inspector as its only child.",
+      "tags": [
+        "debug",
+        "view",
+        "ui-component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "type": "file",
+      "name": "view_tree_debug_view.rs",
+      "filePath": "crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "summary": "Interactive debug panel that renders the live view hierarchy as an indented, hoverable list for highlighting views in the running UI.",
+      "tags": [
+        "debug",
+        "view-tree",
+        "inspector",
+        "ui-component"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/child_view.rs",
+      "type": "file",
+      "name": "child_view.rs",
+      "filePath": "crates/warpui_core/src/elements/child_view.rs",
+      "summary": "Single-line re-export wiring a child-view helper from the presenter layer into the elements module.",
+      "tags": [
+        "re-export",
+        "view",
+        "stub"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "type": "file",
+      "name": "clipped_scrollable.rs",
+      "filePath": "crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "summary": "Scrollable element that clips its content and drives scroll position, selection-anchored scrolling, and scroll-to-position behavior along a single axis.",
+      "tags": [
+        "scrollable",
+        "element",
+        "clipping",
+        "scroll"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/clipped_scrollable_tests.rs",
+      "type": "file",
+      "name": "clipped_scrollable_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/clipped_scrollable_tests.rs",
+      "summary": "Unit tests for the clipped scrollable element, exercising scroll-to-position behavior.",
+      "tags": [
+        "test",
+        "scrollable",
+        "clipping"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/clipped_tests.rs",
+      "type": "file",
+      "name": "clipped_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/clipped_tests.rs",
+      "summary": "Unit tests for the clipped element, verifying click handling through stacked and clipped layers.",
+      "tags": [
+        "test",
+        "clipping",
+        "event-handling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/container_tests.rs",
+      "type": "file",
+      "name": "container_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/container_tests.rs",
+      "summary": "Unit tests for the container element, verifying overlay click handling.",
+      "tags": [
+        "test",
+        "container",
+        "event-handling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/debug.rs",
+      "type": "file",
+      "name": "debug.rs",
+      "filePath": "crates/warpui_core/src/elements/debug.rs",
+      "summary": "Debug element wrapper that overlays a configurable colored, optionally dashed border around its child for visualizing layout bounds, plus a Debug extension trait.",
+      "tags": [
+        "debug",
+        "element",
+        "layout",
+        "border"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "type": "file",
+      "name": "draggable.rs",
+      "filePath": "crates/warpui_core/src/elements/drag/draggable.rs",
+      "summary": "Draggable element implementing pointer-driven drag-and-drop with drag thresholds, axis locking, bounds clamping, drop-target detection, and drag lifecycle callbacks.",
+      "tags": [
+        "drag-and-drop",
+        "element",
+        "interaction",
+        "gesture"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "type": "file",
+      "name": "drop_target.rs",
+      "filePath": "crates/warpui_core/src/elements/drag/drop_target.rs",
+      "summary": "Drop-target element that registers its bounds and payload data so draggables can detect when they hover or release over it.",
+      "tags": [
+        "drag-and-drop",
+        "drop-target",
+        "element",
+        "interaction"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/drag/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/elements/drag/mod.rs",
+      "summary": "Module barrel re-exporting the draggable and drop-target elements.",
+      "tags": [
+        "barrel",
+        "module",
+        "drag-and-drop"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "type": "file",
+      "name": "drag_resize.rs",
+      "filePath": "crates/warpui_core/src/elements/drag_resize.rs",
+      "summary": "Element that adds a vertical drag-resize handle to its child, tracking drag state and emitting resize-update and resize-end callbacks.",
+      "tags": [
+        "resize",
+        "element",
+        "interaction",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/event_handler_tests.rs",
+      "type": "file",
+      "name": "event_handler_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/event_handler_tests.rs",
+      "summary": "Unit tests for the event-handler element, covering layered click handling, mouse-in behavior, and event propagation.",
+      "tags": [
+        "test",
+        "event-handling",
+        "interaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/flex/mod_tests.rs",
+      "type": "file",
+      "name": "mod_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/flex/mod_tests.rs",
+      "summary": "Unit tests for the flex layout element, asserting main/cross-axis alignment and spacing across rows and columns.",
+      "tags": [
+        "test",
+        "flex",
+        "layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/debug/root_view.rs:DebugRootView",
+      "type": "class",
+      "name": "DebugRootView",
+      "filePath": "crates/warpui_core/src/debug/root_view.rs",
+      "lineRange": [
+        10,
+        12
+      ],
+      "summary": "Root debug view that wraps and displays the view-tree inspector as its child.",
+      "tags": [
+        "debug",
+        "view",
+        "ui-component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/debug/view_tree_debug_view.rs:ViewTreeDebugView",
+      "type": "class",
+      "name": "ViewTreeDebugView",
+      "filePath": "crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "lineRange": [
+        88,
+        94
+      ],
+      "summary": "Stateful debug view that renders the live view hierarchy as a hoverable uniform list and handles highlight actions.",
+      "tags": [
+        "debug",
+        "view-tree",
+        "inspector",
+        "stateful"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/debug/view_tree_debug_view.rs:ViewTreeDebugAction",
+      "type": "class",
+      "name": "ViewTreeDebugAction",
+      "filePath": "crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "lineRange": [
+        76,
+        79
+      ],
+      "summary": "Action enum for the view-tree debug view, e.g. highlighting a selected view.",
+      "tags": [
+        "debug",
+        "action",
+        "enum"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollStateHandle",
+      "type": "class",
+      "name": "ClippedScrollStateHandle",
+      "filePath": "crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "lineRange": [
+        58,
+        65
+      ],
+      "summary": "Shared handle exposing scroll position, selection-anchor adjustment, and hover controls for a clipped scrollable.",
+      "tags": [
+        "scroll",
+        "state-handle",
+        "scrollable"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollable",
+      "type": "class",
+      "name": "ClippedScrollable",
+      "filePath": "crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "lineRange": [
+        187,
+        198
+      ],
+      "summary": "Single-axis scrollable element that clips content and drives scroll-to-position and selection-anchored scrolling.",
+      "tags": [
+        "scrollable",
+        "element",
+        "clipping"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ScrollToPositionMode",
+      "type": "class",
+      "name": "ScrollToPositionMode",
+      "filePath": "crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "lineRange": [
+        21,
+        30
+      ],
+      "summary": "Enum selecting how a target is scrolled into view: fully into view or top-aligned into view.",
+      "tags": [
+        "scroll",
+        "enum",
+        "mode"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/debug.rs:DebugElement",
+      "type": "class",
+      "name": "DebugElement",
+      "filePath": "crates/warpui_core/src/elements/debug.rs",
+      "lineRange": [
+        15,
+        22
+      ],
+      "summary": "Element wrapper that paints a configurable colored, optionally dashed debug border around its child.",
+      "tags": [
+        "debug",
+        "element",
+        "border"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/debug.rs:Debug",
+      "type": "class",
+      "name": "Debug",
+      "filePath": "crates/warpui_core/src/elements/debug.rs",
+      "lineRange": [
+        110,
+        114
+      ],
+      "summary": "Extension trait adding .debug() and .debug_with_options() wrappers to any element.",
+      "tags": [
+        "debug",
+        "trait",
+        "extension"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag/draggable.rs:DraggableState",
+      "type": "class",
+      "name": "DraggableState",
+      "filePath": "crates/warpui_core/src/elements/drag/draggable.rs",
+      "lineRange": [
+        27,
+        30
+      ],
+      "summary": "Shared drag state tracking whether a drag is active, the cursor offset within the element, and overlay-paint suppression.",
+      "tags": [
+        "drag",
+        "state",
+        "interaction"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag/draggable.rs:Draggable",
+      "type": "class",
+      "name": "Draggable",
+      "filePath": "crates/warpui_core/src/elements/drag/draggable.rs",
+      "lineRange": [
+        239,
+        263
+      ],
+      "summary": "Element implementing drag-and-drop with configurable thresholds, axis locking, bounds, drop-target detection, and lifecycle callbacks.",
+      "tags": [
+        "drag-and-drop",
+        "element",
+        "interaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag/draggable.rs:DragState",
+      "type": "class",
+      "name": "DragState",
+      "filePath": "crates/warpui_core/src/elements/drag/draggable.rs",
+      "lineRange": [
+        94,
+        116
+      ],
+      "summary": "Enum modeling the drag lifecycle: idle, waiting-to-drag, and actively dragging.",
+      "tags": [
+        "drag",
+        "state",
+        "enum"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTarget",
+      "type": "class",
+      "name": "DropTarget",
+      "filePath": "crates/warpui_core/src/elements/drag/drop_target.rs",
+      "lineRange": [
+        47,
+        50
+      ],
+      "summary": "Element that registers its bounds and payload data so draggables can detect drops over it.",
+      "tags": [
+        "drop-target",
+        "element",
+        "drag-and-drop"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTargetPosition",
+      "type": "class",
+      "name": "DropTargetPosition",
+      "filePath": "crates/warpui_core/src/elements/drag/drop_target.rs",
+      "lineRange": [
+        22,
+        25
+      ],
+      "summary": "Records a drop target's bounds and associated drop data for hit testing.",
+      "tags": [
+        "drop-target",
+        "geometry",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeState",
+      "type": "class",
+      "name": "DragResizeState",
+      "filePath": "crates/warpui_core/src/elements/drag_resize.rs",
+      "lineRange": [
+        24,
+        27
+      ],
+      "summary": "Tracks the active drag-resize gesture, consuming vertical pointer deltas.",
+      "tags": [
+        "resize",
+        "state",
+        "interaction"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeElement",
+      "type": "class",
+      "name": "DragResizeElement",
+      "filePath": "crates/warpui_core/src/elements/drag_resize.rs",
+      "lineRange": [
+        63,
+        70
+      ],
+      "summary": "Element that adds a drag-resize handle to its child and emits resize-update and resize-end callbacks.",
+      "tags": [
+        "resize",
+        "element",
+        "interaction"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/debug/root_view.rs",
+      "target": "class:crates/warpui_core/src/debug/root_view.rs:DebugRootView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/root_view.rs",
+      "target": "class:crates/warpui_core/src/debug/root_view.rs:DebugRootView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "target": "class:crates/warpui_core/src/debug/view_tree_debug_view.rs:ViewTreeDebugView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "target": "class:crates/warpui_core/src/debug/view_tree_debug_view.rs:ViewTreeDebugView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "target": "class:crates/warpui_core/src/debug/view_tree_debug_view.rs:ViewTreeDebugAction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "target": "class:crates/warpui_core/src/debug/view_tree_debug_view.rs:ViewTreeDebugAction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollStateHandle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollStateHandle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ScrollToPositionMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ScrollToPositionMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/debug.rs",
+      "target": "class:crates/warpui_core/src/elements/debug.rs:DebugElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/debug.rs",
+      "target": "class:crates/warpui_core/src/elements/debug.rs:DebugElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/debug.rs",
+      "target": "class:crates/warpui_core/src/elements/debug.rs:Debug",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/debug.rs",
+      "target": "class:crates/warpui_core/src/elements/debug.rs:Debug",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/draggable.rs:DraggableState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/draggable.rs:DraggableState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/draggable.rs:Draggable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/draggable.rs:Draggable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/draggable.rs:DragState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTargetPosition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "target": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTargetPosition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "target": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "target": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "target": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "target": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/core/autotracking/autotracking_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/core/autotracking/autotracking_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/core/view/context_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/core/view/context_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/mod.rs",
+      "target": "file:crates/warpui_core/src/debug/root_view.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/mod.rs",
+      "target": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/root_view.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/debug/view_tree_debug_view.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/child_view.rs",
+      "target": "file:crates/warpui_core/src/presenter.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "file:crates/warpui_core/src/units.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable_tests.rs",
+      "target": "file:crates/warpui_core/src/units.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/container_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/container_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/debug.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/debug.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "file:crates/warpui_core/src/presenter.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/drag/draggable.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/drag/drop_target.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/event_handler_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/event_handler_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/flex/mod_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/flex/mod_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/debug.rs:DebugElement",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/drag/draggable.rs:Draggable",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/drag/drop_target.rs:DropTarget",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/drag_resize.rs:DragResizeElement",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollable",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/clipped_scrollable.rs:ClippedScrollable",
+      "target": "class:crates/warpui_core/src/elements/scrollable.rs:ScrollableElement",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "target": "file:crates/warpui_core/src/elements/clipped_scrollable_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

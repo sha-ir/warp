@@ -1,0 +1,302 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {
+      "path": "crates/warpui_core/src/image_cache.rs",
+      "language": "rust",
+      "sizeLines": 999,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/keymap.rs",
+      "language": "rust",
+      "sizeLines": 1070,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/keymap/matcher.rs",
+      "language": "rust",
+      "sizeLines": 382,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/keymap/matcher_tests.rs",
+      "language": "rust",
+      "sizeLines": 251,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/lib.rs",
+      "language": "rust",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/modals.rs",
+      "language": "rust",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/notification.rs",
+      "language": "rust",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/app.rs",
+      "language": "rust",
+      "sizeLines": 352,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/file_picker.rs",
+      "language": "rust",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/keyboard.rs",
+      "language": "rust",
+      "sizeLines": 529,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/menu.rs",
+      "language": "rust",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/test/app.rs",
+      "language": "rust",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/test/delegate.rs",
+      "language": "rust",
+      "sizeLines": 665,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/test/mod.rs",
+      "language": "rust",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/rendering/gpu_info.rs",
+      "language": "rust",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/rendering/mod.rs",
+      "language": "rust",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/rendering/texture_cache.rs",
+      "language": "rust",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/rendering/texture_cache_tests.rs",
+      "language": "rust",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/telemetry/event_store.rs",
+      "language": "rust",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/telemetry/event_store_tests.rs",
+      "language": "rust",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/telemetry/mod.rs",
+      "language": "rust",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/test.rs",
+      "language": "rust",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text_selection_utils.rs",
+      "language": "rust",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/time.rs",
+      "language": "rust",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/traces.rs",
+      "language": "rust",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/util.rs",
+      "language": "rust",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/windowing/mod.rs",
+      "language": "rust",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/windowing/state.rs",
+      "language": "rust",
+      "sizeLines": 330,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/windowing/system.rs",
+      "language": "rust",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "crates/warpui_core/src/image_cache.rs": [
+      "crates/warpui_core/src/assets/asset_cache.rs",
+      "crates/warpui_core/src/util.rs"
+    ],
+    "crates/warpui_core/src/keymap.rs": [
+      "crates/warpui_core/src/actions.rs",
+      "crates/warpui_core/src/platform/mod.rs"
+    ],
+    "crates/warpui_core/src/keymap/matcher.rs": [
+      "crates/warpui_core/src/actions.rs"
+    ],
+    "crates/warpui_core/src/keymap/matcher_tests.rs": [
+      "crates/warpui_core/src/keymap.rs"
+    ],
+    "crates/warpui_core/src/lib.rs": [
+      "crates/warpui_core/src/accessibility.rs",
+      "crates/warpui_core/src/actions.rs",
+      "crates/warpui_core/src/app_focus_telemetry.rs",
+      "crates/warpui_core/src/assets/mod.rs",
+      "crates/warpui_core/src/clipboard_utils.rs",
+      "crates/warpui_core/src/clipboard.rs",
+      "crates/warpui_core/src/core/mod.rs",
+      "crates/warpui_core/src/debug/mod.rs",
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/image_cache.rs",
+      "crates/warpui_core/src/integration/mod.rs",
+      "crates/warpui_core/src/keymap.rs",
+      "crates/warpui_core/src/modals.rs",
+      "crates/warpui_core/src/notification.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/prelude.rs",
+      "crates/warpui_core/src/presenter.rs",
+      "crates/warpui_core/src/rendering/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/telemetry/mod.rs",
+      "crates/warpui_core/src/test.rs",
+      "crates/warpui_core/src/text_layout.rs",
+      "crates/warpui_core/src/text_selection_utils.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/time.rs",
+      "crates/warpui_core/src/traces.rs",
+      "crates/warpui_core/src/ui_components/mod.rs",
+      "crates/warpui_core/src/units.rs",
+      "crates/warpui_core/src/util.rs",
+      "crates/warpui_core/src/windowing/mod.rs",
+      "crates/warpui_core/src/zoom.rs"
+    ],
+    "crates/warpui_core/src/modals.rs": [],
+    "crates/warpui_core/src/notification.rs": [],
+    "crates/warpui_core/src/platform/app.rs": [
+      "crates/warpui_core/src/keymap.rs",
+      "crates/warpui_core/src/modals.rs",
+      "crates/warpui_core/src/windowing/mod.rs",
+      "crates/warpui_core/src/windowing/state.rs"
+    ],
+    "crates/warpui_core/src/platform/file_picker.rs": [],
+    "crates/warpui_core/src/platform/keyboard.rs": [],
+    "crates/warpui_core/src/platform/menu.rs": [
+      "crates/warpui_core/src/actions.rs",
+      "crates/warpui_core/src/keymap.rs"
+    ],
+    "crates/warpui_core/src/platform/test/app.rs": [
+      "crates/warpui_core/src/assets/mod.rs",
+      "crates/warpui_core/src/integration/mod.rs"
+    ],
+    "crates/warpui_core/src/platform/test/delegate.rs": [
+      "crates/warpui_core/src/accessibility.rs",
+      "crates/warpui_core/src/clipboard.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/keymap.rs",
+      "crates/warpui_core/src/modals.rs",
+      "crates/warpui_core/src/notification.rs",
+      "crates/warpui_core/src/platform/file_picker.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/text_layout.rs",
+      "crates/warpui_core/src/windowing/mod.rs"
+    ],
+    "crates/warpui_core/src/platform/test/mod.rs": [
+      "crates/warpui_core/src/platform/test/app.rs",
+      "crates/warpui_core/src/platform/test/delegate.rs"
+    ],
+    "crates/warpui_core/src/rendering/gpu_info.rs": [],
+    "crates/warpui_core/src/rendering/mod.rs": [
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/rendering/gpu_info.rs",
+      "crates/warpui_core/src/rendering/texture_cache.rs"
+    ],
+    "crates/warpui_core/src/rendering/texture_cache.rs": [
+      "crates/warpui_core/src/image_cache.rs"
+    ],
+    "crates/warpui_core/src/rendering/texture_cache_tests.rs": [
+      "crates/warpui_core/src/image_cache.rs"
+    ],
+    "crates/warpui_core/src/telemetry/event_store.rs": [
+      "crates/warpui_core/src/time.rs"
+    ],
+    "crates/warpui_core/src/telemetry/event_store_tests.rs": [
+      "crates/warpui_core/src/telemetry/event_store.rs",
+      "crates/warpui_core/src/time.rs"
+    ],
+    "crates/warpui_core/src/telemetry/mod.rs": [
+      "crates/warpui_core/src/telemetry/event_store.rs"
+    ],
+    "crates/warpui_core/src/test.rs": [],
+    "crates/warpui_core/src/text_selection_utils.rs": [],
+    "crates/warpui_core/src/time.rs": [],
+    "crates/warpui_core/src/traces.rs": [],
+    "crates/warpui_core/src/util.rs": [],
+    "crates/warpui_core/src/windowing/mod.rs": [
+      "crates/warpui_core/src/actions.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/windowing/state.rs",
+      "crates/warpui_core/src/windowing/system.rs"
+    ],
+    "crates/warpui_core/src/windowing/state.rs": [
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs"
+    ],
+    "crates/warpui_core/src/windowing/system.rs": []
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/async/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/async/mod.rs",
+      "summary": "Cross-platform async facade for warpui_core: selects the native or wasm executor implementation via cfg, re-exports the executor/spawning API, and defines core async primitives like FutureId, SpawnedFutureHandle, and the FutureExt::with_timeout extension.",
+      "tags": ["async", "executor", "cross-platform", "future", "barrel"],
+      "complexity": "moderate",
+      "languageNotes": "Uses cfg_if to swap between `native` and `wasm` submodules behind a shared `imp` alias; a blanket `impl<F: Future> FutureExt for F` adds `with_timeout` to every future."
+    },
+    {
+      "id": "file:crates/warpui_core/src/async/native/executor.rs",
+      "type": "file",
+      "name": "executor.rs",
+      "filePath": "crates/warpui_core/src/async/native/executor.rs",
+      "summary": "Native executor implementation providing the Foreground main-thread executor and a multi-threaded tokio-backed Background runtime, with abortable task spawning and tracing span instrumentation.",
+      "tags": ["executor", "async", "tokio", "concurrency", "task-spawning"],
+      "complexity": "complex",
+      "languageNotes": "Foreground runs tasks on the main thread via async_task::spawn_local with a custom schedule that re-dispatches through the platform delegate; Background wraps a tokio multi-thread runtime built with a custom worker count and thread-name function."
+    },
+    {
+      "id": "file:crates/warpui_core/src/async/native/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/async/native/mod.rs",
+      "summary": "Native async module root: re-exports async_io's block_on/Timer and the executor submodule, and defines the Send-bounded Spawnable/Stream/SpawnableOutput/TransportStream trait aliases required by the multi-threaded runtime.",
+      "tags": ["barrel", "async", "type-definition", "native", "re-export"],
+      "complexity": "simple",
+      "languageNotes": "Uses `trait_set!` to declare trait aliases; native variants require `Send` bounds for the multi-threaded tokio executor."
+    },
+    {
+      "id": "file:crates/warpui_core/src/async/wasm/executor.rs",
+      "type": "file",
+      "name": "executor.rs",
+      "filePath": "crates/warpui_core/src/async/wasm/executor.rs",
+      "summary": "WASM executor implementation where all tasks are local (no background threads): provides Foreground and Background executors backed by wasm_bindgen_futures spawn_local, with abortable spawning.",
+      "tags": ["executor", "async", "wasm", "concurrency", "task-spawning"],
+      "complexity": "moderate",
+      "languageNotes": "On wasm every future runs on the single main thread, so Background simply delegates to local spawning and tasks are non-Send."
+    },
+    {
+      "id": "file:crates/warpui_core/src/async/wasm/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/async/wasm/mod.rs",
+      "summary": "WASM async module root: re-exports block_on and a gloo-timers-backed Timer that mirrors async_io::Timer, and defines relaxed (non-Send) trait aliases for spawnable tasks/streams on the single-threaded wasm runtime.",
+      "tags": ["barrel", "async", "wasm", "timer", "type-definition"],
+      "complexity": "moderate",
+      "languageNotes": "Provides a custom Timer wrapping gloo TimeoutFuture and implementing both Future and Stream; trait aliases drop the Send bound since wasm is single-threaded."
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/mod.rs:FutureId",
+      "type": "class",
+      "name": "FutureId",
+      "filePath": "crates/warpui_core/src/async/mod.rs",
+      "lineRange": [34, 34],
+      "summary": "Copyable newtype wrapping a monotonically increasing usize that uniquely identifies a spawned future; used in tests to await specific spawned futures.",
+      "tags": ["identifier", "newtype", "async", "future"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/mod.rs:SpawnedFutureHandle",
+      "type": "class",
+      "name": "SpawnedFutureHandle",
+      "filePath": "crates/warpui_core/src/async/mod.rs",
+      "lineRange": [50, 53],
+      "summary": "Handle returned when spawning a future on an executor; exposes abort() to cancel the task and future_id() to await it in tests.",
+      "tags": ["handle", "async", "abort", "future", "task"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/mod.rs:SpawnedLocalStream",
+      "type": "class",
+      "name": "SpawnedLocalStream",
+      "filePath": "crates/warpui_core/src/async/mod.rs",
+      "lineRange": [79, 82],
+      "summary": "Wrapper around a LocalBoxFuture representing a spawned local stream, primarily used in tests to extract the underlying future.",
+      "tags": ["async", "stream", "future", "wrapper", "test"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/mod.rs:FutureExt",
+      "type": "class",
+      "name": "FutureExt",
+      "filePath": "crates/warpui_core/src/async/mod.rs",
+      "lineRange": [114, 125],
+      "summary": "Extension trait, blanket-implemented for all Futures, adding with_timeout() which races the future against a Timer and yields a TimeoutError if the duration elapses.",
+      "tags": ["trait", "async", "future", "timeout", "extension"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/native/executor.rs:BackgroundTask",
+      "type": "class",
+      "name": "BackgroundTask",
+      "filePath": "crates/warpui_core/src/async/native/executor.rs",
+      "lineRange": [19, 21],
+      "summary": "Abortable handle to a task running on the Background tokio runtime; implements Future (via poll) so callers can await its result, plus abort()/detach() to control its lifecycle.",
+      "tags": ["task", "async", "tokio", "abort", "future"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/native/executor.rs:Foreground",
+      "type": "class",
+      "name": "Foreground",
+      "filePath": "crates/warpui_core/src/async/native/executor.rs",
+      "lineRange": [47, 55],
+      "summary": "Main-thread executor (Platform or Test variant) that spawns local futures via async_task and reschedules them onto the main thread through the platform delegate; errors if constructed off the main thread.",
+      "tags": ["executor", "async", "main-thread", "task-spawning", "local"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/native/executor.rs:Background",
+      "type": "class",
+      "name": "Background",
+      "filePath": "crates/warpui_core/src/async/native/executor.rs",
+      "lineRange": [129, 131],
+      "summary": "Multi-threaded background executor wrapping a tokio runtime built with a custom worker count and thread-name function; spawns Send futures and supports abortable tasks.",
+      "tags": ["executor", "async", "tokio", "threadpool", "concurrency"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/wasm/executor.rs:Foreground",
+      "type": "class",
+      "name": "Foreground",
+      "filePath": "crates/warpui_core/src/async/wasm/executor.rs",
+      "lineRange": [32, 32],
+      "summary": "WASM main-thread executor that spawns local (non-Send) futures via wasm_bindgen_futures spawn_local; on wasm everything runs on the single thread.",
+      "tags": ["executor", "async", "wasm", "local", "task-spawning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/wasm/executor.rs:Background",
+      "type": "class",
+      "name": "Background",
+      "filePath": "crates/warpui_core/src/async/wasm/executor.rs",
+      "lineRange": [83, 83],
+      "summary": "WASM 'background' executor that, since wasm has no real threads, also spawns local futures via spawn_local; mirrors the native Background API with abortable spawning.",
+      "tags": ["executor", "async", "wasm", "local", "task-spawning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/async/wasm/mod.rs:Timer",
+      "type": "class",
+      "name": "Timer",
+      "filePath": "crates/warpui_core/src/async/wasm/mod.rs",
+      "lineRange": [42, 50],
+      "summary": "Drop-in replacement for async_io::Timer on wasm, backed by gloo TimeoutFuture; implements both Future and Stream and supports after/at/never constructors.",
+      "tags": ["timer", "async", "wasm", "future", "stream"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "file:crates/warpui_core/src/async/native/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "file:crates/warpui_core/src/async/wasm/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/mod.rs",
+      "target": "file:crates/warpui_core/src/async/native/executor.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/mod.rs",
+      "target": "file:crates/warpui_core/src/async/wasm/executor.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:FutureId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:SpawnedFutureHandle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:SpawnedLocalStream",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:FutureExt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/executor.rs",
+      "target": "class:crates/warpui_core/src/async/native/executor.rs:BackgroundTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/executor.rs",
+      "target": "class:crates/warpui_core/src/async/native/executor.rs:Foreground",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/executor.rs",
+      "target": "class:crates/warpui_core/src/async/native/executor.rs:Background",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/executor.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/executor.rs:Foreground",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/executor.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/executor.rs:Background",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/mod.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/mod.rs:Timer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:FutureId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:SpawnedFutureHandle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:SpawnedLocalStream",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/mod.rs:FutureExt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/executor.rs",
+      "target": "class:crates/warpui_core/src/async/native/executor.rs:BackgroundTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/executor.rs",
+      "target": "class:crates/warpui_core/src/async/native/executor.rs:Foreground",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/native/executor.rs",
+      "target": "class:crates/warpui_core/src/async/native/executor.rs:Background",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/executor.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/executor.rs:Foreground",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/executor.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/executor.rs:Background",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/wasm/mod.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/mod.rs:Timer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/async/mod.rs",
+      "target": "class:crates/warpui_core/src/async/wasm/mod.rs:Timer",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

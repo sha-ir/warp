@@ -1,0 +1,1263 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/editor/src/content/undo_tests.rs",
+   "type": "file",
+   "name": "undo_tests.rs",
+   "filePath": "crates/editor/src/content/undo_tests.rs",
+   "summary": "Unit tests verifying that the editor's buffer version tracks correctly across edits, undo, redo, stack overflow, and full rollback.",
+   "tags": [
+    "test",
+    "undo-redo",
+    "versioning",
+    "editor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/validation.rs",
+   "type": "file",
+   "name": "validation.rs",
+   "filePath": "crates/editor/src/content/validation.rs",
+   "summary": "Validates that an editor content buffer is internally consistent (balanced style markers, well-formed block/header decorations) before it is committed.",
+   "tags": [
+    "validation",
+    "content-model",
+    "invariants",
+    "editor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/validation_tests.rs",
+   "type": "file",
+   "name": "validation_tests.rs",
+   "filePath": "crates/editor/src/content/validation_tests.rs",
+   "summary": "Unit tests exercising validate_content across malformed and well-formed buffers: unmatched style markers, headers, styled code, and block items.",
+   "tags": [
+    "test",
+    "validation",
+    "content-model",
+    "editor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/version.rs",
+   "type": "file",
+   "name": "version.rs",
+   "filePath": "crates/editor/src/content/version.rs",
+   "summary": "Defines BufferVersion, a monotonically increasing version stamp used to detect and reconcile changes to the editor content buffer.",
+   "tags": [
+    "data-model",
+    "versioning",
+    "content-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/editor/src/decoration/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/editor/src/decoration/mod.rs",
+   "summary": "Decoration layer module that updates per-buffer decoration state in response to edit deltas and version changes.",
+   "tags": [
+    "decoration",
+    "editor",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/editor/src/editor.rs",
+   "type": "file",
+   "name": "editor.rs",
+   "filePath": "crates/editor/src/editor.rs",
+   "summary": "Public editor view traits and supporting types: EditorView surface, embedded/runnable block models, text-decoration color maps, and the NavigationKey enum.",
+   "tags": [
+    "editor",
+    "trait-definition",
+    "decoration",
+    "navigation"
+   ],
+   "complexity": "moderate",
+   "languageNotes": "Heavy use of trait objects (dyn) to abstract embedded block models behind a uniform view interface."
+  },
+  {
+   "id": "file:crates/editor/src/lib.rs",
+   "type": "file",
+   "name": "lib.rs",
+   "filePath": "crates/editor/src/lib.rs",
+   "summary": "Crate root for the editor engine, declaring and re-exporting the content, decoration, model, multiline, render, search, and selection modules.",
+   "tags": [
+    "entry-point",
+    "barrel",
+    "crate-root"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/editor/src/model.rs",
+   "type": "file",
+   "name": "model.rs",
+   "filePath": "crates/editor/src/model.rs",
+   "summary": "Core editor model layer: CoreEditorModel drives buffer edits, selections and cursor movement, while PlainTextEditorModel and RichTextEditorModel specialize behavior for plain vs. markdown-rich editing.",
+   "tags": [
+    "data-model",
+    "editor",
+    "selection",
+    "rich-text"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Large model module organized as a shared CoreEditorModel plus two facade models that delegate to it for plain-text vs. rich-text semantics."
+  },
+  {
+   "id": "file:crates/editor/src/multiline.rs",
+   "type": "file",
+   "name": "multiline.rs",
+   "filePath": "crates/editor/src/multiline.rs",
+   "summary": "Line-ending aware string types (MultilineString/Str, AnyMultilineString) plus inference and normalization utilities that keep CR/LF/CRLF handling correct across the editor.",
+   "tags": [
+    "utility",
+    "line-endings",
+    "string-types",
+    "serialization"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Newtype wrappers with typestate-like LineFormat markers (LF/CRLF/CR) to encode line-ending guarantees in the type system."
+  },
+  {
+   "id": "file:crates/editor/src/parallel_util.rs",
+   "type": "file",
+   "name": "parallel_util.rs",
+   "filePath": "crates/editor/src/parallel_util.rs",
+   "summary": "Small rayon helper providing a Last combinator that collects a parallel iterator while keeping only the final element.",
+   "tags": [
+    "utility",
+    "parallelism",
+    "rayon"
+   ],
+   "complexity": "simple",
+   "languageNotes": "Implements FromParallelIterator/ParallelExtend so the type plugs directly into rayon collect pipelines."
+  },
+  {
+   "id": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "type": "file",
+   "name": "broken_embedding.rs",
+   "filePath": "crates/editor/src/render/element/broken_embedding.rs",
+   "summary": "Renderable element that draws a placeholder/error block when an embedded item (image, mermaid, etc.) fails to load, with a remove button.",
+   "tags": [
+    "render",
+    "ui-element",
+    "embedded-block",
+    "error-state"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/empty.rs",
+   "type": "file",
+   "name": "empty.rs",
+   "filePath": "crates/editor/src/render/element/empty.rs",
+   "summary": "Renderable element representing an empty document line, painting placeholder text and an editor cursor when appropriate.",
+   "tags": [
+    "render",
+    "ui-element",
+    "placeholder",
+    "cursor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/header.rs",
+   "type": "file",
+   "name": "header.rs",
+   "filePath": "crates/editor/src/render/element/header.rs",
+   "summary": "Renderable element for markdown header lines, laying out and painting heading text with header-specific styling.",
+   "tags": [
+    "render",
+    "ui-element",
+    "markdown",
+    "header"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/content/validation.rs:validate_content",
+   "type": "function",
+   "name": "validate_content",
+   "filePath": "crates/editor/src/content/validation.rs",
+   "lineRange": [
+    13,
+    140
+   ],
+   "summary": "Walks the content buffer enforcing structural invariants: balanced style start/end markers, single text markers, valid header and block-item decorations.",
+   "tags": [
+    "validation",
+    "invariants",
+    "content-model"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/version.rs:BufferVersion",
+   "type": "class",
+   "name": "BufferVersion",
+   "filePath": "crates/editor/src/content/version.rs",
+   "lineRange": [
+    4,
+    17
+   ],
+   "summary": "Newtype wrapping a usize version counter for the content buffer, with constructors and accessor used to detect stale state.",
+   "tags": [
+    "data-model",
+    "versioning"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/decoration/mod.rs:DecorationLayer",
+   "type": "class",
+   "name": "DecorationLayer",
+   "filePath": "crates/editor/src/decoration/mod.rs",
+   "lineRange": [
+    7,
+    15
+   ],
+   "summary": "Owns decoration state for a buffer and reconciles it against edit deltas and the latest buffer version.",
+   "tags": [
+    "decoration",
+    "data-model",
+    "editor"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/editor.rs:EditorView",
+   "type": "class",
+   "name": "EditorView",
+   "filePath": "crates/editor/src/editor.rs",
+   "lineRange": [
+    20,
+    57
+   ],
+   "summary": "View-surface trait exposing runnable commands, embedded items, and text decorations for an editor instance.",
+   "tags": [
+    "trait-definition",
+    "editor",
+    "view"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/editor.rs:TextDecoration",
+   "type": "class",
+   "name": "TextDecoration",
+   "filePath": "crates/editor/src/editor.rs",
+   "lineRange": [
+    60,
+    66
+   ],
+   "summary": "Holds base/override color maps and an optional underline range describing how a span of editor text is decorated.",
+   "tags": [
+    "data-model",
+    "decoration"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/editor.rs:to_paint_style_override",
+   "type": "function",
+   "name": "to_paint_style_override",
+   "filePath": "crates/editor/src/editor.rs",
+   "lineRange": [
+    71,
+    89
+   ],
+   "summary": "Builds a paint-time style override for a text range from the decoration's base and override color maps.",
+   "tags": [
+    "decoration",
+    "painting",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/editor.rs:EmbeddedItemModel",
+   "type": "class",
+   "name": "EmbeddedItemModel",
+   "filePath": "crates/editor/src/editor.rs",
+   "lineRange": [
+    120,
+    126
+   ],
+   "summary": "Trait for embedded item blocks (images, diagrams) defining footer rendering, border, and remove-button behavior.",
+   "tags": [
+    "trait-definition",
+    "embedded-block"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/editor.rs:RunnableCommandModel",
+   "type": "class",
+   "name": "RunnableCommandModel",
+   "filePath": "crates/editor/src/editor.rs",
+   "lineRange": [
+    129,
+    141
+   ],
+   "summary": "Trait for runnable-command blocks defining footer rendering, border, and downcast support.",
+   "tags": [
+    "trait-definition",
+    "runnable-command"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/editor.rs:NavigationKey",
+   "type": "class",
+   "name": "NavigationKey",
+   "filePath": "crates/editor/src/editor.rs",
+   "lineRange": [
+    145,
+    154
+   ],
+   "summary": "Enum of directional/navigation keys (Tab, arrows, page up/down) used to drive editor cursor movement.",
+   "tags": [
+    "enum",
+    "navigation",
+    "input"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/model.rs:apply_edit",
+   "type": "function",
+   "name": "apply_edit",
+   "filePath": "crates/editor/src/model.rs",
+   "lineRange": [
+    35,
+    44
+   ],
+   "summary": "Applies an edit action to the model with a given origin and selection model, without autoscroll.",
+   "tags": [
+    "editor",
+    "edit",
+    "mutation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/model.rs:apply_edit_with_autoscroll",
+   "type": "function",
+   "name": "apply_edit_with_autoscroll",
+   "filePath": "crates/editor/src/model.rs",
+   "lineRange": [
+    46,
+    61
+   ],
+   "summary": "Applies an edit action and optionally autoscrolls the viewport to keep the cursor visible.",
+   "tags": [
+    "editor",
+    "edit",
+    "scrolling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/model.rs:CoreEditorModel",
+   "type": "class",
+   "name": "CoreEditorModel",
+   "filePath": "crates/editor/src/model.rs",
+   "lineRange": [
+    68,
+    690
+   ],
+   "summary": "Core editing engine: manages the content buffer, selection model, cursor movement, word/line navigation, undo/redo, indentation, and layout rebuilds.",
+   "tags": [
+    "data-model",
+    "editor",
+    "selection",
+    "undo-redo"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/model.rs:PlainTextEditorModel",
+   "type": "class",
+   "name": "PlainTextEditorModel",
+   "filePath": "crates/editor/src/model.rs",
+   "lineRange": [
+    692,
+    780
+   ],
+   "summary": "Plain-text facade over CoreEditorModel handling enter, delete, clipboard read, copy-all, and reset for single/plain editors.",
+   "tags": [
+    "data-model",
+    "editor",
+    "plain-text"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/model.rs:RichTextEditorModel",
+   "type": "class",
+   "name": "RichTextEditorModel",
+   "filePath": "crates/editor/src/model.rs",
+   "lineRange": [
+    782,
+    1218
+   ],
+   "summary": "Rich-text facade over CoreEditorModel adding markdown semantics: block conversion, links, task lists, placeholders, embeddings, and code-block handling.",
+   "tags": [
+    "data-model",
+    "editor",
+    "rich-text",
+    "markdown"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/multiline.rs:LineFormat",
+   "type": "class",
+   "name": "LineFormat",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    50,
+    59
+   ],
+   "summary": "Trait abstracting a line-ending format (LF/CRLF/CR) so multiline string types can be parameterized over their ending.",
+   "tags": [
+    "trait-definition",
+    "line-endings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/multiline.rs:MultilineString",
+   "type": "class",
+   "name": "MultilineString",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    72,
+    75
+   ],
+   "summary": "Owned string newtype carrying a compile-time LineFormat guarantee about its line endings.",
+   "tags": [
+    "string-types",
+    "line-endings",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/multiline.rs:AnyMultilineString",
+   "type": "class",
+   "name": "AnyMultilineString",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    87,
+    90
+   ],
+   "summary": "Owned multiline string with a runtime-tracked line ending, supporting inference, normalization, and conversion to a specific format.",
+   "tags": [
+    "string-types",
+    "line-endings",
+    "serialization"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/multiline.rs:IncorrectLineEndingError",
+   "type": "class",
+   "name": "IncorrectLineEndingError",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    102,
+    105
+   ],
+   "summary": "Error type reporting a mismatch between the expected and actual line ending when constructing a typed multiline string.",
+   "tags": [
+    "error-type",
+    "line-endings"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/multiline.rs:try_new",
+   "type": "function",
+   "name": "try_new",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    185,
+    205
+   ],
+   "summary": "Fallibly constructs a typed multiline string, returning IncorrectLineEndingError if the text's endings do not match the format.",
+   "tags": [
+    "line-endings",
+    "validation",
+    "factory"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/multiline.rs:TextLineEndings",
+   "type": "class",
+   "name": "TextLineEndings",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    470,
+    480
+   ],
+   "summary": "Enum classifying a text's line endings as single-line or multi-line, with helpers to detect mixed endings and pick a primary ending.",
+   "tags": [
+    "enum",
+    "line-endings"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/multiline.rs:evaluate_line_endings",
+   "type": "function",
+   "name": "evaluate_line_endings",
+   "filePath": "crates/editor/src/multiline.rs",
+   "lineRange": [
+    507,
+    537
+   ],
+   "summary": "Scans text to count and classify its line endings, producing a TextLineEndings summary used for inference.",
+   "tags": [
+    "line-endings",
+    "analysis",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/parallel_util.rs:Last",
+   "type": "class",
+   "name": "Last",
+   "filePath": "crates/editor/src/parallel_util.rs",
+   "lineRange": [
+    9,
+    11
+   ],
+   "summary": "Rayon collector wrapper that consumes a parallel iterator and retains only its last produced element.",
+   "tags": [
+    "utility",
+    "parallelism",
+    "rayon"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/broken_embedding.rs:RenderableBrokenEmbedding",
+   "type": "class",
+   "name": "RenderableBrokenEmbedding",
+   "filePath": "crates/editor/src/render/element/broken_embedding.rs",
+   "lineRange": [
+    15,
+    18
+   ],
+   "summary": "Renderable block that draws an error/placeholder card with a remove button when an embedded item cannot be displayed.",
+   "tags": [
+    "render",
+    "ui-element",
+    "error-state"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/broken_embedding.rs:new",
+   "type": "function",
+   "name": "new",
+   "filePath": "crates/editor/src/render/element/broken_embedding.rs",
+   "lineRange": [
+    21,
+    65
+   ],
+   "summary": "Constructs the broken-embedding renderable, building its footer/remove-button layout from the viewport item and styles.",
+   "tags": [
+    "render",
+    "constructor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/broken_embedding.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/broken_embedding.rs",
+   "lineRange": [
+    97,
+    157
+   ],
+   "summary": "Paints the broken-embedding card background, message, and remove button into the frame.",
+   "tags": [
+    "render",
+    "painting"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/empty.rs:Empty",
+   "type": "class",
+   "name": "Empty",
+   "filePath": "crates/editor/src/render/element/empty.rs",
+   "lineRange": [
+    12,
+    15
+   ],
+   "summary": "Renderable block for an empty line, painting placeholder text and the editor cursor.",
+   "tags": [
+    "render",
+    "ui-element",
+    "placeholder"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/header.rs:RenderableHeader",
+   "type": "class",
+   "name": "RenderableHeader",
+   "filePath": "crates/editor/src/render/element/header.rs",
+   "lineRange": [
+    8,
+    11
+   ],
+   "summary": "Renderable block for a markdown header line, laying out and painting heading text with header styling.",
+   "tags": [
+    "render",
+    "ui-element",
+    "markdown"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/editor/src/content/undo_tests.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/validation.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/validation.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/validation_tests.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/validation_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/decoration/mod.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/decoration/mod.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/decoration/mod.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "file:crates/editor/src/render/element/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/content/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/decoration/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/multiline.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/parallel_util.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/render/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/search.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/lib.rs",
+   "target": "file:crates/editor/src/selection.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/selection.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/empty.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/empty.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/empty.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/empty.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/header.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/header.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/header.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/validation.rs",
+   "target": "function:crates/editor/src/content/validation.rs:validate_content",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/validation.rs",
+   "target": "function:crates/editor/src/content/validation.rs:validate_content",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/version.rs",
+   "target": "class:crates/editor/src/content/version.rs:BufferVersion",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/version.rs",
+   "target": "class:crates/editor/src/content/version.rs:BufferVersion",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/decoration/mod.rs",
+   "target": "class:crates/editor/src/decoration/mod.rs:DecorationLayer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/decoration/mod.rs",
+   "target": "class:crates/editor/src/decoration/mod.rs:DecorationLayer",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:EditorView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:EditorView",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:TextDecoration",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:TextDecoration",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "function:crates/editor/src/editor.rs:to_paint_style_override",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "function:crates/editor/src/editor.rs:to_paint_style_override",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:EmbeddedItemModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:EmbeddedItemModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:RunnableCommandModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:RunnableCommandModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:NavigationKey",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/editor.rs",
+   "target": "class:crates/editor/src/editor.rs:NavigationKey",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "function:crates/editor/src/model.rs:apply_edit",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "function:crates/editor/src/model.rs:apply_edit",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "function:crates/editor/src/model.rs:apply_edit_with_autoscroll",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "function:crates/editor/src/model.rs:apply_edit_with_autoscroll",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "class:crates/editor/src/model.rs:CoreEditorModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "class:crates/editor/src/model.rs:CoreEditorModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "class:crates/editor/src/model.rs:PlainTextEditorModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "class:crates/editor/src/model.rs:PlainTextEditorModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "class:crates/editor/src/model.rs:RichTextEditorModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "class:crates/editor/src/model.rs:RichTextEditorModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:LineFormat",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:LineFormat",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:MultilineString",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:MultilineString",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:AnyMultilineString",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:AnyMultilineString",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:IncorrectLineEndingError",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:IncorrectLineEndingError",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "function:crates/editor/src/multiline.rs:try_new",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:TextLineEndings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "class:crates/editor/src/multiline.rs:TextLineEndings",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/multiline.rs",
+   "target": "function:crates/editor/src/multiline.rs:evaluate_line_endings",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/parallel_util.rs",
+   "target": "class:crates/editor/src/parallel_util.rs:Last",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/parallel_util.rs",
+   "target": "class:crates/editor/src/parallel_util.rs:Last",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "class:crates/editor/src/render/element/broken_embedding.rs:RenderableBrokenEmbedding",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "class:crates/editor/src/render/element/broken_embedding.rs:RenderableBrokenEmbedding",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "function:crates/editor/src/render/element/broken_embedding.rs:new",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "target": "function:crates/editor/src/render/element/broken_embedding.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/empty.rs",
+   "target": "class:crates/editor/src/render/element/empty.rs:Empty",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/empty.rs",
+   "target": "class:crates/editor/src/render/element/empty.rs:Empty",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/header.rs",
+   "target": "class:crates/editor/src/render/element/header.rs:RenderableHeader",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/header.rs",
+   "target": "class:crates/editor/src/render/element/header.rs:RenderableHeader",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/validation.rs",
+   "target": "file:crates/editor/src/content/validation_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/model.rs",
+   "target": "file:crates/editor/src/content/undo_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

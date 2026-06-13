@@ -1,0 +1,1160 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/warpui_core/src/accessibility.rs",
+   "type": "file",
+   "name": "accessibility.rs",
+   "filePath": "crates/warpui_core/src/accessibility.rs",
+   "summary": "Defines the accessibility model for UI elements: content/help text, verbosity levels, and the WarpA11yRole taxonomy mapped to platform a11y roles.",
+   "tags": [
+    "accessibility",
+    "data-model",
+    "type-definition",
+    "a11y"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/accessibility.rs:AccessibilityContent",
+   "type": "class",
+   "name": "AccessibilityContent",
+   "filePath": "crates/warpui_core/src/accessibility.rs",
+   "summary": "Builder-style struct holding an element's accessible value, optional help text, frame and role, with constructors for varying verbosity.",
+   "tags": [
+    "accessibility",
+    "data-model",
+    "builder"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    55,
+    75
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/accessibility.rs:WarpA11yRole",
+   "type": "class",
+   "name": "WarpA11yRole",
+   "filePath": "crates/warpui_core/src/accessibility.rs",
+   "summary": "Enum taxonomy of accessibility roles (Button, Checkbox, Image, Link, Menu, etc.) with Display formatting to platform role strings.",
+   "tags": [
+    "accessibility",
+    "enum",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    207,
+    224
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/accessibility.rs:ActionAccessibilityContent",
+   "type": "class",
+   "name": "ActionAccessibilityContent",
+   "filePath": "crates/warpui_core/src/accessibility.rs",
+   "summary": "Enum describing how an action contributes accessibility content: empty, custom static, or computed via closure.",
+   "tags": [
+    "accessibility",
+    "enum",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    251,
+    256
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/accessibility.rs:AccessibilityVerbosity",
+   "type": "class",
+   "name": "AccessibilityVerbosity",
+   "filePath": "crates/warpui_core/src/accessibility.rs",
+   "summary": "Verbosity setting (Verbose/Concise) controlling how much accessibility detail is announced.",
+   "tags": [
+    "accessibility",
+    "enum",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    89,
+    99
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/accessibility.rs:string_announcement",
+   "type": "function",
+   "name": "string_announcement",
+   "filePath": "crates/warpui_core/src/accessibility.rs",
+   "summary": "Composes the spoken announcement string for an element from its value, role, and help text honoring verbosity.",
+   "tags": [
+    "accessibility",
+    "formatting",
+    "a11y"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    107,
+    148
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/actions.rs",
+   "type": "file",
+   "name": "actions.rs",
+   "filePath": "crates/warpui_core/src/actions.rs",
+   "summary": "Declares StandardAction, the enum of OS-level window/application actions (Close, Hide, Quit, Zoom, Minimize, etc.) recognized by the framework.",
+   "tags": [
+    "type-definition",
+    "actions",
+    "enum"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/actions.rs:StandardAction",
+   "type": "class",
+   "name": "StandardAction",
+   "filePath": "crates/warpui_core/src/actions.rs",
+   "summary": "Enum of standard platform window/application actions such as Close, Hide, Quit, Zoom, and Minimize.",
+   "tags": [
+    "actions",
+    "enum",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    8,
+    19
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "type": "file",
+   "name": "app_focus_telemetry.rs",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry.rs",
+   "summary": "Tracks application focus/blur timing and accumulates daily app-focus duration for telemetry, syncing once per day.",
+   "tags": [
+    "telemetry",
+    "service",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/app_focus_telemetry.rs:AppFocusInfo",
+   "type": "class",
+   "name": "AppFocusInfo",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry.rs",
+   "summary": "Holds last-focus timestamp and daily accumulated focus duration; records focus/blur transitions for telemetry.",
+   "tags": [
+    "telemetry",
+    "data-model",
+    "service"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    47,
+    50
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/app_focus_telemetry.rs:DailyAppFocusDuration",
+   "type": "class",
+   "name": "DailyAppFocusDuration",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry.rs",
+   "summary": "Accumulator for a single day's focused duration, resetting and re-syncing when the day rolls over.",
+   "tags": [
+    "telemetry",
+    "data-model"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    7,
+    10
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/app_focus_telemetry.rs:try_record",
+   "type": "function",
+   "name": "try_record",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry.rs",
+   "summary": "Records elapsed focus duration into the daily accumulator, resetting it when crossing into a new day.",
+   "tags": [
+    "telemetry",
+    "accumulator"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    16,
+    30
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/app_focus_telemetry.rs:record_app_focus",
+   "type": "function",
+   "name": "record_app_focus",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry.rs",
+   "summary": "Marks the moment the app gained focus by stamping the current time.",
+   "tags": [
+    "telemetry",
+    "event-handler"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    64,
+    67
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/app_focus_telemetry.rs:record_app_blur",
+   "type": "function",
+   "name": "record_app_blur",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry.rs",
+   "summary": "On blur, computes elapsed focused time and folds it into the daily focus accumulator.",
+   "tags": [
+    "telemetry",
+    "event-handler"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    78,
+    83
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/app_focus_telemetry_tests.rs",
+   "type": "file",
+   "name": "app_focus_telemetry_tests.rs",
+   "filePath": "crates/warpui_core/src/app_focus_telemetry_tests.rs",
+   "summary": "Unit test verifying that daily app-focus duration accumulates correctly across focus/blur cycles.",
+   "tags": [
+    "test",
+    "telemetry"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "type": "file",
+   "name": "asset_cache.rs",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Asynchronous asset cache: loads, stores, and evicts raw asset bytes (images/fonts) from bundled, local-file, async, or raw sources with size-based eviction.",
+   "tags": [
+    "service",
+    "asset-cache",
+    "async",
+    "caching"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Uses async executors (foreground/background) and trait objects (AssetSource, AssetProvider) for pluggable asset loading."
+  },
+  {
+   "id": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetCache",
+   "type": "class",
+   "name": "AssetCache",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Central async cache that loads assets from multiple sources, tracks raw byte size, evicts when over budget, and shares loading futures.",
+   "tags": [
+    "service",
+    "caching",
+    "async",
+    "asset-cache"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    164,
+    172
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetSource",
+   "type": "class",
+   "name": "AssetSource",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Enum of where an asset comes from: Async fetch, Bundled, LocalFile, or Raw in-memory bytes.",
+   "tags": [
+    "enum",
+    "type-definition",
+    "asset-cache"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    70,
+    91
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetState",
+   "type": "class",
+   "name": "AssetState",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Public enum describing an asset's lifecycle state: Loading, Loaded, Evicted, or FailedToLoad.",
+   "tags": [
+    "enum",
+    "type-definition",
+    "asset-cache"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    94,
+    99
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetHandle",
+   "type": "class",
+   "name": "AssetHandle",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Handle to a requested asset (source + type) that can await its loaded state.",
+   "tags": [
+    "data-model",
+    "asset-cache"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    105,
+    108
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/assets/asset_cache.rs:AsyncAssetId",
+   "type": "class",
+   "name": "AsyncAssetId",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Namespaced identifier for an asynchronously fetched asset.",
+   "tags": [
+    "data-model",
+    "asset-cache",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    38,
+    41
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/assets/asset_cache.rs:load_asset",
+   "type": "function",
+   "name": "load_asset",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Resolves an asset handle, returning cached bytes or initiating asynchronous loading from its source.",
+   "tags": [
+    "asset-cache",
+    "async",
+    "caching"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    288,
+    347
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/assets/asset_cache.rs:load_asynchronously",
+   "type": "function",
+   "name": "load_asynchronously",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Drives the async loading pipeline for an asset: fetches bytes, decodes, stores, and notifies waiters.",
+   "tags": [
+    "asset-cache",
+    "async"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    421,
+    492
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/assets/asset_cache.rs:evict_raw_assets_if_needed",
+   "type": "function",
+   "name": "evict_raw_assets_if_needed",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Evicts least-needed raw assets when total cached byte size exceeds the configured budget.",
+   "tags": [
+    "asset-cache",
+    "caching",
+    "eviction"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    230,
+    280
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/assets/asset_cache.rs:insert_raw_asset_bytes",
+   "type": "function",
+   "name": "insert_raw_asset_bytes",
+   "filePath": "crates/warpui_core/src/assets/asset_cache.rs",
+   "summary": "Inserts decoded raw asset bytes into the cache, updating size accounting and state.",
+   "tags": [
+    "asset-cache",
+    "caching"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    349,
+    389
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/assets/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/assets/mod.rs",
+   "summary": "Assets module barrel: re-exports the asset cache and declares the AssetProvider trait for bundled asset lookup.",
+   "tags": [
+    "barrel",
+    "entry-point",
+    "asset-cache"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/assets/mod.rs:AssetProvider",
+   "type": "class",
+   "name": "AssetProvider",
+   "filePath": "crates/warpui_core/src/assets/mod.rs",
+   "summary": "Trait for resolving bundled assets by key.",
+   "tags": [
+    "trait",
+    "type-definition",
+    "asset-cache"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    15,
+    17
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/clipboard.rs",
+   "type": "file",
+   "name": "clipboard.rs",
+   "filePath": "crates/warpui_core/src/clipboard.rs",
+   "summary": "Clipboard abstraction: the Clipboard trait plus ClipboardContent/ImageData value types and an in-memory test implementation.",
+   "tags": [
+    "clipboard",
+    "type-definition",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/clipboard.rs:Clipboard",
+   "type": "class",
+   "name": "Clipboard",
+   "filePath": "crates/warpui_core/src/clipboard.rs",
+   "summary": "Trait abstracting read/write of clipboard content including primary-selection variants.",
+   "tags": [
+    "clipboard",
+    "trait",
+    "type-definition"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    5,
+    25
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/clipboard.rs:ClipboardContent",
+   "type": "class",
+   "name": "ClipboardContent",
+   "filePath": "crates/warpui_core/src/clipboard.rs",
+   "summary": "Value type carrying plain text, file paths, HTML, and image payloads for a clipboard transfer.",
+   "tags": [
+    "clipboard",
+    "data-model"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    29,
+    40
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/clipboard.rs:InMemoryClipboard",
+   "type": "class",
+   "name": "InMemoryClipboard",
+   "filePath": "crates/warpui_core/src/clipboard.rs",
+   "summary": "In-memory Clipboard implementation used for testing.",
+   "tags": [
+    "clipboard",
+    "test",
+    "mock"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    117,
+    119
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard.rs:should_insert_text_on_paste",
+   "type": "function",
+   "name": "should_insert_text_on_paste",
+   "filePath": "crates/warpui_core/src/clipboard.rs",
+   "summary": "Decides whether plain text should be inserted on paste based on content shape (text vs image/files).",
+   "tags": [
+    "clipboard",
+    "validation"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    99,
+    112
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "type": "file",
+   "name": "clipboard_utils.rs",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Clipboard helper functions: extract filenames from text/HTML, sanitize HTML to plain text, and convert/normalize clipboard image data.",
+   "tags": [
+    "clipboard",
+    "utility",
+    "serialization"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard_utils.rs:strip_html_to_plain_text",
+   "type": "function",
+   "name": "strip_html_to_plain_text",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Strips HTML markup down to plain text, handling tags, entities, and whitespace normalization.",
+   "tags": [
+    "clipboard",
+    "serialization",
+    "parsing"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    148,
+    269
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_html",
+   "type": "function",
+   "name": "extract_filename_from_html",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Parses pasted HTML to recover an originating filename from tag attributes.",
+   "tags": [
+    "clipboard",
+    "parsing"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    78,
+    91
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_text",
+   "type": "function",
+   "name": "extract_filename_from_text",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Heuristically extracts a filename from pasted plain text.",
+   "tags": [
+    "clipboard",
+    "parsing"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    54,
+    75
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard_utils.rs:convert_raw_bitmap_to_png",
+   "type": "function",
+   "name": "convert_raw_bitmap_to_png",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Encodes a raw bitmap clipboard image into PNG bytes.",
+   "tags": [
+    "clipboard",
+    "serialization",
+    "image"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    356,
+    413
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard_utils.rs:read_images_from_clipboard",
+   "type": "function",
+   "name": "read_images_from_clipboard",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Reads and normalizes image payloads from clipboard content into usable image data.",
+   "tags": [
+    "clipboard",
+    "image"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    298,
+    325
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_clipboard_content",
+   "type": "function",
+   "name": "extract_filename_from_clipboard_content",
+   "filePath": "crates/warpui_core/src/clipboard_utils.rs",
+   "summary": "Picks the best available filename for clipboard content across text and HTML sources.",
+   "tags": [
+    "clipboard",
+    "parsing"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    43,
+    51
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/clipboard_utils_tests.rs",
+   "type": "file",
+   "name": "clipboard_utils_tests.rs",
+   "filePath": "crates/warpui_core/src/clipboard_utils_tests.rs",
+   "summary": "Unit tests for clipboard filename extraction and image-content handling helpers.",
+   "tags": [
+    "test",
+    "clipboard"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/action.rs",
+   "type": "file",
+   "name": "action.rs",
+   "filePath": "crates/warpui_core/src/core/action.rs",
+   "summary": "Core action plumbing: the dynamic Action trait (downcastable, type-named) and ActionType identity helper.",
+   "tags": [
+    "type-definition",
+    "actions",
+    "core"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/action.rs:Action",
+   "type": "class",
+   "name": "Action",
+   "filePath": "crates/warpui_core/src/core/action.rs",
+   "summary": "Trait for dynamically-typed actions supporting downcast via as_any and a stable type name.",
+   "tags": [
+    "actions",
+    "trait",
+    "type-definition",
+    "core"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    10,
+    19
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:AccessibilityContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:AccessibilityContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:WarpA11yRole",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:WarpA11yRole",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:ActionAccessibilityContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:ActionAccessibilityContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:AccessibilityVerbosity",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "class:crates/warpui_core/src/accessibility.rs:AccessibilityVerbosity",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/accessibility.rs",
+   "target": "function:crates/warpui_core/src/accessibility.rs:string_announcement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/actions.rs",
+   "target": "class:crates/warpui_core/src/actions.rs:StandardAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/actions.rs",
+   "target": "class:crates/warpui_core/src/actions.rs:StandardAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "class:crates/warpui_core/src/app_focus_telemetry.rs:AppFocusInfo",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "class:crates/warpui_core/src/app_focus_telemetry.rs:AppFocusInfo",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "class:crates/warpui_core/src/app_focus_telemetry.rs:DailyAppFocusDuration",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "function:crates/warpui_core/src/app_focus_telemetry.rs:try_record",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "function:crates/warpui_core/src/app_focus_telemetry.rs:record_app_focus",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "function:crates/warpui_core/src/app_focus_telemetry.rs:record_app_focus",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "function:crates/warpui_core/src/app_focus_telemetry.rs:record_app_blur",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "function:crates/warpui_core/src/app_focus_telemetry.rs:record_app_blur",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetCache",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetCache",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetSource",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetSource",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AsyncAssetId",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AsyncAssetId",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "function:crates/warpui_core/src/assets/asset_cache.rs:load_asset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "function:crates/warpui_core/src/assets/asset_cache.rs:load_asset",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "function:crates/warpui_core/src/assets/asset_cache.rs:load_asynchronously",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "function:crates/warpui_core/src/assets/asset_cache.rs:evict_raw_assets_if_needed",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "function:crates/warpui_core/src/assets/asset_cache.rs:insert_raw_asset_bytes",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "function:crates/warpui_core/src/assets/asset_cache.rs:insert_raw_asset_bytes",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/mod.rs",
+   "target": "class:crates/warpui_core/src/assets/mod.rs:AssetProvider",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/mod.rs",
+   "target": "class:crates/warpui_core/src/assets/mod.rs:AssetProvider",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "class:crates/warpui_core/src/clipboard.rs:Clipboard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "class:crates/warpui_core/src/clipboard.rs:Clipboard",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "class:crates/warpui_core/src/clipboard.rs:ClipboardContent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "class:crates/warpui_core/src/clipboard.rs:ClipboardContent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "class:crates/warpui_core/src/clipboard.rs:InMemoryClipboard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "class:crates/warpui_core/src/clipboard.rs:InMemoryClipboard",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "function:crates/warpui_core/src/clipboard.rs:should_insert_text_on_paste",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "function:crates/warpui_core/src/clipboard.rs:should_insert_text_on_paste",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:strip_html_to_plain_text",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:strip_html_to_plain_text",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_html",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_html",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_text",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_text",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:convert_raw_bitmap_to_png",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:convert_raw_bitmap_to_png",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:read_images_from_clipboard",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:read_images_from_clipboard",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_clipboard_content",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "function:crates/warpui_core/src/clipboard_utils.rs:extract_filename_from_clipboard_content",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/action.rs",
+   "target": "class:crates/warpui_core/src/core/action.rs:Action",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/action.rs",
+   "target": "class:crates/warpui_core/src/core/action.rs:Action",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "file:crates/warpui_core/src/time.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry_tests.rs",
+   "target": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry_tests.rs",
+   "target": "file:crates/warpui_core/src/time.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "target": "file:crates/warpui_core/src/image_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/assets/mod.rs",
+   "target": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "file:crates/warpui_core/src/clipboard.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils_tests.rs",
+   "target": "file:crates/warpui_core/src/clipboard.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "target": "file:crates/warpui_core/src/app_focus_telemetry_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "file:crates/warpui_core/src/clipboard_utils_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard.rs",
+   "target": "file:crates/warpui_core/src/clipboard_utils_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/clipboard_utils.rs",
+   "target": "file:crates/warpui_core/src/clipboard.rs",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  }
+ ]
+}

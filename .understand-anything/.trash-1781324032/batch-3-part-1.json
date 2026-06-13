@@ -1,0 +1,1500 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/elements/text_tests.rs",
+      "type": "file",
+      "name": "text_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/text_tests.rs",
+      "summary": "Unit tests for laid-out text geometry: line/text height, single-line char hit-testing within y-bounds, and selection range merging (overlapping, contiguous, adjacent).",
+      "tags": [
+        "test",
+        "text-layout",
+        "hit-testing",
+        "selection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/uniform_list_tests.rs",
+      "type": "file",
+      "name": "uniform_list_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/uniform_list_tests.rs",
+      "summary": "Integration-style tests for the uniform_list element covering rendering and layered click handling across stacked list items.",
+      "tags": [
+        "test",
+        "ui-element",
+        "list",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "type": "file",
+      "name": "viewported_list_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "summary": "Extensive tests for the viewported (virtualized) list element: scroll-position preservation when items above/below grow, scroll event emission, and scroll-position invalidation/clamping.",
+      "tags": [
+        "test",
+        "ui-element",
+        "virtualized-list",
+        "scrolling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/fonts.rs",
+      "type": "file",
+      "name": "fonts.rs",
+      "filePath": "crates/warpui_core/src/fonts.rs",
+      "summary": "Font subsystem core: font weight/style/properties model, a glyph metrics-and-raster Cache, font loading and selection, and per-glyph metric/bounds/rasterization queries.",
+      "tags": [
+        "service",
+        "fonts",
+        "glyph-cache",
+        "rasterization"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Rust enums (Weight/Style) with conversion helpers and a Cache struct keyed by GlyphKey for memoizing expensive glyph rasterization."
+    },
+    {
+      "id": "file:crates/warpui_core/src/fonts/canvas.rs",
+      "type": "file",
+      "name": "canvas.rs",
+      "filePath": "crates/warpui_core/src/fonts/canvas.rs",
+      "summary": "Defines RasterFormat (pixel formats and bytes-per-pixel) and the Canvas pixel buffer used to hold rasterized glyph bitmaps.",
+      "tags": [
+        "data-model",
+        "rasterization",
+        "pixel-buffer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/fonts/text_layout_system.rs",
+      "type": "file",
+      "name": "text_layout_system.rs",
+      "filePath": "crates/warpui_core/src/fonts/text_layout_system.rs",
+      "summary": "TextLayoutSystem trait abstracting line/text layout and per-character fallback-font requests over the platform font backend.",
+      "tags": [
+        "type-definition",
+        "text-layout",
+        "trait",
+        "fonts"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/platform/mod.rs",
+      "summary": "Platform abstraction layer: traits for the app Delegate, WindowManager, Window, WindowContext and FontDB plus OS/window/cursor/notification value types shared across native and wasm backends.",
+      "tags": [
+        "platform",
+        "trait",
+        "windowing",
+        "abstraction"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Heavy use of trait objects (Delegate, WindowManager, Window) to decouple core UI from OS-specific backends; OperatingSystem enum provides is_mac/is_linux helpers."
+    },
+    {
+      "id": "file:crates/warpui_core/src/platform/wasm.rs",
+      "type": "file",
+      "name": "wasm.rs",
+      "filePath": "crates/warpui_core/src/platform/wasm.rs",
+      "summary": "WebAssembly platform backend that parses the browser user-agent to report current platform, OS version, browser and version.",
+      "tags": [
+        "platform",
+        "wasm",
+        "user-agent",
+        "detection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/prelude.rs",
+      "type": "file",
+      "name": "prelude.rs",
+      "filePath": "crates/warpui_core/src/prelude.rs",
+      "summary": "Crate prelude re-exporting the most-used core, elements, platform, presenter and component symbols for ergonomic glob imports.",
+      "tags": [
+        "barrel",
+        "prelude",
+        "re-exports"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/presenter.rs",
+      "type": "file",
+      "name": "presenter.rs",
+      "filePath": "crates/warpui_core/src/presenter.rs",
+      "summary": "Central presenter that drives the layout/paint/event lifecycle: builds the Scene from the view tree, manages a PositionCache, dispatches events and actions, and tracks cursor/repaint scheduling.",
+      "tags": [
+        "service",
+        "layout-engine",
+        "rendering",
+        "event-dispatch"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Owns the per-frame pipeline (invalidate -> build_scene -> layout -> paint) and a PositionCache that memoizes element bounds across frames."
+    },
+    {
+      "id": "file:crates/warpui_core/src/presenter_tests.rs",
+      "type": "file",
+      "name": "presenter_tests.rs",
+      "filePath": "crates/warpui_core/src/presenter_tests.rs",
+      "summary": "Unit test verifying PositionCache caching behavior within the presenter.",
+      "tags": [
+        "test",
+        "layout-engine",
+        "caching"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/scene.rs",
+      "type": "file",
+      "name": "scene.rs",
+      "filePath": "crates/warpui_core/src/scene.rs",
+      "summary": "Retained scene graph and draw API: layered primitives (rects, images, icons, glyphs), clipping, z-index, borders, drop shadows and corner radii, plus hit-rect recording for input.",
+      "tags": [
+        "service",
+        "rendering",
+        "scene-graph",
+        "drawing"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Builder-style with_* methods on Rect/Border/CornerRadius; Scene maintains ordered Layers and records hit rects for later hit-testing."
+    },
+    {
+      "id": "file:crates/warpui_core/src/text_layout.rs",
+      "type": "file",
+      "name": "text_layout.rs",
+      "filePath": "crates/warpui_core/src/text_layout.rs",
+      "summary": "Text shaping and layout engine: produces laid-out Lines/TextFrames with glyph runs, caret positioning, clipping/ellipsis configuration and text styling, backed by a LayoutCache keyed on content+style.",
+      "tags": [
+        "service",
+        "text-layout",
+        "shaping",
+        "caching"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Largest module in the crate; LayoutCache memoizes shaped lines by CacheKey to avoid re-shaping unchanged text every frame."
+    },
+    {
+      "id": "file:crates/warpui_core/src/text_layout_tests.rs",
+      "type": "file",
+      "name": "text_layout_tests.rs",
+      "filePath": "crates/warpui_core/src/text_layout_tests.rs",
+      "summary": "Unit tests for the text layout engine covering shaping, caret/positioning and caching behavior.",
+      "tags": [
+        "test",
+        "text-layout",
+        "shaping"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/button.rs",
+      "type": "file",
+      "name": "button.rs",
+      "filePath": "crates/warpui_core/src/ui_components/button.rs",
+      "summary": "Button UI component with text+icon content, alignment, variants and optional tooltip; builds into an Element via the component framework.",
+      "tags": [
+        "component",
+        "button",
+        "ui-component",
+        "builder"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "type": "file",
+      "name": "checkbox.rs",
+      "filePath": "crates/warpui_core/src/ui_components/checkbox.rs",
+      "summary": "Checkbox UI component rendering a labelled toggleable check control built on the shared component framework.",
+      "tags": [
+        "component",
+        "checkbox",
+        "ui-component",
+        "input"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "type": "file",
+      "name": "chip.rs",
+      "filePath": "crates/warpui_core/src/ui_components/chip.rs",
+      "summary": "Chip UI component rendering a compact pill/tag label.",
+      "tags": [
+        "component",
+        "chip",
+        "ui-component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/fonts.rs:Weight",
+      "type": "class",
+      "name": "Weight",
+      "filePath": "crates/warpui_core/src/fonts.rs",
+      "lineRange": [
+        33,
+        44
+      ],
+      "summary": "Font weight enum (Thin..Black plus custom) with conversion helpers to/from numeric custom weights.",
+      "tags": [
+        "data-model",
+        "fonts",
+        "enum"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/fonts.rs:Cache",
+      "type": "class",
+      "name": "Cache",
+      "filePath": "crates/warpui_core/src/fonts.rs",
+      "lineRange": [
+        206,
+        221
+      ],
+      "summary": "Per-font glyph cache memoizing advances, typographic/raster bounds and rasterized bitmaps keyed by GlyphKey to avoid recomputing expensive font metrics.",
+      "tags": [
+        "singleton",
+        "glyph-cache",
+        "fonts",
+        "performance"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/fonts.rs:glyph_for_char",
+      "type": "function",
+      "name": "glyph_for_char",
+      "filePath": "crates/warpui_core/src/fonts.rs",
+      "lineRange": [
+        451,
+        494
+      ],
+      "summary": "Resolves the glyph id for a character in a font, applying fallback handling when the primary font lacks the glyph.",
+      "tags": [
+        "fonts",
+        "glyph",
+        "fallback"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/fonts/canvas.rs:Canvas",
+      "type": "class",
+      "name": "Canvas",
+      "filePath": "crates/warpui_core/src/fonts/canvas.rs",
+      "lineRange": [
+        36,
+        45
+      ],
+      "summary": "Pixel buffer holding a rasterized bitmap (data, size, stride, format) for a glyph or image.",
+      "tags": [
+        "data-model",
+        "pixel-buffer",
+        "rasterization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/fonts/canvas.rs:RasterFormat",
+      "type": "class",
+      "name": "RasterFormat",
+      "filePath": "crates/warpui_core/src/fonts/canvas.rs",
+      "lineRange": [
+        4,
+        11
+      ],
+      "summary": "Enum of supported raster pixel formats exposing bytes-per-pixel.",
+      "tags": [
+        "data-model",
+        "enum",
+        "rasterization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/fonts/text_layout_system.rs:TextLayoutSystem",
+      "type": "class",
+      "name": "TextLayoutSystem",
+      "filePath": "crates/warpui_core/src/fonts/text_layout_system.rs",
+      "lineRange": [
+        10,
+        13
+      ],
+      "summary": "Trait abstracting line/text layout and per-char fallback-font lookup over the platform font backend.",
+      "tags": [
+        "trait",
+        "text-layout",
+        "fonts"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/platform/mod.rs:Delegate",
+      "type": "class",
+      "name": "Delegate",
+      "filePath": "crates/warpui_core/src/platform/mod.rs",
+      "lineRange": [
+        187,
+        273
+      ],
+      "summary": "Core application delegate trait (25 methods) handling lifecycle, window, input and system callbacks between the platform backend and app.",
+      "tags": [
+        "trait",
+        "platform",
+        "app-delegate",
+        "abstraction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/platform/mod.rs:WindowManager",
+      "type": "class",
+      "name": "WindowManager",
+      "filePath": "crates/warpui_core/src/platform/mod.rs",
+      "lineRange": [
+        548,
+        628
+      ],
+      "summary": "Trait abstracting window creation/management and platform window operations across native and wasm backends.",
+      "tags": [
+        "trait",
+        "platform",
+        "windowing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/platform/mod.rs:Window",
+      "type": "class",
+      "name": "Window",
+      "filePath": "crates/warpui_core/src/platform/mod.rs",
+      "lineRange": [
+        441,
+        459
+      ],
+      "summary": "Trait describing an OS window: bounds, focus, fullscreen and rendering surface operations.",
+      "tags": [
+        "trait",
+        "platform",
+        "windowing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/platform/mod.rs:FontDB",
+      "type": "class",
+      "name": "FontDB",
+      "filePath": "crates/warpui_core/src/platform/mod.rs",
+      "lineRange": [
+        343,
+        431
+      ],
+      "summary": "Trait abstracting the system font database: enumeration, loading by id/bytes and family lookup.",
+      "tags": [
+        "trait",
+        "platform",
+        "fonts"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/platform/mod.rs:OperatingSystem",
+      "type": "class",
+      "name": "OperatingSystem",
+      "filePath": "crates/warpui_core/src/platform/mod.rs",
+      "lineRange": [
+        656,
+        666
+      ],
+      "summary": "Enum of supported operating systems with is_mac/is_linux/is_windows and default-shell helpers.",
+      "tags": [
+        "data-model",
+        "platform",
+        "enum"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/platform/wasm.rs:current_platform",
+      "type": "function",
+      "name": "current_platform",
+      "filePath": "crates/warpui_core/src/platform/wasm.rs",
+      "lineRange": [
+        55,
+        71
+      ],
+      "summary": "Detects the current platform from the parsed browser user-agent for the wasm backend.",
+      "tags": [
+        "wasm",
+        "platform",
+        "detection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/presenter.rs:Presenter",
+      "type": "class",
+      "name": "Presenter",
+      "filePath": "crates/warpui_core/src/presenter.rs",
+      "lineRange": [
+        25,
+        35
+      ],
+      "summary": "Central presenter owning the view tree, scene, position cache and frame counter; orchestrates the per-frame layout/paint/dispatch pipeline.",
+      "tags": [
+        "service",
+        "layout-engine",
+        "rendering",
+        "event-dispatch"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/presenter.rs:PositionCache",
+      "type": "class",
+      "name": "PositionCache",
+      "filePath": "crates/warpui_core/src/presenter.rs",
+      "lineRange": [
+        125,
+        137
+      ],
+      "summary": "Cache of element bounds/drop-target positions, supporting indefinite and single-frame caching plus visibility/coverage queries.",
+      "tags": [
+        "caching",
+        "layout-engine",
+        "hit-testing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/presenter.rs:build_scene",
+      "type": "function",
+      "name": "build_scene",
+      "filePath": "crates/warpui_core/src/presenter.rs",
+      "lineRange": [
+        333,
+        375
+      ],
+      "summary": "Builds the Scene for a frame by laying out and painting the view tree starting from the root.",
+      "tags": [
+        "rendering",
+        "scene-graph",
+        "layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/presenter.rs:dispatch_event",
+      "type": "function",
+      "name": "dispatch_event",
+      "filePath": "crates/warpui_core/src/presenter.rs",
+      "lineRange": [
+        518,
+        537
+      ],
+      "summary": "Dispatches an input event through the view tree, producing a DispatchResult with handling/cursor outcomes.",
+      "tags": [
+        "event-dispatch",
+        "input",
+        "hit-testing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/scene.rs:Scene",
+      "type": "class",
+      "name": "Scene",
+      "filePath": "crates/warpui_core/src/scene.rs",
+      "lineRange": [
+        18,
+        27
+      ],
+      "summary": "Retained scene graph holding ordered layers; exposes draw_rect/image/icon/glyph, layer/clip/z-index management and hit-rect recording.",
+      "tags": [
+        "service",
+        "scene-graph",
+        "rendering",
+        "drawing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/scene.rs:CornerRadius",
+      "type": "class",
+      "name": "CornerRadius",
+      "filePath": "crates/warpui_core/src/scene.rs",
+      "lineRange": [
+        240,
+        249
+      ],
+      "summary": "Per-corner radius value type with 16 builder helpers (with_top_left, with_all, merge) for composing rounded-rect geometry.",
+      "tags": [
+        "data-model",
+        "geometry",
+        "builder"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/scene.rs:draw_glyph",
+      "type": "function",
+      "name": "draw_glyph",
+      "filePath": "crates/warpui_core/src/scene.rs",
+      "lineRange": [
+        649,
+        670
+      ],
+      "summary": "Records a glyph draw primitive into the active layer with style/clip applied.",
+      "tags": [
+        "rendering",
+        "glyph",
+        "drawing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/text_layout.rs:Line",
+      "type": "class",
+      "name": "Line",
+      "filePath": "crates/warpui_core/src/text_layout.rs",
+      "lineRange": [
+        491,
+        511
+      ],
+      "summary": "A single laid-out line of text exposing glyph runs, width/height, hit-testing and caret/positioning queries (20 methods).",
+      "tags": [
+        "data-model",
+        "text-layout",
+        "hit-testing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/text_layout.rs:TextFrame",
+      "type": "class",
+      "name": "TextFrame",
+      "filePath": "crates/warpui_core/src/text_layout.rs",
+      "lineRange": [
+        689,
+        694
+      ],
+      "summary": "A multi-line laid-out text frame aggregating Lines with overall geometry and paint operations.",
+      "tags": [
+        "data-model",
+        "text-layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/text_layout.rs:LayoutCache",
+      "type": "class",
+      "name": "LayoutCache",
+      "filePath": "crates/warpui_core/src/text_layout.rs",
+      "lineRange": [
+        108,
+        111
+      ],
+      "summary": "Cache memoizing shaped lines/frames by CacheKey so unchanged text is not re-shaped each frame.",
+      "tags": [
+        "caching",
+        "text-layout",
+        "performance"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/text_layout.rs:TextStyle",
+      "type": "class",
+      "name": "TextStyle",
+      "filePath": "crates/warpui_core/src/text_layout.rs",
+      "lineRange": [
+        562,
+        574
+      ],
+      "summary": "Text style value type (font, size, weight, color, decorations) used as part of the layout cache key.",
+      "tags": [
+        "data-model",
+        "text-layout",
+        "styling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/button.rs:Button",
+      "type": "class",
+      "name": "Button",
+      "filePath": "crates/warpui_core/src/ui_components/button.rs",
+      "lineRange": [
+        78,
+        98
+      ],
+      "summary": "Button component (21 builder methods) configuring text+icon content, variant, alignment and tooltip before building an Element.",
+      "tags": [
+        "component",
+        "button",
+        "builder"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/checkbox.rs:Checkbox",
+      "type": "class",
+      "name": "Checkbox",
+      "filePath": "crates/warpui_core/src/ui_components/checkbox.rs",
+      "lineRange": [
+        25,
+        37
+      ],
+      "summary": "Labelled checkbox component with checked state and click toggling.",
+      "tags": [
+        "component",
+        "checkbox",
+        "input"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/chip.rs:Chip",
+      "type": "class",
+      "name": "Chip",
+      "filePath": "crates/warpui_core/src/ui_components/chip.rs",
+      "lineRange": [
+        10,
+        15
+      ],
+      "summary": "Compact pill/tag label component.",
+      "tags": [
+        "component",
+        "chip"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "class:crates/warpui_core/src/fonts.rs:Weight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "class:crates/warpui_core/src/fonts.rs:Weight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "class:crates/warpui_core/src/fonts.rs:Cache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "class:crates/warpui_core/src/fonts.rs:Cache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "function:crates/warpui_core/src/fonts.rs:glyph_for_char",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "function:crates/warpui_core/src/fonts.rs:glyph_for_char",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/canvas.rs",
+      "target": "class:crates/warpui_core/src/fonts/canvas.rs:Canvas",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/canvas.rs",
+      "target": "class:crates/warpui_core/src/fonts/canvas.rs:Canvas",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/canvas.rs",
+      "target": "class:crates/warpui_core/src/fonts/canvas.rs:RasterFormat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/canvas.rs",
+      "target": "class:crates/warpui_core/src/fonts/canvas.rs:RasterFormat",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/text_layout_system.rs",
+      "target": "class:crates/warpui_core/src/fonts/text_layout_system.rs:TextLayoutSystem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/text_layout_system.rs",
+      "target": "class:crates/warpui_core/src/fonts/text_layout_system.rs:TextLayoutSystem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:Delegate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:Delegate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:WindowManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:WindowManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:Window",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:Window",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:FontDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:FontDB",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:OperatingSystem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "class:crates/warpui_core/src/platform/mod.rs:OperatingSystem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/wasm.rs",
+      "target": "function:crates/warpui_core/src/platform/wasm.rs:current_platform",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/wasm.rs",
+      "target": "function:crates/warpui_core/src/platform/wasm.rs:current_platform",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "class:crates/warpui_core/src/presenter.rs:Presenter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "class:crates/warpui_core/src/presenter.rs:Presenter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "class:crates/warpui_core/src/presenter.rs:PositionCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "class:crates/warpui_core/src/presenter.rs:PositionCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "function:crates/warpui_core/src/presenter.rs:build_scene",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "function:crates/warpui_core/src/presenter.rs:build_scene",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "function:crates/warpui_core/src/presenter.rs:dispatch_event",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "function:crates/warpui_core/src/presenter.rs:dispatch_event",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "class:crates/warpui_core/src/scene.rs:Scene",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "class:crates/warpui_core/src/scene.rs:Scene",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "class:crates/warpui_core/src/scene.rs:CornerRadius",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "class:crates/warpui_core/src/scene.rs:CornerRadius",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "function:crates/warpui_core/src/scene.rs:draw_glyph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "function:crates/warpui_core/src/scene.rs:draw_glyph",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:Line",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:Line",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:TextFrame",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:TextFrame",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:LayoutCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:LayoutCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:TextStyle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "class:crates/warpui_core/src/text_layout.rs:TextStyle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/button.rs",
+      "target": "class:crates/warpui_core/src/ui_components/button.rs:Button",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/button.rs",
+      "target": "class:crates/warpui_core/src/ui_components/button.rs:Button",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "target": "class:crates/warpui_core/src/ui_components/checkbox.rs:Checkbox",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "target": "class:crates/warpui_core/src/ui_components/checkbox.rs:Checkbox",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "target": "class:crates/warpui_core/src/ui_components/chip.rs:Chip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "target": "class:crates/warpui_core/src/ui_components/chip.rs:Chip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/text_tests.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/uniform_list_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/uniform_list_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "target": "file:crates/warpui_core/src/core/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "target": "file:crates/warpui_core/src/prelude.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "target": "file:crates/warpui_core/src/units.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/text_layout_system.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/text_layout_system.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/text_layout_system.rs",
+      "target": "file:crates/warpui_core/src/text_layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/accessibility.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/fonts/canvas.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/keymap.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/modals.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/notification.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/app.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/file_picker.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/keyboard.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/menu.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/test/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/wasm.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/rendering/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/text_layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/mod.rs",
+      "target": "file:crates/warpui_core/src/windowing/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/wasm.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/prelude.rs",
+      "target": "file:crates/warpui_core/src/core/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/prelude.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/prelude.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/prelude.rs",
+      "target": "file:crates/warpui_core/src/presenter.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/prelude.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/assets/asset_cache.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/text_layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/zoom.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter_tests.rs",
+      "target": "file:crates/warpui_core/src/presenter.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "file:crates/warpui_core/src/image_cache.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout_tests.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/button.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/button.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/button.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/button.rs",
+      "target": "file:crates/warpui_core/src/ui_components/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "target": "file:crates/warpui_core/src/prelude.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "target": "file:crates/warpui_core/src/ui_components/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "target": "file:crates/warpui_core/src/text/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/presenter.rs",
+      "target": "file:crates/warpui_core/src/presenter_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_layout.rs",
+      "target": "file:crates/warpui_core/src/text_layout_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "file:crates/warpui_core/src/elements/text_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

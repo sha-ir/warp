@@ -1,0 +1,31 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {"path": "crates/warpui_core/src/fonts/metrics.rs", "language": "rust", "sizeLines": 33, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/image_cache_tests.rs", "language": "rust", "sizeLines": 673, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/keymap_tests.rs", "language": "rust", "sizeLines": 529, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/keymap/context_tests.rs", "language": "rust", "sizeLines": 26, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/keymap/context.rs", "language": "rust", "sizeLines": 124, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/platform/file_picker_tests.rs", "language": "rust", "sizeLines": 11, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/scene_tests.rs", "language": "rust", "sizeLines": 70, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/text/mod_tests.rs", "language": "rust", "sizeLines": 59, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/text/word_boundaries_tests.rs", "language": "rust", "sizeLines": 163, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/ui_components/components_tests.rs", "language": "rust", "sizeLines": 26, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/util_tests.rs", "language": "rust", "sizeLines": 30, "fileCategory": "code"},
+    {"path": "crates/warpui_core/test_data/animated.webp", "language": "webp", "sizeLines": 1, "fileCategory": "code"}
+  ],
+  "batchImportData": {
+    "crates/warpui_core/src/fonts/metrics.rs": [],
+    "crates/warpui_core/src/image_cache_tests.rs": [],
+    "crates/warpui_core/src/keymap_tests.rs": [],
+    "crates/warpui_core/src/keymap/context_tests.rs": [],
+    "crates/warpui_core/src/keymap/context.rs": [],
+    "crates/warpui_core/src/platform/file_picker_tests.rs": [],
+    "crates/warpui_core/src/scene_tests.rs": [],
+    "crates/warpui_core/src/text/mod_tests.rs": [],
+    "crates/warpui_core/src/text/word_boundaries_tests.rs": [],
+    "crates/warpui_core/src/ui_components/components_tests.rs": [],
+    "crates/warpui_core/src/util_tests.rs": [],
+    "crates/warpui_core/test_data/animated.webp": []
+  }
+}

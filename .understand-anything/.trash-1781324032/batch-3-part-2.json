@@ -1,0 +1,1295 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/zoom.rs",
+      "type": "file",
+      "name": "zoom.rs",
+      "filePath": "crates/warpui_core/src/zoom.rs",
+      "summary": "Zoom/scale model: ZoomFactor and a Scale value type used to convert logical to physical sizes across the UI.",
+      "tags": [
+        "data-model",
+        "zoom",
+        "scaling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "file",
+      "name": "components.rs",
+      "filePath": "crates/warpui_core/src/ui_components/components.rs",
+      "summary": "Foundation of the ui_components framework: the UiComponent trait, shared UiComponentStyles (size/border/font/padding) with merge semantics, Coords and BorderStyle.",
+      "tags": [
+        "component",
+        "framework",
+        "styles",
+        "type-definition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "type": "file",
+      "name": "keyboard_shortcut.rs",
+      "filePath": "crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "summary": "KeyboardShortcut UI component that renders key chords as styled key caps, mapping keymap keys to platform-appropriate glyphs.",
+      "tags": [
+        "component",
+        "keyboard-shortcut",
+        "ui-component",
+        "keymap"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/link.rs",
+      "type": "file",
+      "name": "link.rs",
+      "filePath": "crates/warpui_core/src/ui_components/link.rs",
+      "summary": "Link UI component rendering clickable hyperlink text with hover/link styling.",
+      "tags": [
+        "component",
+        "link",
+        "ui-component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/list.rs",
+      "type": "file",
+      "name": "list.rs",
+      "filePath": "crates/warpui_core/src/ui_components/list.rs",
+      "summary": "List UI component composing child items with a configurable ListStyle.",
+      "tags": [
+        "component",
+        "list",
+        "ui-component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/ui_components/mod.rs",
+      "summary": "Module barrel re-exporting all ui_components (button, checkbox, slider, switch, etc.).",
+      "tags": [
+        "barrel",
+        "ui-component",
+        "re-exports"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/progress_bar.rs",
+      "type": "file",
+      "name": "progress_bar.rs",
+      "filePath": "crates/warpui_core/src/ui_components/progress_bar.rs",
+      "summary": "ProgressBar UI component rendering determinate progress as a filled track.",
+      "tags": [
+        "component",
+        "progress-bar",
+        "ui-component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "type": "file",
+      "name": "radio_buttons.rs",
+      "filePath": "crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "summary": "RadioButtons UI component: a state-handle-backed group of mutually exclusive options with a renderer handling layout, labels and click selection.",
+      "tags": [
+        "component",
+        "radio-buttons",
+        "ui-component",
+        "state"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "type": "file",
+      "name": "segmented_control.rs",
+      "filePath": "crates/warpui_core/src/ui_components/segmented_control.rs",
+      "summary": "SegmentedControl UI component presenting a row of selectable button segments with optional labels/tooltips and selection events.",
+      "tags": [
+        "component",
+        "segmented-control",
+        "ui-component",
+        "event-handler"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "type": "file",
+      "name": "slider.rs",
+      "filePath": "crates/warpui_core/src/ui_components/slider.rs",
+      "summary": "Slider UI component with a state handle, draggable thumb and configurable track for selecting a value within a range.",
+      "tags": [
+        "component",
+        "slider",
+        "ui-component",
+        "state"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "type": "file",
+      "name": "switch.rs",
+      "filePath": "crates/warpui_core/src/ui_components/switch.rs",
+      "summary": "Switch (toggle) UI component backed by a state handle, with optional tooltip and label.",
+      "tags": [
+        "component",
+        "switch",
+        "ui-component",
+        "state"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/text.rs",
+      "type": "file",
+      "name": "text.rs",
+      "filePath": "crates/warpui_core/src/ui_components/text.rs",
+      "summary": "Text UI components: WrappableText plus Span/Paragraph primitives for styled, wrappable rich text.",
+      "tags": [
+        "component",
+        "text",
+        "ui-component",
+        "typography"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "type": "file",
+      "name": "text_input.rs",
+      "filePath": "crates/warpui_core/src/ui_components/text_input.rs",
+      "summary": "TextInput UI component wrapping the editor element as a styled single-/multi-line input.",
+      "tags": [
+        "component",
+        "text-input",
+        "ui-component",
+        "input"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "type": "file",
+      "name": "toggle_button.rs",
+      "filePath": "crates/warpui_core/src/ui_components/toggle_button.rs",
+      "summary": "ToggleButton UI component rendering an on/off button with label.",
+      "tags": [
+        "component",
+        "toggle-button",
+        "ui-component"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "type": "file",
+      "name": "toggle_menu.rs",
+      "filePath": "crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "summary": "ToggleMenu UI component: a state-handle-backed dropdown menu of toggleable items with a renderer for layout and selection.",
+      "tags": [
+        "component",
+        "menu",
+        "ui-component",
+        "state"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "type": "file",
+      "name": "tool_tip.rs",
+      "filePath": "crates/warpui_core/src/ui_components/tool_tip.rs",
+      "summary": "Tooltip UI components (Tooltip and TooltipWithSublabel) rendering hover hint overlays.",
+      "tags": [
+        "component",
+        "tooltip",
+        "ui-component",
+        "overlay"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/zoom.rs:Scale",
+      "type": "class",
+      "name": "Scale",
+      "filePath": "crates/warpui_core/src/zoom.rs",
+      "lineRange": [
+        22,
+        30
+      ],
+      "summary": "Scale value type converting logical to physical units for high-DPI rendering.",
+      "tags": [
+        "data-model",
+        "scaling",
+        "zoom"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/components.rs:UiComponent",
+      "type": "class",
+      "name": "UiComponent",
+      "filePath": "crates/warpui_core/src/ui_components/components.rs",
+      "lineRange": [
+        160,
+        165
+      ],
+      "summary": "Core trait for ui_components: build() into an Element and with_style() to apply shared UiComponentStyles.",
+      "tags": [
+        "trait",
+        "component",
+        "framework"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/components.rs:UiComponentStyles",
+      "type": "class",
+      "name": "UiComponentStyles",
+      "filePath": "crates/warpui_core/src/ui_components/components.rs",
+      "lineRange": [
+        55,
+        72
+      ],
+      "summary": "Shared style struct (size, border, font, padding, margin) with merge semantics layering overrides over defaults.",
+      "tags": [
+        "data-model",
+        "styles",
+        "framework"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/keyboard_shortcut.rs:KeyboardShortcut",
+      "type": "class",
+      "name": "KeyboardShortcut",
+      "filePath": "crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "lineRange": [
+        20,
+        28
+      ],
+      "summary": "Component rendering a key chord as styled key caps, mapping keymap keys to platform glyphs.",
+      "tags": [
+        "component",
+        "keyboard-shortcut",
+        "keymap"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/link.rs:Link",
+      "type": "class",
+      "name": "Link",
+      "filePath": "crates/warpui_core/src/ui_components/link.rs",
+      "lineRange": [
+        9,
+        18
+      ],
+      "summary": "Clickable hyperlink text component with hover/link styling.",
+      "tags": [
+        "component",
+        "link"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/list.rs:List",
+      "type": "class",
+      "name": "List",
+      "filePath": "crates/warpui_core/src/ui_components/list.rs",
+      "lineRange": [
+        22,
+        26
+      ],
+      "summary": "Component composing child items with a configurable ListStyle.",
+      "tags": [
+        "component",
+        "list"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/progress_bar.rs:ProgressBar",
+      "type": "class",
+      "name": "ProgressBar",
+      "filePath": "crates/warpui_core/src/ui_components/progress_bar.rs",
+      "lineRange": [
+        4,
+        7
+      ],
+      "summary": "Determinate progress bar component rendering a filled track.",
+      "tags": [
+        "component",
+        "progress-bar"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/radio_buttons.rs:RadioButtons",
+      "type": "class",
+      "name": "RadioButtons",
+      "filePath": "crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "lineRange": [
+        347,
+        350
+      ],
+      "summary": "Mutually-exclusive radio button group component backed by a shared state handle.",
+      "tags": [
+        "component",
+        "radio-buttons",
+        "state"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/radio_buttons.rs:RadioButtonStateHandle",
+      "type": "class",
+      "name": "RadioButtonStateHandle",
+      "filePath": "crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "lineRange": [
+        93,
+        95
+      ],
+      "summary": "Shared, cloneable handle to radio group selection state.",
+      "tags": [
+        "state",
+        "handle",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/segmented_control.rs:SegmentedControl",
+      "type": "class",
+      "name": "SegmentedControl",
+      "filePath": "crates/warpui_core/src/ui_components/segmented_control.rs",
+      "lineRange": [
+        22,
+        31
+      ],
+      "summary": "Row of selectable button segments with optional labels/tooltips emitting selection events.",
+      "tags": [
+        "component",
+        "segmented-control",
+        "event-handler"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/slider.rs:Slider",
+      "type": "class",
+      "name": "Slider",
+      "filePath": "crates/warpui_core/src/ui_components/slider.rs",
+      "lineRange": [
+        100,
+        114
+      ],
+      "summary": "Slider component (17 methods) with draggable thumb and configurable track for picking a value in a range.",
+      "tags": [
+        "component",
+        "slider",
+        "input"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/slider.rs:SliderStateHandle",
+      "type": "class",
+      "name": "SliderStateHandle",
+      "filePath": "crates/warpui_core/src/ui_components/slider.rs",
+      "lineRange": [
+        50,
+        55
+      ],
+      "summary": "Shared, cloneable handle to slider value/drag state.",
+      "tags": [
+        "state",
+        "handle",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/switch.rs:Switch",
+      "type": "class",
+      "name": "Switch",
+      "filePath": "crates/warpui_core/src/ui_components/switch.rs",
+      "lineRange": [
+        45,
+        56
+      ],
+      "summary": "Toggle switch component backed by a state handle with optional tooltip/label.",
+      "tags": [
+        "component",
+        "switch",
+        "state"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/text.rs:WrappableText",
+      "type": "class",
+      "name": "WrappableText",
+      "filePath": "crates/warpui_core/src/ui_components/text.rs",
+      "lineRange": [
+        12,
+        20
+      ],
+      "summary": "Wrappable styled text component composing Spans into a Paragraph.",
+      "tags": [
+        "component",
+        "text",
+        "typography"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/text.rs:Paragraph",
+      "type": "class",
+      "name": "Paragraph",
+      "filePath": "crates/warpui_core/src/ui_components/text.rs",
+      "lineRange": [
+        155,
+        157
+      ],
+      "summary": "Paragraph primitive aggregating styled Spans for rich text.",
+      "tags": [
+        "data-model",
+        "text",
+        "typography"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/text_input.rs:TextInput",
+      "type": "class",
+      "name": "TextInput",
+      "filePath": "crates/warpui_core/src/ui_components/text_input.rs",
+      "lineRange": [
+        5,
+        8
+      ],
+      "summary": "Styled text input component wrapping the editor element.",
+      "tags": [
+        "component",
+        "text-input",
+        "input"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/toggle_button.rs:ToggleButton",
+      "type": "class",
+      "name": "ToggleButton",
+      "filePath": "crates/warpui_core/src/ui_components/toggle_button.rs",
+      "lineRange": [
+        13,
+        21
+      ],
+      "summary": "On/off toggle button component with label.",
+      "tags": [
+        "component",
+        "toggle-button"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/toggle_menu.rs:ToggleMenu",
+      "type": "class",
+      "name": "ToggleMenu",
+      "filePath": "crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "lineRange": [
+        207,
+        212
+      ],
+      "summary": "Dropdown menu component of toggleable items backed by a shared state handle.",
+      "tags": [
+        "component",
+        "menu",
+        "state"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/tool_tip.rs:Tooltip",
+      "type": "class",
+      "name": "Tooltip",
+      "filePath": "crates/warpui_core/src/ui_components/tool_tip.rs",
+      "lineRange": [
+        6,
+        9
+      ],
+      "summary": "Hover hint overlay component.",
+      "tags": [
+        "component",
+        "tooltip",
+        "overlay"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/ui_components/tool_tip.rs:TooltipWithSublabel",
+      "type": "class",
+      "name": "TooltipWithSublabel",
+      "filePath": "crates/warpui_core/src/ui_components/tool_tip.rs",
+      "lineRange": [
+        73,
+        77
+      ],
+      "summary": "Tooltip overlay variant with a primary label and secondary sublabel.",
+      "tags": [
+        "component",
+        "tooltip",
+        "overlay"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/zoom.rs",
+      "target": "class:crates/warpui_core/src/zoom.rs:Scale",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/zoom.rs",
+      "target": "class:crates/warpui_core/src/zoom.rs:Scale",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "class:crates/warpui_core/src/ui_components/components.rs:UiComponent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "class:crates/warpui_core/src/ui_components/components.rs:UiComponent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "class:crates/warpui_core/src/ui_components/components.rs:UiComponentStyles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "class:crates/warpui_core/src/ui_components/components.rs:UiComponentStyles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "class:crates/warpui_core/src/ui_components/keyboard_shortcut.rs:KeyboardShortcut",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "class:crates/warpui_core/src/ui_components/keyboard_shortcut.rs:KeyboardShortcut",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/link.rs",
+      "target": "class:crates/warpui_core/src/ui_components/link.rs:Link",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/link.rs",
+      "target": "class:crates/warpui_core/src/ui_components/link.rs:Link",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/list.rs",
+      "target": "class:crates/warpui_core/src/ui_components/list.rs:List",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/list.rs",
+      "target": "class:crates/warpui_core/src/ui_components/list.rs:List",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/progress_bar.rs",
+      "target": "class:crates/warpui_core/src/ui_components/progress_bar.rs:ProgressBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/progress_bar.rs",
+      "target": "class:crates/warpui_core/src/ui_components/progress_bar.rs:ProgressBar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "class:crates/warpui_core/src/ui_components/radio_buttons.rs:RadioButtons",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "class:crates/warpui_core/src/ui_components/radio_buttons.rs:RadioButtons",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "class:crates/warpui_core/src/ui_components/radio_buttons.rs:RadioButtonStateHandle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "class:crates/warpui_core/src/ui_components/radio_buttons.rs:RadioButtonStateHandle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "class:crates/warpui_core/src/ui_components/segmented_control.rs:SegmentedControl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "class:crates/warpui_core/src/ui_components/segmented_control.rs:SegmentedControl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "class:crates/warpui_core/src/ui_components/slider.rs:Slider",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "class:crates/warpui_core/src/ui_components/slider.rs:Slider",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "class:crates/warpui_core/src/ui_components/slider.rs:SliderStateHandle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "class:crates/warpui_core/src/ui_components/slider.rs:SliderStateHandle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "class:crates/warpui_core/src/ui_components/switch.rs:Switch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "class:crates/warpui_core/src/ui_components/switch.rs:Switch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "class:crates/warpui_core/src/ui_components/text.rs:WrappableText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "class:crates/warpui_core/src/ui_components/text.rs:WrappableText",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "class:crates/warpui_core/src/ui_components/text.rs:Paragraph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "class:crates/warpui_core/src/ui_components/text.rs:Paragraph",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "target": "class:crates/warpui_core/src/ui_components/text_input.rs:TextInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "target": "class:crates/warpui_core/src/ui_components/text_input.rs:TextInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "target": "class:crates/warpui_core/src/ui_components/toggle_button.rs:ToggleButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "target": "class:crates/warpui_core/src/ui_components/toggle_button.rs:ToggleButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "target": "class:crates/warpui_core/src/ui_components/toggle_menu.rs:ToggleMenu",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "target": "class:crates/warpui_core/src/ui_components/toggle_menu.rs:ToggleMenu",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "target": "class:crates/warpui_core/src/ui_components/tool_tip.rs:Tooltip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "target": "class:crates/warpui_core/src/ui_components/tool_tip.rs:Tooltip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "target": "class:crates/warpui_core/src/ui_components/tool_tip.rs:TooltipWithSublabel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "target": "class:crates/warpui_core/src/ui_components/tool_tip.rs:TooltipWithSublabel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "file:crates/warpui_core/src/keymap.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "target": "file:crates/warpui_core/src/text/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/link.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/link.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/link.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/link.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/list.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/list.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/button.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/checkbox.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/chip.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/link.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/list.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/progress_bar.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/mod.rs",
+      "target": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/progress_bar.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/progress_bar.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "file:crates/warpui_core/src/ui_components/button.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/segmented_control.rs",
+      "target": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/slider.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "file:crates/warpui_core/src/ui_components/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/switch.rs",
+      "target": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_button.rs",
+      "target": "file:crates/warpui_core/src/text/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "target": "file:crates/warpui_core/src/text/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/tool_tip.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

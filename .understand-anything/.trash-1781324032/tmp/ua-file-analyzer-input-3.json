@@ -1,0 +1,395 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {
+      "path": "crates/warpui_core/src/elements/text_tests.rs",
+      "language": "rust",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/uniform_list_tests.rs",
+      "language": "rust",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/viewported_list_tests.rs",
+      "language": "rust",
+      "sizeLines": 686,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/fonts.rs",
+      "language": "rust",
+      "sizeLines": 543,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/fonts/canvas.rs",
+      "language": "rust",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/fonts/text_layout_system.rs",
+      "language": "rust",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/mod.rs",
+      "language": "rust",
+      "sizeLines": 750,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/platform/wasm.rs",
+      "language": "rust",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/prelude.rs",
+      "language": "rust",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/presenter.rs",
+      "language": "rust",
+      "sizeLines": 897,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/presenter_tests.rs",
+      "language": "rust",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/scene.rs",
+      "language": "rust",
+      "sizeLines": 726,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text_layout.rs",
+      "language": "rust",
+      "sizeLines": 1556,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text_layout_tests.rs",
+      "language": "rust",
+      "sizeLines": 402,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/button.rs",
+      "language": "rust",
+      "sizeLines": 445,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/checkbox.rs",
+      "language": "rust",
+      "sizeLines": 232,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/chip.rs",
+      "language": "rust",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/components.rs",
+      "language": "rust",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "language": "rust",
+      "sizeLines": 342,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/link.rs",
+      "language": "rust",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/list.rs",
+      "language": "rust",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/mod.rs",
+      "language": "rust",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/progress_bar.rs",
+      "language": "rust",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "language": "rust",
+      "sizeLines": 446,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/segmented_control.rs",
+      "language": "rust",
+      "sizeLines": 396,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/slider.rs",
+      "language": "rust",
+      "sizeLines": 671,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/switch.rs",
+      "language": "rust",
+      "sizeLines": 336,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/text.rs",
+      "language": "rust",
+      "sizeLines": 196,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/text_input.rs",
+      "language": "rust",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/toggle_button.rs",
+      "language": "rust",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "language": "rust",
+      "sizeLines": 298,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/tool_tip.rs",
+      "language": "rust",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/zoom.rs",
+      "language": "rust",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "crates/warpui_core/src/elements/text_tests.rs": [
+      "crates/warpui_core/src/scene.rs"
+    ],
+    "crates/warpui_core/src/elements/uniform_list_tests.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs"
+    ],
+    "crates/warpui_core/src/elements/viewported_list_tests.rs": [
+      "crates/warpui_core/src/core/mod.rs",
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/prelude.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/fonts.rs": [
+      "crates/warpui_core/src/scene.rs"
+    ],
+    "crates/warpui_core/src/fonts/canvas.rs": [],
+    "crates/warpui_core/src/fonts/text_layout_system.rs": [
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/text_layout.rs"
+    ],
+    "crates/warpui_core/src/platform/mod.rs": [
+      "crates/warpui_core/src/accessibility.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/fonts/canvas.rs",
+      "crates/warpui_core/src/keymap.rs",
+      "crates/warpui_core/src/modals.rs",
+      "crates/warpui_core/src/notification.rs",
+      "crates/warpui_core/src/platform/app.rs",
+      "crates/warpui_core/src/platform/file_picker.rs",
+      "crates/warpui_core/src/platform/keyboard.rs",
+      "crates/warpui_core/src/platform/menu.rs",
+      "crates/warpui_core/src/platform/test/mod.rs",
+      "crates/warpui_core/src/platform/wasm.rs",
+      "crates/warpui_core/src/rendering/mod.rs",
+      "crates/warpui_core/src/text_layout.rs",
+      "crates/warpui_core/src/windowing/mod.rs"
+    ],
+    "crates/warpui_core/src/platform/wasm.rs": [
+      "crates/warpui_core/src/platform/mod.rs"
+    ],
+    "crates/warpui_core/src/prelude.rs": [
+      "crates/warpui_core/src/core/mod.rs",
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/presenter.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/presenter.rs": [
+      "crates/warpui_core/src/assets/asset_cache.rs",
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text_layout.rs",
+      "crates/warpui_core/src/zoom.rs"
+    ],
+    "crates/warpui_core/src/presenter_tests.rs": [
+      "crates/warpui_core/src/presenter.rs"
+    ],
+    "crates/warpui_core/src/scene.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/image_cache.rs"
+    ],
+    "crates/warpui_core/src/text_layout.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs"
+    ],
+    "crates/warpui_core/src/text_layout_tests.rs": [
+      "crates/warpui_core/src/fonts.rs"
+    ],
+    "crates/warpui_core/src/ui_components/button.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs",
+      "crates/warpui_core/src/ui_components/text.rs"
+    ],
+    "crates/warpui_core/src/ui_components/checkbox.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/prelude.rs",
+      "crates/warpui_core/src/ui_components/components.rs",
+      "crates/warpui_core/src/ui_components/text.rs"
+    ],
+    "crates/warpui_core/src/ui_components/chip.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text/mod.rs"
+    ],
+    "crates/warpui_core/src/ui_components/components.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/scene.rs"
+    ],
+    "crates/warpui_core/src/ui_components/keyboard_shortcut.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/keymap.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text/mod.rs"
+    ],
+    "crates/warpui_core/src/ui_components/link.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/ui_components/list.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/ui_components/mod.rs": [
+      "crates/warpui_core/src/ui_components/button.rs",
+      "crates/warpui_core/src/ui_components/checkbox.rs",
+      "crates/warpui_core/src/ui_components/chip.rs",
+      "crates/warpui_core/src/ui_components/components.rs",
+      "crates/warpui_core/src/ui_components/keyboard_shortcut.rs",
+      "crates/warpui_core/src/ui_components/link.rs",
+      "crates/warpui_core/src/ui_components/list.rs",
+      "crates/warpui_core/src/ui_components/progress_bar.rs",
+      "crates/warpui_core/src/ui_components/radio_buttons.rs",
+      "crates/warpui_core/src/ui_components/segmented_control.rs",
+      "crates/warpui_core/src/ui_components/slider.rs",
+      "crates/warpui_core/src/ui_components/switch.rs",
+      "crates/warpui_core/src/ui_components/text_input.rs",
+      "crates/warpui_core/src/ui_components/text.rs",
+      "crates/warpui_core/src/ui_components/toggle_button.rs",
+      "crates/warpui_core/src/ui_components/toggle_menu.rs",
+      "crates/warpui_core/src/ui_components/tool_tip.rs"
+    ],
+    "crates/warpui_core/src/ui_components/progress_bar.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/ui_components/radio_buttons.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs"
+    ],
+    "crates/warpui_core/src/ui_components/segmented_control.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/ui_components/button.rs",
+      "crates/warpui_core/src/ui_components/components.rs",
+      "crates/warpui_core/src/ui_components/tool_tip.rs"
+    ],
+    "crates/warpui_core/src/ui_components/slider.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/ui_components/switch.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/ui_components/components.rs",
+      "crates/warpui_core/src/ui_components/text.rs",
+      "crates/warpui_core/src/ui_components/tool_tip.rs"
+    ],
+    "crates/warpui_core/src/ui_components/text.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/ui_components/text_input.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/ui_components/toggle_button.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text/mod.rs"
+    ],
+    "crates/warpui_core/src/ui_components/toggle_menu.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text/mod.rs"
+    ],
+    "crates/warpui_core/src/ui_components/tool_tip.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/ui_components/components.rs"
+    ],
+    "crates/warpui_core/src/zoom.rs": []
+  }
+}

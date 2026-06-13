@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:crates/editor/test_fixtures/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "crates/editor/test_fixtures/README.md",
+      "summary": "Index for the editor crate's manual test fixtures, describing image-rendering samples and the table-of-contents anchor navigation test for the Markdown viewer.",
+      "tags": ["documentation", "test", "test-fixture", "markdown", "entry-point"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:crates/editor/test_fixtures/mermaid_sample.md",
+      "type": "document",
+      "name": "mermaid_sample.md",
+      "filePath": "crates/editor/test_fixtures/mermaid_sample.md",
+      "summary": "Comprehensive Mermaid diagram fixture exercising 20+ diagram types (flowchart, sequence, class, ER, state, gantt, pie, git graph, C4, packet, etc.) to validate the Markdown viewer's Mermaid rendering.",
+      "tags": ["documentation", "test", "test-fixture", "mermaid", "markdown"],
+      "complexity": "moderate",
+      "languageNotes": "Each section embeds a fenced ```mermaid code block covering a distinct diagram grammar, giving broad coverage of Mermaid syntax."
+    },
+    {
+      "id": "document:crates/editor/test_fixtures/toc_anchor_test.md",
+      "type": "document",
+      "name": "toc_anchor_test.md",
+      "filePath": "crates/editor/test_fixtures/toc_anchor_test.md",
+      "summary": "Manual test fixture for Markdown fragment-link navigation, validating case-insensitive heading matching and scroll-into-view behavior via a table of contents linking to headings of varying case.",
+      "tags": ["documentation", "test", "test-fixture", "markdown", "navigation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:crates/editor/test_fixtures/README.md",
+      "target": "document:crates/editor/test_fixtures/toc_anchor_test.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

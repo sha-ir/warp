@@ -1,0 +1,31 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {"path": "crates/editor/benches/buffer_bench.rs", "language": "rust", "sizeLines": 103, "fileCategory": "code"},
+    {"path": "crates/editor/Cargo.toml", "language": "toml", "sizeLines": 68, "fileCategory": "config"},
+    {"path": "crates/editor/src/content/text_tests.rs", "language": "rust", "sizeLines": 201, "fileCategory": "code"},
+    {"path": "crates/editor/src/multiline_tests.rs", "language": "rust", "sizeLines": 176, "fileCategory": "code"},
+    {"path": "crates/editor/src/render/model/table_offset_map_tests.rs", "language": "rust", "sizeLines": 261, "fileCategory": "code"},
+    {"path": "crates/editor/test_data/test_rust_file.rs", "language": "rust", "sizeLines": 8751, "fileCategory": "code"},
+    {"path": "crates/editor/test_fixtures/images/image_test.md", "language": "markdown", "sizeLines": 67, "fileCategory": "docs"},
+    {"path": "crates/editor/test_fixtures/images/README.md", "language": "markdown", "sizeLines": 20, "fileCategory": "docs"},
+    {"path": "crates/vim/Cargo.toml", "language": "toml", "sizeLines": 15, "fileCategory": "config"},
+    {"path": "crates/vim/src/matching_brackets_tests.rs", "language": "rust", "sizeLines": 63, "fileCategory": "code"},
+    {"path": "crates/vim/src/paragraph_iterator_tests.rs", "language": "rust", "sizeLines": 108, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/block_tests.rs", "language": "rust", "sizeLines": 148, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/paragraph_tests.rs", "language": "rust", "sizeLines": 208, "fileCategory": "code"},
+    {"path": "crates/vim/src/text_objects/word_tests.rs", "language": "rust", "sizeLines": 451, "fileCategory": "code"},
+    {"path": "crates/vim/src/word_iterator_tests.rs", "language": "rust", "sizeLines": 573, "fileCategory": "code"},
+    {"path": "crates/warpui_core/build.rs", "language": "rust", "sizeLines": 13, "fileCategory": "code"},
+    {"path": "crates/warpui_core/Cargo.toml", "language": "toml", "sizeLines": 107, "fileCategory": "config"},
+    {"path": "crates/warpui_core/README.md", "language": "markdown", "sizeLines": 54, "fileCategory": "docs"},
+    {"path": "crates/warpui_core/src/core/model/context_tests.rs", "language": "rust", "sizeLines": 80, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/elements/flex/WARP.md", "language": "markdown", "sizeLines": 75, "fileCategory": "docs"},
+    {"path": "crates/warpui_core/src/elements/image_tests.rs", "language": "rust", "sizeLines": 120, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/elements/new_scrollable/util_tests.rs", "language": "rust", "sizeLines": 154, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs", "language": "rust", "sizeLines": 935, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/elements/table/mod_tests.rs", "language": "rust", "sizeLines": 374, "fileCategory": "code"},
+    {"path": "crates/warpui_core/src/fonts_tests.rs", "language": "rust", "sizeLines": 42, "fileCategory": "code"}
+  ],
+  "batchImportData": {}
+}

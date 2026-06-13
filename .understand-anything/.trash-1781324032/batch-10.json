@@ -1,0 +1,548 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/integration/action_log.rs",
+      "type": "file",
+      "name": "action_log.rs",
+      "filePath": "crates/warpui_core/src/integration/action_log.rs",
+      "summary": "Records a timestamped log of test actions (input events, screenshots, recording markers) and serializes it to a file as part of the integration-test artifacts.",
+      "tags": ["test", "logging", "serialization", "integration-test"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/artifacts.rs",
+      "type": "file",
+      "name": "artifacts.rs",
+      "filePath": "crates/warpui_core/src/integration/artifacts.rs",
+      "summary": "Manages the per-test artifacts directory, creating it from an env-configured root and resolving artifact file paths for screenshots, videos, and logs.",
+      "tags": ["test", "artifacts", "filesystem", "integration-test"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/capture_recorder.rs",
+      "type": "file",
+      "name": "capture_recorder.rs",
+      "filePath": "crates/warpui_core/src/integration/capture_recorder.rs",
+      "summary": "Background frame-capture recorder that grabs window frames into a shared, lock-protected buffer and encodes them to H.264 for integration-test video recording.",
+      "tags": ["test", "video-capture", "recording", "concurrency"],
+      "complexity": "complex",
+      "languageNotes": "Uses an Arc<Mutex<SharedState>> pattern with an enum recorder state machine (Idle/Recording/Stopping) driven from a background capture loop."
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/driver.rs",
+      "type": "file",
+      "name": "driver.rs",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "summary": "Core integration-test orchestration engine: a fluent Builder configures a test and TestDriver runs its steps with retries, capture recording, artifact finalization, and cleanup.",
+      "tags": ["test", "driver", "orchestration", "builder", "integration-test"],
+      "complexity": "complex",
+      "languageNotes": "Heavy use of boxed FnMut/async callbacks (SetupFn, OnFinishFn) and AssertUnwindSafe to catch panics from test steps without aborting the harness."
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/integration/mod.rs",
+      "summary": "Module root for the integration-test framework: declares submodules, re-exports the public test API, defines the async_assert! macro, and provides TestSetupUtils for env-var and temp-directory setup.",
+      "tags": ["entry-point", "barrel", "test", "integration-test"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/overlay.rs",
+      "type": "file",
+      "name": "overlay.rs",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "summary": "Software rasterizer that composites mouse and keyboard input overlays (click rings, drag trails, key chips) onto captured video frames to visualize user input in test recordings.",
+      "tags": ["test", "rendering", "rasterizer", "overlay"],
+      "complexity": "complex",
+      "languageNotes": "Pure CPU pixel-buffer rasterization with manual alpha blending and an embedded glyph rasterizer; no GPU dependency so it can run in headless test recording."
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/step.rs",
+      "type": "file",
+      "name": "step.rs",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "summary": "Defines TestStep and its fluent builder, the type-erased StepDataMap cross-step store, assertion outcome types, and run_step which synthesizes input events/keystrokes and evaluates assertions for a single step.",
+      "tags": ["test", "step", "assertion", "input-synthesis", "integration-test"],
+      "complexity": "complex",
+      "languageNotes": "StepDataMap is a HashMap<String, Box<dyn Any>> downcast store; TestStep accumulates boxed assertion/setup callbacks and synthetic events for the driver to execute."
+    },
+    {
+      "id": "file:crates/warpui_core/src/integration/video_recorder.rs",
+      "type": "file",
+      "name": "video_recorder.rs",
+      "filePath": "crates/warpui_core/src/integration/video_recorder.rs",
+      "summary": "Captures window frames during a test and encodes them, with input overlays composited in, into an MP4 (or PNG sequence) artifact.",
+      "tags": ["test", "video-capture", "encoding", "recording"],
+      "complexity": "complex"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/action_log.rs:ActionLog",
+      "type": "class",
+      "name": "ActionLog",
+      "filePath": "crates/warpui_core/src/integration/action_log.rs",
+      "lineRange": [51, 54],
+      "summary": "Accumulates timestamped ActionEntry records during a test run and writes them to a log file relative to the recording start time.",
+      "tags": ["test", "logging", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/action_log.rs:event_description",
+      "type": "function",
+      "name": "event_description",
+      "filePath": "crates/warpui_core/src/integration/action_log.rs",
+      "lineRange": [21, 42],
+      "summary": "Produces a human-readable description string for an input Event, used to label entries in the action log.",
+      "tags": ["test", "formatting", "event-handler"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/action_log.rs:write_to_file",
+      "type": "function",
+      "name": "write_to_file",
+      "filePath": "crates/warpui_core/src/integration/action_log.rs",
+      "lineRange": [83, 119],
+      "summary": "Serializes the accumulated action entries with relative timestamps and writes the formatted log to the given file path.",
+      "tags": ["test", "serialization", "filesystem"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/artifacts.rs:TestArtifacts",
+      "type": "class",
+      "name": "TestArtifacts",
+      "filePath": "crates/warpui_core/src/integration/artifacts.rs",
+      "lineRange": [7, 9],
+      "summary": "Holds the resolved per-test artifact directory and resolves child file paths for storing screenshots, videos, and logs.",
+      "tags": ["test", "artifacts", "filesystem"],
+      "complexity": "simple"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/capture_recorder.rs:CaptureRecorder",
+      "type": "class",
+      "name": "CaptureRecorder",
+      "filePath": "crates/warpui_core/src/integration/capture_recorder.rs",
+      "lineRange": [66, 69],
+      "summary": "Owns the shared recording state and recording start time, exposing start/stop and status accessors that drive the background frame-capture and H.264 encoding loop.",
+      "tags": ["test", "video-capture", "recording", "state-machine"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/integration/capture_recorder.rs:SharedState",
+      "type": "class",
+      "name": "SharedState",
+      "filePath": "crates/warpui_core/src/integration/capture_recorder.rs",
+      "lineRange": [38, 45],
+      "summary": "Mutex-shared recorder state holding the recorder phase, raw frame queue, H.264 output buffer, encoded frame count, and frame dimensions.",
+      "tags": ["test", "concurrency", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/capture_recorder.rs:save_captured_frame_as_png",
+      "type": "function",
+      "name": "save_captured_frame_as_png",
+      "filePath": "crates/warpui_core/src/integration/capture_recorder.rs",
+      "lineRange": [452, 476],
+      "summary": "Converts a captured frame to RGBA and encodes it as a PNG file at the given path for screenshot artifacts.",
+      "tags": ["test", "serialization", "image"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/driver.rs:Builder",
+      "type": "class",
+      "name": "Builder",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [38, 52],
+      "summary": "Fluent builder that accumulates test steps, setup/cleanup/on-finish callbacks, timeout, display mode, and root-directory strategy, then constructs a TestDriver.",
+      "tags": ["test", "builder", "configuration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/integration/driver.rs:TestDriver",
+      "type": "class",
+      "name": "TestDriver",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [210, 223],
+      "summary": "Runs a configured integration test end to end: executes steps with retries, manages capture recording, finalizes artifacts, exports runtime tags, and performs cleanup.",
+      "tags": ["test", "driver", "orchestration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/driver.rs:run_test_and_cleanup",
+      "type": "function",
+      "name": "run_test_and_cleanup",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [240, 290],
+      "summary": "Top-level test entry that runs all steps inside panic-catching guards, then guarantees cleanup and on-finish callbacks regardless of outcome.",
+      "tags": ["test", "orchestration", "error-handling"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/driver.rs:run_steps_and_determine_rerun",
+      "type": "function",
+      "name": "run_steps_and_determine_rerun",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [292, 346],
+      "summary": "Iterates the queued steps, sets up capture recording, runs each step with retries, and decides whether the test should be rerun based on step results.",
+      "tags": ["test", "orchestration", "control-flow"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/driver.rs:configure_capture_recording",
+      "type": "function",
+      "name": "configure_capture_recording",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [347, 398],
+      "summary": "Seeds the step data map with VideoRecorder, ActionLog, OverlayLog, and TestArtifacts and auto-starts recording when video capture is enabled for the test.",
+      "tags": ["test", "recording", "setup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/driver.rs:handle_post_step_capture",
+      "type": "function",
+      "name": "handle_post_step_capture",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [400, 451],
+      "summary": "After each step renders a frame for capture, flushes pending screenshots, and logs frame-capture timeouts or screenshot save failures.",
+      "tags": ["test", "recording", "frame-capture"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/driver.rs:finalize_recording",
+      "type": "function",
+      "name": "finalize_recording",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [453, 487],
+      "summary": "At test end, removes the VideoRecorder, ActionLog, and OverlayLog from the step data map and finalizes the encoded video and written log artifacts.",
+      "tags": ["test", "recording", "artifacts"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/driver.rs:run_single_step_with_retries",
+      "type": "function",
+      "name": "run_single_step_with_retries",
+      "filePath": "crates/warpui_core/src/integration/driver.rs",
+      "lineRange": [539, 712],
+      "summary": "Executes one TestStep, retrying on assertion failure up to its retry budget, handling SIGINT cancellation, timeouts, on-failure handlers, and runtime-tag export of failure context.",
+      "tags": ["test", "retry", "control-flow", "error-handling"],
+      "complexity": "complex"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/mod.rs:TestSetupUtils",
+      "type": "class",
+      "name": "TestSetupUtils",
+      "filePath": "crates/warpui_core/src/integration/mod.rs",
+      "lineRange": [116, 119],
+      "summary": "Per-test setup helper that tracks overridden environment variables and the test root directory, with methods to set/clean env vars, create temp dirs, and override the home directory.",
+      "tags": ["test", "setup", "environment"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/mod.rs:create_temp_dir_for_test",
+      "type": "function",
+      "name": "create_temp_dir_for_test",
+      "filePath": "crates/warpui_core/src/integration/mod.rs",
+      "lineRange": [167, 194],
+      "summary": "Creates a unique temporary directory for the test under the configured root and records it so it can be cleaned up afterward.",
+      "tags": ["test", "filesystem", "setup"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/mod.rs:set_env",
+      "type": "function",
+      "name": "set_env",
+      "filePath": "crates/warpui_core/src/integration/mod.rs",
+      "lineRange": [134, 155],
+      "summary": "Sets an environment variable for the duration of the test, remembering any prior value so it can be restored during cleanup.",
+      "tags": ["test", "environment", "setup"],
+      "complexity": "simple"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/overlay.rs:OverlayLog",
+      "type": "class",
+      "name": "OverlayLog",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [72, 75],
+      "summary": "Records a time-ordered list of input overlay events (mouse down/move/up, key presses) and the scale factor, consumed later when compositing overlays onto frames.",
+      "tags": ["test", "overlay", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/integration/overlay.rs:OverlayState",
+      "type": "class",
+      "name": "OverlayState",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [153, 161],
+      "summary": "Stateful overlay renderer that advances through recorded events up to a timestamp and rasterizes the resulting mouse cursor, click rings, drag trails, and key chips onto a frame buffer.",
+      "tags": ["test", "rendering", "rasterizer", "state-machine"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/overlay.rs:keystroke_display_text",
+      "type": "function",
+      "name": "keystroke_display_text",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [115, 150],
+      "summary": "Formats a keystroke into a compact display string (with modifier symbols and key names) for rendering as an on-screen key chip.",
+      "tags": ["test", "formatting", "overlay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/overlay.rs:render_onto",
+      "type": "function",
+      "name": "render_onto",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [234, 285],
+      "summary": "Composites the current overlay state (cursor, click rings, drag trail, key stack) onto an RGB frame buffer at the given dimensions and scale.",
+      "tags": ["test", "rendering", "rasterizer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/overlay.rs:draw_key_overlay",
+      "type": "function",
+      "name": "draw_key_overlay",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [466, 531],
+      "summary": "Draws a stacked, fading key-chip overlay with rounded background and text for a recently pressed keystroke.",
+      "tags": ["test", "rendering", "overlay"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/overlay.rs:draw_text",
+      "type": "function",
+      "name": "draw_text",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [534, 573],
+      "summary": "Renders a string into the frame buffer by rasterizing each glyph and alpha-blending its pixels at the cursor position.",
+      "tags": ["test", "rendering", "rasterizer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/overlay.rs:draw_thick_line",
+      "type": "function",
+      "name": "draw_thick_line",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [413, 463],
+      "summary": "Rasterizes an anti-aliased thick line segment between two points, used to render drag-trail strokes.",
+      "tags": ["test", "rendering", "rasterizer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/overlay.rs:draw_click_ring",
+      "type": "function",
+      "name": "draw_click_ring",
+      "filePath": "crates/warpui_core/src/integration/overlay.rs",
+      "lineRange": [360, 394],
+      "summary": "Draws an expanding, fading ring centered on a click position to animate a recent mouse-up event.",
+      "tags": ["test", "rendering", "overlay"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/step.rs:TestStep",
+      "type": "class",
+      "name": "TestStep",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "lineRange": [228, 251],
+      "summary": "Fluent description of a single test step: accumulates synthetic input events, actions, named assertions, setup callbacks, timeout/pause/retry config, and recording triggers.",
+      "tags": ["test", "step", "builder"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/integration/step.rs:StepDataMap",
+      "type": "class",
+      "name": "StepDataMap",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "lineRange": [21, 23],
+      "summary": "Type-erased key/value store (HashMap of Box<dyn Any>) for passing data between steps, with typed get/insert/remove via downcasting.",
+      "tags": ["test", "data-model", "type-erasure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/integration/step.rs:AssertionOutcome",
+      "type": "class",
+      "name": "AssertionOutcome",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "lineRange": [105, 137],
+      "summary": "Enum result of an assertion (Success, SuccessWithData, Failure, ImmediateFailure, PreconditionFailed, Canceled) with constructors and failure-message extraction.",
+      "tags": ["test", "assertion", "result-type"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/step.rs:run_step",
+      "type": "function",
+      "name": "run_step",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "lineRange": [604, 984],
+      "summary": "Executes a single TestStep: runs setup, dispatches synthetic input events and mouse/keystroke actions to the app, records overlay and action-log entries, renders frames, and evaluates assertions until they pass or the step times out.",
+      "tags": ["test", "input-synthesis", "assertion", "control-flow"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/step.rs:maybe_render_frame",
+      "type": "function",
+      "name": "maybe_render_frame",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "lineRange": [990, 1030],
+      "summary": "Throttled helper that drives the app to render a frame for the given window before a deadline, respecting the wakeup rate limit.",
+      "tags": ["test", "rendering", "throttling"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/step.rs:record_overlay_event_for_event",
+      "type": "function",
+      "name": "record_overlay_event_for_event",
+      "filePath": "crates/warpui_core/src/integration/step.rs",
+      "lineRange": [1039, 1066],
+      "summary": "Translates a dispatched input Event into the corresponding overlay event kind (mouse/key) and records it in the overlay log for video visualization.",
+      "tags": ["test", "overlay", "event-handler"],
+      "complexity": "moderate"
+    },
+
+    {
+      "id": "class:crates/warpui_core/src/integration/video_recorder.rs:VideoRecorder",
+      "type": "class",
+      "name": "VideoRecorder",
+      "filePath": "crates/warpui_core/src/integration/video_recorder.rs",
+      "lineRange": [46, 56],
+      "summary": "Collects timestamped captured frames during a test and finalizes them into an MP4 (with overlays composited) or a PNG sequence artifact.",
+      "tags": ["test", "video-capture", "recording"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/video_recorder.rs:encode_to_mp4",
+      "type": "function",
+      "name": "encode_to_mp4",
+      "filePath": "crates/warpui_core/src/integration/video_recorder.rs",
+      "lineRange": [168, 255],
+      "summary": "Encodes the captured frame sequence to an MP4, advancing OverlayState per frame and compositing input overlays onto each frame before encoding.",
+      "tags": ["test", "encoding", "video-capture"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/video_recorder.rs:run_capture_loop",
+      "type": "function",
+      "name": "run_capture_loop",
+      "filePath": "crates/warpui_core/src/integration/video_recorder.rs",
+      "lineRange": [293, 331],
+      "summary": "Background loop that polls the app for new window frames and appends timestamped frames to the shared capture state until recording stops.",
+      "tags": ["test", "frame-capture", "concurrency"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/video_recorder.rs:finalize",
+      "type": "function",
+      "name": "finalize",
+      "filePath": "crates/warpui_core/src/integration/video_recorder.rs",
+      "lineRange": [120, 162],
+      "summary": "Finalizes recording by taking the captured frames and encoding them to MP4 (or falling back to PNG frames), compositing the supplied overlay log.",
+      "tags": ["test", "encoding", "recording"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/integration/video_recorder.rs:save_frames_as_pngs",
+      "type": "function",
+      "name": "save_frames_as_pngs",
+      "filePath": "crates/warpui_core/src/integration/video_recorder.rs",
+      "lineRange": [259, 281],
+      "summary": "Fallback that writes each captured frame to a numbered PNG file when MP4 encoding is unavailable.",
+      "tags": ["test", "serialization", "image"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {"source": "file:crates/warpui_core/src/integration/capture_recorder.rs", "target": "file:crates/warpui_core/src/platform/mod.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "file:crates/warpui_core/src/integration/step.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "file:crates/warpui_core/src/platform/mod.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/action_log.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/artifacts.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/capture_recorder.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/driver.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/overlay.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/step.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "file:crates/warpui_core/src/integration/video_recorder.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "file:crates/warpui_core/src/event.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "file:crates/warpui_core/src/keymap.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "file:crates/warpui_core/src/platform/mod.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "file:crates/warpui_core/src/platform/mod.rs", "type": "imports", "direction": "forward", "weight": 0.7},
+
+    {"source": "file:crates/warpui_core/src/integration/action_log.rs", "target": "class:crates/warpui_core/src/integration/action_log.rs:ActionLog", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/action_log.rs", "target": "function:crates/warpui_core/src/integration/action_log.rs:event_description", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/action_log.rs", "target": "function:crates/warpui_core/src/integration/action_log.rs:write_to_file", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/artifacts.rs", "target": "class:crates/warpui_core/src/integration/artifacts.rs:TestArtifacts", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/capture_recorder.rs", "target": "class:crates/warpui_core/src/integration/capture_recorder.rs:CaptureRecorder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/capture_recorder.rs", "target": "class:crates/warpui_core/src/integration/capture_recorder.rs:SharedState", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/capture_recorder.rs", "target": "function:crates/warpui_core/src/integration/capture_recorder.rs:save_captured_frame_as_png", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "class:crates/warpui_core/src/integration/driver.rs:Builder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "class:crates/warpui_core/src/integration/driver.rs:TestDriver", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:run_test_and_cleanup", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:run_steps_and_determine_rerun", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:configure_capture_recording", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:handle_post_step_capture", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:finalize_recording", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:run_single_step_with_retries", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "class:crates/warpui_core/src/integration/mod.rs:TestSetupUtils", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "function:crates/warpui_core/src/integration/mod.rs:create_temp_dir_for_test", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "function:crates/warpui_core/src/integration/mod.rs:set_env", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "class:crates/warpui_core/src/integration/overlay.rs:OverlayLog", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "class:crates/warpui_core/src/integration/overlay.rs:OverlayState", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:keystroke_display_text", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:render_onto", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:draw_key_overlay", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:draw_text", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:draw_thick_line", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:draw_click_ring", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "class:crates/warpui_core/src/integration/step.rs:TestStep", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "class:crates/warpui_core/src/integration/step.rs:StepDataMap", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "class:crates/warpui_core/src/integration/step.rs:AssertionOutcome", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "function:crates/warpui_core/src/integration/step.rs:run_step", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "function:crates/warpui_core/src/integration/step.rs:maybe_render_frame", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "function:crates/warpui_core/src/integration/step.rs:record_overlay_event_for_event", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "class:crates/warpui_core/src/integration/video_recorder.rs:VideoRecorder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:encode_to_mp4", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:run_capture_loop", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:finalize", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:save_frames_as_pngs", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:crates/warpui_core/src/integration/action_log.rs", "target": "class:crates/warpui_core/src/integration/action_log.rs:ActionLog", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/action_log.rs", "target": "function:crates/warpui_core/src/integration/action_log.rs:event_description", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/action_log.rs", "target": "function:crates/warpui_core/src/integration/action_log.rs:write_to_file", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/artifacts.rs", "target": "class:crates/warpui_core/src/integration/artifacts.rs:TestArtifacts", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/capture_recorder.rs", "target": "class:crates/warpui_core/src/integration/capture_recorder.rs:CaptureRecorder", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/capture_recorder.rs", "target": "function:crates/warpui_core/src/integration/capture_recorder.rs:save_captured_frame_as_png", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "class:crates/warpui_core/src/integration/driver.rs:Builder", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "class:crates/warpui_core/src/integration/driver.rs:TestDriver", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/driver.rs:run_test_and_cleanup", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "class:crates/warpui_core/src/integration/mod.rs:TestSetupUtils", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "function:crates/warpui_core/src/integration/mod.rs:create_temp_dir_for_test", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/mod.rs", "target": "function:crates/warpui_core/src/integration/mod.rs:set_env", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "class:crates/warpui_core/src/integration/overlay.rs:OverlayLog", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "class:crates/warpui_core/src/integration/overlay.rs:OverlayState", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:keystroke_display_text", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/overlay.rs", "target": "function:crates/warpui_core/src/integration/overlay.rs:render_onto", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "class:crates/warpui_core/src/integration/step.rs:TestStep", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "class:crates/warpui_core/src/integration/step.rs:StepDataMap", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "class:crates/warpui_core/src/integration/step.rs:AssertionOutcome", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "function:crates/warpui_core/src/integration/step.rs:run_step", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "class:crates/warpui_core/src/integration/video_recorder.rs:VideoRecorder", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:finalize", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:run_capture_loop", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "file:crates/warpui_core/src/integration/action_log.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "file:crates/warpui_core/src/integration/artifacts.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "file:crates/warpui_core/src/integration/overlay.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "file:crates/warpui_core/src/integration/video_recorder.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:crates/warpui_core/src/integration/driver.rs", "target": "function:crates/warpui_core/src/integration/step.rs:run_step", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "file:crates/warpui_core/src/integration/action_log.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:crates/warpui_core/src/integration/step.rs", "target": "file:crates/warpui_core/src/integration/overlay.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "function:crates/warpui_core/src/integration/step.rs:run_step", "target": "function:crates/warpui_core/src/integration/action_log.rs:event_description", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:crates/warpui_core/src/integration/video_recorder.rs", "target": "file:crates/warpui_core/src/integration/overlay.rs", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "function:crates/warpui_core/src/integration/video_recorder.rs:encode_to_mp4", "target": "function:crates/warpui_core/src/integration/overlay.rs:render_onto", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:crates/warpui_core/src/integration/video_recorder.rs:finalize", "target": "function:crates/warpui_core/src/integration/video_recorder.rs:encode_to_mp4", "type": "calls", "direction": "forward", "weight": 0.8}
+  ]
+}

@@ -1,0 +1,856 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/editor/src/render/model/test_utils.rs",
+      "type": "file",
+      "name": "test_utils.rs",
+      "filePath": "crates/editor/src/render/model/test_utils.rs",
+      "summary": "Test helpers for the render model: build mock and real laid-out paragraphs, unordered lists and tables from text and styles, plus logging init.",
+      "tags": [
+        "test",
+        "fixture",
+        "utility"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/test_utils.rs:layout",
+      "type": "function",
+      "name": "layout",
+      "filePath": "crates/editor/src/render/model/test_utils.rs",
+      "lineRange": [
+        225,
+        309
+      ],
+      "summary": "Lays out text into render-model paragraphs/blocks for use in tests, mirroring the production layout path.",
+      "tags": [
+        "test",
+        "fixture",
+        "text-layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/viewport.rs",
+      "type": "file",
+      "name": "viewport.rs",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "summary": "Viewport state and iteration: tracks scroll position and size, clamps and autoscrolls scroll offsets, computes viewport sizing, and iterates the block items currently visible.",
+      "tags": [
+        "data-model",
+        "viewport",
+        "scrolling",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/viewport.rs:ViewportState",
+      "type": "class",
+      "name": "ViewportState",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "lineRange": [
+        25,
+        40
+      ],
+      "summary": "Holds viewport width/height and scroll top/left, with scrolling, clamping, autoscroll and sizing operations.",
+      "tags": [
+        "data-model",
+        "viewport",
+        "scrolling"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/viewport.rs:ViewportItem",
+      "type": "class",
+      "name": "ViewportItem",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "lineRange": [
+        49,
+        61
+      ],
+      "summary": "A block item positioned within the viewport, exposing content/visible/reserved bounds and its block offset.",
+      "tags": [
+        "data-model",
+        "viewport",
+        "geometry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/viewport.rs:ScrollPositionSnapshot",
+      "type": "class",
+      "name": "ScrollPositionSnapshot",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "lineRange": [
+        66,
+        72
+      ],
+      "summary": "Captures a scroll position as a stable first-visible character offset so it survives relayout.",
+      "tags": [
+        "data-model",
+        "scrolling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/viewport.rs:ViewportIterator",
+      "type": "class",
+      "name": "ViewportIterator",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "lineRange": [
+        105,
+        114
+      ],
+      "summary": "Iterator yielding the block viewport items intersecting the current scroll window.",
+      "tags": [
+        "data-model",
+        "viewport",
+        "iterator"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/viewport.rs:autoscroll",
+      "type": "function",
+      "name": "autoscroll",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "lineRange": [
+        218,
+        262
+      ],
+      "summary": "Adjusts scroll top/left so a target item range becomes visible, optionally scrolling horizontally.",
+      "tags": [
+        "scrolling",
+        "viewport",
+        "algorithm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/viewport.rs:viewport_size",
+      "type": "function",
+      "name": "viewport_size",
+      "filePath": "crates/editor/src/render/model/viewport.rs",
+      "lineRange": [
+        290,
+        319
+      ],
+      "summary": "Computes the viewport size from layout constraints, size buffer and max width.",
+      "tags": [
+        "viewport",
+        "geometry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/viewport_tests.rs",
+      "type": "file",
+      "name": "viewport_tests.rs",
+      "filePath": "crates/editor/src/render/model/viewport_tests.rs",
+      "summary": "Tests for viewport offset math, item-to-block mapping, scroll bounds, and width/height change handling.",
+      "tags": [
+        "test",
+        "viewport",
+        "scrolling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/search.rs",
+      "type": "file",
+      "name": "search.rs",
+      "filePath": "crates/editor/src/search.rs",
+      "summary": "In-editor search: the Searcher drives literal/regex/case-sensitive find over the buffer, navigates between matches, restores selection across edits, and produces result decorations.",
+      "tags": [
+        "service",
+        "search",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/search.rs:Searcher",
+      "type": "class",
+      "name": "Searcher",
+      "filePath": "crates/editor/src/search.rs",
+      "lineRange": [
+        21,
+        31
+      ],
+      "summary": "Owns search query/options and results over a buffer+selection model, with async search, match navigation, and decoration output.",
+      "tags": [
+        "service",
+        "search",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/search.rs:run_search",
+      "type": "function",
+      "name": "run_search",
+      "filePath": "crates/editor/src/search.rs",
+      "lineRange": [
+        302,
+        348
+      ],
+      "summary": "Builds the query and runs an async search over the buffer, updating the stored results.",
+      "tags": [
+        "search",
+        "async",
+        "algorithm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/search.rs:restore_selected_result",
+      "type": "function",
+      "name": "restore_selected_result",
+      "filePath": "crates/editor/src/search.rs",
+      "lineRange": [
+        350,
+        371
+      ],
+      "summary": "Re-selects the closest valid match after the buffer changes so search selection survives edits.",
+      "tags": [
+        "search",
+        "selection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/search.rs:select_previous_result",
+      "type": "function",
+      "name": "select_previous_result",
+      "filePath": "crates/editor/src/search.rs",
+      "lineRange": [
+        214,
+        230
+      ],
+      "summary": "Moves the selected match to the previous result, wrapping around the result list.",
+      "tags": [
+        "search",
+        "navigation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/search.rs:result_decorations",
+      "type": "function",
+      "name": "result_decorations",
+      "filePath": "crates/editor/src/search.rs",
+      "lineRange": [
+        374,
+        396
+      ],
+      "summary": "Builds the highlight decorations for all search matches plus the active match.",
+      "tags": [
+        "search",
+        "decoration",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/search_tests.rs",
+      "type": "file",
+      "name": "search_tests.rs",
+      "filePath": "crates/editor/src/search_tests.rs",
+      "summary": "Tests for literal search, match navigation, and search-result validity across edits.",
+      "tags": [
+        "test",
+        "search"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/selection.rs",
+      "type": "file",
+      "name": "selection.rs",
+      "filePath": "crates/editor/src/selection.rs",
+      "summary": "Selection engine: the SelectionModel manages cursors and selections, normalizes and validates select actions, and navigates by character/word/line/paragraph including multiselect and skipping rendered mermaid blocks.",
+      "tags": [
+        "service",
+        "selection",
+        "navigation",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/selection.rs:SelectionModel",
+      "type": "class",
+      "name": "SelectionModel",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        26,
+        47
+      ],
+      "summary": "Owns cursors/selections over render+content+selection models, normalizing actions and navigating by character/word/line/paragraph with hidden-line and mermaid awareness.",
+      "tags": [
+        "service",
+        "selection",
+        "navigation",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/selection.rs:TextUnit",
+      "type": "class",
+      "name": "TextUnit",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        51,
+        62
+      ],
+      "summary": "Enum of navigation granularities (character, word, line boundary, line, paragraph boundary).",
+      "tags": [
+        "data-model",
+        "navigation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/editor/src/selection.rs:SelectionMode",
+      "type": "class",
+      "name": "SelectionMode",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        66,
+        73
+      ],
+      "summary": "Enum of selection modes (character, word, line) for drag/extend selection.",
+      "tags": [
+        "data-model",
+        "selection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:begin_selection",
+      "type": "function",
+      "name": "begin_selection",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        532,
+        587
+      ],
+      "summary": "Begins a selection at an offset in the given mode, optionally clearing existing selections (drag start).",
+      "tags": [
+        "selection",
+        "navigation",
+        "event-handler"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:normalized_character_action",
+      "type": "function",
+      "name": "normalized_character_action",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        326,
+        396
+      ],
+      "summary": "Normalizes a character select action by adjusting offsets around rendered mermaid blocks and clamping to valid bounds.",
+      "tags": [
+        "selection",
+        "navigation",
+        "normalization"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:update_selections_internal",
+      "type": "function",
+      "name": "update_selections_internal",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        672,
+        726
+      ],
+      "summary": "Applies a selection update, recomputing goal columns and pushing the new selection set into the render model.",
+      "tags": [
+        "selection",
+        "state-management"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:navigate_line",
+      "type": "function",
+      "name": "navigate_line",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        868,
+        920
+      ],
+      "summary": "Moves a cursor vertically by line, preserving the goal x-column across soft-wrapped and varied-height lines.",
+      "tags": [
+        "navigation",
+        "selection",
+        "algorithm"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:navigate_word",
+      "type": "function",
+      "name": "navigate_word",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        835,
+        866
+      ],
+      "summary": "Moves a cursor by word according to the word policy and direction.",
+      "tags": [
+        "navigation",
+        "selection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:navigate_line_boundary",
+      "type": "function",
+      "name": "navigate_line_boundary",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        922,
+        981
+      ],
+      "summary": "Moves a cursor to the start/end line boundary, accounting for indentation and soft wrapping.",
+      "tags": [
+        "navigation",
+        "selection",
+        "algorithm"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/selection.rs:validate_select_action",
+      "type": "function",
+      "name": "validate_select_action",
+      "filePath": "crates/editor/src/selection.rs",
+      "lineRange": [
+        414,
+        455
+      ],
+      "summary": "Validates and clamps a select action against the current document bounds before applying it.",
+      "tags": [
+        "selection",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/selection_tests.rs",
+      "type": "file",
+      "name": "selection_tests.rs",
+      "filePath": "crates/editor/src/selection_tests.rs",
+      "summary": "Tests for selection movement and navigation: goal-column behavior, word/line/paragraph boundaries, multiselect vertical movement, mermaid-block skipping, and semantic drag selection.",
+      "tags": [
+        "test",
+        "selection",
+        "navigation"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/editor/src/render/model/test_utils.rs",
+      "target": "function:crates/editor/src/render/model/test_utils.rs:layout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ViewportState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ViewportItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ScrollPositionSnapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ViewportIterator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "function:crates/editor/src/render/model/viewport.rs:autoscroll",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "function:crates/editor/src/render/model/viewport.rs:viewport_size",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ViewportState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ViewportItem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "class:crates/editor/src/render/model/viewport.rs:ScrollPositionSnapshot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "class:crates/editor/src/search.rs:Searcher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "function:crates/editor/src/search.rs:run_search",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "function:crates/editor/src/search.rs:restore_selected_result",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "function:crates/editor/src/search.rs:select_previous_result",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "function:crates/editor/src/search.rs:result_decorations",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "class:crates/editor/src/search.rs:Searcher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "class:crates/editor/src/selection.rs:SelectionModel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "class:crates/editor/src/selection.rs:TextUnit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "class:crates/editor/src/selection.rs:SelectionMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:begin_selection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:normalized_character_action",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:update_selections_internal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:navigate_line",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:navigate_word",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:navigate_line_boundary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "function:crates/editor/src/selection.rs:validate_select_action",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "class:crates/editor/src/selection.rs:SelectionModel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "class:crates/editor/src/selection.rs:TextUnit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "class:crates/editor/src/selection.rs:SelectionMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/test_utils.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "file:crates/editor/src/render/element/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport_tests.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport_tests.rs",
+      "target": "file:crates/editor/src/render/model/test_utils.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "file:crates/editor/src/content/anchor.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "file:crates/editor/src/content/buffer.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "file:crates/editor/src/content/find.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "file:crates/editor/src/content/selection_model.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search_tests.rs",
+      "target": "file:crates/editor/src/content/buffer.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search_tests.rs",
+      "target": "file:crates/editor/src/content/find.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search_tests.rs",
+      "target": "file:crates/editor/src/content/selection_model.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/search_tests.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "file:crates/editor/src/content/buffer.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "file:crates/editor/src/content/hidden_lines_model.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "file:crates/editor/src/content/selection_model.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection_tests.rs",
+      "target": "file:crates/editor/src/content/buffer.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection_tests.rs",
+      "target": "file:crates/editor/src/content/selection_model.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection_tests.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection_tests.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection_tests.rs",
+      "target": "file:crates/editor/src/render/model/test_utils.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/selection_tests.rs",
+      "target": "file:crates/editor/src/selection.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/viewport.rs",
+      "target": "file:crates/editor/src/render/model/viewport_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/search.rs",
+      "target": "file:crates/editor/src/search_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/selection.rs",
+      "target": "file:crates/editor/src/selection_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

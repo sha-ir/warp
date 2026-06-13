@@ -1,0 +1,1144 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/warpui_core/src/core/transfer_view_tests.rs",
+   "type": "file",
+   "name": "transfer_view_tests.rs",
+   "filePath": "crates/warpui_core/src/core/transfer_view_tests.rs",
+   "summary": "Tests for transferring views between windows, validating subscription/observation migration and lifecycle correctness.",
+   "tags": [
+    "test",
+    "core",
+    "view",
+    "window"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/view/context.rs",
+   "type": "file",
+   "name": "context.rs",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "ViewContext: the per-view handle into the app exposing element positions, subscriptions, file pickers, notifications, native modals, and view-scoped task spawning.",
+   "tags": [
+    "core",
+    "view",
+    "context",
+    "async"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/view/context.rs:ViewContext",
+   "type": "class",
+   "name": "ViewContext",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Context passed to view render/update closures, providing access to the app, window/view ids, subscriptions, platform dialogs, and task spawning scoped to the view.",
+   "tags": [
+    "core",
+    "view",
+    "context",
+    "service"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    30,
+    35
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/view/context.rs:spawn_abortable",
+   "type": "function",
+   "name": "spawn_abortable",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Spawns an abortable view-scoped task whose future is cancelled when its handle drops.",
+   "tags": [
+    "core",
+    "async",
+    "view",
+    "scheduling"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    581,
+    627
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/view/context.rs:unsubscribe_to_view",
+   "type": "function",
+   "name": "unsubscribe_to_view",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Removes a view-to-view subscription and its observer bookkeeping from the app.",
+   "tags": [
+    "core",
+    "view",
+    "subscription"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    213,
+    258
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/view/context.rs:unsubscribe_to_model",
+   "type": "function",
+   "name": "unsubscribe_to_model",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Removes a view-to-model subscription and associated observer state.",
+   "tags": [
+    "core",
+    "view",
+    "subscription"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    260,
+    305
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/view/context.rs:open_file_picker",
+   "type": "function",
+   "name": "open_file_picker",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Opens the native open-file dialog scoped to this view and delivers the selection asynchronously.",
+   "tags": [
+    "core",
+    "view",
+    "platform",
+    "file-picker"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    308,
+    325
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/view/context.rs:show_native_platform_modal",
+   "type": "function",
+   "name": "show_native_platform_modal",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Shows a native modal from view context and routes the response back to the view.",
+   "tags": [
+    "core",
+    "view",
+    "platform",
+    "modal"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    721,
+    752
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/view/context.rs:subscribe_to_view",
+   "type": "function",
+   "name": "subscribe_to_view",
+   "filePath": "crates/warpui_core/src/core/view/context.rs",
+   "summary": "Subscribes this view to another view's notifications with an auto-unsubscribing handle.",
+   "tags": [
+    "core",
+    "view",
+    "subscription"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    187,
+    211
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/view/handle.rs",
+   "type": "file",
+   "name": "handle.rs",
+   "filePath": "crates/warpui_core/src/core/view/handle.rs",
+   "summary": "View handles: strong ViewHandle<T>, type-erased AnyViewHandle, and upgradable WeakViewHandle, with Read/UpdateView access traits.",
+   "tags": [
+    "core",
+    "view",
+    "handle",
+    "type-definition"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/view/handle.rs:ViewHandle",
+   "type": "class",
+   "name": "ViewHandle",
+   "filePath": "crates/warpui_core/src/core/view/handle.rs",
+   "summary": "Strongly-typed reference-counted handle to a view within a window.",
+   "tags": [
+    "core",
+    "view",
+    "handle"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    20,
+    25
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/view/handle.rs:AnyViewHandle",
+   "type": "class",
+   "name": "AnyViewHandle",
+   "filePath": "crates/warpui_core/src/core/view/handle.rs",
+   "summary": "Type-erased view handle supporting downcast and ref-count lifecycle management.",
+   "tags": [
+    "core",
+    "view",
+    "handle"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    156,
+    161
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/view/handle.rs:WeakViewHandle",
+   "type": "class",
+   "name": "WeakViewHandle",
+   "filePath": "crates/warpui_core/src/core/view/handle.rs",
+   "summary": "Non-owning weak reference to a view that can be upgraded when still alive.",
+   "tags": [
+    "core",
+    "view",
+    "handle"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    238,
+    241
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/view/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/core/view/mod.rs",
+   "summary": "View submodule root: defines the View and TypedActionView traits, focus/blur context enums, and accessibility data, re-exporting view context and handles.",
+   "tags": [
+    "core",
+    "view",
+    "trait",
+    "type-definition"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/view/mod.rs:View",
+   "type": "class",
+   "name": "View",
+   "filePath": "crates/warpui_core/src/core/view/mod.rs",
+   "summary": "Core trait every view implements: render, focus/blur hooks, keymap context, cursor position, and accessibility contents.",
+   "tags": [
+    "core",
+    "view",
+    "trait",
+    "type-definition"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    58,
+    133
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/view/mod.rs:TypedActionView",
+   "type": "class",
+   "name": "TypedActionView",
+   "filePath": "crates/warpui_core/src/core/view/mod.rs",
+   "summary": "Trait extending a view to handle a specific typed action and contribute its accessibility content.",
+   "tags": [
+    "core",
+    "view",
+    "actions",
+    "trait"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    143,
+    162
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/window.rs",
+   "type": "file",
+   "name": "window.rs",
+   "filePath": "crates/warpui_core/src/core/window.rs",
+   "summary": "Window type: a WindowId plus the Window struct tracking its views, root view, and focused view.",
+   "tags": [
+    "core",
+    "window",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/window.rs:Window",
+   "type": "class",
+   "name": "Window",
+   "filePath": "crates/warpui_core/src/core/window.rs",
+   "summary": "Holds a window's view registry, root view, and currently focused view.",
+   "tags": [
+    "core",
+    "window",
+    "data-model"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    40,
+    49
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "type": "file",
+   "name": "event_handler.rs",
+   "filePath": "crates/warpui_core/src/elements/event_handler.rs",
+   "summary": "EventHandler element: wraps a child element with mouse/keyboard/modifier callbacks and dispatches input events to the appropriate handler.",
+   "tags": [
+    "component",
+    "event-handler",
+    "input"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/event_handler.rs:EventHandler",
+   "type": "class",
+   "name": "EventHandler",
+   "filePath": "crates/warpui_core/src/elements/event_handler.rs",
+   "summary": "Builder element that attaches keydown, modifier, and per-button mouse callbacks around a child element.",
+   "tags": [
+    "component",
+    "event-handler",
+    "builder",
+    "input"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    42,
+    67
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/event_handler.rs:MouseInBehavior",
+   "type": "class",
+   "name": "MouseInBehavior",
+   "filePath": "crates/warpui_core/src/elements/event_handler.rs",
+   "summary": "Configures when mouse-in callbacks fire (on synthetic events, when covered).",
+   "tags": [
+    "event-handler",
+    "type-definition",
+    "input"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    22,
+    31
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/event_handler.rs:dispatch_event",
+   "type": "function",
+   "name": "dispatch_event",
+   "filePath": "crates/warpui_core/src/elements/event_handler.rs",
+   "summary": "Routes an incoming input event (mouse buttons, movement, keydown, modifier changes) to the matching registered callback.",
+   "tags": [
+    "event-handler",
+    "input",
+    "dispatch"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    241,
+    362
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/event_handler.rs:new",
+   "type": "function",
+   "name": "new",
+   "filePath": "crates/warpui_core/src/elements/event_handler.rs",
+   "summary": "Constructs an EventHandler wrapping the given child element with no callbacks bound.",
+   "tags": [
+    "component",
+    "event-handler",
+    "constructor"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    70,
+    90
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/icon.rs",
+   "type": "file",
+   "name": "icon.rs",
+   "filePath": "crates/warpui_core/src/elements/icon.rs",
+   "summary": "Icon element: an asset-backed, optionally tinted/scaled icon that lays out and paints itself within the rendering pipeline.",
+   "tags": [
+    "component",
+    "rendering",
+    "ui-element"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/icon.rs:Icon",
+   "type": "class",
+   "name": "Icon",
+   "filePath": "crates/warpui_core/src/elements/icon.rs",
+   "summary": "Renderable icon element loading from an asset path with configurable opacity, color tint, and size.",
+   "tags": [
+    "component",
+    "rendering",
+    "ui-element"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    17,
+    26
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/icon.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/warpui_core/src/elements/icon.rs",
+   "summary": "Paints the loaded icon asset at its laid-out bounds applying color tint and opacity.",
+   "tags": [
+    "rendering",
+    "ui-element"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    65,
+    117
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/image.rs",
+   "type": "file",
+   "name": "image.rs",
+   "filePath": "crates/warpui_core/src/elements/image.rs",
+   "summary": "Image element: renders static and animated images from assets with fit modes, corner radius, opacity, and graceful loading/backup states.",
+   "tags": [
+    "component",
+    "rendering",
+    "ui-element",
+    "image"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/image.rs:Image",
+   "type": "class",
+   "name": "Image",
+   "filePath": "crates/warpui_core/src/elements/image.rs",
+   "summary": "Renderable image element supporting fit modes (cover/contain/stretch), corner radius, opacity, animation, and backup elements during load.",
+   "tags": [
+    "component",
+    "rendering",
+    "ui-element",
+    "image"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    38,
+    70
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/image.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/warpui_core/src/elements/image.rs",
+   "summary": "Paints the image \u2014 static or animated \u2014 applying fit, corner radius, and opacity, or a backup element while loading.",
+   "tags": [
+    "rendering",
+    "ui-element",
+    "image"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    447,
+    527
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/image.rs:paint_static_image",
+   "type": "function",
+   "name": "paint_static_image",
+   "filePath": "crates/warpui_core/src/elements/image.rs",
+   "summary": "Paints a single-frame image into its computed rectangle with the configured fit and styling.",
+   "tags": [
+    "rendering",
+    "ui-element",
+    "image"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    267,
+    319
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/image.rs:paint_animated_image",
+   "type": "function",
+   "name": "paint_animated_image",
+   "filePath": "crates/warpui_core/src/elements/image.rs",
+   "summary": "Advances and paints the current frame of an animated image based on elapsed time.",
+   "tags": [
+    "rendering",
+    "ui-element",
+    "image",
+    "animation"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    321,
+    350
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/image.rs:layout",
+   "type": "function",
+   "name": "layout",
+   "filePath": "crates/warpui_core/src/elements/image.rs",
+   "summary": "Computes the image element's layout size and paint bounds from source dimensions and fit mode.",
+   "tags": [
+    "rendering",
+    "layout",
+    "ui-element"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    404,
+    433
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "type": "file",
+   "name": "external_fallback.rs",
+   "filePath": "crates/warpui_core/src/fonts/external_fallback.rs",
+   "summary": "External font fallback: requests and loads remote fallback font families (for glyphs/lines/text frames) via the asset cache, emitting load events.",
+   "tags": [
+    "fonts",
+    "async",
+    "asset-cache",
+    "service"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/fonts/external_fallback.rs:FallbackFontModel",
+   "type": "class",
+   "name": "FallbackFontModel",
+   "filePath": "crates/warpui_core/src/fonts/external_fallback.rs",
+   "summary": "Model that requests external fallback fonts and notifies when a fallback family finishes loading.",
+   "tags": [
+    "fonts",
+    "service",
+    "async"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    58,
+    58
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/fonts/external_fallback.rs:ExternalFontFamily",
+   "type": "class",
+   "name": "ExternalFontFamily",
+   "filePath": "crates/warpui_core/src/fonts/external_fallback.rs",
+   "summary": "Describes an external fallback font family by name and the URLs of its font files.",
+   "tags": [
+    "fonts",
+    "data-model",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    15,
+    18
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/fonts/external_fallback.rs:request_fallback_font_for_char",
+   "type": "function",
+   "name": "request_fallback_font_for_char",
+   "filePath": "crates/warpui_core/src/fonts/external_fallback.rs",
+   "summary": "Requests an external fallback font capable of rendering a specific character.",
+   "tags": [
+    "fonts",
+    "async",
+    "fallback"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    86,
+    106
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/fonts/external_fallback.rs:app_font_fallback",
+   "type": "function",
+   "name": "app_font_fallback",
+   "filePath": "crates/warpui_core/src/fonts/external_fallback.rs",
+   "summary": "Resolves the application-level fallback font source for missing glyphs.",
+   "tags": [
+    "fonts",
+    "fallback"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    134,
+    149
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "class:crates/warpui_core/src/core/view/context.rs:ViewContext",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "class:crates/warpui_core/src/core/view/context.rs:ViewContext",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:spawn_abortable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:spawn_abortable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:unsubscribe_to_view",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:unsubscribe_to_view",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:unsubscribe_to_model",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:unsubscribe_to_model",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:open_file_picker",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:open_file_picker",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:show_native_platform_modal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:show_native_platform_modal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:subscribe_to_view",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "function:crates/warpui_core/src/core/view/context.rs:subscribe_to_view",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "class:crates/warpui_core/src/core/view/handle.rs:ViewHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "class:crates/warpui_core/src/core/view/handle.rs:ViewHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "class:crates/warpui_core/src/core/view/handle.rs:AnyViewHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "class:crates/warpui_core/src/core/view/handle.rs:AnyViewHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "class:crates/warpui_core/src/core/view/handle.rs:WeakViewHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "class:crates/warpui_core/src/core/view/handle.rs:WeakViewHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "class:crates/warpui_core/src/core/view/mod.rs:View",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "class:crates/warpui_core/src/core/view/mod.rs:View",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "class:crates/warpui_core/src/core/view/mod.rs:TypedActionView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "class:crates/warpui_core/src/core/view/mod.rs:TypedActionView",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/window.rs",
+   "target": "class:crates/warpui_core/src/core/window.rs:Window",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/window.rs",
+   "target": "class:crates/warpui_core/src/core/window.rs:Window",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "class:crates/warpui_core/src/elements/event_handler.rs:EventHandler",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "class:crates/warpui_core/src/elements/event_handler.rs:EventHandler",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "class:crates/warpui_core/src/elements/event_handler.rs:MouseInBehavior",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "class:crates/warpui_core/src/elements/event_handler.rs:MouseInBehavior",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "function:crates/warpui_core/src/elements/event_handler.rs:dispatch_event",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "function:crates/warpui_core/src/elements/event_handler.rs:new",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "function:crates/warpui_core/src/elements/event_handler.rs:new",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "class:crates/warpui_core/src/elements/icon.rs:Icon",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "class:crates/warpui_core/src/elements/icon.rs:Icon",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "function:crates/warpui_core/src/elements/icon.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "class:crates/warpui_core/src/elements/image.rs:Image",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "class:crates/warpui_core/src/elements/image.rs:Image",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "function:crates/warpui_core/src/elements/image.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "function:crates/warpui_core/src/elements/image.rs:paint_static_image",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "function:crates/warpui_core/src/elements/image.rs:paint_animated_image",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "function:crates/warpui_core/src/elements/image.rs:layout",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "class:crates/warpui_core/src/fonts/external_fallback.rs:FallbackFontModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "class:crates/warpui_core/src/fonts/external_fallback.rs:FallbackFontModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "class:crates/warpui_core/src/fonts/external_fallback.rs:ExternalFontFamily",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "class:crates/warpui_core/src/fonts/external_fallback.rs:ExternalFontFamily",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "function:crates/warpui_core/src/fonts/external_fallback.rs:request_fallback_font_for_char",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "function:crates/warpui_core/src/fonts/external_fallback.rs:request_fallback_font_for_char",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "function:crates/warpui_core/src/fonts/external_fallback.rs:app_font_fallback",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "function:crates/warpui_core/src/fonts/external_fallback.rs:app_font_fallback",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/accessibility.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/core/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/fonts.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/modals.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/notification.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/platform/file_picker.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/platform/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/context.rs",
+   "target": "file:crates/warpui_core/src/windowing/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/handle.rs",
+   "target": "file:crates/warpui_core/src/core/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "file:crates/warpui_core/src/accessibility.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "file:crates/warpui_core/src/core/view/context.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/view/mod.rs",
+   "target": "file:crates/warpui_core/src/core/view/handle.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/window.rs",
+   "target": "file:crates/warpui_core/src/core/view/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "file:crates/warpui_core/src/keymap.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/event_handler.rs",
+   "target": "file:crates/warpui_core/src/platform/keyboard.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "file:crates/warpui_core/src/image_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "file:crates/warpui_core/src/image_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/icon.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetCache",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/image.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetCache",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  },
+  {
+   "source": "file:crates/warpui_core/src/fonts/external_fallback.rs",
+   "target": "class:crates/warpui_core/src/assets/asset_cache.rs:AssetCache",
+   "type": "depends_on",
+   "direction": "forward",
+   "weight": 0.6
+  }
+ ]
+}

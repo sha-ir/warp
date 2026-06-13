@@ -1,0 +1,1338 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/elements/flex/wrap_tests.rs",
+      "type": "file",
+      "name": "wrap_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/flex/wrap_tests.rs",
+      "summary": "Unit tests for the flex wrap element, asserting how children wrap across runs under spacing and size constraints.",
+      "tags": [
+        "test",
+        "flex",
+        "wrap",
+        "layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/formatted_text_element_tests.rs",
+      "type": "file",
+      "name": "formatted_text_element_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/formatted_text_element_tests.rs",
+      "summary": "Unit tests for the formatted-text element, covering heading font-size multipliers, multibyte text replacements, and smart selection.",
+      "tags": [
+        "test",
+        "text",
+        "formatting"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/hoverable_tests.rs",
+      "type": "file",
+      "name": "hoverable_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/hoverable_tests.rs",
+      "summary": "Unit tests for the hoverable element, covering click handling and hover-in/out behavior with and without delays.",
+      "tags": [
+        "test",
+        "hover",
+        "interaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/list.rs",
+      "type": "file",
+      "name": "list.rs",
+      "filePath": "crates/warpui_core/src/elements/list.rs",
+      "summary": "Ordered-list numbering model that tracks indentation levels and auto-assigns sequential numbers, rendering them as decimals, letters, or roman numerals.",
+      "tags": [
+        "list",
+        "numbering",
+        "formatting",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/list_tests.rs",
+      "type": "file",
+      "name": "list_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/list_tests.rs",
+      "summary": "Unit tests for the ordered-list numbering model, covering automatic numbering, indent jumps, resets, and roman/alphabet conversion.",
+      "tags": [
+        "test",
+        "list",
+        "numbering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/elements/mod.rs",
+      "summary": "Core elements module defining the foundational Element and ParentElement traits, geometry primitives (Point, Axis, Margin, Padding, Fill), and selection/clickable traits, while re-exporting every concrete element type.",
+      "tags": [
+        "barrel",
+        "element",
+        "trait-definition",
+        "geometry",
+        "core"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Central trait module: defines the object-safe Element trait implemented by every UI element, plus extension traits on Vector2F/RectF."
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/percentage.rs",
+      "type": "file",
+      "name": "percentage.rs",
+      "filePath": "crates/warpui_core/src/elements/percentage.rs",
+      "summary": "Element that sizes its child to a percentage of the available width and/or height.",
+      "tags": [
+        "layout",
+        "element",
+        "sizing",
+        "percentage"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/rect.rs",
+      "type": "file",
+      "name": "rect.rs",
+      "filePath": "crates/warpui_core/src/elements/rect.rs",
+      "summary": "Primitive rectangle element supporting solid or gradient fills, corner radius, borders, and drop shadows.",
+      "tags": [
+        "element",
+        "rendering",
+        "primitive",
+        "geometry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/resizable.rs",
+      "type": "file",
+      "name": "resizable.rs",
+      "filePath": "crates/warpui_core/src/elements/resizable.rs",
+      "summary": "Resizable element with a draggable dragbar on a configurable side, clamping size within bounds and emitting resize lifecycle callbacks.",
+      "tags": [
+        "resize",
+        "element",
+        "interaction",
+        "layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "type": "file",
+      "name": "scrollable.rs",
+      "filePath": "crates/warpui_core/src/elements/scrollable.rs",
+      "summary": "Scrollable element rendering a draggable scrollbar thumb and handling mousewheel, drag, and click-to-jump scrolling along one axis.",
+      "tags": [
+        "scrollable",
+        "element",
+        "scrollbar",
+        "interaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/scrollable_tests.rs",
+      "type": "file",
+      "name": "scrollable_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/scrollable_tests.rs",
+      "summary": "Unit tests for the scrollable element, covering clipped scrolling, scrollbar-gutter clicks, and stacked-view scroll handling.",
+      "tags": [
+        "test",
+        "scrollable",
+        "scrollbar"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "type": "file",
+      "name": "shimmering_text.rs",
+      "filePath": "crates/warpui_core/src/elements/shimmering_text.rs",
+      "summary": "Text element that renders an animated shimmer sweep across its glyphs by computing per-glyph color overrides over time.",
+      "tags": [
+        "text",
+        "animation",
+        "element",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/shimmering_text/config.rs",
+      "type": "file",
+      "name": "config.rs",
+      "filePath": "crates/warpui_core/src/elements/shimmering_text/config.rs",
+      "summary": "Configuration struct controlling shimmer animation period, radius, and padding.",
+      "tags": [
+        "config",
+        "animation",
+        "shimmer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/shimmering_text/glyph_index.rs",
+      "type": "file",
+      "name": "glyph_index.rs",
+      "filePath": "crates/warpui_core/src/elements/shimmering_text/glyph_index.rs",
+      "summary": "Newtype wrapper around a glyph index with an f32 accessor.",
+      "tags": [
+        "newtype",
+        "glyph",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/size_constraint_switch_tests.rs",
+      "type": "file",
+      "name": "size_constraint_switch_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/size_constraint_switch_tests.rs",
+      "summary": "Unit tests for the size-constraint-switch element, verifying which child renders under max-width/height/size conditions.",
+      "tags": [
+        "test",
+        "layout",
+        "sizing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/stack/mod_tests.rs",
+      "type": "file",
+      "name": "mod_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/stack/mod_tests.rs",
+      "summary": "Unit tests for the stack element, covering z-index painting and relative positioning bound to window and anchors.",
+      "tags": [
+        "test",
+        "stack",
+        "positioning"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "type": "file",
+      "name": "offset_positioning.rs",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "summary": "Geometry engine for stack child positioning: computes child position and size constraints from parent/anchor relationships, axis anchors, and pixel/percentage offsets, with window-bounds clamping.",
+      "tags": [
+        "layout",
+        "positioning",
+        "geometry",
+        "anchor",
+        "stack"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Heavy use of enums (anchors, bounds modes, offset types) to model the combinatorics of 2D relative positioning."
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/list.rs:ListIndentLevel",
+      "type": "class",
+      "name": "ListIndentLevel",
+      "filePath": "crates/warpui_core/src/elements/list.rs",
+      "lineRange": [
+        20,
+        24
+      ],
+      "summary": "Bounded ordered-list indentation level supporting shift-left/right and per-level number formatting.",
+      "tags": [
+        "list",
+        "indentation",
+        "enum"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/list.rs:ListNumbering",
+      "type": "class",
+      "name": "ListNumbering",
+      "filePath": "crates/warpui_core/src/elements/list.rs",
+      "lineRange": [
+        96,
+        106
+      ],
+      "summary": "Stateful ordered-list numbering that assigns sequential indices per indentation level.",
+      "tags": [
+        "list",
+        "numbering",
+        "stateful"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/list.rs:number_to_roman",
+      "type": "function",
+      "name": "number_to_roman",
+      "filePath": "crates/warpui_core/src/elements/list.rs",
+      "lineRange": [
+        177,
+        191
+      ],
+      "summary": "Converts a 0-based integer into its lowercase roman-numeral string for ordered list labels.",
+      "tags": [
+        "formatting",
+        "conversion",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/list.rs:number_to_alphabet",
+      "type": "function",
+      "name": "number_to_alphabet",
+      "filePath": "crates/warpui_core/src/elements/list.rs",
+      "lineRange": [
+        164,
+        173
+      ],
+      "summary": "Converts a 0-based integer into a repeating-alphabet label (a, b, ..., aa) for ordered lists.",
+      "tags": [
+        "formatting",
+        "conversion",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "class",
+      "name": "Element",
+      "filePath": "crates/warpui_core/src/elements/mod.rs",
+      "lineRange": [
+        106,
+        179
+      ],
+      "summary": "Core object-safe trait implemented by every UI element, defining layout, after-layout, paint, sizing, event dispatch, and bounds.",
+      "tags": [
+        "trait",
+        "element",
+        "core",
+        "layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/mod.rs:ParentElement",
+      "type": "class",
+      "name": "ParentElement",
+      "filePath": "crates/warpui_core/src/elements/mod.rs",
+      "lineRange": [
+        181,
+        202
+      ],
+      "summary": "Trait for elements that accept and manage child elements via add_child/with_children builders.",
+      "tags": [
+        "trait",
+        "element",
+        "composition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/mod.rs:SelectableElement",
+      "type": "class",
+      "name": "SelectableElement",
+      "filePath": "crates/warpui_core/src/elements/mod.rs",
+      "lineRange": [
+        754,
+        799
+      ],
+      "summary": "Trait for elements participating in text selection: get/expand selection, smart-select, and clickable-bounds calculation.",
+      "tags": [
+        "trait",
+        "selection",
+        "element"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/mod.rs:Axis",
+      "type": "class",
+      "name": "Axis",
+      "filePath": "crates/warpui_core/src/elements/mod.rs",
+      "lineRange": [
+        248,
+        251
+      ],
+      "summary": "Horizontal/vertical axis enum with inversion and point-projection helpers used throughout layout.",
+      "tags": [
+        "geometry",
+        "axis",
+        "enum"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/percentage.rs:Percentage",
+      "type": "class",
+      "name": "Percentage",
+      "filePath": "crates/warpui_core/src/elements/percentage.rs",
+      "lineRange": [
+        9,
+        13
+      ],
+      "summary": "Element that sizes its child to a percentage of the available width and/or height.",
+      "tags": [
+        "layout",
+        "element",
+        "sizing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/rect.rs:Rect",
+      "type": "class",
+      "name": "Rect",
+      "filePath": "crates/warpui_core/src/elements/rect.rs",
+      "lineRange": [
+        11,
+        21
+      ],
+      "summary": "Rectangle primitive element with solid/gradient fills, corner radius, borders, and drop shadows.",
+      "tags": [
+        "element",
+        "primitive",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/resizable.rs:Resizable",
+      "type": "class",
+      "name": "Resizable",
+      "filePath": "crates/warpui_core/src/elements/resizable.rs",
+      "lineRange": [
+        24,
+        38
+      ],
+      "summary": "Element exposing a draggable dragbar that lets the user resize its child within bounds, with resize lifecycle callbacks.",
+      "tags": [
+        "resize",
+        "element",
+        "interaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/resizable.rs:ResizableState",
+      "type": "class",
+      "name": "ResizableState",
+      "filePath": "crates/warpui_core/src/elements/resizable.rs",
+      "lineRange": [
+        50,
+        54
+      ],
+      "summary": "Shared resizable state tracking current size, bounds, and resize mode.",
+      "tags": [
+        "resize",
+        "state",
+        "interaction"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/scrollable.rs:Scrollable",
+      "type": "class",
+      "name": "Scrollable",
+      "filePath": "crates/warpui_core/src/elements/scrollable.rs",
+      "lineRange": [
+        137,
+        181
+      ],
+      "summary": "Element rendering a draggable scrollbar and handling wheel, drag, and click-to-jump scrolling along one axis.",
+      "tags": [
+        "scrollable",
+        "element",
+        "scrollbar"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/scrollable.rs:ScrollableElement",
+      "type": "class",
+      "name": "ScrollableElement",
+      "filePath": "crates/warpui_core/src/elements/scrollable.rs",
+      "lineRange": [
+        75,
+        96
+      ],
+      "summary": "Trait for elements exposing scroll data and mousewheel handling to the scroll machinery.",
+      "tags": [
+        "trait",
+        "scroll",
+        "element"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/shimmering_text.rs:ShimmeringTextElement",
+      "type": "class",
+      "name": "ShimmeringTextElement",
+      "filePath": "crates/warpui_core/src/elements/shimmering_text.rs",
+      "lineRange": [
+        78,
+        93
+      ],
+      "summary": "Text element that computes animated per-glyph shimmer color overrides over time and paints the result.",
+      "tags": [
+        "text",
+        "animation",
+        "element"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/shimmering_text/config.rs:ShimmerConfig",
+      "type": "class",
+      "name": "ShimmerConfig",
+      "filePath": "crates/warpui_core/src/elements/shimmering_text/config.rs",
+      "lineRange": [
+        18,
+        27
+      ],
+      "summary": "Configuration for the shimmer animation: period, shimmer radius, and padding.",
+      "tags": [
+        "config",
+        "animation",
+        "shimmer"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/stack/offset_positioning.rs:OffsetPositioning",
+      "type": "class",
+      "name": "OffsetPositioning",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "lineRange": [
+        11,
+        14
+      ],
+      "summary": "Computes a stack child's position and size constraint from parent/anchor relationships and pixel/percentage offsets.",
+      "tags": [
+        "positioning",
+        "layout",
+        "geometry"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/stack/offset_positioning.rs:Anchor",
+      "type": "class",
+      "name": "Anchor",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "lineRange": [
+        238,
+        248
+      ],
+      "summary": "Nine-point anchor enum with x/y axis projection used for relative positioning of stack children.",
+      "tags": [
+        "anchor",
+        "geometry",
+        "enum"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "class:crates/warpui_core/src/elements/list.rs:ListIndentLevel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "class:crates/warpui_core/src/elements/list.rs:ListIndentLevel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "class:crates/warpui_core/src/elements/list.rs:ListNumbering",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "class:crates/warpui_core/src/elements/list.rs:ListNumbering",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "function:crates/warpui_core/src/elements/list.rs:number_to_roman",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "function:crates/warpui_core/src/elements/list.rs:number_to_alphabet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:ParentElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:ParentElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:SelectableElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:SelectableElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Axis",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Axis",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/percentage.rs",
+      "target": "class:crates/warpui_core/src/elements/percentage.rs:Percentage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/percentage.rs",
+      "target": "class:crates/warpui_core/src/elements/percentage.rs:Percentage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/rect.rs",
+      "target": "class:crates/warpui_core/src/elements/rect.rs:Rect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/rect.rs",
+      "target": "class:crates/warpui_core/src/elements/rect.rs:Rect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/resizable.rs",
+      "target": "class:crates/warpui_core/src/elements/resizable.rs:Resizable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/resizable.rs",
+      "target": "class:crates/warpui_core/src/elements/resizable.rs:Resizable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/resizable.rs",
+      "target": "class:crates/warpui_core/src/elements/resizable.rs:ResizableState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/resizable.rs",
+      "target": "class:crates/warpui_core/src/elements/resizable.rs:ResizableState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/scrollable.rs:Scrollable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/scrollable.rs:Scrollable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/scrollable.rs:ScrollableElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "class:crates/warpui_core/src/elements/scrollable.rs:ScrollableElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "class:crates/warpui_core/src/elements/shimmering_text.rs:ShimmeringTextElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "class:crates/warpui_core/src/elements/shimmering_text.rs:ShimmeringTextElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text/config.rs",
+      "target": "class:crates/warpui_core/src/elements/shimmering_text/config.rs:ShimmerConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text/config.rs",
+      "target": "class:crates/warpui_core/src/elements/shimmering_text/config.rs:ShimmerConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "target": "class:crates/warpui_core/src/elements/stack/offset_positioning.rs:OffsetPositioning",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "target": "class:crates/warpui_core/src/elements/stack/offset_positioning.rs:OffsetPositioning",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "target": "class:crates/warpui_core/src/elements/stack/offset_positioning.rs:Anchor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "target": "class:crates/warpui_core/src/elements/stack/offset_positioning.rs:Anchor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/flex/wrap_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/flex/wrap_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/formatted_text_element_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/formatted_text_element_tests.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/formatted_text_element_tests.rs",
+      "target": "file:crates/warpui_core/src/text_layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/formatted_text_element_tests.rs",
+      "target": "file:crates/warpui_core/src/text/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/hoverable_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/hoverable_tests.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/hoverable_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/align.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/child_view.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/clipped_scrollable.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/clipped.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/constrained_box.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/container.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/debug.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/dismiss.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/drag_resize.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/drag/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/empty.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/event_handler.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/flex/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/hoverable.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/icon.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/image.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/list.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/live.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/min_size.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/percentage.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/rect.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/resizable.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/selectable_area.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/shared_scrollbar.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/size_constraint_switch.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/stack/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/table/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/uniform_list.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/viewported_list.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/text/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/mod.rs",
+      "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/rect.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/rect.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/resizable.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/resizable.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "file:crates/warpui_core/src/event.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "file:crates/warpui_core/src/units.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable_tests.rs",
+      "target": "file:crates/warpui_core/src/presenter.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "file:crates/warpui_core/src/elements/shimmering_text/config.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "file:crates/warpui_core/src/elements/shimmering_text/glyph_index.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "file:crates/warpui_core/src/fonts.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/shimmering_text.rs",
+      "target": "file:crates/warpui_core/src/text_layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/size_constraint_switch_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/size_constraint_switch_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/mod_tests.rs",
+      "target": "file:crates/warpui_core/src/elements/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/mod_tests.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "target": "file:crates/warpui_core/src/presenter.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/percentage.rs:Percentage",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/rect.rs:Rect",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/resizable.rs:Resizable",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/scrollable.rs:Scrollable",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/scrollable.rs:Scrollable",
+      "target": "class:crates/warpui_core/src/elements/scrollable.rs:ScrollableElement",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "class:crates/warpui_core/src/elements/shimmering_text.rs:ShimmeringTextElement",
+      "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+      "type": "implements",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/scrollable.rs",
+      "target": "file:crates/warpui_core/src/elements/scrollable_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/list.rs",
+      "target": "file:crates/warpui_core/src/elements/list_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

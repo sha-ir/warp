@@ -1,0 +1,1383 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/editor/src/content/markdown.rs",
+   "type": "file",
+   "name": "markdown.rs",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "summary": "Bidirectional markdown bridge: parses markdown into buffer content and serializes styled buffer blocks back to markdown/HTML/formatted text.",
+   "tags": [
+    "editor-core",
+    "markdown",
+    "serialization",
+    "parsing"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/markdown_tests.rs",
+   "type": "file",
+   "name": "markdown_tests.rs",
+   "filePath": "crates/editor/src/content/markdown_tests.rs",
+   "summary": "Unit tests for markdown parsing and serialization round-trips against buffer content.",
+   "tags": [
+    "test",
+    "markdown",
+    "serialization"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "type": "file",
+   "name": "mermaid_diagram.rs",
+   "filePath": "crates/editor/src/content/mermaid_diagram.rs",
+   "summary": "Helpers that turn fenced mermaid code blocks into rendered diagram assets and compute their layout size.",
+   "tags": [
+    "editor-core",
+    "mermaid",
+    "rendering",
+    "asset"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/mermaid_diagram_tests.rs",
+   "type": "file",
+   "name": "mermaid_diagram_tests.rs",
+   "filePath": "crates/editor/src/content/mermaid_diagram_tests.rs",
+   "summary": "Unit tests for mermaid diagram asset generation and sizing.",
+   "tags": [
+    "test",
+    "mermaid",
+    "rendering"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/editor/src/content/mod.rs",
+   "summary": "Module barrel for the editor content layer, declaring and re-exporting the buffer, anchor, cursor, edit, find, markdown, selection and undo submodules.",
+   "tags": [
+    "barrel",
+    "entry-point",
+    "editor-core"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/editor/src/content/outline.rs",
+   "type": "file",
+   "name": "outline.rs",
+   "filePath": "crates/editor/src/content/outline.rs",
+   "summary": "Builds a structural outline of buffer blocks (headings/blocks) by walking the text sum-tree.",
+   "tags": [
+    "editor-core",
+    "outline",
+    "sum-tree",
+    "navigation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/outline_tests.rs",
+   "type": "file",
+   "name": "outline_tests.rs",
+   "filePath": "crates/editor/src/content/outline_tests.rs",
+   "summary": "Unit tests for block outline extraction from buffer content.",
+   "tags": [
+    "test",
+    "outline",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/segmentation.rs",
+   "type": "file",
+   "name": "segmentation.rs",
+   "filePath": "crates/editor/src/content/segmentation.rs",
+   "summary": "Word and grapheme-cluster segmentation for rich-text buffers, implementing the TextBuffer API over buffer cursors.",
+   "tags": [
+    "editor-core",
+    "segmentation",
+    "text-buffer",
+    "word-boundaries"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/segmentation_tests.rs",
+   "type": "file",
+   "name": "segmentation_tests.rs",
+   "filePath": "crates/editor/src/content/segmentation_tests.rs",
+   "summary": "Unit tests for word and grapheme segmentation over buffer content.",
+   "tags": [
+    "test",
+    "segmentation",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/selection.rs",
+   "type": "file",
+   "name": "selection.rs",
+   "filePath": "crates/editor/src/content/selection.rs",
+   "summary": "Defines a single Selection (head/tail/bias) and the SelectionSet collection of resolved selections.",
+   "tags": [
+    "data-model",
+    "selection",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/selection_model.rs",
+   "type": "file",
+   "name": "selection_model.rs",
+   "filePath": "crates/editor/src/content/selection_model.rs",
+   "summary": "Anchor-backed selection model that maps selections to/from buffer offsets, merges overlaps, and tracks cursors across edits.",
+   "tags": [
+    "editor-core",
+    "selection",
+    "anchor-tracking",
+    "data-model"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/text.rs",
+   "type": "file",
+   "name": "text.rs",
+   "filePath": "crates/editor/src/content/text.rs",
+   "summary": "Core rich-text data model: BufferText sum-tree of block items with style runs, markers, summaries, and the text-style/block-style type system.",
+   "tags": [
+    "data-model",
+    "editor-core",
+    "text-buffer",
+    "sum-tree",
+    "styling"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/undo.rs",
+   "type": "file",
+   "name": "undo.rs",
+   "filePath": "crates/editor/src/content/undo.rs",
+   "summary": "Undo/redo stack grouping core editor actions into reversible, time-bounded atomic steps with selection restoration.",
+   "tags": [
+    "editor-core",
+    "undo-redo",
+    "history",
+    "data-model"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/markdown.rs:BufferMarkdownParser",
+   "type": "class",
+   "name": "BufferMarkdownParser",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "lineRange": [
+    50,
+    53
+   ],
+   "summary": "Parses markdown source into styled buffer content blocks.",
+   "tags": [
+    "markdown",
+    "parsing",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/markdown.rs:BufferToFormattedText",
+   "type": "class",
+   "name": "BufferToFormattedText",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "lineRange": [
+    407,
+    409
+   ],
+   "summary": "Converts buffer content into markdown_parser FormattedText and computes edits to apply formatted text back.",
+   "tags": [
+    "markdown",
+    "serialization",
+    "conversion"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/markdown.rs:MarkdownStyle",
+   "type": "class",
+   "name": "MarkdownStyle",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "lineRange": [
+    36,
+    46
+   ],
+   "summary": "Enum/options describing markdown serialization style (GFM tables, HTML, etc.).",
+   "tags": [
+    "markdown",
+    "enum",
+    "config"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/content/markdown.rs:serialize",
+   "type": "function",
+   "name": "serialize",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "lineRange": [
+    735,
+    1037
+   ],
+   "summary": "Serializes styled buffer blocks to markdown, handling headers, lists, tables, code blocks and inline styles.",
+   "tags": [
+    "markdown",
+    "serialization",
+    "central-logic"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/content/markdown.rs:to_markdown",
+   "type": "function",
+   "name": "to_markdown",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "lineRange": [
+    61,
+    159
+   ],
+   "summary": "Renders parsed/styled content into a markdown string, walking blocks and inline fragments.",
+   "tags": [
+    "markdown",
+    "serialization"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/content/markdown.rs:append_formatting",
+   "type": "function",
+   "name": "append_formatting",
+   "filePath": "crates/editor/src/content/markdown.rs",
+   "lineRange": [
+    218,
+    331
+   ],
+   "summary": "Appends inline formatting spans (bold, code, links) while building markdown output.",
+   "tags": [
+    "markdown",
+    "serialization",
+    "styling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/mermaid_diagram.rs:MermaidDiagramAsset",
+   "type": "class",
+   "name": "MermaidDiagramAsset",
+   "filePath": "crates/editor/src/content/mermaid_diagram.rs",
+   "lineRange": [
+    18,
+    18
+   ],
+   "summary": "Asset descriptor for a rendered mermaid diagram derived from a fenced code block.",
+   "tags": [
+    "mermaid",
+    "asset",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/content/mermaid_diagram.rs:mermaid_asset_source",
+   "type": "function",
+   "name": "mermaid_asset_source",
+   "filePath": "crates/editor/src/content/mermaid_diagram.rs",
+   "lineRange": [
+    22,
+    40
+   ],
+   "summary": "Builds the asset source string/config used to render a mermaid diagram block.",
+   "tags": [
+    "mermaid",
+    "rendering",
+    "asset"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/outline.rs:BlockOutline",
+   "type": "class",
+   "name": "BlockOutline",
+   "filePath": "crates/editor/src/content/outline.rs",
+   "lineRange": [
+    14,
+    21
+   ],
+   "summary": "A single outline entry describing a buffer block (type, range) for navigation.",
+   "tags": [
+    "outline",
+    "data-model",
+    "navigation"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/outline.rs:BlockOutlines",
+   "type": "class",
+   "name": "BlockOutlines",
+   "filePath": "crates/editor/src/content/outline.rs",
+   "lineRange": [
+    24,
+    27
+   ],
+   "summary": "Collection of block outlines built by walking the text sum-tree.",
+   "tags": [
+    "outline",
+    "data-model",
+    "collection"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/segmentation.rs:Chars",
+   "type": "class",
+   "name": "Chars",
+   "filePath": "crates/editor/src/content/segmentation.rs",
+   "lineRange": [
+    66,
+    72
+   ],
+   "summary": "Grapheme/word iterator over buffer text implementing the segmentation TextBuffer API.",
+   "tags": [
+    "segmentation",
+    "iterator",
+    "text-buffer"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/selection.rs:Selection",
+   "type": "class",
+   "name": "Selection",
+   "filePath": "crates/editor/src/content/selection.rs",
+   "lineRange": [
+    7,
+    13
+   ],
+   "summary": "A single selection with head, tail and text-style bias.",
+   "tags": [
+    "selection",
+    "data-model",
+    "editor-core"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/selection.rs:SelectionSet",
+   "type": "class",
+   "name": "SelectionSet",
+   "filePath": "crates/editor/src/content/selection.rs",
+   "lineRange": [
+    73,
+    75
+   ],
+   "summary": "Ordered collection of selections with push/truncate/iteration and an offset map.",
+   "tags": [
+    "selection",
+    "collection",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/selection_model.rs:BufferSelectionModel",
+   "type": "class",
+   "name": "BufferSelectionModel",
+   "filePath": "crates/editor/src/content/selection_model.rs",
+   "lineRange": [
+    23,
+    27
+   ],
+   "summary": "Anchor-backed selection model mapping selections to/from offsets, merging overlaps and tracking cursors across edits.",
+   "tags": [
+    "selection",
+    "anchor-tracking",
+    "central-type",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/selection_model.rs:SelectionSnapshot",
+   "type": "class",
+   "name": "SelectionSnapshot",
+   "filePath": "crates/editor/src/content/selection_model.rs",
+   "lineRange": [
+    15,
+    21
+   ],
+   "summary": "Snapshot of resolved selection state reported on SelectionChanged events.",
+   "tags": [
+    "selection",
+    "snapshot",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:BufferText",
+   "type": "class",
+   "name": "BufferText",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    541,
+    571
+   ],
+   "summary": "Sum-tree of buffer block items holding text fragments, markers and style runs; the core text storage.",
+   "tags": [
+    "central-type",
+    "text-buffer",
+    "sum-tree",
+    "data-model"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:BufferBlockItem",
+   "type": "class",
+   "name": "BufferBlockItem",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    398,
+    410
+   ],
+   "summary": "Enum of buffer block items (paragraph, list, table, code, embed) with markdown/plain-text rendering helpers.",
+   "tags": [
+    "enum",
+    "data-model",
+    "block",
+    "rendering"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:BlockType",
+   "type": "class",
+   "name": "BlockType",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    367,
+    370
+   ],
+   "summary": "Enum classifying the type of a buffer block.",
+   "tags": [
+    "enum",
+    "data-model",
+    "block"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:BufferTextStyle",
+   "type": "class",
+   "name": "BufferTextStyle",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    1045,
+    1051
+   ],
+   "summary": "Bitflag-style text style descriptor (bold, weight, etc.) for a text run.",
+   "tags": [
+    "styling",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:TextStyles",
+   "type": "class",
+   "name": "TextStyles",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    1319,
+    1330
+   ],
+   "summary": "Set of applied inline text styles with toggle/query helpers and collision resolution.",
+   "tags": [
+    "styling",
+    "data-model",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:TextStylesWithMetadata",
+   "type": "class",
+   "name": "TextStylesWithMetadata",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    1084,
+    1093
+   ],
+   "summary": "Text styles plus metadata (color, link content) with rich mutation and query API.",
+   "tags": [
+    "styling",
+    "data-model",
+    "metadata"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:BufferBlockStyle",
+   "type": "class",
+   "name": "BufferBlockStyle",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    867,
+    893
+   ],
+   "summary": "Style attributes for a whole block (table, list, line-break and formatting behavior).",
+   "tags": [
+    "styling",
+    "block",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:CodeBlockType",
+   "type": "class",
+   "name": "CodeBlockType",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    693,
+    700
+   ],
+   "summary": "Enum of code-block kinds with markdown representation mapping.",
+   "tags": [
+    "enum",
+    "code-block",
+    "markdown"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:IndentUnit",
+   "type": "class",
+   "name": "IndentUnit",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    994,
+    997
+   ],
+   "summary": "Indentation unit (width, char unit, tab-stop text) used for list/block indentation.",
+   "tags": [
+    "indentation",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/text.rs:BufferSummary",
+   "type": "class",
+   "name": "BufferSummary",
+   "filePath": "crates/editor/src/content/text.rs",
+   "lineRange": [
+    1664,
+    1668
+   ],
+   "summary": "Sum-tree summary aggregating line/block/link counts and style summaries for the buffer text.",
+   "tags": [
+    "sum-tree",
+    "summary",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/undo.rs:UndoStack",
+   "type": "class",
+   "name": "UndoStack",
+   "filePath": "crates/editor/src/content/undo.rs",
+   "lineRange": [
+    176,
+    184
+   ],
+   "summary": "Time-bounded undo/redo stack grouping reversible editor actions into atomic steps with version tracking.",
+   "tags": [
+    "undo-redo",
+    "history",
+    "central-type",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/undo.rs:UndoStackItem",
+   "type": "class",
+   "name": "UndoStackItem",
+   "filePath": "crates/editor/src/content/undo.rs",
+   "lineRange": [
+    53,
+    59
+   ],
+   "summary": "One atomic undo entry bundling reversible actions and the selection to restore.",
+   "tags": [
+    "undo-redo",
+    "data-model",
+    "history"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/undo.rs:ReversibleEditorActions",
+   "type": "class",
+   "name": "ReversibleEditorActions",
+   "filePath": "crates/editor/src/content/undo.rs",
+   "lineRange": [
+    21,
+    25
+   ],
+   "summary": "A group of reversible editor actions plus the selection state to restore on undo.",
+   "tags": [
+    "undo-redo",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/undo.rs:UndoActionType",
+   "type": "class",
+   "name": "UndoActionType",
+   "filePath": "crates/editor/src/content/undo.rs",
+   "lineRange": [
+    28,
+    34
+   ],
+   "summary": "Enum classifying undo action types (atomic vs non-atomic addition/deletion).",
+   "tags": [
+    "undo-redo",
+    "enum",
+    "data-model"
+   ],
+   "complexity": "simple"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram_tests.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram_tests.rs",
+   "target": "file:crates/editor/src/render/model/test_utils.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/core.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/diff.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/find.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/markdown.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/outline.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/segmentation.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/selection.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/undo.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/validation.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/mod.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/outline.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/outline_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/outline_tests.rs",
+   "target": "file:crates/editor/src/content/outline.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/outline_tests.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/outline_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/segmentation_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/segmentation_tests.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/segmentation_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "file:crates/editor/src/content/selection.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "file:crates/editor/src/render/model/table_offset_map.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "class:crates/editor/src/content/markdown.rs:BufferMarkdownParser",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "class:crates/editor/src/content/markdown.rs:BufferMarkdownParser",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "class:crates/editor/src/content/markdown.rs:BufferToFormattedText",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "class:crates/editor/src/content/markdown.rs:BufferToFormattedText",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "class:crates/editor/src/content/markdown.rs:MarkdownStyle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "class:crates/editor/src/content/markdown.rs:MarkdownStyle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "function:crates/editor/src/content/markdown.rs:serialize",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "function:crates/editor/src/content/markdown.rs:to_markdown",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "function:crates/editor/src/content/markdown.rs:append_formatting",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "class:crates/editor/src/content/mermaid_diagram.rs:MermaidDiagramAsset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "class:crates/editor/src/content/mermaid_diagram.rs:MermaidDiagramAsset",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "function:crates/editor/src/content/mermaid_diagram.rs:mermaid_asset_source",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "function:crates/editor/src/content/mermaid_diagram.rs:mermaid_asset_source",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/outline.rs",
+   "target": "class:crates/editor/src/content/outline.rs:BlockOutline",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/outline.rs",
+   "target": "class:crates/editor/src/content/outline.rs:BlockOutline",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/outline.rs",
+   "target": "class:crates/editor/src/content/outline.rs:BlockOutlines",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/outline.rs",
+   "target": "class:crates/editor/src/content/outline.rs:BlockOutlines",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/segmentation.rs",
+   "target": "class:crates/editor/src/content/segmentation.rs:Chars",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/segmentation.rs",
+   "target": "class:crates/editor/src/content/segmentation.rs:Chars",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/selection.rs",
+   "target": "class:crates/editor/src/content/selection.rs:Selection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/selection.rs",
+   "target": "class:crates/editor/src/content/selection.rs:Selection",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/selection.rs",
+   "target": "class:crates/editor/src/content/selection.rs:SelectionSet",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/selection.rs",
+   "target": "class:crates/editor/src/content/selection.rs:SelectionSet",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "class:crates/editor/src/content/selection_model.rs:BufferSelectionModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "class:crates/editor/src/content/selection_model.rs:BufferSelectionModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "class:crates/editor/src/content/selection_model.rs:SelectionSnapshot",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/selection_model.rs",
+   "target": "class:crates/editor/src/content/selection_model.rs:SelectionSnapshot",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferText",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferText",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferBlockItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferBlockItem",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BlockType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BlockType",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferTextStyle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferTextStyle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:TextStyles",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:TextStyles",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:TextStylesWithMetadata",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:TextStylesWithMetadata",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferBlockStyle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferBlockStyle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:CodeBlockType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:CodeBlockType",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:IndentUnit",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:IndentUnit",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferSummary",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/text.rs",
+   "target": "class:crates/editor/src/content/text.rs:BufferSummary",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:UndoStack",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:UndoStack",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:UndoStackItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:ReversibleEditorActions",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:ReversibleEditorActions",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:UndoActionType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/undo.rs",
+   "target": "class:crates/editor/src/content/undo.rs:UndoActionType",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/markdown.rs",
+   "target": "file:crates/editor/src/content/markdown_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "target": "file:crates/editor/src/content/mermaid_diagram_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/outline.rs",
+   "target": "file:crates/editor/src/content/outline_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/segmentation.rs",
+   "target": "file:crates/editor/src/content/segmentation_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

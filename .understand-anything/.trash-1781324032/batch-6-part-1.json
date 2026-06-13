@@ -1,0 +1,1586 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/editor/src/content/anchor.rs",
+   "type": "file",
+   "name": "anchor.rs",
+   "filePath": "crates/editor/src/content/anchor.rs",
+   "summary": "Defines text anchors that track stable positions across edits via a sum-tree, plus the Anchors registry that keeps live anchor handles in sync with buffer mutations.",
+   "tags": [
+    "data-model",
+    "anchor-tracking",
+    "sum-tree",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/anchor_tests.rs",
+   "type": "file",
+   "name": "anchor_tests.rs",
+   "filePath": "crates/editor/src/content/anchor_tests.rs",
+   "summary": "Unit tests validating anchor creation, resolution, and survival across insertions/deletions in the buffer.",
+   "tags": [
+    "test",
+    "anchor-tracking",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/buffer.rs",
+   "type": "file",
+   "name": "buffer.rs",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "summary": "Central rich-text buffer engine: owns the sum-tree text store, selections, undo, styling, markdown export and emits BufferEvents; the primary content model the editor mutates.",
+   "tags": [
+    "data-model",
+    "editor-core",
+    "text-buffer",
+    "central-type",
+    "rich-text"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/buffer_tests.rs",
+   "type": "file",
+   "name": "buffer_tests.rs",
+   "filePath": "crates/editor/src/content/buffer_tests.rs",
+   "summary": "Extensive unit-test suite exercising Buffer editing, styling, selection, undo/redo, markdown round-tripping and embedded-item behavior.",
+   "tags": [
+    "test",
+    "editor-core",
+    "text-buffer"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/core.rs",
+   "type": "file",
+   "name": "core.rs",
+   "filePath": "crates/editor/src/content/core.rs",
+   "summary": "Low-level editing engine that translates CoreEditorActions into concrete buffer/text mutations (insertion, styling, block creation) and produces reversible results for undo.",
+   "tags": [
+    "editor-core",
+    "edit-engine",
+    "text-mutation",
+    "styling"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/cursor.rs",
+   "type": "file",
+   "name": "cursor.rs",
+   "filePath": "crates/editor/src/content/cursor.rs",
+   "summary": "Cursor utilities for traversing the buffer sum-tree by char offset, skipping zero-width markers, and slicing sub-trees of text fragments.",
+   "tags": [
+    "editor-core",
+    "cursor",
+    "sum-tree",
+    "traversal"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/cursor_tests.rs",
+   "type": "file",
+   "name": "cursor_tests.rs",
+   "filePath": "crates/editor/src/content/cursor_tests.rs",
+   "summary": "Unit tests for buffer cursor traversal, marker skipping, and offset slicing.",
+   "tags": [
+    "test",
+    "cursor",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/diff.rs",
+   "type": "file",
+   "name": "diff.rs",
+   "filePath": "crates/editor/src/content/diff.rs",
+   "summary": "Computes minimal text diffs (via imara-diff) used to auto-reload files without wiping undo history or disrupting anchors.",
+   "tags": [
+    "editor-core",
+    "diff",
+    "incremental-update"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/content/edit.rs",
+   "type": "file",
+   "name": "edit.rs",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "summary": "Layout/edit pipeline: lays out styled buffer blocks into rendered paragraphs, tables, and mermaid diagrams, computes render deltas, and detects URLs.",
+   "tags": [
+    "editor-core",
+    "layout",
+    "rendering",
+    "edit-engine"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/edit_tests.rs",
+   "type": "file",
+   "name": "edit_tests.rs",
+   "filePath": "crates/editor/src/content/edit_tests.rs",
+   "summary": "Unit tests for the layout/edit pipeline covering block layout, tables, render deltas and URL highlighting.",
+   "tags": [
+    "test",
+    "layout",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/find.rs",
+   "type": "file",
+   "name": "find.rs",
+   "filePath": "crates/editor/src/content/find.rs",
+   "summary": "Regex-based search over a Buffer using the regex_automata DFA API directly against the non-contiguous buffer bytes.",
+   "tags": [
+    "editor-core",
+    "search",
+    "regex",
+    "find"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/find_tests.rs",
+   "type": "file",
+   "name": "find_tests.rs",
+   "filePath": "crates/editor/src/content/find_tests.rs",
+   "summary": "Unit tests for buffer search covering regex, case sensitivity, hidden ranges and match navigation.",
+   "tags": [
+    "test",
+    "search",
+    "editor-core"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "type": "file",
+   "name": "hidden_lines_model.rs",
+   "filePath": "crates/editor/src/content/hidden_lines_model.rs",
+   "summary": "Per-editor model tracking hidden line ranges independently of buffer content so multiple editors can fold the same buffer differently.",
+   "tags": [
+    "editor-core",
+    "folding",
+    "data-model",
+    "selection"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/anchor.rs:Anchor",
+   "type": "class",
+   "name": "Anchor",
+   "filePath": "crates/editor/src/content/anchor.rs",
+   "lineRange": [
+    17,
+    21
+   ],
+   "summary": "Reference-counted handle to a tracked position; while a handle lives the anchor stays synced with edits.",
+   "tags": [
+    "anchor-tracking",
+    "data-model",
+    "handle"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/anchor.rs:Anchors",
+   "type": "class",
+   "name": "Anchors",
+   "filePath": "crates/editor/src/content/anchor.rs",
+   "lineRange": [
+    86,
+    89
+   ],
+   "summary": "Registry of live anchors stored in a sum-tree; creates, updates, resolves and validates anchors against edits.",
+   "tags": [
+    "anchor-tracking",
+    "registry",
+    "sum-tree"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:Buffer",
+   "type": "class",
+   "name": "Buffer",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    541,
+    561
+   ],
+   "summary": "The central rich-text buffer: sum-tree text store plus selections, undo, styling and markdown export; mutated through ~150 methods and emits BufferEvents.",
+   "tags": [
+    "central-type",
+    "text-buffer",
+    "editor-core",
+    "rich-text"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:BufferEvent",
+   "type": "class",
+   "name": "BufferEvent",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    127,
+    161
+   ],
+   "summary": "Enum of events the buffer emits (content changed, selection changed, etc.) consumed by editor models.",
+   "tags": [
+    "event-handler",
+    "enum",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:BufferEditAction",
+   "type": "class",
+   "name": "BufferEditAction",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    259,
+    348
+   ],
+   "summary": "Enum describing high-level edit actions applied to the buffer (insert, delete, style, indent, block ops).",
+   "tags": [
+    "enum",
+    "edit-engine",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:BufferSelectAction",
+   "type": "class",
+   "name": "BufferSelectAction",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    164,
+    197
+   ],
+   "summary": "Enum of selection-mutating actions with helpers to read/replace selection offsets.",
+   "tags": [
+    "enum",
+    "selection",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:EditOrigin",
+   "type": "class",
+   "name": "EditOrigin",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    415,
+    425
+   ],
+   "summary": "Enum tagging whether an edit originated from the user, undo, or programmatic source.",
+   "tags": [
+    "enum",
+    "edit-engine",
+    "provenance"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:BufferSnapshot",
+   "type": "class",
+   "name": "BufferSnapshot",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    514,
+    517
+   ],
+   "summary": "Immutable snapshot of buffer text used for diffing and read-only access.",
+   "tags": [
+    "data-model",
+    "snapshot",
+    "text-buffer"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:LineIndentation",
+   "type": "class",
+   "name": "LineIndentation",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    5366,
+    5372
+   ],
+   "summary": "Computes leading indentation of a line and supports unindent operations.",
+   "tags": [
+    "indentation",
+    "data-model",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/buffer.rs:StyledBufferBlock",
+   "type": "class",
+   "name": "StyledBufferBlock",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    5414,
+    5417
+   ],
+   "summary": "A styled block of buffer content with helpers for content length and embedded-item expansion.",
+   "tags": [
+    "data-model",
+    "styling",
+    "block"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/content/buffer.rs:convert_text_with_style_to_formatted_text",
+   "type": "function",
+   "name": "convert_text_with_style_to_formatted_text",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    5918,
+    6025
+   ],
+   "summary": "Converts a styled buffer text run into markdown_parser FormattedText for export/rendering.",
+   "tags": [
+    "serialization",
+    "styling",
+    "conversion"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/content/buffer.rs:should_autoscroll",
+   "type": "function",
+   "name": "should_autoscroll",
+   "filePath": "crates/editor/src/content/buffer.rs",
+   "lineRange": [
+    376,
+    410
+   ],
+   "summary": "Decides whether an edit should trigger autoscroll based on AutoScrollBehavior and selection movement.",
+   "tags": [
+    "scrolling",
+    "edit-engine",
+    "heuristic"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/core.rs:CoreEditorAction",
+   "type": "class",
+   "name": "CoreEditorAction",
+   "filePath": "crates/editor/src/content/core.rs",
+   "lineRange": [
+    27,
+    38
+   ],
+   "summary": "A single low-level editor action with anchor-bias configuration, the unit the editing engine applies.",
+   "tags": [
+    "edit-engine",
+    "data-model",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/core.rs:CoreEditorActionType",
+   "type": "class",
+   "name": "CoreEditorActionType",
+   "filePath": "crates/editor/src/content/core.rs",
+   "lineRange": [
+    62,
+    91
+   ],
+   "summary": "Enum of concrete core edit operations (insert, replace, style, block mutations).",
+   "tags": [
+    "enum",
+    "edit-engine",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/content/core.rs:edit",
+   "type": "function",
+   "name": "edit",
+   "filePath": "crates/editor/src/content/core.rs",
+   "lineRange": [
+    494,
+    1066
+   ],
+   "summary": "The core editing routine that applies an action to the buffer/text tree, updating styles, blocks, anchors and producing a reversible result.",
+   "tags": [
+    "edit-engine",
+    "text-mutation",
+    "central-logic"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/content/core.rs:apply_core_edit_actions",
+   "type": "function",
+   "name": "apply_core_edit_actions",
+   "filePath": "crates/editor/src/content/core.rs",
+   "lineRange": [
+    134,
+    364
+   ],
+   "summary": "Applies a batch of core edit actions in sequence, threading selection deltas and accumulating reversible actions.",
+   "tags": [
+    "edit-engine",
+    "text-mutation",
+    "batch"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/content/core.rs:reverse_core_edit_action",
+   "type": "function",
+   "name": "reverse_core_edit_action",
+   "filePath": "crates/editor/src/content/core.rs",
+   "lineRange": [
+    454,
+    492
+   ],
+   "summary": "Builds the inverse of a core edit action for undo support.",
+   "tags": [
+    "undo-redo",
+    "edit-engine"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/content/core.rs:style_text",
+   "type": "function",
+   "name": "style_text",
+   "filePath": "crates/editor/src/content/core.rs",
+   "lineRange": [
+    1144,
+    1219
+   ],
+   "summary": "Applies text-style changes across a range, splitting and merging style runs in the buffer tree.",
+   "tags": [
+    "styling",
+    "text-mutation",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/cursor.rs:BufferCursor",
+   "type": "class",
+   "name": "BufferCursor",
+   "filePath": "crates/editor/src/content/cursor.rs",
+   "lineRange": [
+    19,
+    22
+   ],
+   "summary": "Cursor over the buffer sum-tree giving char/byte/point navigation while skipping zero-width markers.",
+   "tags": [
+    "cursor",
+    "traversal",
+    "sum-tree"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/cursor.rs:BufferSumTree",
+   "type": "class",
+   "name": "BufferSumTree",
+   "filePath": "crates/editor/src/content/cursor.rs",
+   "lineRange": [
+    273,
+    297
+   ],
+   "summary": "Extension wrapper over the buffer's SumTree of text fragments with item replacement and range queries.",
+   "tags": [
+    "sum-tree",
+    "data-model",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/diff.rs:TextDiff",
+   "type": "class",
+   "name": "TextDiff",
+   "filePath": "crates/editor/src/content/diff.rs",
+   "lineRange": [
+    18,
+    21
+   ],
+   "summary": "A computed diff between two strings expressed as byte ranges and replacements applicable to the buffer.",
+   "tags": [
+    "diff",
+    "data-model",
+    "incremental-update"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/content/diff.rs:diff_internal",
+   "type": "function",
+   "name": "diff_internal",
+   "filePath": "crates/editor/src/content/diff.rs",
+   "lineRange": [
+    63,
+    113
+   ],
+   "summary": "Runs imara-diff over interned tokens to produce minimal char-offset edits between old and new text.",
+   "tags": [
+    "diff",
+    "algorithm",
+    "editor-core"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/edit.rs:LayoutTask",
+   "type": "class",
+   "name": "LayoutTask",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    651,
+    685
+   ],
+   "summary": "A unit of layout work that lays out one styled block (text/table/mermaid) into rendered output.",
+   "tags": [
+    "layout",
+    "rendering",
+    "task"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/edit.rs:LayOutArgs",
+   "type": "class",
+   "name": "LayOutArgs",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    220,
+    241
+   ],
+   "summary": "Accumulator threading layout state (offsets, runs, newlines) while laying out a block.",
+   "tags": [
+    "layout",
+    "rendering",
+    "state"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/edit.rs:EditDelta",
+   "type": "class",
+   "name": "EditDelta",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    172,
+    181
+   ],
+   "summary": "Delta describing how an edit changes layout, used to incrementally update rendered content.",
+   "tags": [
+    "layout",
+    "incremental-update",
+    "data-model"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/edit.rs:ParsedUrl",
+   "type": "class",
+   "name": "ParsedUrl",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    198,
+    204
+   ],
+   "summary": "A URL detected in buffer text with its range and hyperlink, produced during URL highlighting.",
+   "tags": [
+    "url-detection",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/content/edit.rs:layout_text_block",
+   "type": "function",
+   "name": "layout_text_block",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    959,
+    1151
+   ],
+   "summary": "Lays out a styled text block into rendered paragraphs, resolving styles, fonts and inline layout.",
+   "tags": [
+    "layout",
+    "rendering",
+    "text"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/content/edit.rs:layout_table_block",
+   "type": "function",
+   "name": "layout_table_block",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    1187,
+    1329
+   ],
+   "summary": "Lays out a table block, measuring cells and producing rendered table geometry.",
+   "tags": [
+    "layout",
+    "rendering",
+    "table"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/content/edit.rs:highlight_urls",
+   "type": "function",
+   "name": "highlight_urls",
+   "filePath": "crates/editor/src/content/edit.rs",
+   "lineRange": [
+    1419,
+    1485
+   ],
+   "summary": "Scans buffer text with urlocator to detect URLs and emit hyperlink style spans.",
+   "tags": [
+    "url-detection",
+    "styling",
+    "scanning"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/find.rs:Engine",
+   "type": "class",
+   "name": "Engine",
+   "filePath": "crates/editor/src/content/find.rs",
+   "lineRange": [
+    129,
+    140
+   ],
+   "summary": "Search engine that compiles a Query into a regex DFA and finds matches across the buffer bytes.",
+   "tags": [
+    "search",
+    "regex",
+    "engine"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/find.rs:SearchConfig",
+   "type": "class",
+   "name": "SearchConfig",
+   "filePath": "crates/editor/src/content/find.rs",
+   "lineRange": [
+    69,
+    75
+   ],
+   "summary": "Configuration for a search: case sensitivity, regex mode, and hidden-range skipping.",
+   "tags": [
+    "search",
+    "config",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/find.rs:SearchDirection",
+   "type": "class",
+   "name": "SearchDirection",
+   "filePath": "crates/editor/src/content/find.rs",
+   "lineRange": [
+    374,
+    377
+   ],
+   "summary": "Enum controlling forward/backward DFA traversal and its start-state/advance logic.",
+   "tags": [
+    "search",
+    "enum",
+    "dfa"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/content/find.rs:Match",
+   "type": "class",
+   "name": "Match",
+   "filePath": "crates/editor/src/content/find.rs",
+   "lineRange": [
+    38,
+    43
+   ],
+   "summary": "A single search match expressed as a buffer range.",
+   "tags": [
+    "search",
+    "data-model"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/content/hidden_lines_model.rs:HiddenLinesModel",
+   "type": "class",
+   "name": "HiddenLinesModel",
+   "filePath": "crates/editor/src/content/hidden_lines_model.rs",
+   "lineRange": [
+    20,
+    25
+   ],
+   "summary": "Per-editor model storing hidden (folded) line ranges keyed by buffer version with intersection and materialization queries.",
+   "tags": [
+    "folding",
+    "data-model",
+    "editor-core",
+    "central-type"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/editor/src/content/anchor_tests.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor_tests.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor_tests.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/core.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/undo.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/multiline.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/selection.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/core.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/markdown.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/selection.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/content/undo.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer_tests.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "file:crates/editor/src/content/anchor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/cursor_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "file:crates/editor/src/parallel_util.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "file:crates/editor/src/render/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/content/mermaid_diagram.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/edit_tests.rs",
+   "target": "file:crates/editor/src/render/model/test_utils.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "file:crates/editor/src/search.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/find_tests.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/find_tests.rs",
+   "target": "file:crates/editor/src/content/cursor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/find_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "file:crates/editor/src/content/buffer.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "file:crates/editor/src/content/edit.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "file:crates/editor/src/content/selection_model.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor.rs",
+   "target": "class:crates/editor/src/content/anchor.rs:Anchor",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor.rs",
+   "target": "class:crates/editor/src/content/anchor.rs:Anchor",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor.rs",
+   "target": "class:crates/editor/src/content/anchor.rs:Anchors",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor.rs",
+   "target": "class:crates/editor/src/content/anchor.rs:Anchors",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:Buffer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:Buffer",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferEvent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferEvent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferEditAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferEditAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferSelectAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferSelectAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:EditOrigin",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:EditOrigin",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferSnapshot",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:BufferSnapshot",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:LineIndentation",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:LineIndentation",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:StyledBufferBlock",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "class:crates/editor/src/content/buffer.rs:StyledBufferBlock",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "function:crates/editor/src/content/buffer.rs:convert_text_with_style_to_formatted_text",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "function:crates/editor/src/content/buffer.rs:convert_text_with_style_to_formatted_text",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "function:crates/editor/src/content/buffer.rs:should_autoscroll",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "class:crates/editor/src/content/core.rs:CoreEditorAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "class:crates/editor/src/content/core.rs:CoreEditorAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "class:crates/editor/src/content/core.rs:CoreEditorActionType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "class:crates/editor/src/content/core.rs:CoreEditorActionType",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "function:crates/editor/src/content/core.rs:edit",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "function:crates/editor/src/content/core.rs:apply_core_edit_actions",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "function:crates/editor/src/content/core.rs:apply_core_edit_actions",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "function:crates/editor/src/content/core.rs:reverse_core_edit_action",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "function:crates/editor/src/content/core.rs:reverse_core_edit_action",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/core.rs",
+   "target": "function:crates/editor/src/content/core.rs:style_text",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/cursor.rs",
+   "target": "class:crates/editor/src/content/cursor.rs:BufferCursor",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/cursor.rs",
+   "target": "class:crates/editor/src/content/cursor.rs:BufferCursor",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/cursor.rs",
+   "target": "class:crates/editor/src/content/cursor.rs:BufferSumTree",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/cursor.rs",
+   "target": "class:crates/editor/src/content/cursor.rs:BufferSumTree",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/diff.rs",
+   "target": "class:crates/editor/src/content/diff.rs:TextDiff",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/diff.rs",
+   "target": "class:crates/editor/src/content/diff.rs:TextDiff",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/diff.rs",
+   "target": "function:crates/editor/src/content/diff.rs:diff_internal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:LayoutTask",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:LayoutTask",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:LayOutArgs",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:EditDelta",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:EditDelta",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:ParsedUrl",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "class:crates/editor/src/content/edit.rs:ParsedUrl",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "function:crates/editor/src/content/edit.rs:layout_text_block",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "function:crates/editor/src/content/edit.rs:layout_table_block",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "function:crates/editor/src/content/edit.rs:highlight_urls",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:Engine",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:Engine",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:SearchConfig",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:SearchConfig",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:SearchDirection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:SearchDirection",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:Match",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "class:crates/editor/src/content/find.rs:Match",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "class:crates/editor/src/content/hidden_lines_model.rs:HiddenLinesModel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/content/hidden_lines_model.rs",
+   "target": "class:crates/editor/src/content/hidden_lines_model.rs:HiddenLinesModel",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/content/anchor.rs",
+   "target": "file:crates/editor/src/content/anchor_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/buffer.rs",
+   "target": "file:crates/editor/src/content/buffer_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/cursor.rs",
+   "target": "file:crates/editor/src/content/cursor_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/edit.rs",
+   "target": "file:crates/editor/src/content/edit_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/editor/src/content/find.rs",
+   "target": "file:crates/editor/src/content/find_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

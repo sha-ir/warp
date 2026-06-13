@@ -1,0 +1,1387 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "type": "file",
+   "name": "hoverable.rs",
+   "filePath": "crates/warpui_core/src/elements/hoverable.rs",
+   "summary": "Interaction wrapper element adding hover and click handling (single/double/middle/right/back/forward), hover-in/out delays, cursor changes and drag propagation around a child.",
+   "tags": [
+    "ui-element",
+    "event-handling",
+    "hover",
+    "mouse-interaction"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/live.rs",
+   "type": "file",
+   "name": "live.rs",
+   "filePath": "crates/warpui_core/src/elements/live.rs",
+   "summary": "Element wrapper that requests periodic repaints of its child at a fixed interval, enabling animations and live-updating content.",
+   "tags": [
+    "ui-element",
+    "animation",
+    "repaint",
+    "wrapper"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/min_size.rs",
+   "type": "file",
+   "name": "min_size.rs",
+   "filePath": "crates/warpui_core/src/elements/min_size.rs",
+   "summary": "Element that enforces a minimum size on its child, expanding the child's measured size up to at least the constraint floor.",
+   "tags": [
+    "ui-element",
+    "layout",
+    "constraints",
+    "selection-forwarding"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "type": "file",
+   "name": "dual_axis_config.rs",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "summary": "Scroll configuration for elements that scroll on both axes simultaneously: manages per-axis scroll offsets, drag/hover state, clipping and scroll-to-position painting.",
+   "tags": [
+    "scrolling",
+    "layout",
+    "dual-axis",
+    "state-management"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "summary": "Core scrollable container: wraps a child, draws and hit-tests scrollbars, handles mouse drag/wheel scrolling, selection anchoring during scroll, and exposes horizontal/vertical/both constructors.",
+   "tags": [
+    "scrolling",
+    "ui-element",
+    "scrollbar",
+    "event-handling"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Defines the NewScrollableElement trait plus ScrollableState (single/both axis) and scrollbar-rendering state."
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "type": "file",
+   "name": "scrollable_tests.rs",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "summary": "Unit and integration tests for the scrollable element covering clipped scrolling, selection re-anchoring, click-to-scroll and scroll-to-position across single and dual axes.",
+   "tags": [
+    "test",
+    "scrolling",
+    "integration-test",
+    "selection"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "type": "file",
+   "name": "single_axis_config.rs",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "summary": "Scroll configuration for elements that scroll on a single axis: layout, painting, drag/hover state, scroll-data computation and delta clamping for one direction.",
+   "tags": [
+    "scrolling",
+    "layout",
+    "single-axis",
+    "state-management"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "type": "file",
+   "name": "util.rs",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "summary": "Free-function helpers for scrollable layout: deriving child constraints per axis, scrolling clipped handles by a delta, applying sensitivity, and computing scroll deltas to bring a region into view.",
+   "tags": [
+    "scrolling",
+    "utility",
+    "layout",
+    "geometry"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "type": "file",
+   "name": "selectable_area.rs",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "summary": "Element that turns its child into a mouse-driven text-selection region: tracks selection head/tail, smart/word/rect selection, drag updates and right-click handling, emitting selection fragments.",
+   "tags": [
+    "ui-element",
+    "selection",
+    "event-handling",
+    "text-selection"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/hoverable.rs:Hoverable",
+   "type": "class",
+   "name": "Hoverable",
+   "filePath": "crates/warpui_core/src/elements/hoverable.rs",
+   "lineRange": [
+    30,
+    66
+   ],
+   "summary": "Interaction wrapper adding hover/click/mouse handlers, hover delays and cursor control around a child.",
+   "tags": [
+    "ui-element",
+    "hover",
+    "event-handling",
+    "builder"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/hoverable.rs:MouseState",
+   "type": "class",
+   "name": "MouseState",
+   "filePath": "crates/warpui_core/src/elements/hoverable.rs",
+   "lineRange": [
+    69,
+    100
+   ],
+   "summary": "Shared mouse-interaction state for a hoverable: click count, hover flags and hover-in/out timers.",
+   "tags": [
+    "state",
+    "hover",
+    "mouse-interaction"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/hoverable.rs:HoverTimerType",
+   "type": "class",
+   "name": "HoverTimerType",
+   "filePath": "crates/warpui_core/src/elements/hoverable.rs",
+   "lineRange": [
+    184,
+    187
+   ],
+   "summary": "Enum tagging a hover timer as HoverIn or HoverOut, with an opposite() helper.",
+   "tags": [
+    "enum",
+    "hover",
+    "timer"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/live.rs:LiveElement",
+   "type": "class",
+   "name": "LiveElement",
+   "filePath": "crates/warpui_core/src/elements/live.rs",
+   "lineRange": [
+    17,
+    22
+   ],
+   "summary": "Wrapper that schedules periodic repaints of its child at a fixed interval for animation.",
+   "tags": [
+    "ui-element",
+    "animation",
+    "repaint"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/min_size.rs:MinSize",
+   "type": "class",
+   "name": "MinSize",
+   "filePath": "crates/warpui_core/src/elements/min_size.rs",
+   "lineRange": [
+    14,
+    17
+   ],
+   "summary": "Element enforcing a minimum size on its child during layout.",
+   "tags": [
+    "ui-element",
+    "constraints",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:DualAxisConfig",
+   "type": "class",
+   "name": "DualAxisConfig",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "lineRange": [
+    200,
+    217
+   ],
+   "summary": "Two-axis scroll state and behaviour: per-axis offsets, drag/hover, clipping and scroll-to-position painting.",
+   "tags": [
+    "scrolling",
+    "dual-axis",
+    "state-management"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:AxisConfiguration",
+   "type": "class",
+   "name": "AxisConfiguration",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "lineRange": [
+    23,
+    32
+   ],
+   "summary": "Enum of a single axis's scroll mode: Manual (caller-driven) or Clipped (framework-clipped scrolling).",
+   "tags": [
+    "enum",
+    "scrolling",
+    "config"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:ScrollToPosition",
+   "type": "class",
+   "name": "ScrollToPosition",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "lineRange": [
+    768,
+    775
+   ],
+   "summary": "Enum describing a scroll-to target across Dual, Horizontal or Vertical axes.",
+   "tags": [
+    "enum",
+    "scrolling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:ClippedAxisConfiguration",
+   "type": "class",
+   "name": "ClippedAxisConfiguration",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "lineRange": [
+    35,
+    41
+   ],
+   "summary": "Per-axis clipped-scroll configuration holding the scroll handle, max size and child-stretch flag.",
+   "tags": [
+    "scrolling",
+    "config",
+    "state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollable",
+   "type": "class",
+   "name": "NewScrollable",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    1056,
+    1088
+   ],
+   "summary": "Scrollable container element wrapping a child with scrollbars, drag/wheel scrolling and selection-aware scroll anchoring.",
+   "tags": [
+    "ui-element",
+    "scrolling",
+    "scrollbar"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollableElement",
+   "type": "class",
+   "name": "NewScrollableElement",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    59,
+    85
+   ],
+   "summary": "Trait implemented by scrollable child elements exposing axis, scroll-data and scroll operations.",
+   "tags": [
+    "trait",
+    "scrolling",
+    "abstraction"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableAxis",
+   "type": "class",
+   "name": "ScrollableAxis",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    89,
+    93
+   ],
+   "summary": "Enum of scroll axes: Horizontal, Vertical or Both.",
+   "tags": [
+    "enum",
+    "scrolling"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableState",
+   "type": "class",
+   "name": "ScrollableState",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    124,
+    138
+   ],
+   "summary": "Enum of scrollable internal state for single-axis vs both-axes configurations driving layout and event handling.",
+   "tags": [
+    "scrolling",
+    "state-management"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollbarRenderState",
+   "type": "class",
+   "name": "ScrollbarRenderState",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    894,
+    909
+   ],
+   "summary": "Computed scrollbar render geometry: track/thumb bounds, position and size percentages and padding.",
+   "tags": [
+    "scrolling",
+    "scrollbar",
+    "geometry"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableAppearance",
+   "type": "class",
+   "name": "ScrollableAppearance",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    98,
+    104
+   ],
+   "summary": "Scrollbar appearance config holding scrollbar size and whether it is overlaid on content.",
+   "tags": [
+    "scrolling",
+    "scrollbar",
+    "config"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:BasicScrollableView",
+   "type": "class",
+   "name": "BasicScrollableView",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "lineRange": [
+    307,
+    314
+   ],
+   "summary": "Test view harness wiring up a scrollable with configurable axes to exercise scroll and click behaviour.",
+   "tags": [
+    "test",
+    "scrolling",
+    "harness"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:ScrollableElement",
+   "type": "class",
+   "name": "ScrollableElement",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "lineRange": [
+    190,
+    196
+   ],
+   "summary": "Test element implementing NewScrollableElement with fixed child elements for scroll assertions.",
+   "tags": [
+    "test",
+    "scrolling",
+    "fixture"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:SelectableProbeElement",
+   "type": "class",
+   "name": "SelectableProbeElement",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "lineRange": [
+    49,
+    52
+   ],
+   "summary": "Test probe element recording selection-API calls (get/expand/smart-select) for assertions.",
+   "tags": [
+    "test",
+    "selection",
+    "fixture"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs:SingleAxisConfig",
+   "type": "class",
+   "name": "SingleAxisConfig",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "lineRange": [
+    23,
+    38
+   ],
+   "summary": "Single-axis scroll state and behaviour: layout, painting, drag/hover, scroll-data and delta clamping for one direction.",
+   "tags": [
+    "scrolling",
+    "single-axis",
+    "state-management"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectableArea",
+   "type": "class",
+   "name": "SelectableArea",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "lineRange": [
+    27,
+    45
+   ],
+   "summary": "Element turning a child into a text-selection region with smart/word/rect selection and selection-handler callbacks.",
+   "tags": [
+    "ui-element",
+    "selection",
+    "text-selection",
+    "event-handling"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/selectable_area.rs:InternalSelection",
+   "type": "class",
+   "name": "InternalSelection",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "lineRange": [
+    52,
+    83
+   ],
+   "summary": "Internal selection state tracking head/tail bounds, expansion, reversal and smart-selection anchors.",
+   "tags": [
+    "selection",
+    "state-management"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectionHandle",
+   "type": "class",
+   "name": "SelectionHandle",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "lineRange": [
+    177,
+    179
+   ],
+   "summary": "Shared handle for an in-progress selection allowing external start/clear and type queries.",
+   "tags": [
+    "selection",
+    "state",
+    "handle"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectionBound",
+   "type": "class",
+   "name": "SelectionBound",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "lineRange": [
+    142,
+    153
+   ],
+   "summary": "Enum of selection anchor kinds (Relative point, TopLeft, BottomRight, Top, Bottom) convertible to absolute points.",
+   "tags": [
+    "enum",
+    "selection",
+    "geometry"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/selectable_area.rs:Selection",
+   "type": "class",
+   "name": "Selection",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "lineRange": [
+    135,
+    139
+   ],
+   "summary": "Concrete selection value holding start/end bounds and a rect-selection flag.",
+   "tags": [
+    "selection",
+    "value-type"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/hoverable.rs:handle_mouse_moved",
+   "type": "function",
+   "name": "handle_mouse_moved",
+   "filePath": "crates/warpui_core/src/elements/hoverable.rs",
+   "lineRange": [
+    447,
+    516
+   ],
+   "summary": "Processes mouse-moved events to (de)bounce hover-in/out transitions and run hover callbacks.",
+   "tags": [
+    "event-handling",
+    "hover",
+    "mouse-interaction"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:scroll_to_position_and_paint_clipped",
+   "type": "function",
+   "name": "scroll_to_position_and_paint_clipped",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "lineRange": [
+    820,
+    909
+   ],
+   "summary": "Scrolls a clipped child to bring a target position into view, then paints it clipped to the viewport.",
+   "tags": [
+    "scrolling",
+    "painting",
+    "clipping"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/new_scrollable/mod.rs:draw_scrollbars",
+   "type": "function",
+   "name": "draw_scrollbars",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    286,
+    391
+   ],
+   "summary": "Draws horizontal/vertical scrollbar tracks and thumbs for the current scroll state and appearance.",
+   "tags": [
+    "scrolling",
+    "scrollbar",
+    "painting"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/new_scrollable/mod.rs:mousewheel",
+   "type": "function",
+   "name": "mousewheel",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "lineRange": [
+    731,
+    835
+   ],
+   "summary": "Handles mouse-wheel scroll deltas, applying sensitivity and propagating unhandled scroll to the parent.",
+   "tags": [
+    "scrolling",
+    "event-handling",
+    "mouse-interaction"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:child_constraint_for_axis",
+   "type": "function",
+   "name": "child_constraint_for_axis",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "lineRange": [
+    15,
+    40
+   ],
+   "summary": "Derives the child's layout constraint along a scroll axis, accounting for clipping and scrollbar size.",
+   "tags": [
+    "scrolling",
+    "layout",
+    "utility"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_clipped_scrollable_handle_with_delta",
+   "type": "function",
+   "name": "scroll_clipped_scrollable_handle_with_delta",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "lineRange": [
+    43,
+    73
+   ],
+   "summary": "Advances a clipped scroll handle by a delta, clamping to the child/viewport bounds.",
+   "tags": [
+    "scrolling",
+    "utility",
+    "geometry"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_delta_for_axis",
+   "type": "function",
+   "name": "scroll_delta_for_axis",
+   "filePath": "crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "lineRange": [
+    131,
+    157
+   ],
+   "summary": "Computes the scroll delta needed to bring a region's bounds into the viewport for a given mode.",
+   "tags": [
+    "scrolling",
+    "utility",
+    "geometry"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/selectable_area.rs:update_selection",
+   "type": "function",
+   "name": "update_selection",
+   "filePath": "crates/warpui_core/src/elements/selectable_area.rs",
+   "lineRange": [
+    413,
+    538
+   ],
+   "summary": "Updates the active selection's tail to a new absolute position, applying smart/word/rect expansion rules.",
+   "tags": [
+    "selection",
+    "event-handling"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "class:crates/warpui_core/src/elements/hoverable.rs:Hoverable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "class:crates/warpui_core/src/elements/hoverable.rs:Hoverable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "class:crates/warpui_core/src/elements/hoverable.rs:MouseState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "class:crates/warpui_core/src/elements/hoverable.rs:MouseState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "class:crates/warpui_core/src/elements/hoverable.rs:HoverTimerType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/live.rs",
+   "target": "class:crates/warpui_core/src/elements/live.rs:LiveElement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/live.rs",
+   "target": "class:crates/warpui_core/src/elements/live.rs:LiveElement",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/min_size.rs",
+   "target": "class:crates/warpui_core/src/elements/min_size.rs:MinSize",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/min_size.rs",
+   "target": "class:crates/warpui_core/src/elements/min_size.rs:MinSize",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:DualAxisConfig",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:DualAxisConfig",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:AxisConfiguration",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:AxisConfiguration",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:ScrollToPosition",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:ClippedAxisConfiguration",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:ClippedAxisConfiguration",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollableElement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollableElement",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableAxis",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableAxis",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollbarRenderState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableAppearance",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:ScrollableAppearance",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:BasicScrollableView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:ScrollableElement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:SelectableProbeElement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs:SingleAxisConfig",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs:SingleAxisConfig",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectableArea",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectableArea",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:InternalSelection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:InternalSelection",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectionHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectionHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectionBound",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectionBound",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:Selection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "class:crates/warpui_core/src/elements/selectable_area.rs:Selection",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "function:crates/warpui_core/src/elements/hoverable.rs:handle_mouse_moved",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:scroll_to_position_and_paint_clipped",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/mod.rs:draw_scrollbars",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/mod.rs:mousewheel",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:child_constraint_for_axis",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:child_constraint_for_axis",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_clipped_scrollable_handle_with_delta",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_clipped_scrollable_handle_with_delta",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_delta_for_axis",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_delta_for_axis",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "function:crates/warpui_core/src/elements/selectable_area.rs:update_selection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "file:crates/warpui_core/src/platform/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/hoverable.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/live.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/min_size.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/min_size.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/min_size.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "file:crates/warpui_core/src/units.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/units.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "file:crates/warpui_core/src/platform/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "target": "file:crates/warpui_core/src/units.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "file:crates/warpui_core/src/units.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "file:crates/warpui_core/src/units.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/selectable_area.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/hoverable.rs:Hoverable",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/live.rs:LiveElement",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/min_size.rs:MinSize",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollable",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/selectable_area.rs:SelectableArea",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:ScrollableElement",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:SelectableProbeElement",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs:ScrollableElement",
+   "target": "class:crates/warpui_core/src/elements/new_scrollable/mod.rs:NewScrollableElement",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "function:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs:scroll_to_position_and_paint_clipped",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:scroll_clipped_scrollable_handle_with_delta",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "function:crates/warpui_core/src/elements/new_scrollable/mod.rs:mousewheel",
+   "target": "function:crates/warpui_core/src/elements/new_scrollable/util.rs:child_constraint_for_axis",
+   "type": "calls",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/mod.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+   "target": "file:crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

@@ -1,0 +1,593 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/rendering/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/rendering/mod.rs",
+      "summary": "Rendering configuration types: thin-stroke policy, glyph config, GPU power preference, overall Config, and corner-radius conversion helpers.",
+      "tags": [
+        "rendering",
+        "configuration",
+        "gpu",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/rendering/texture_cache.rs",
+      "type": "file",
+      "name": "texture_cache.rs",
+      "filePath": "crates/warpui_core/src/rendering/texture_cache.rs",
+      "summary": "GPU texture cache mapping image assets to texture handles with frame-based eviction of unused entries.",
+      "tags": [
+        "texture-cache",
+        "rendering",
+        "gpu",
+        "caching"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/rendering/texture_cache_tests.rs",
+      "type": "file",
+      "name": "texture_cache_tests.rs",
+      "filePath": "crates/warpui_core/src/rendering/texture_cache_tests.rs",
+      "summary": "Unit tests verifying TextureCache eviction and retention behavior across frames and asset lifetimes.",
+      "tags": [
+        "test",
+        "texture-cache",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "type": "file",
+      "name": "event_store.rs",
+      "filePath": "crates/warpui_core/src/telemetry/event_store.rs",
+      "summary": "Telemetry event store buffering events, managing session creation/staleness, and building identify, app-active, and named telemetry events.",
+      "tags": [
+        "telemetry",
+        "event-store",
+        "session",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/telemetry/event_store_tests.rs",
+      "type": "file",
+      "name": "event_store_tests.rs",
+      "filePath": "crates/warpui_core/src/telemetry/event_store_tests.rs",
+      "summary": "Unit tests for EventStore session initialization, queue emptiness, and app-active event generation after activity/inactivity.",
+      "tags": [
+        "test",
+        "telemetry",
+        "event-store"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/telemetry/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/telemetry/mod.rs",
+      "summary": "Telemetry facade exposing functions to create, record, and flush events and route them to the EventStore.",
+      "tags": [
+        "telemetry",
+        "facade",
+        "instrumentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/test.rs",
+      "type": "file",
+      "name": "test.rs",
+      "filePath": "crates/warpui_core/src/test.rs",
+      "summary": "Test support module providing a logging/tracing init helper for unit tests.",
+      "tags": [
+        "test",
+        "utility",
+        "setup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/text_selection_utils.rs",
+      "type": "file",
+      "name": "text_selection_utils.rs",
+      "filePath": "crates/warpui_core/src/text_selection_utils.rs",
+      "summary": "Helpers for rendering text selection across newlines, including newline tick geometry and row/offset-based selection-crossing checks.",
+      "tags": [
+        "text-selection",
+        "geometry",
+        "utility",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/time.rs",
+      "type": "file",
+      "name": "time.rs",
+      "filePath": "crates/warpui_core/src/time.rs",
+      "summary": "Time utilities returning the current time, with a test-overridable offset for deterministic tests.",
+      "tags": [
+        "time",
+        "utility",
+        "testing"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Uses cfg(test) to swap the real clock for an offset-controllable test clock."
+    },
+    {
+      "id": "file:crates/warpui_core/src/traces.rs",
+      "type": "file",
+      "name": "traces.rs",
+      "filePath": "crates/warpui_core/src/traces.rs",
+      "summary": "In-process performance trace recorder that timestamps named events between start and end markers.",
+      "tags": [
+        "tracing",
+        "performance",
+        "instrumentation",
+        "telemetry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/util.rs",
+      "type": "file",
+      "name": "util.rs",
+      "filePath": "crates/warpui_core/src/util.rs",
+      "summary": "General-purpose utilities: post-increment helper, saving bytes to a file, and string-to-integer parsing.",
+      "tags": [
+        "utility",
+        "parsing",
+        "helpers"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/windowing/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/warpui_core/src/windowing/mod.rs",
+      "summary": "Per-window event dispatch layer defining window callbacks and the dispatcher that routes input, resize, move, scene-build, and frame-draw events.",
+      "tags": [
+        "windowing",
+        "event-handler",
+        "dispatcher",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/windowing/state.rs",
+      "type": "file",
+      "name": "state.rs",
+      "filePath": "crates/warpui_core/src/windowing/state.rs",
+      "summary": "Application window state manager owning stage, active window, window stack, and fullscreen state, driving window lifecycle, focus, geometry, and appearance via the platform.",
+      "tags": [
+        "windowing",
+        "window-management",
+        "state",
+        "platform"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/windowing/system.rs",
+      "type": "file",
+      "name": "system.rs",
+      "filePath": "crates/warpui_core/src/windowing/system.rs",
+      "summary": "Windowing-system detection enum (X11/Wayland/AppKit/Windows) derived from a raw display handle, gating programmatic window activation.",
+      "tags": [
+        "windowing",
+        "platform",
+        "detection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/rendering/texture_cache.rs:TextureCache",
+      "type": "class",
+      "name": "TextureCache",
+      "filePath": "crates/warpui_core/src/rendering/texture_cache.rs",
+      "lineRange": [
+        26,
+        31
+      ],
+      "summary": "Frame-indexed cache mapping image assets to GPU texture handles, inserting on demand and evicting textures unused for too many frames.",
+      "tags": [
+        "texture-cache",
+        "rendering",
+        "gpu",
+        "caching"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/telemetry/event_store.rs:EventStore",
+      "type": "class",
+      "name": "EventStore",
+      "filePath": "crates/warpui_core/src/telemetry/event_store.rs",
+      "lineRange": [
+        18,
+        24
+      ],
+      "summary": "Buffers telemetry events, manages session lifecycle and staleness, and constructs identify, app-active, and named events for later flushing.",
+      "tags": [
+        "telemetry",
+        "event-store",
+        "session",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/traces.rs:Traces",
+      "type": "class",
+      "name": "Traces",
+      "filePath": "crates/warpui_core/src/traces.rs",
+      "lineRange": [
+        13,
+        18
+      ],
+      "summary": "Lightweight in-process trace recorder that timestamps named events between a start and end marker for performance tracing.",
+      "tags": [
+        "tracing",
+        "telemetry",
+        "performance",
+        "instrumentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/windowing/mod.rs:WindowCallbackDispatcher",
+      "type": "class",
+      "name": "WindowCallbackDispatcher",
+      "filePath": "crates/warpui_core/src/windowing/mod.rs",
+      "lineRange": [
+        56,
+        59
+      ],
+      "summary": "Dispatches per-window events (input, resize, move, scene build, frame draw results, cursor position) to registered window callbacks.",
+      "tags": [
+        "windowing",
+        "event-handler",
+        "dispatcher",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/warpui_core/src/windowing/state.rs:WindowManager",
+      "type": "class",
+      "name": "WindowManager",
+      "filePath": "crates/warpui_core/src/windowing/state.rs",
+      "lineRange": [
+        54,
+        57
+      ],
+      "summary": "Owns application window state (stage, active window, window stack, fullscreen) and drives window lifecycle, focus, display geometry, and blur/title operations via the platform.",
+      "tags": [
+        "windowing",
+        "window-management",
+        "state",
+        "platform"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/warpui_core/src/windowing/system.rs:System",
+      "type": "class",
+      "name": "System",
+      "filePath": "crates/warpui_core/src/windowing/system.rs",
+      "lineRange": [
+        10,
+        15
+      ],
+      "summary": "Enum identifying the host windowing system (X11, Wayland, AppKit, Windows), derived from a raw display handle and gating programmatic window activation.",
+      "tags": [
+        "windowing",
+        "platform",
+        "enum",
+        "detection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text_selection_utils.rs:selection_crosses_newline_row_based",
+      "type": "function",
+      "name": "selection_crosses_newline_row_based",
+      "filePath": "crates/warpui_core/src/text_selection_utils.rs",
+      "lineRange": [
+        42,
+        60
+      ],
+      "summary": "Determines whether a text selection spans across a newline at a given row using row/column selection coordinates.",
+      "tags": [
+        "text-selection",
+        "geometry",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text_selection_utils.rs:selection_crosses_newline_offset_based",
+      "type": "function",
+      "name": "selection_crosses_newline_offset_based",
+      "filePath": "crates/warpui_core/src/text_selection_utils.rs",
+      "lineRange": [
+        68,
+        85
+      ],
+      "summary": "Determines whether a text selection crosses a line's trailing newline using absolute character offsets.",
+      "tags": [
+        "text-selection",
+        "geometry",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/util.rs:parse_i32",
+      "type": "function",
+      "name": "parse_i32",
+      "filePath": "crates/warpui_core/src/util.rs",
+      "lineRange": [
+        35,
+        66
+      ],
+      "summary": "Parses a string into an i32, handling sign and surfacing parse errors; used for value/config parsing.",
+      "tags": [
+        "parsing",
+        "utility",
+        "validation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/rendering/texture_cache.rs",
+      "target": "class:crates/warpui_core/src/rendering/texture_cache.rs:TextureCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/texture_cache.rs",
+      "target": "class:crates/warpui_core/src/rendering/texture_cache.rs:TextureCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "target": "class:crates/warpui_core/src/telemetry/event_store.rs:EventStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "target": "class:crates/warpui_core/src/telemetry/event_store.rs:EventStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/traces.rs",
+      "target": "class:crates/warpui_core/src/traces.rs:Traces",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/mod.rs",
+      "target": "class:crates/warpui_core/src/windowing/mod.rs:WindowCallbackDispatcher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/mod.rs",
+      "target": "class:crates/warpui_core/src/windowing/mod.rs:WindowCallbackDispatcher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/state.rs",
+      "target": "class:crates/warpui_core/src/windowing/state.rs:WindowManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/state.rs",
+      "target": "class:crates/warpui_core/src/windowing/state.rs:WindowManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/system.rs",
+      "target": "class:crates/warpui_core/src/windowing/system.rs:System",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/system.rs",
+      "target": "class:crates/warpui_core/src/windowing/system.rs:System",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_selection_utils.rs",
+      "target": "function:crates/warpui_core/src/text_selection_utils.rs:selection_crosses_newline_row_based",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_selection_utils.rs",
+      "target": "function:crates/warpui_core/src/text_selection_utils.rs:selection_crosses_newline_row_based",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_selection_utils.rs",
+      "target": "function:crates/warpui_core/src/text_selection_utils.rs:selection_crosses_newline_offset_based",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text_selection_utils.rs",
+      "target": "function:crates/warpui_core/src/text_selection_utils.rs:selection_crosses_newline_offset_based",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/util.rs",
+      "target": "function:crates/warpui_core/src/util.rs:parse_i32",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/util.rs",
+      "target": "function:crates/warpui_core/src/util.rs:parse_i32",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/mod.rs",
+      "target": "file:crates/warpui_core/src/rendering/gpu_info.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/mod.rs",
+      "target": "file:crates/warpui_core/src/rendering/texture_cache.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/texture_cache.rs",
+      "target": "file:crates/warpui_core/src/image_cache.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/texture_cache_tests.rs",
+      "target": "file:crates/warpui_core/src/image_cache.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "target": "file:crates/warpui_core/src/time.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/event_store_tests.rs",
+      "target": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/event_store_tests.rs",
+      "target": "file:crates/warpui_core/src/time.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/mod.rs",
+      "target": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/mod.rs",
+      "target": "file:crates/warpui_core/src/actions.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/mod.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/mod.rs",
+      "target": "file:crates/warpui_core/src/windowing/state.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/mod.rs",
+      "target": "file:crates/warpui_core/src/windowing/system.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/state.rs",
+      "target": "file:crates/warpui_core/src/platform/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/windowing/state.rs",
+      "target": "file:crates/warpui_core/src/scene.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/warpui_core/src/rendering/texture_cache.rs",
+      "target": "file:crates/warpui_core/src/rendering/texture_cache_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/telemetry/event_store.rs",
+      "target": "file:crates/warpui_core/src/telemetry/event_store_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

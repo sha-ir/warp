@@ -1,0 +1,1189 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/warpui_core/src/elements/align.rs",
+   "type": "file",
+   "name": "align.rs",
+   "filePath": "crates/warpui_core/src/elements/align.rs",
+   "summary": "Element wrapper that aligns its single child within the allocated space according to an Alignment (corners, edges, centers), forwarding layout/paint/selection to the child.",
+   "tags": [
+    "ui-element",
+    "layout",
+    "alignment",
+    "selection-forwarding"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/clipped.rs",
+   "type": "file",
+   "name": "clipped.rs",
+   "filePath": "crates/warpui_core/src/elements/clipped.rs",
+   "summary": "Element that clips its child's painting to a bounded region (optionally a fixed size), used to constrain overflow during rendering.",
+   "tags": [
+    "ui-element",
+    "clipping",
+    "painting",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/constrained_box.rs",
+   "type": "file",
+   "name": "constrained_box.rs",
+   "filePath": "crates/warpui_core/src/elements/constrained_box.rs",
+   "summary": "Element that imposes min/max width and height constraints on its child before laying it out, with fluent builder methods for each bound.",
+   "tags": [
+    "ui-element",
+    "layout",
+    "constraints",
+    "builder"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/container.rs",
+   "type": "file",
+   "name": "container.rs",
+   "filePath": "crates/warpui_core/src/elements/container.rs",
+   "summary": "Box-model element providing margin, padding, background fill/gradient, border, corner radius, drop shadow and overlay around a child; the primary styling primitive of warpui.",
+   "tags": [
+    "ui-element",
+    "box-model",
+    "styling",
+    "builder"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Heavy use of fluent `with_*` builder methods returning Self for chained construction."
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/dismiss.rs",
+   "type": "file",
+   "name": "dismiss.rs",
+   "filePath": "crates/warpui_core/src/elements/dismiss.rs",
+   "summary": "Element that detects clicks/events outside its child and invokes a dismiss handler, optionally blocking interaction with other elements (used for popovers/menus).",
+   "tags": [
+    "ui-element",
+    "event-handling",
+    "dismiss",
+    "overlay"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/empty.rs",
+   "type": "file",
+   "name": "empty.rs",
+   "filePath": "crates/warpui_core/src/elements/empty.rs",
+   "summary": "Zero-content placeholder element that occupies layout space but paints nothing and ignores events.",
+   "tags": [
+    "ui-element",
+    "placeholder",
+    "layout"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "summary": "Flexbox layout engine (row/column) distributing space among children via flex factors, main/cross axis alignment and spacing; defines the Flex element plus Expanded/Shrinkable wrappers and alignment enums.",
+   "tags": [
+    "ui-element",
+    "layout",
+    "flexbox",
+    "selection-forwarding"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Implements a Flutter-style flex algorithm with FlexFit (Tight/Loose) and a two-pass layout in the large `layout` method."
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "type": "file",
+   "name": "wrap.rs",
+   "filePath": "crates/warpui_core/src/elements/flex/wrap.rs",
+   "summary": "Wrapping flex layout that flows children into multiple runs along the main axis, breaking to a new line when space is exhausted; includes run-fill helpers.",
+   "tags": [
+    "ui-element",
+    "layout",
+    "flex-wrap",
+    "multi-line"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "type": "file",
+   "name": "formatted_text_element.rs",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "summary": "Rich-text rendering element for formatted/markdown content: headings, code blocks, lists, hyperlinks, inline code, hover/click handlers, text selection and secret redaction.",
+   "tags": [
+    "ui-element",
+    "text-rendering",
+    "rich-text",
+    "selection"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Largest element in the batch (~2600 lines); the 440-line `layout` method lays out heterogeneous line types into text frames."
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/align.rs:Align",
+   "type": "class",
+   "name": "Align",
+   "filePath": "crates/warpui_core/src/elements/align.rs",
+   "lineRange": [
+    12,
+    16
+   ],
+   "summary": "Element that positions its child within the parent box per an Alignment, delegating selection/word-expansion to the child.",
+   "tags": [
+    "ui-element",
+    "alignment",
+    "builder"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/clipped.rs:Clipped",
+   "type": "class",
+   "name": "Clipped",
+   "filePath": "crates/warpui_core/src/elements/clipped.rs",
+   "lineRange": [
+    13,
+    17
+   ],
+   "summary": "Element that clips child painting to a region or fixed size during the paint pass.",
+   "tags": [
+    "ui-element",
+    "clipping",
+    "painting"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/constrained_box.rs:ConstrainedBox",
+   "type": "class",
+   "name": "ConstrainedBox",
+   "filePath": "crates/warpui_core/src/elements/constrained_box.rs",
+   "lineRange": [
+    12,
+    15
+   ],
+   "summary": "Element applying min/max width/height constraints to its child via chained builder methods.",
+   "tags": [
+    "ui-element",
+    "constraints",
+    "builder"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/container.rs:Container",
+   "type": "class",
+   "name": "Container",
+   "filePath": "crates/warpui_core/src/elements/container.rs",
+   "lineRange": [
+    16,
+    31
+   ],
+   "summary": "Box-model styling element (margin, padding, background, border, radius, shadow, overlay) wrapping a single child.",
+   "tags": [
+    "ui-element",
+    "box-model",
+    "styling",
+    "builder"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/dismiss.rs:Dismiss",
+   "type": "class",
+   "name": "Dismiss",
+   "filePath": "crates/warpui_core/src/elements/dismiss.rs",
+   "lineRange": [
+    15,
+    23
+   ],
+   "summary": "Element invoking a handler when an event lands outside its child, for dismissing popovers/menus.",
+   "tags": [
+    "ui-element",
+    "dismiss",
+    "event-handling"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/empty.rs:Empty",
+   "type": "class",
+   "name": "Empty",
+   "filePath": "crates/warpui_core/src/elements/empty.rs",
+   "lineRange": [
+    10,
+    13
+   ],
+   "summary": "Empty placeholder element occupying space but painting nothing.",
+   "tags": [
+    "ui-element",
+    "placeholder"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:Flex",
+   "type": "class",
+   "name": "Flex",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    18,
+    34
+   ],
+   "summary": "Row/column flex container distributing space by flex factors with main/cross alignment and spacing.",
+   "tags": [
+    "ui-element",
+    "flexbox",
+    "layout"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:Expanded",
+   "type": "class",
+   "name": "Expanded",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    872,
+    875
+   ],
+   "summary": "Flex child wrapper that fills available main-axis space with a Tight fit.",
+   "tags": [
+    "ui-element",
+    "flexbox",
+    "wrapper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:Shrinkable",
+   "type": "class",
+   "name": "Shrinkable",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    744,
+    747
+   ],
+   "summary": "Flex child wrapper that takes a flex factor with a Loose fit, shrinking as needed.",
+   "tags": [
+    "ui-element",
+    "flexbox",
+    "wrapper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:LayoutState",
+   "type": "class",
+   "name": "LayoutState",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    37,
+    42
+   ],
+   "summary": "Internal flex layout result holding computed leading/between spacing for main-axis distribution.",
+   "tags": [
+    "layout",
+    "flexbox",
+    "state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:MainAxisAlignment",
+   "type": "class",
+   "name": "MainAxisAlignment",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    706,
+    718
+   ],
+   "summary": "Enum of main-axis alignments: Start, End, Center, SpaceBetween, SpaceEvenly.",
+   "tags": [
+    "enum",
+    "flexbox",
+    "alignment"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:CrossAxisAlignment",
+   "type": "class",
+   "name": "CrossAxisAlignment",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    733,
+    742
+   ],
+   "summary": "Enum of cross-axis alignments: Start, End, Center, Stretch.",
+   "tags": [
+    "enum",
+    "flexbox",
+    "alignment"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:MainAxisSize",
+   "type": "class",
+   "name": "MainAxisSize",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    722,
+    729
+   ],
+   "summary": "Enum controlling whether a flex container hugs (Min) or fills (Max) the main axis.",
+   "tags": [
+    "enum",
+    "flexbox",
+    "sizing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/mod.rs:FlexFit",
+   "type": "class",
+   "name": "FlexFit",
+   "filePath": "crates/warpui_core/src/elements/flex/mod.rs",
+   "lineRange": [
+    698,
+    701
+   ],
+   "summary": "Enum for how a flexible child is fit: Tight (must fill) or Loose (may shrink).",
+   "tags": [
+    "enum",
+    "flexbox",
+    "sizing"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/wrap.rs:Wrap",
+   "type": "class",
+   "name": "Wrap",
+   "filePath": "crates/warpui_core/src/elements/flex/wrap.rs",
+   "lineRange": [
+    22,
+    34
+   ],
+   "summary": "Wrapping flex container flowing children into runs that break onto new lines along the cross axis.",
+   "tags": [
+    "ui-element",
+    "flex-wrap",
+    "layout"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapChild",
+   "type": "class",
+   "name": "WrapChild",
+   "filePath": "crates/warpui_core/src/elements/flex/wrap.rs",
+   "lineRange": [
+    472,
+    476
+   ],
+   "summary": "Per-child layout record in a Wrap tracking its element and laid-out/painted state.",
+   "tags": [
+    "ui-element",
+    "flex-wrap",
+    "state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapFill",
+   "type": "class",
+   "name": "WrapFill",
+   "filePath": "crates/warpui_core/src/elements/flex/wrap.rs",
+   "lineRange": [
+    404,
+    407
+   ],
+   "summary": "Wrap child that fills remaining or entire run space, with a minimum-space requirement.",
+   "tags": [
+    "ui-element",
+    "flex-wrap",
+    "wrapper"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FormattedTextElement",
+   "type": "class",
+   "name": "FormattedTextElement",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    144,
+    169
+   ],
+   "summary": "Rich formatted-text element rendering headings, lists, code blocks, hyperlinks and inline code with hover/click and selection support.",
+   "tags": [
+    "ui-element",
+    "rich-text",
+    "text-rendering",
+    "selection"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:HeadingFontSizeMultipliers",
+   "type": "class",
+   "name": "HeadingFontSizeMultipliers",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    39,
+    46
+   ],
+   "summary": "Per-heading-level (h1-h6) font-size multiplier configuration for rich text.",
+   "tags": [
+    "rich-text",
+    "headings",
+    "config"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FrameMouseHandlers",
+   "type": "class",
+   "name": "FrameMouseHandlers",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    1399,
+    1410
+   ],
+   "summary": "Per-text-frame registry of click/hover handlers, styles and secret-replacement ranges with glyph/byte offsets.",
+   "tags": [
+    "rich-text",
+    "event-handling",
+    "state"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:LaidOutTextFrame",
+   "type": "class",
+   "name": "LaidOutTextFrame",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    1263,
+    1290
+   ],
+   "summary": "Enum of laid-out frame kinds (Text, CodeBlock, Indented, LineBreak) with geometry and hit-testing helpers.",
+   "tags": [
+    "enum",
+    "rich-text",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:LineType",
+   "type": "class",
+   "name": "LineType",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    1566,
+    1572
+   ],
+   "summary": "Enum classifying a formatted line as ordered/unordered list, formatted line, code block or line break.",
+   "tags": [
+    "enum",
+    "rich-text",
+    "markdown"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:SnappingPolicy",
+   "type": "class",
+   "name": "SnappingPolicy",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    2562,
+    2572
+   ],
+   "summary": "Policy controlling selection snapping behaviour (snap on gaps, snap to ends, char-index adjustment).",
+   "tags": [
+    "selection",
+    "policy",
+    "config"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/formatted_text_element.rs:HyperlinkLens",
+   "type": "class",
+   "name": "HyperlinkLens",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    109,
+    112
+   ],
+   "summary": "Enum distinguishing a hyperlink target as a URL or an in-app Action.",
+   "tags": [
+    "enum",
+    "rich-text",
+    "hyperlink"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/formatted_text_element.rs:layout",
+   "type": "function",
+   "name": "layout",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    1593,
+    2035
+   ],
+   "summary": "Lays out heterogeneous formatted line types (headings, lists, code blocks) into positioned text frames within the constraint.",
+   "tags": [
+    "layout",
+    "rich-text",
+    "text-layout"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/formatted_text_element.rs:position_for_point",
+   "type": "function",
+   "name": "position_for_point",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    551,
+    664
+   ],
+   "summary": "Maps an absolute screen point to a text position/selection bound under a snapping policy for hit-testing selections.",
+   "tags": [
+    "selection",
+    "hit-testing",
+    "text"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/formatted_text_element.rs:handle_mouse_moved",
+   "type": "function",
+   "name": "handle_mouse_moved",
+   "filePath": "crates/warpui_core/src/elements/formatted_text_element.rs",
+   "lineRange": [
+    855,
+    977
+   ],
+   "summary": "Handles mouse movement over formatted text to update hyperlink/hover highlight state and cursor.",
+   "tags": [
+    "event-handling",
+    "hover",
+    "rich-text"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/warpui_core/src/elements/align.rs",
+   "target": "class:crates/warpui_core/src/elements/align.rs:Align",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/align.rs",
+   "target": "class:crates/warpui_core/src/elements/align.rs:Align",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/clipped.rs",
+   "target": "class:crates/warpui_core/src/elements/clipped.rs:Clipped",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/clipped.rs",
+   "target": "class:crates/warpui_core/src/elements/clipped.rs:Clipped",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/constrained_box.rs",
+   "target": "class:crates/warpui_core/src/elements/constrained_box.rs:ConstrainedBox",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/constrained_box.rs",
+   "target": "class:crates/warpui_core/src/elements/constrained_box.rs:ConstrainedBox",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/container.rs",
+   "target": "class:crates/warpui_core/src/elements/container.rs:Container",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/container.rs",
+   "target": "class:crates/warpui_core/src/elements/container.rs:Container",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/dismiss.rs",
+   "target": "class:crates/warpui_core/src/elements/dismiss.rs:Dismiss",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/dismiss.rs",
+   "target": "class:crates/warpui_core/src/elements/dismiss.rs:Dismiss",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/empty.rs",
+   "target": "class:crates/warpui_core/src/elements/empty.rs:Empty",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/empty.rs",
+   "target": "class:crates/warpui_core/src/elements/empty.rs:Empty",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:Flex",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:Flex",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:Expanded",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:Expanded",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:Shrinkable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:Shrinkable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:LayoutState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:MainAxisAlignment",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:MainAxisAlignment",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:CrossAxisAlignment",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:CrossAxisAlignment",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:MainAxisSize",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:MainAxisSize",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/mod.rs:FlexFit",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/wrap.rs:Wrap",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/wrap.rs:Wrap",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapChild",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapFill",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapFill",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FormattedTextElement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FormattedTextElement",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:HeadingFontSizeMultipliers",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:HeadingFontSizeMultipliers",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FrameMouseHandlers",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FrameMouseHandlers",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:LaidOutTextFrame",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:LineType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:SnappingPolicy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:HyperlinkLens",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "class:crates/warpui_core/src/elements/formatted_text_element.rs:HyperlinkLens",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "function:crates/warpui_core/src/elements/formatted_text_element.rs:layout",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "function:crates/warpui_core/src/elements/formatted_text_element.rs:position_for_point",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "function:crates/warpui_core/src/elements/formatted_text_element.rs:handle_mouse_moved",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/align.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/align.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/align.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/clipped.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/constrained_box.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/constrained_box.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/constrained_box.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/container.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/container.rs",
+   "target": "file:crates/warpui_core/src/scene.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/container.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/container.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/dismiss.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/empty.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "file:crates/warpui_core/src/elements/flex/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/flex/wrap.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/fonts.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/platform/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/text_layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/formatted_text_element.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/align.rs:Align",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/clipped.rs:Clipped",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/constrained_box.rs:ConstrainedBox",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/container.rs:Container",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/dismiss.rs:Dismiss",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/empty.rs:Empty",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/flex/mod.rs:Flex",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/flex/mod.rs:Expanded",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/flex/mod.rs:Shrinkable",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/flex/wrap.rs:Wrap",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapFill",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/flex/wrap.rs:WrapChild",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/formatted_text_element.rs:FormattedTextElement",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  }
+ ]
+}

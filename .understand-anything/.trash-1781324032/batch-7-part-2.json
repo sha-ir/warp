@@ -1,0 +1,1622 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/editor/src/render/element/hidden_section.rs",
+   "type": "file",
+   "name": "hidden_section.rs",
+   "filePath": "crates/editor/src/render/element/hidden_section.rs",
+   "summary": "Renderable element for collapsed/hidden document sections, dispatching click events to expand and reporting hidden-section state.",
+   "tags": [
+    "render",
+    "ui-element",
+    "collapsible",
+    "event-handler"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "type": "file",
+   "name": "horizontal_rule.rs",
+   "filePath": "crates/editor/src/render/element/horizontal_rule.rs",
+   "summary": "Renderable element drawing a markdown horizontal rule, including selection highlight and cursor rectangle handling.",
+   "tags": [
+    "render",
+    "ui-element",
+    "markdown",
+    "cursor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/image.rs",
+   "type": "file",
+   "name": "image.rs",
+   "filePath": "crates/editor/src/render/element/image.rs",
+   "summary": "Renderable element that lays out and paints an inline image block within the rich-text editor.",
+   "tags": [
+    "render",
+    "ui-element",
+    "image",
+    "embedded-block"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/lens_element.rs",
+   "type": "file",
+   "name": "lens_element.rs",
+   "filePath": "crates/editor/src/render/element/lens_element.rs",
+   "summary": "RichTextElementLens renders a windowed sub-range of editor blocks (a lens) for embedding editor content inside other views.",
+   "tags": [
+    "render",
+    "ui-element",
+    "lens",
+    "viewport"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/mermaid.rs",
+   "type": "file",
+   "name": "mermaid.rs",
+   "filePath": "crates/editor/src/render/element/mermaid.rs",
+   "summary": "Renderable element that lays out and paints a rendered Mermaid diagram block, with a footer and focus-aware interaction.",
+   "tags": [
+    "render",
+    "ui-element",
+    "mermaid",
+    "embedded-block"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "summary": "Central rich-text rendering element: owns the block layout/paint pipeline, the RenderableBlock trait, hit-testing, mouse/keyboard dispatch, cursor blink state, and the RichTextAction command surface.",
+   "tags": [
+    "render",
+    "ui-element",
+    "event-handler",
+    "layout",
+    "hit-testing"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Defines the RenderableBlock trait object interface that every concrete element (image, table, header, etc.) implements, plus a large dispatch_event router."
+  },
+  {
+   "id": "file:crates/editor/src/render/element/ordered_list.rs",
+   "type": "file",
+   "name": "ordered_list.rs",
+   "filePath": "crates/editor/src/render/element/ordered_list.rs",
+   "summary": "Renderable element for an ordered-list item, rendering its number marker and indentation alongside the line content.",
+   "tags": [
+    "render",
+    "ui-element",
+    "markdown",
+    "list"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/paint.rs",
+   "type": "file",
+   "name": "paint.rs",
+   "filePath": "crates/editor/src/render/element/paint.rs",
+   "summary": "RenderContext paint helpers: converts content coordinates to screen space and draws paragraphs, text, lines, decorations, and cursors for rich-text blocks.",
+   "tags": [
+    "render",
+    "painting",
+    "cursor",
+    "coordinates"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Centralizes content-to-screen coordinate mapping so individual elements paint via a shared RenderContext."
+  },
+  {
+   "id": "file:crates/editor/src/render/element/paragraph.rs",
+   "type": "file",
+   "name": "paragraph.rs",
+   "filePath": "crates/editor/src/render/element/paragraph.rs",
+   "summary": "Renderable element for a plain paragraph line, painting its text and slash-menu placeholder when empty.",
+   "tags": [
+    "render",
+    "ui-element",
+    "paragraph",
+    "placeholder"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/placeholder.rs",
+   "type": "file",
+   "name": "placeholder.rs",
+   "filePath": "crates/editor/src/render/element/placeholder.rs",
+   "summary": "BlockPlaceholder draws hint/placeholder text for empty blocks, tracking a layout state machine (PendingLayout/LaidOut/NotShown).",
+   "tags": [
+    "render",
+    "ui-element",
+    "placeholder",
+    "state-machine"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/runnable_command.rs",
+   "type": "file",
+   "name": "runnable_command.rs",
+   "filePath": "crates/editor/src/render/element/runnable_command.rs",
+   "summary": "Renderable element that paints a runnable-command block with a run footer and border, dispatching click-to-run events.",
+   "tags": [
+    "render",
+    "ui-element",
+    "runnable-command",
+    "event-handler"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/editor/src/render/element/table.rs",
+   "type": "file",
+   "name": "table.rs",
+   "filePath": "crates/editor/src/render/element/table.rs",
+   "summary": "Renderable element for markdown tables: paints backgrounds, borders, cell text, selection and cursor, and handles horizontal scrolling with a draggable scrollbar.",
+   "tags": [
+    "render",
+    "ui-element",
+    "table",
+    "scrolling"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Includes a horizontal scrollbar with drag state that must survive renderable recreation, plus selection/cursor geometry math."
+  },
+  {
+   "id": "file:crates/editor/src/render/element/table_tests.rs",
+   "type": "file",
+   "name": "table_tests.rs",
+   "filePath": "crates/editor/src/render/element/table_tests.rs",
+   "summary": "Unit tests for table layout geometry, coordinate-to-offset mapping, cell ranges, scrollbar behavior, and selection/cursor offset math.",
+   "tags": [
+    "test",
+    "table",
+    "render",
+    "geometry"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/hidden_section.rs:RenderableHiddenSection",
+   "type": "class",
+   "name": "RenderableHiddenSection",
+   "filePath": "crates/editor/src/render/element/hidden_section.rs",
+   "lineRange": [
+    17,
+    20
+   ],
+   "summary": "Renderable block for a collapsed section, dispatching expand clicks and reporting hidden-section state.",
+   "tags": [
+    "render",
+    "ui-element",
+    "collapsible"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/horizontal_rule.rs:HorizontalRule",
+   "type": "class",
+   "name": "HorizontalRule",
+   "filePath": "crates/editor/src/render/element/horizontal_rule.rs",
+   "lineRange": [
+    12,
+    14
+   ],
+   "summary": "Renderable block drawing a markdown horizontal rule with selection and cursor handling.",
+   "tags": [
+    "render",
+    "ui-element",
+    "markdown"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/horizontal_rule.rs:draw_rect",
+   "type": "function",
+   "name": "draw_rect",
+   "filePath": "crates/editor/src/render/element/horizontal_rule.rs",
+   "lineRange": [
+    21,
+    61
+   ],
+   "summary": "Draws the horizontal-rule rectangle, applying selection highlight and an optional cursor based on the supplied styles.",
+   "tags": [
+    "render",
+    "painting",
+    "cursor"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/image.rs:RenderableImage",
+   "type": "class",
+   "name": "RenderableImage",
+   "filePath": "crates/editor/src/render/element/image.rs",
+   "lineRange": [
+    11,
+    17
+   ],
+   "summary": "Renderable block that lays out and paints an inline image element.",
+   "tags": [
+    "render",
+    "ui-element",
+    "image"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/image.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/image.rs",
+   "lineRange": [
+    57,
+    102
+   ],
+   "summary": "Paints the inline image into the frame at its laid-out bounds, handling selection state.",
+   "tags": [
+    "render",
+    "painting",
+    "image"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/lens_element.rs:RichTextElementLens",
+   "type": "class",
+   "name": "RichTextElementLens",
+   "filePath": "crates/editor/src/render/element/lens_element.rs",
+   "lineRange": [
+    19,
+    27
+   ],
+   "summary": "Renders a windowed sub-range of editor blocks so editor content can be embedded as a read-only lens inside other views.",
+   "tags": [
+    "render",
+    "ui-element",
+    "lens"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/lens_element.rs:layout",
+   "type": "function",
+   "name": "layout",
+   "filePath": "crates/editor/src/render/element/lens_element.rs",
+   "lineRange": [
+    60,
+    96
+   ],
+   "summary": "Lays out the lens's visible block range within a constraint, computing element size and origin.",
+   "tags": [
+    "render",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/lens_element.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/lens_element.rs",
+   "lineRange": [
+    104,
+    146
+   ],
+   "summary": "Paints the lens's blocks at the given origin, clipping to the lens bounds.",
+   "tags": [
+    "render",
+    "painting"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/mermaid.rs:RenderableMermaidDiagram",
+   "type": "class",
+   "name": "RenderableMermaidDiagram",
+   "filePath": "crates/editor/src/render/element/mermaid.rs",
+   "lineRange": [
+    16,
+    20
+   ],
+   "summary": "Renderable block for a rendered Mermaid diagram, owning the image element and an interactive footer.",
+   "tags": [
+    "render",
+    "ui-element",
+    "mermaid"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/mermaid.rs:layout",
+   "type": "function",
+   "name": "layout",
+   "filePath": "crates/editor/src/render/element/mermaid.rs",
+   "lineRange": [
+    46,
+    116
+   ],
+   "summary": "Lays out the Mermaid diagram image and footer, computing sizing and focus-dependent decorations.",
+   "tags": [
+    "render",
+    "layout"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/mermaid.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/mermaid.rs",
+   "lineRange": [
+    118,
+    178
+   ],
+   "summary": "Paints the Mermaid diagram image and footer into the frame.",
+   "tags": [
+    "render",
+    "painting"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/mod.rs:RichTextElement",
+   "type": "class",
+   "name": "RichTextElement",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    91,
+    130
+   ],
+   "summary": "The top-level rich-text render element: holds the block list, viewport, display state/options, and orchestrates layout, paint, and event dispatch.",
+   "tags": [
+    "render",
+    "ui-element",
+    "viewport"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/mod.rs:DisplayState",
+   "type": "class",
+   "name": "DisplayState",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    136,
+    146
+   ],
+   "summary": "Mutable per-frame display state for the editor: cursor visibility, hovered location, and the next blink update deadline.",
+   "tags": [
+    "render",
+    "state",
+    "cursor"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/mod.rs:DisplayOptions",
+   "type": "class",
+   "name": "DisplayOptions",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    160,
+    186
+   ],
+   "summary": "Configuration controlling how the rich-text element renders: editable/focused flags, cursor blinking, gutters, and vertical expansion behavior.",
+   "tags": [
+    "render",
+    "configuration"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/mod.rs:RenderableBlock",
+   "type": "class",
+   "name": "RenderableBlock",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    205,
+    298
+   ],
+   "summary": "Trait object interface implemented by every concrete renderable block (image, table, header, etc.) defining layout, paint, event dispatch, and bounds.",
+   "tags": [
+    "trait-definition",
+    "render",
+    "ui-element"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/mod.rs:RichTextAction",
+   "type": "class",
+   "name": "RichTextAction",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    307,
+    385
+   ],
+   "summary": "Enum of user-driven rich-text actions (scroll, typing, mouse down/drag/up, hover, task-list click) routed through the render element.",
+   "tags": [
+    "enum",
+    "event-handler",
+    "render"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/mod.rs:renderable_blocks",
+   "type": "function",
+   "name": "renderable_blocks",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    824,
+    925
+   ],
+   "summary": "Builds the list of concrete RenderableBlock instances for the current visible viewport range from the model's blocks.",
+   "tags": [
+    "render",
+    "layout",
+    "factory"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/mod.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    1051,
+    1157
+   ],
+   "summary": "Paints all visible renderable blocks, decorations, and cursors for the rich-text element at the given origin.",
+   "tags": [
+    "render",
+    "painting"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/mod.rs:dispatch_event",
+   "type": "function",
+   "name": "dispatch_event",
+   "filePath": "crates/editor/src/render/element/mod.rs",
+   "lineRange": [
+    1167,
+    1235
+   ],
+   "summary": "Routes input events (mouse, scroll, typing) to the appropriate handlers and target block within the rich-text element.",
+   "tags": [
+    "event-handler",
+    "render",
+    "input"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/ordered_list.rs:RenderableOrderedListItem",
+   "type": "class",
+   "name": "RenderableOrderedListItem",
+   "filePath": "crates/editor/src/render/element/ordered_list.rs",
+   "lineRange": [
+    16,
+    21
+   ],
+   "summary": "Renderable block for an ordered-list item, painting its number marker and indentation with the line content.",
+   "tags": [
+    "render",
+    "ui-element",
+    "list"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/paint.rs:CursorDisplayType",
+   "type": "class",
+   "name": "CursorDisplayType",
+   "filePath": "crates/editor/src/render/element/paint.rs",
+   "lineRange": [
+    25,
+    30
+   ],
+   "summary": "Enum selecting cursor rendering style: Bar, Block, or Underline.",
+   "tags": [
+    "enum",
+    "cursor",
+    "render"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/paint.rs:CursorData",
+   "type": "class",
+   "name": "CursorData",
+   "filePath": "crates/editor/src/render/element/paint.rs",
+   "lineRange": [
+    34,
+    37
+   ],
+   "summary": "Carries per-cursor paint metrics (block width and font size) used when drawing block/bar cursors.",
+   "tags": [
+    "data-model",
+    "cursor",
+    "render"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/paint.rs:RenderContext",
+   "type": "class",
+   "name": "RenderContext",
+   "filePath": "crates/editor/src/render/element/paint.rs",
+   "lineRange": [
+    53,
+    76
+   ],
+   "summary": "Per-paint context bundling bounds, scroll/viewport offset, decorations and saved positions; provides content-to-screen mapping and draw helpers.",
+   "tags": [
+    "render",
+    "painting",
+    "coordinates"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/paint.rs:draw_text",
+   "type": "function",
+   "name": "draw_text",
+   "filePath": "crates/editor/src/render/element/paint.rs",
+   "lineRange": [
+    199,
+    245
+   ],
+   "summary": "Draws a text frame at a content position, applying an optional paint-style override and the base style.",
+   "tags": [
+    "render",
+    "painting",
+    "text"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/paragraph.rs:RenderableParagraph",
+   "type": "class",
+   "name": "RenderableParagraph",
+   "filePath": "crates/editor/src/render/element/paragraph.rs",
+   "lineRange": [
+    24,
+    27
+   ],
+   "summary": "Renderable block for a plain paragraph line, painting text and an empty-line slash-menu placeholder.",
+   "tags": [
+    "render",
+    "ui-element",
+    "paragraph"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/placeholder.rs:BlockPlaceholder",
+   "type": "class",
+   "name": "BlockPlaceholder",
+   "filePath": "crates/editor/src/render/element/placeholder.rs",
+   "lineRange": [
+    15,
+    18
+   ],
+   "summary": "Draws hint/placeholder text for empty blocks, tracking a layout state machine to decide when and where to show it.",
+   "tags": [
+    "render",
+    "ui-element",
+    "placeholder",
+    "state-machine"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/placeholder.rs:layout",
+   "type": "function",
+   "name": "layout",
+   "filePath": "crates/editor/src/render/element/placeholder.rs",
+   "lineRange": [
+    41,
+    87
+   ],
+   "summary": "Lays out the placeholder text relative to an item's content, transitioning the placeholder state machine.",
+   "tags": [
+    "render",
+    "layout",
+    "state-machine"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/placeholder.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/placeholder.rs",
+   "lineRange": [
+    91,
+    128
+   ],
+   "summary": "Paints the placeholder text at the computed content origin using the block style.",
+   "tags": [
+    "render",
+    "painting"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/runnable_command.rs:RenderableRunnableCommand",
+   "type": "class",
+   "name": "RenderableRunnableCommand",
+   "filePath": "crates/editor/src/render/element/runnable_command.rs",
+   "lineRange": [
+    13,
+    17
+   ],
+   "summary": "Renderable block for a runnable-command block, painting a run footer and border and dispatching click-to-run events.",
+   "tags": [
+    "render",
+    "ui-element",
+    "runnable-command"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/runnable_command.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/runnable_command.rs",
+   "lineRange": [
+    61,
+    104
+   ],
+   "summary": "Paints the runnable-command block content, footer, and border into the frame.",
+   "tags": [
+    "render",
+    "painting"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/table.rs:RenderableTable",
+   "type": "class",
+   "name": "RenderableTable",
+   "filePath": "crates/editor/src/render/element/table.rs",
+   "lineRange": [
+    25,
+    29
+   ],
+   "summary": "Renderable block for markdown tables, owning viewport bounds and a horizontal scrollbar and handling paint plus pointer events.",
+   "tags": [
+    "render",
+    "ui-element",
+    "table",
+    "scrolling"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/editor/src/render/element/table.rs:TableLayoutReport",
+   "type": "class",
+   "name": "TableLayoutReport",
+   "filePath": "crates/editor/src/render/element/table.rs",
+   "lineRange": [
+    33,
+    40
+   ],
+   "summary": "Geometry snapshot of a laid-out table (column widths/lefts, row heights/tops, header height, total height) used for hit-testing and painting.",
+   "tags": [
+    "data-model",
+    "table",
+    "geometry"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/table.rs:dispatch_event",
+   "type": "function",
+   "name": "dispatch_event",
+   "filePath": "crates/editor/src/render/element/table.rs",
+   "lineRange": [
+    169,
+    282
+   ],
+   "summary": "Handles table pointer events: scrollbar drag, horizontal scroll, and cell selection/cursor placement.",
+   "tags": [
+    "event-handler",
+    "table",
+    "scrolling"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/table.rs:paint",
+   "type": "function",
+   "name": "paint",
+   "filePath": "crates/editor/src/render/element/table.rs",
+   "lineRange": [
+    117,
+    167
+   ],
+   "summary": "Paints the table by drawing backgrounds, borders, cell text, selection, cursor, and the horizontal scrollbar.",
+   "tags": [
+    "render",
+    "painting",
+    "table"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/editor/src/render/element/table.rs:paint_selection",
+   "type": "function",
+   "name": "paint_selection",
+   "filePath": "crates/editor/src/render/element/table.rs",
+   "lineRange": [
+    484,
+    583
+   ],
+   "summary": "Computes and paints the highlighted selection region across table cells relative to the table's screen position.",
+   "tags": [
+    "render",
+    "painting",
+    "selection",
+    "table"
+   ],
+   "complexity": "complex"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/editor/src/render/element/hidden_section.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/image.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/image.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/image.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "file:crates/editor/src/render/element/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "file:crates/editor/src/render/element/paragraph.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "file:crates/editor/src/render/element/temporary_block.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "file:crates/editor/src/render/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/content/version.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/broken_embedding.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/empty.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/header.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/hidden_section.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/image.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/lens_element.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/mermaid.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/ordered_list.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/paragraph.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/placeholder.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/runnable_command.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/table.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/task_list.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/temporary_block.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/text_block.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/element/unordered_list.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/ordered_list.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/ordered_list.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/ordered_list.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/ordered_list.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "file:crates/editor/src/render/model/saved_positions.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paragraph.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paragraph.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paragraph.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "file:crates/editor/src/render/element/paint.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "file:crates/editor/src/render/layout.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "file:crates/editor/src/editor.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "file:crates/editor/src/render/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "file:crates/editor/src/render/model/table_offset_map.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "file:crates/editor/src/render/model/viewport.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table_tests.rs",
+   "target": "file:crates/editor/src/content/text.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table_tests.rs",
+   "target": "file:crates/editor/src/render/element/table.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table_tests.rs",
+   "target": "file:crates/editor/src/render/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table_tests.rs",
+   "target": "file:crates/editor/src/render/model/table_offset_map.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/editor/src/render/element/hidden_section.rs",
+   "target": "class:crates/editor/src/render/element/hidden_section.rs:RenderableHiddenSection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/hidden_section.rs",
+   "target": "class:crates/editor/src/render/element/hidden_section.rs:RenderableHiddenSection",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "target": "class:crates/editor/src/render/element/horizontal_rule.rs:HorizontalRule",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "target": "class:crates/editor/src/render/element/horizontal_rule.rs:HorizontalRule",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/horizontal_rule.rs",
+   "target": "function:crates/editor/src/render/element/horizontal_rule.rs:draw_rect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/image.rs",
+   "target": "class:crates/editor/src/render/element/image.rs:RenderableImage",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/image.rs",
+   "target": "class:crates/editor/src/render/element/image.rs:RenderableImage",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/image.rs",
+   "target": "function:crates/editor/src/render/element/image.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "class:crates/editor/src/render/element/lens_element.rs:RichTextElementLens",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "class:crates/editor/src/render/element/lens_element.rs:RichTextElementLens",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "function:crates/editor/src/render/element/lens_element.rs:layout",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/lens_element.rs",
+   "target": "function:crates/editor/src/render/element/lens_element.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "class:crates/editor/src/render/element/mermaid.rs:RenderableMermaidDiagram",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "class:crates/editor/src/render/element/mermaid.rs:RenderableMermaidDiagram",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "function:crates/editor/src/render/element/mermaid.rs:layout",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mermaid.rs",
+   "target": "function:crates/editor/src/render/element/mermaid.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:RichTextElement",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:RichTextElement",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:DisplayState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:DisplayState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:DisplayOptions",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:DisplayOptions",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:RenderableBlock",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:RenderableBlock",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:RichTextAction",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "class:crates/editor/src/render/element/mod.rs:RichTextAction",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "function:crates/editor/src/render/element/mod.rs:renderable_blocks",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "function:crates/editor/src/render/element/mod.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/mod.rs",
+   "target": "function:crates/editor/src/render/element/mod.rs:dispatch_event",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/ordered_list.rs",
+   "target": "class:crates/editor/src/render/element/ordered_list.rs:RenderableOrderedListItem",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/ordered_list.rs",
+   "target": "class:crates/editor/src/render/element/ordered_list.rs:RenderableOrderedListItem",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "class:crates/editor/src/render/element/paint.rs:CursorDisplayType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "class:crates/editor/src/render/element/paint.rs:CursorDisplayType",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "class:crates/editor/src/render/element/paint.rs:CursorData",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "class:crates/editor/src/render/element/paint.rs:CursorData",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "class:crates/editor/src/render/element/paint.rs:RenderContext",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "class:crates/editor/src/render/element/paint.rs:RenderContext",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paint.rs",
+   "target": "function:crates/editor/src/render/element/paint.rs:draw_text",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paragraph.rs",
+   "target": "class:crates/editor/src/render/element/paragraph.rs:RenderableParagraph",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/paragraph.rs",
+   "target": "class:crates/editor/src/render/element/paragraph.rs:RenderableParagraph",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "class:crates/editor/src/render/element/placeholder.rs:BlockPlaceholder",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "class:crates/editor/src/render/element/placeholder.rs:BlockPlaceholder",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "function:crates/editor/src/render/element/placeholder.rs:layout",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/placeholder.rs",
+   "target": "function:crates/editor/src/render/element/placeholder.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "class:crates/editor/src/render/element/runnable_command.rs:RenderableRunnableCommand",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "class:crates/editor/src/render/element/runnable_command.rs:RenderableRunnableCommand",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/runnable_command.rs",
+   "target": "function:crates/editor/src/render/element/runnable_command.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "class:crates/editor/src/render/element/table.rs:RenderableTable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "class:crates/editor/src/render/element/table.rs:RenderableTable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "class:crates/editor/src/render/element/table.rs:TableLayoutReport",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "function:crates/editor/src/render/element/table.rs:dispatch_event",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "function:crates/editor/src/render/element/table.rs:paint",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "function:crates/editor/src/render/element/table.rs:paint_selection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/editor/src/render/element/table.rs",
+   "target": "file:crates/editor/src/render/element/table_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

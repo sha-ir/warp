@@ -1,0 +1,35 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'document:crates/editor/test_fixtures/mermaid_sample.md' has no edges (orphan)",
+    "Node 'file:crates/editor/src/multiline_tests.rs' has no edges (orphan)",
+    "Node 'file:crates/editor/test_data/test_rust_file.rs' has no edges (orphan)",
+    "Node 'file:crates/vim/src/paragraph_iterator_tests.rs' has no edges (orphan)",
+    "Node 'file:crates/warpui_core/src/platform/file_picker_tests.rs' has no edges (orphan)",
+    "Node 'file:crates/warpui_core/src/util_tests.rs' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 973,
+    "totalEdges": 2214,
+    "totalLayers": 10,
+    "tourSteps": 13,
+    "nodeTypes": {
+      "file": 293,
+      "class": 397,
+      "function": 273,
+      "document": 7,
+      "config": 3
+    },
+    "edgeTypes": {
+      "contains": 670,
+      "exports": 459,
+      "imports": 1005,
+      "implements": 46,
+      "calls": 13,
+      "depends_on": 12,
+      "related": 3,
+      "documents": 3,
+      "configures": 3
+    }
+  }
+}

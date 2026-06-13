@@ -1,0 +1,2925 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 12,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "crates/warpui_core/src/fonts/metrics.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "from",
+          "startLine": 25,
+          "endLine": 32,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Metrics",
+          "startLine": 3,
+          "endLine": 21,
+          "methods": [
+            "from"
+          ],
+          "properties": [
+            "units_per_em",
+            "ascent",
+            "descent",
+            "line_gap"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Metrics",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/image_cache_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 673,
+      "nonEmptyLines": 602,
+      "functions": [
+        {
+          "name": "get",
+          "startLine": 16,
+          "endLine": 32,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "new_asset_cache",
+          "startLine": 35,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "load_bundled_image",
+          "startLine": 43,
+          "endLine": 64,
+          "params": [
+            "image_cache",
+            "asset_cache",
+            "path",
+            "bounds",
+            "fit_type",
+            "animated_image_behavior"
+          ]
+        },
+        {
+          "name": "test_passes_through_asset_cache_original",
+          "startLine": 67,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "startLine": 105,
+          "endLine": 142,
+          "params": []
+        },
+        {
+          "name": "test_caches_svg_rendered_at_intrinsic_size",
+          "startLine": 145,
+          "endLine": 168,
+          "params": []
+        },
+        {
+          "name": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "startLine": 171,
+          "endLine": 202,
+          "params": []
+        },
+        {
+          "name": "test_respects_max_dimensions_for_cacheoption_original",
+          "startLine": 205,
+          "endLine": 250,
+          "params": []
+        },
+        {
+          "name": "test_first_frame_preview_returns_static_for_animated_gif",
+          "startLine": 253,
+          "endLine": 270,
+          "params": []
+        },
+        {
+          "name": "test_first_frame_preview_keeps_full_animation_in_asset_cache",
+          "startLine": 273,
+          "endLine": 295,
+          "params": []
+        },
+        {
+          "name": "test_first_frame_preview_returns_static_for_animated_webp",
+          "startLine": 298,
+          "endLine": 315,
+          "params": []
+        },
+        {
+          "name": "test_full_animation_still_returns_animated_for_gif_and_webp",
+          "startLine": 318,
+          "endLine": 337,
+          "params": []
+        },
+        {
+          "name": "test_first_frame_preview_does_not_regress_static_formats",
+          "startLine": 340,
+          "endLine": 357,
+          "params": []
+        },
+        {
+          "name": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "startLine": 360,
+          "endLine": 403,
+          "params": []
+        },
+        {
+          "name": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "startLine": 406,
+          "endLine": 465,
+          "params": []
+        },
+        {
+          "name": "test_svg_text_rasterizes_with_bundled_sans_serif_fallback",
+          "startLine": 468,
+          "endLine": 502,
+          "params": []
+        },
+        {
+          "name": "test_evict_image_drops_arc_for_resized_bysize",
+          "startLine": 505,
+          "endLine": 546,
+          "params": []
+        },
+        {
+          "name": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "startLine": 549,
+          "endLine": 617,
+          "params": []
+        },
+        {
+          "name": "test_svg_image_size_returns_intrinsic_dimensions",
+          "startLine": 620,
+          "endLine": 627,
+          "params": []
+        },
+        {
+          "name": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "startLine": 630,
+          "endLine": 673,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Assets",
+          "startLine": 12,
+          "endLine": 12,
+          "methods": [
+            "get"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Assets",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get",
+          "callee": "Ok",
+          "lineNumber": 18
+        },
+        {
+          "caller": "get",
+          "callee": "Cow::Borrowed",
+          "lineNumber": 18
+        },
+        {
+          "caller": "get",
+          "callee": "Ok",
+          "lineNumber": 19
+        },
+        {
+          "caller": "get",
+          "callee": "Cow::Borrowed",
+          "lineNumber": 19
+        },
+        {
+          "caller": "get",
+          "callee": "Ok",
+          "lineNumber": 22
+        },
+        {
+          "caller": "get",
+          "callee": "Cow::Borrowed",
+          "lineNumber": 22
+        },
+        {
+          "caller": "get",
+          "callee": "Ok",
+          "lineNumber": 25
+        },
+        {
+          "caller": "get",
+          "callee": "Cow::Borrowed",
+          "lineNumber": 25
+        },
+        {
+          "caller": "get",
+          "callee": "<Assets as RustEmbed>::get(path)\n                .map(|f| f.data).ok_or_else",
+          "lineNumber": 28
+        },
+        {
+          "caller": "get",
+          "callee": "<Assets as RustEmbed>::get(path).map",
+          "lineNumber": 28
+        },
+        {
+          "caller": "get",
+          "callee": "<Assets as RustEmbed>::get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "new_asset_cache",
+          "callee": "AssetCache::new",
+          "lineNumber": 36
+        },
+        {
+          "caller": "new_asset_cache",
+          "callee": "Box::new",
+          "lineNumber": 37
+        },
+        {
+          "caller": "new_asset_cache",
+          "callee": "Foreground::test().into",
+          "lineNumber": 38
+        },
+        {
+          "caller": "new_asset_cache",
+          "callee": "Foreground::test",
+          "lineNumber": 38
+        },
+        {
+          "caller": "new_asset_cache",
+          "callee": "Background::default().into",
+          "lineNumber": 39
+        },
+        {
+          "caller": "new_asset_cache",
+          "callee": "Background::default",
+          "lineNumber": 39
+        },
+        {
+          "caller": "load_bundled_image",
+          "callee": "image_cache.image",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "new_asset_cache",
+          "lineNumber": 68
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "ImageCache::new",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "asset_cache.load_asset",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "source.clone",
+          "lineNumber": 72
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "image.as_ref",
+          "lineNumber": 76
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "Arc::downgrade",
+          "lineNumber": 79
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "Vector2I::new",
+          "lineNumber": 81
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "image_cache.image",
+          "lineNumber": 82
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original",
+          "callee": "image.as_ref",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "new_asset_cache",
+          "lineNumber": 106
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "ImageCache::new",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "asset_cache.load_asset",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "source.clone",
+          "lineNumber": 110
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "image.as_ref",
+          "lineNumber": 114
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "Arc::downgrade",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "image.size",
+          "lineNumber": 121
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "image_cache.image",
+          "lineNumber": 122
+        },
+        {
+          "caller": "test_passes_through_asset_cache_original_when_target_size_matches_source_size",
+          "callee": "image.as_ref",
+          "lineNumber": 134
+        },
+        {
+          "caller": "test_caches_svg_rendered_at_intrinsic_size",
+          "callee": "new_asset_cache",
+          "lineNumber": 146
+        },
+        {
+          "caller": "test_caches_svg_rendered_at_intrinsic_size",
+          "callee": "ImageCache::new",
+          "lineNumber": 147
+        },
+        {
+          "caller": "test_caches_svg_rendered_at_intrinsic_size",
+          "callee": "Vector2I::new",
+          "lineNumber": 148
+        },
+        {
+          "caller": "test_caches_svg_rendered_at_intrinsic_size",
+          "callee": "load_bundled_image",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_caches_svg_rendered_at_intrinsic_size",
+          "callee": "load_bundled_image",
+          "lineNumber": 158
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "new_asset_cache",
+          "lineNumber": 172
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "ImageCache::new",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "Vector2I::new",
+          "lineNumber": 174
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 176
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 184
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "cover.as_ref",
+          "lineNumber": 193
+        },
+        {
+          "caller": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+          "callee": "stretch.as_ref",
+          "lineNumber": 196
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "new_asset_cache",
+          "lineNumber": 206
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "ImageCache::new",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "Vector2I::new",
+          "lineNumber": 211
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "image_cache.image",
+          "lineNumber": 213
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "image.as_ref",
+          "lineNumber": 226
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "image_cache.image",
+          "lineNumber": 232
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "Some",
+          "lineNumber": 238
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_original",
+          "callee": "image.as_ref",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_gif",
+          "callee": "new_asset_cache",
+          "lineNumber": 254
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_gif",
+          "callee": "ImageCache::new",
+          "lineNumber": 255
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_gif",
+          "callee": "load_bundled_image",
+          "lineNumber": 257
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_gif",
+          "callee": "Vector2I::new",
+          "lineNumber": 261
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_gif",
+          "callee": "image.as_ref",
+          "lineNumber": 266
+        },
+        {
+          "caller": "test_first_frame_preview_keeps_full_animation_in_asset_cache",
+          "callee": "new_asset_cache",
+          "lineNumber": 274
+        },
+        {
+          "caller": "test_first_frame_preview_keeps_full_animation_in_asset_cache",
+          "callee": "ImageCache::new",
+          "lineNumber": 275
+        },
+        {
+          "caller": "test_first_frame_preview_keeps_full_animation_in_asset_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 278
+        },
+        {
+          "caller": "test_first_frame_preview_keeps_full_animation_in_asset_cache",
+          "callee": "Vector2I::new",
+          "lineNumber": 282
+        },
+        {
+          "caller": "test_first_frame_preview_keeps_full_animation_in_asset_cache",
+          "callee": "asset_cache.load_asset",
+          "lineNumber": 289
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_webp",
+          "callee": "new_asset_cache",
+          "lineNumber": 299
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_webp",
+          "callee": "ImageCache::new",
+          "lineNumber": 300
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_webp",
+          "callee": "load_bundled_image",
+          "lineNumber": 302
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_webp",
+          "callee": "Vector2I::new",
+          "lineNumber": 306
+        },
+        {
+          "caller": "test_first_frame_preview_returns_static_for_animated_webp",
+          "callee": "image.as_ref",
+          "lineNumber": 311
+        },
+        {
+          "caller": "test_full_animation_still_returns_animated_for_gif_and_webp",
+          "callee": "new_asset_cache",
+          "lineNumber": 319
+        },
+        {
+          "caller": "test_full_animation_still_returns_animated_for_gif_and_webp",
+          "callee": "ImageCache::new",
+          "lineNumber": 320
+        },
+        {
+          "caller": "test_full_animation_still_returns_animated_for_gif_and_webp",
+          "callee": "load_bundled_image",
+          "lineNumber": 323
+        },
+        {
+          "caller": "test_full_animation_still_returns_animated_for_gif_and_webp",
+          "callee": "Vector2I::new",
+          "lineNumber": 327
+        },
+        {
+          "caller": "test_full_animation_still_returns_animated_for_gif_and_webp",
+          "callee": "image.as_ref",
+          "lineNumber": 332
+        },
+        {
+          "caller": "test_first_frame_preview_does_not_regress_static_formats",
+          "callee": "new_asset_cache",
+          "lineNumber": 341
+        },
+        {
+          "caller": "test_first_frame_preview_does_not_regress_static_formats",
+          "callee": "ImageCache::new",
+          "lineNumber": 342
+        },
+        {
+          "caller": "test_first_frame_preview_does_not_regress_static_formats",
+          "callee": "load_bundled_image",
+          "lineNumber": 344
+        },
+        {
+          "caller": "test_first_frame_preview_does_not_regress_static_formats",
+          "callee": "Vector2I::new",
+          "lineNumber": 348
+        },
+        {
+          "caller": "test_first_frame_preview_does_not_regress_static_formats",
+          "callee": "image.as_ref",
+          "lineNumber": 353
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "new_asset_cache",
+          "lineNumber": 361
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "ImageCache::new",
+          "lineNumber": 362
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "Vector2I::new",
+          "lineNumber": 363
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 365
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 373
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 381
+        },
+        {
+          "caller": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+          "callee": "load_bundled_image",
+          "lineNumber": 389
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "ImageType::try_from_bytes(\n        br##\"<svg width=\"160\" height=\"40\" viewBox=\"0 0 160 40\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"10\" y=\"24\" font-size=\"20\" fill=\"#000000\">Warp</text>\n</svg>\n\"##,\n    ).expect",
+          "lineNumber": 407
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "ImageType::try_from_bytes",
+          "lineNumber": 407
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg\n        .fontdb()\n        .faces()\n        .flat_map(|face| face.families.iter().map(|(family, _)| family.as_str()))\n        .find(|family| {\n            matches!(\n                *family,\n                \"Arial\"\n                    | \"Helvetica\"\n                    | \"Inter\"\n                    | \"DejaVu Sans\"\n                    | \"Liberation Sans\"\n                    | \"Noto Sans\"\n                    | \"Cantarell\"\n                    | \"Segoe UI\"\n            )\n        })\n        .or_else(|| {\n            svg.fontdb()\n                .faces()\n                .find_map(|face| face.families.first().map(|(family, _)| family.as_str()))\n        }).expect",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg\n        .fontdb()\n        .faces()\n        .flat_map(|face| face.families.iter().map(|(family, _)| family.as_str()))\n        .find(|family| {\n            matches!(\n                *family,\n                \"Arial\"\n                    | \"Helvetica\"\n                    | \"Inter\"\n                    | \"DejaVu Sans\"\n                    | \"Liberation Sans\"\n                    | \"Noto Sans\"\n                    | \"Cantarell\"\n                    | \"Segoe UI\"\n            )\n        }).or_else",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg\n        .fontdb()\n        .faces()\n        .flat_map(|face| face.families.iter().map(|(family, _)| family.as_str())).find",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg\n        .fontdb()\n        .faces().flat_map",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg\n        .fontdb().faces",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg.fontdb",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "face.families.iter().map",
+          "lineNumber": 420
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "face.families.iter",
+          "lineNumber": 420
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "family.as_str",
+          "lineNumber": 420
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg.fontdb()\n                .faces().find_map",
+          "lineNumber": 435
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg.fontdb().faces",
+          "lineNumber": 435
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg.fontdb",
+          "lineNumber": 435
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "face.families.first().map",
+          "lineNumber": 437
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "face.families.first",
+          "lineNumber": 437
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "family.as_str",
+          "lineNumber": 437
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "ImageType::try_from_bytes(svg.as_bytes()).expect",
+          "lineNumber": 448
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "ImageType::try_from_bytes",
+          "lineNumber": 448
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "svg.as_bytes",
+          "lineNumber": 448
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "image_type\n        .to_image(\n            Vector2I::new(160, 40),\n            FitType::Contain,\n            true,\n            AnimatedImageBehavior::FullAnimation,\n        ).expect",
+          "lineNumber": 449
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "image_type.to_image",
+          "lineNumber": 449
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_loaded_system_fonts",
+          "callee": "Vector2I::new",
+          "lineNumber": 451
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_bundled_sans_serif_fallback",
+          "callee": "ImageType::try_from_bytes(\n        br##\"<svg width=\"160\" height=\"40\" viewBox=\"0 0 160 40\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"10\" y=\"24\" font-family=\"sans-serif\" font-size=\"20\" fill=\"#000000\">Warp</text>\n</svg>\n\"##,\n    ).expect",
+          "lineNumber": 469
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_bundled_sans_serif_fallback",
+          "callee": "ImageType::try_from_bytes",
+          "lineNumber": 469
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_bundled_sans_serif_fallback",
+          "callee": "image_type\n        .to_image(\n            Vector2I::new(160, 40),\n            FitType::Contain,\n            true,\n            AnimatedImageBehavior::FullAnimation,\n        ).expect",
+          "lineNumber": 486
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_bundled_sans_serif_fallback",
+          "callee": "image_type.to_image",
+          "lineNumber": 486
+        },
+        {
+          "caller": "test_svg_text_rasterizes_with_bundled_sans_serif_fallback",
+          "callee": "Vector2I::new",
+          "lineNumber": 488
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "new_asset_cache",
+          "lineNumber": 506
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "ImageCache::new",
+          "lineNumber": 507
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "Vector2I::new",
+          "lineNumber": 512
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "image_cache.image",
+          "lineNumber": 514
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "source.clone",
+          "lineNumber": 515
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "image.as_ref",
+          "lineNumber": 526
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "Arc::downgrade",
+          "lineNumber": 529
+        },
+        {
+          "caller": "test_evict_image_drops_arc_for_resized_bysize",
+          "callee": "image_cache.evict_image",
+          "lineNumber": 540
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "new_asset_cache",
+          "lineNumber": 550
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "ImageCache::new",
+          "lineNumber": 551
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "Vector2I::new",
+          "lineNumber": 555
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "Vector2I::new",
+          "lineNumber": 556
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "image_cache.image",
+          "lineNumber": 559
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "source.clone",
+          "lineNumber": 560
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "image.as_ref",
+          "lineNumber": 571
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "Arc::downgrade",
+          "lineNumber": 574
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "image_cache.image",
+          "lineNumber": 578
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "source.clone",
+          "lineNumber": 579
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "image.as_ref",
+          "lineNumber": 590
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "Arc::downgrade",
+          "lineNumber": 593
+        },
+        {
+          "caller": "test_evict_size_drops_arc_only_for_targeted_entry",
+          "callee": "image_cache.evict_size",
+          "lineNumber": 600
+        },
+        {
+          "caller": "test_svg_image_size_returns_intrinsic_dimensions",
+          "callee": "ImageType::try_from_bytes(\n        br##\"<svg width=\"160\" height=\"40\" viewBox=\"0 0 160 40\" xmlns=\"http://www.w3.org/2000/svg\"></svg>\"##,\n    ).expect",
+          "lineNumber": 621
+        },
+        {
+          "caller": "test_svg_image_size_returns_intrinsic_dimensions",
+          "callee": "ImageType::try_from_bytes",
+          "lineNumber": 621
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "new_asset_cache",
+          "lineNumber": 631
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "ImageCache::new",
+          "lineNumber": 632
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "Vector2I::new",
+          "lineNumber": 634
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "image_cache.image",
+          "lineNumber": 636
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "image.as_ref",
+          "lineNumber": 649
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "image_cache.image",
+          "lineNumber": 655
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "Some",
+          "lineNumber": 661
+        },
+        {
+          "caller": "test_respects_max_dimensions_for_cacheoption_bysize",
+          "callee": "image.as_ref",
+          "lineNumber": 668
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 20,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/keymap_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 529,
+      "nonEmptyLines": 459,
+      "functions": [
+        {
+          "name": "test_keystroke_parse",
+          "startLine": 7,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "test_keystroke_normalized",
+          "startLine": 84,
+          "endLine": 108,
+          "params": []
+        },
+        {
+          "name": "test_keystroke_invalid_shift_lowercase",
+          "startLine": 112,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "test_keystroke_invalid_no_shift_uppercase",
+          "startLine": 118,
+          "endLine": 120,
+          "params": []
+        },
+        {
+          "name": "test_keymap_bindings_list",
+          "startLine": 123,
+          "endLine": 238,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_preserves_case",
+          "startLine": 241,
+          "endLine": 250,
+          "params": []
+        },
+        {
+          "name": "test_custom_triggers",
+          "startLine": 253,
+          "endLine": 341,
+          "params": []
+        },
+        {
+          "name": "test_disabled_bindings",
+          "startLine": 344,
+          "endLine": 403,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_has_dynamic_override",
+          "startLine": 406,
+          "endLine": 413,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_in_context_ignores_dynamic_override",
+          "startLine": 416,
+          "endLine": 419,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_eq_ignores_dynamic_override",
+          "startLine": 422,
+          "endLine": 434,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_resolve_static",
+          "startLine": 493,
+          "endLine": 502,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_resolve_dynamic_override",
+          "startLine": 505,
+          "endLine": 515,
+          "params": []
+        },
+        {
+          "name": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "startLine": 518,
+          "endLine": 529,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_keystroke_parse",
+          "callee": "Ok",
+          "lineNumber": 80
+        },
+        {
+          "caller": "test_keystroke_normalized",
+          "callee": "Ok",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_keystroke_invalid_shift_lowercase",
+          "callee": "Keystroke::parse",
+          "lineNumber": 113
+        },
+        {
+          "caller": "test_keystroke_invalid_no_shift_uppercase",
+          "callee": "Keystroke::parse",
+          "lineNumber": 119
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "Keymap::default",
+          "lineNumber": 135
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "map.register_editable_bindings",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "EditableBinding::new(\n        \"open\",\n        \"Typed action for Open\",\n        TypedAction::Open,\n    ).with_key_binding",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "EditableBinding::new",
+          "lineNumber": 136
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "map.register_fixed_bindings",
+          "lineNumber": 142
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "FixedBinding::new",
+          "lineNumber": 142
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "map.register_editable_bindings",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "EditableBinding::new(\n        \"close\",\n        \"Typed action for Close\",\n        TypedAction::Close,\n    ).with_key_binding",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "EditableBinding::new",
+          "lineNumber": 143
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "map.register_fixed_bindings",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "FixedBinding::new",
+          "lineNumber": 149
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "map.register_editable_bindings",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "EditableBinding::new",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "map.bindings",
+          "lineNumber": 156
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next().unwrap",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next",
+          "lineNumber": 164
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "first\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>().unwrap",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "first\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "first\n        .action\n        .as_ref().as_any",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "first\n        .action.as_ref",
+          "lineNumber": 173
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next().unwrap",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next",
+          "lineNumber": 181
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "second\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>().unwrap",
+          "lineNumber": 190
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "second\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>",
+          "lineNumber": 190
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "second\n        .action\n        .as_ref().as_any",
+          "lineNumber": 190
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "second\n        .action.as_ref",
+          "lineNumber": 190
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next().unwrap",
+          "lineNumber": 198
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next",
+          "lineNumber": 198
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "third\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>().unwrap",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "third\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "third\n        .action\n        .as_ref().as_any",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "third\n        .action.as_ref",
+          "lineNumber": 207
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next().unwrap",
+          "lineNumber": 215
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next",
+          "lineNumber": 215
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fourth\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>().unwrap",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fourth\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fourth\n        .action\n        .as_ref().as_any",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fourth\n        .action.as_ref",
+          "lineNumber": 218
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next().unwrap",
+          "lineNumber": 226
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "ordered.next",
+          "lineNumber": 226
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fifth\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>().unwrap",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fifth\n        .action\n        .as_ref()\n        .as_any()\n        .downcast_ref::<TypedAction>",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fifth\n        .action\n        .as_ref().as_any",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_keymap_bindings_list",
+          "callee": "fifth\n        .action.as_ref",
+          "lineNumber": 229
+        },
+        {
+          "caller": "test_binding_description_preserves_case",
+          "callee": "BindingDescription::new_preserve_case",
+          "lineNumber": 242
+        },
+        {
+          "caller": "test_binding_description_preserves_case",
+          "callee": "BindingDescription::new_preserve_case",
+          "lineNumber": 245
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keymap::default",
+          "lineNumber": 260
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keystroke::parse(\"cmd-1\").unwrap",
+          "lineNumber": 261
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keystroke::parse",
+          "lineNumber": 261
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keystroke::parse(\"cmd-2\").unwrap",
+          "lineNumber": 262
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keystroke::parse",
+          "lineNumber": 262
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keystroke::parse(\"cmd-a\").unwrap",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Keystroke::parse",
+          "lineNumber": 263
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "map.register_editable_bindings",
+          "lineNumber": 265
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "EditableBinding::new(\"first\", \"First editable binding\", TypedAction::First).with_key_binding",
+          "lineNumber": 266
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "EditableBinding::new",
+          "lineNumber": 266
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "EditableBinding::new(\"second\", \"Second editable binding\", TypedAction::Second).with_key_binding",
+          "lineNumber": 268
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "EditableBinding::new",
+          "lineNumber": 268
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "map.update_custom_trigger",
+          "lineNumber": 272
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Some",
+          "lineNumber": 274
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "Trigger::Keystrokes",
+          "lineNumber": 274
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "map.bindings",
+          "lineNumber": 278
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next().unwrap",
+          "lineNumber": 279
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next",
+          "lineNumber": 279
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next().unwrap",
+          "lineNumber": 280
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next",
+          "lineNumber": 280
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "map.editable_bindings",
+          "lineNumber": 299
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "editable_bindings.next().unwrap",
+          "lineNumber": 300
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "editable_bindings.next",
+          "lineNumber": 300
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "editable_bindings.next().unwrap",
+          "lineNumber": 301
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "editable_bindings.next",
+          "lineNumber": 301
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "map.update_custom_trigger",
+          "lineNumber": 319
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "map.bindings",
+          "lineNumber": 322
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next().unwrap",
+          "lineNumber": 323
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next",
+          "lineNumber": 323
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next().unwrap",
+          "lineNumber": 324
+        },
+        {
+          "caller": "test_custom_triggers",
+          "callee": "bindings.next",
+          "lineNumber": 324
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "AtomicBool::new",
+          "lineNumber": 351
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "Keymap::default",
+          "lineNumber": 353
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "map.register_editable_bindings",
+          "lineNumber": 355
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "EditableBinding::new(\"always\", \"First Binding\", TypedAction::AlwaysAvailable).with_key_binding",
+          "lineNumber": 356
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "EditableBinding::new",
+          "lineNumber": 356
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "EditableBinding::new(\"toggle\", \"Second Binding\", TypedAction::Enableable)\n            .with_key_binding(\"cmd-2\").with_enabled",
+          "lineNumber": 358
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "EditableBinding::new(\"toggle\", \"Second Binding\", TypedAction::Enableable).with_key_binding",
+          "lineNumber": 358
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "EditableBinding::new",
+          "lineNumber": 358
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "TOGGLE.load",
+          "lineNumber": 360
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "map.bindings",
+          "lineNumber": 365
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "bindings.next().unwrap",
+          "lineNumber": 366
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "bindings.next",
+          "lineNumber": 366
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "bindings.next().unwrap",
+          "lineNumber": 367
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "bindings.next",
+          "lineNumber": 367
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "TOGGLE.store",
+          "lineNumber": 387
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "map.bindings",
+          "lineNumber": 390
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "bindings.next().expect",
+          "lineNumber": 392
+        },
+        {
+          "caller": "test_disabled_bindings",
+          "callee": "bindings.next",
+          "lineNumber": 392
+        },
+        {
+          "caller": "test_binding_description_has_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 407
+        },
+        {
+          "caller": "test_binding_description_has_dynamic_override",
+          "callee": "BindingDescription::new(\"static\").with_dynamic_override",
+          "lineNumber": 411
+        },
+        {
+          "caller": "test_binding_description_has_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 411
+        },
+        {
+          "caller": "test_binding_description_has_dynamic_override",
+          "callee": "Some",
+          "lineNumber": 411
+        },
+        {
+          "caller": "test_binding_description_has_dynamic_override",
+          "callee": "\"dynamic\".into",
+          "lineNumber": 411
+        },
+        {
+          "caller": "test_binding_description_in_context_ignores_dynamic_override",
+          "callee": "BindingDescription::new(\"static\").with_dynamic_override",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_binding_description_in_context_ignores_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_binding_description_in_context_ignores_dynamic_override",
+          "callee": "Some",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_binding_description_in_context_ignores_dynamic_override",
+          "callee": "\"dynamic\".into",
+          "lineNumber": 417
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 423
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "BindingDescription::new(\"static\").with_dynamic_override",
+          "lineNumber": 425
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 425
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "Some",
+          "lineNumber": 425
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "\"dynamic\".into",
+          "lineNumber": 425
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "BindingDescription::new(\"static\").with_dynamic_override",
+          "lineNumber": 427
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 427
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "Some",
+          "lineNumber": 427
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "\"other\".into",
+          "lineNumber": 427
+        },
+        {
+          "caller": "test_binding_description_eq_ignores_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 432
+        },
+        {
+          "caller": "test_keystroke_to_file_value_is_normalized_string",
+          "callee": "Keystroke::parse(\"alt-b\").unwrap",
+          "lineNumber": 444
+        },
+        {
+          "caller": "test_keystroke_to_file_value_is_normalized_string",
+          "callee": "Keystroke::parse",
+          "lineNumber": 444
+        },
+        {
+          "caller": "test_keystroke_to_file_value_is_normalized_string",
+          "callee": "Keystroke::parse(\"ctrl-shift-P\").unwrap",
+          "lineNumber": 450
+        },
+        {
+          "caller": "test_keystroke_to_file_value_is_normalized_string",
+          "callee": "Keystroke::parse",
+          "lineNumber": 450
+        },
+        {
+          "caller": "test_keystroke_from_file_value_parses_string",
+          "callee": "serde_json::Value::String",
+          "lineNumber": 459
+        },
+        {
+          "caller": "test_keystroke_from_file_value_parses_string",
+          "callee": "\"cmd-shift-A\".to_string",
+          "lineNumber": 459
+        },
+        {
+          "caller": "test_keystroke_from_file_value_parses_string",
+          "callee": "Keystroke::from_file_value(&value).unwrap",
+          "lineNumber": 460
+        },
+        {
+          "caller": "test_keystroke_from_file_value_parses_string",
+          "callee": "Keystroke::from_file_value",
+          "lineNumber": 460
+        },
+        {
+          "caller": "test_keystroke_round_trip_through_file_value",
+          "callee": "Keystroke::parse(source).unwrap",
+          "lineNumber": 467
+        },
+        {
+          "caller": "test_keystroke_round_trip_through_file_value",
+          "callee": "Keystroke::parse",
+          "lineNumber": 467
+        },
+        {
+          "caller": "test_keystroke_round_trip_through_file_value",
+          "callee": "Keystroke::from_file_value(&keystroke.to_file_value()).unwrap",
+          "lineNumber": 468
+        },
+        {
+          "caller": "test_keystroke_round_trip_through_file_value",
+          "callee": "Keystroke::from_file_value",
+          "lineNumber": 468
+        },
+        {
+          "caller": "test_keystroke_round_trip_through_file_value",
+          "callee": "keystroke.to_file_value",
+          "lineNumber": 468
+        },
+        {
+          "caller": "test_keystroke_from_file_value_rejects_unparseable_string",
+          "callee": "serde_json::Value::String",
+          "lineNumber": 475
+        },
+        {
+          "caller": "test_keystroke_from_file_value_rejects_unparseable_string",
+          "callee": "\"not a valid keystroke\".to_string",
+          "lineNumber": 475
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Some",
+          "lineNumber": 481
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Keystroke::parse(\"alt-b\").unwrap",
+          "lineNumber": 481
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Keystroke::parse",
+          "lineNumber": 481
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Option::<Keystroke>::from_file_value(&some.to_file_value()).unwrap",
+          "lineNumber": 482
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Option::<Keystroke>::from_file_value",
+          "lineNumber": 482
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "some.to_file_value",
+          "lineNumber": 482
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Option::<Keystroke>::from_file_value(&serde_json::Value::Null).unwrap",
+          "lineNumber": 487
+        },
+        {
+          "caller": "test_option_keystroke_round_trip",
+          "callee": "Option::<Keystroke>::from_file_value",
+          "lineNumber": 487
+        },
+        {
+          "caller": "test_binding_description_resolve_static",
+          "callee": "App::test",
+          "lineNumber": 494
+        },
+        {
+          "caller": "test_binding_description_resolve_static",
+          "callee": "app.read",
+          "lineNumber": 495
+        },
+        {
+          "caller": "test_binding_description_resolve_static",
+          "callee": "BindingDescription::new(\"static\")\n                .resolve(ctx, DescriptionContext::Default).into_owned",
+          "lineNumber": 496
+        },
+        {
+          "caller": "test_binding_description_resolve_static",
+          "callee": "BindingDescription::new(\"static\").resolve",
+          "lineNumber": 496
+        },
+        {
+          "caller": "test_binding_description_resolve_static",
+          "callee": "BindingDescription::new",
+          "lineNumber": 496
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "App::test",
+          "lineNumber": 506
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "app.read",
+          "lineNumber": 507
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "BindingDescription::new(\"static\")\n                .with_dynamic_override(|_| Some(\"dynamic\".into()))\n                .resolve(ctx, DescriptionContext::Default).into_owned",
+          "lineNumber": 508
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "BindingDescription::new(\"static\")\n                .with_dynamic_override(|_| Some(\"dynamic\".into())).resolve",
+          "lineNumber": 508
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "BindingDescription::new(\"static\").with_dynamic_override",
+          "lineNumber": 508
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "BindingDescription::new",
+          "lineNumber": 508
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "Some",
+          "lineNumber": 509
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override",
+          "callee": "\"dynamic\".into",
+          "lineNumber": 509
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "App::test",
+          "lineNumber": 519
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "app.read",
+          "lineNumber": 520
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "BindingDescription::new(\"static\")\n                .with_custom_description(DescriptionContext::Custom(\"menu\"), \"menu-static\")\n                .with_dynamic_override(|_| None)\n                .resolve(ctx, DescriptionContext::Custom(\"menu\")).into_owned",
+          "lineNumber": 521
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "BindingDescription::new(\"static\")\n                .with_custom_description(DescriptionContext::Custom(\"menu\"), \"menu-static\")\n                .with_dynamic_override(|_| None).resolve",
+          "lineNumber": 521
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "BindingDescription::new(\"static\")\n                .with_custom_description(DescriptionContext::Custom(\"menu\"), \"menu-static\").with_dynamic_override",
+          "lineNumber": 521
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "BindingDescription::new(\"static\").with_custom_description",
+          "lineNumber": 521
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "BindingDescription::new",
+          "lineNumber": 521
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "DescriptionContext::Custom",
+          "lineNumber": 522
+        },
+        {
+          "caller": "test_binding_description_resolve_dynamic_override_falls_back_to_custom_context",
+          "callee": "DescriptionContext::Custom",
+          "lineNumber": 524
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/keymap/context_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 19,
+      "functions": [
+        {
+          "name": "test_context_predicate_eval",
+          "startLine": 5,
+          "endLine": 26,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "Context::default",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "context.set.insert",
+          "lineNumber": 9
+        },
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "context.set.insert",
+          "lineNumber": 12
+        },
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "context.set.remove",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "context.map.insert",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "context.map.insert",
+          "lineNumber": 19
+        },
+        {
+          "caller": "test_context_predicate_eval",
+          "callee": "Ok",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/keymap/context.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 124,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "extend",
+          "startLine": 90,
+          "endLine": 97,
+          "params": [
+            "other"
+          ]
+        },
+        {
+          "name": "eval",
+          "startLine": 101,
+          "endLine": 119,
+          "params": [
+            "ctx"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Context",
+          "startLine": 4,
+          "endLine": 7,
+          "methods": [
+            "extend"
+          ],
+          "properties": [
+            "set",
+            "map"
+          ]
+        },
+        {
+          "name": "ContextPredicate",
+          "startLine": 10,
+          "endLine": 18,
+          "methods": [
+            "eval"
+          ],
+          "properties": [
+            "Identifier",
+            "Equal",
+            "NotEqual",
+            "Not",
+            "And",
+            "Or",
+            "Just"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Context",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "ContextPredicate",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "extend",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "eval",
+          "line": 101,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "not",
+          "callee": "ContextPredicate::Not",
+          "lineNumber": 57
+        },
+        {
+          "caller": "not",
+          "callee": "Box::new",
+          "lineNumber": 57
+        },
+        {
+          "caller": "bitand",
+          "callee": "ContextPredicate::And",
+          "lineNumber": 65
+        },
+        {
+          "caller": "bitand",
+          "callee": "Box::new",
+          "lineNumber": 65
+        },
+        {
+          "caller": "bitand",
+          "callee": "Box::new",
+          "lineNumber": 65
+        },
+        {
+          "caller": "bitor",
+          "callee": "ContextPredicate::Or",
+          "lineNumber": 73
+        },
+        {
+          "caller": "bitor",
+          "callee": "Box::new",
+          "lineNumber": 73
+        },
+        {
+          "caller": "bitor",
+          "callee": "Box::new",
+          "lineNumber": 73
+        },
+        {
+          "caller": "extend",
+          "callee": "self.set.insert",
+          "lineNumber": 92
+        },
+        {
+          "caller": "extend",
+          "callee": "self.map.insert",
+          "lineNumber": 95
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx.set.contains",
+          "lineNumber": 103
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx\n                .map\n                .get(left)\n                .map(|value| value == right).unwrap_or",
+          "lineNumber": 104
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx\n                .map\n                .get(left).map",
+          "lineNumber": 104
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx\n                .map.get",
+          "lineNumber": 104
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx\n                .map\n                .get(left)\n                .map(|value| value != right).unwrap_or",
+          "lineNumber": 109
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx\n                .map\n                .get(left).map",
+          "lineNumber": 109
+        },
+        {
+          "caller": "eval",
+          "callee": "ctx\n                .map.get",
+          "lineNumber": 109
+        },
+        {
+          "caller": "eval",
+          "callee": "pred.eval",
+          "lineNumber": 114
+        },
+        {
+          "caller": "eval",
+          "callee": "left.eval",
+          "lineNumber": 115
+        },
+        {
+          "caller": "eval",
+          "callee": "right.eval",
+          "lineNumber": 115
+        },
+        {
+          "caller": "eval",
+          "callee": "left.eval",
+          "lineNumber": 116
+        },
+        {
+          "caller": "eval",
+          "callee": "right.eval",
+          "lineNumber": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 2,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/platform/file_picker_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 9,
+      "functions": [
+        {
+          "name": "yaml_file_type_accepts_both_yaml_and_yml",
+          "startLine": 4,
+          "endLine": 6,
+          "params": []
+        },
+        {
+          "name": "markdown_file_type_accepts_md_and_markdown",
+          "startLine": 9,
+          "endLine": 11,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/scene_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "test_hit_rect_recording",
+          "startLine": 7,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "test_nested_clip_bounds_with_intersection",
+          "startLine": 29,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "test_nested_clip_bounds_with_no_intersection",
+          "startLine": 45,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "test_click_through_layer_does_not_cover_lower_layers",
+          "startLine": 62,
+          "endLine": 70,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "Scene::new",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "rendering::Config::default",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "scene.draw_rect_with_hit_recording",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "RectF::new",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "vec2f",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "vec2f",
+          "lineNumber": 11
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "scene.start_layer",
+          "lineNumber": 15
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "scene.draw_rect_with_hit_recording",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "RectF::new",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "vec2f",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "vec2f",
+          "lineNumber": 16
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "scene.start_layer",
+          "lineNumber": 21
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "scene.draw_rect_with_hit_recording",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "RectF::new",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "vec2f",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_hit_rect_recording",
+          "callee": "vec2f",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "Scene::new",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "rendering::Config::default",
+          "lineNumber": 30
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "RectF::new",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "Vector2F::zero",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "Vector2F::new",
+          "lineNumber": 32
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "scene.start_layer",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "ClipBounds::BoundedBy",
+          "lineNumber": 33
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "RectF::new",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "Vector2F::new",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "Vector2F::new",
+          "lineNumber": 35
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "scene.start_layer",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_intersection",
+          "callee": "ClipBounds::BoundedByActiveLayerAnd",
+          "lineNumber": 36
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "Scene::new",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "rendering::Config::default",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "RectF::new",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "Vector2F::zero",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "Vector2F::new",
+          "lineNumber": 48
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "scene.start_layer",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "ClipBounds::BoundedBy",
+          "lineNumber": 49
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "RectF::new",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "Vector2F::new",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "Vector2F::new",
+          "lineNumber": 51
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "scene.start_layer",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_nested_clip_bounds_with_no_intersection",
+          "callee": "ClipBounds::BoundedByActiveLayerAnd",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "Scene::new",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "rendering::Config::default",
+          "lineNumber": 63
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "scene.start_layer",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "scene.set_active_layer_click_through",
+          "lineNumber": 66
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "scene.draw_rect_with_hit_recording",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "RectF::new",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "vec2f",
+          "lineNumber": 67
+        },
+        {
+          "caller": "test_click_through_layer_does_not_cover_lower_layers",
+          "callee": "vec2f",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/text/mod_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 47,
+      "functions": [
+        {
+          "name": "test_str_to_byte_vec",
+          "startLine": 5,
+          "endLine": 10,
+          "params": []
+        },
+        {
+          "name": "test_str_buffer",
+          "startLine": 14,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "test_char_slice",
+          "startLine": 29,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "test_char_counts_up_to_byte",
+          "startLine": 48,
+          "endLine": 59,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_str_buffer",
+          "callee": "Ok",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 163,
+      "nonEmptyLines": 149,
+      "functions": [
+        {
+          "name": "test_word_boundaries",
+          "startLine": 4,
+          "endLine": 144,
+          "params": []
+        },
+        {
+          "name": "test_unicode_whitespace",
+          "startLine": 147,
+          "endLine": 163,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero())\n        .unwrap().collect",
+          "lineNumber": 7
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero()).unwrap",
+          "lineNumber": 7
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_from_offset",
+          "lineNumber": 7
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::zero",
+          "lineNumber": 8
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero())\n        .unwrap().collect",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero()).unwrap",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_ends_from_offset_exclusive",
+          "lineNumber": 22
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::zero",
+          "lineNumber": 23
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero())\n        .unwrap()\n        .with_policy(WordBoundariesPolicy::OnlyWhitespace).collect",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero())\n        .unwrap().with_policy",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero()).unwrap",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_from_offset",
+          "lineNumber": 38
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::zero",
+          "lineNumber": 39
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero())\n        .unwrap()\n        .with_policy(WordBoundariesPolicy::OnlyWhitespace).collect",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero())\n        .unwrap().with_policy",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero()).unwrap",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_ends_from_offset_exclusive",
+          "lineNumber": 45
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::zero",
+          "lineNumber": 46
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero())\n        .unwrap()\n        .with_policy(WordBoundariesPolicy::Custom(HashSet::from(['{', '}']))).collect",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero())\n        .unwrap().with_policy",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::zero()).unwrap",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_from_offset",
+          "lineNumber": 52
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::zero",
+          "lineNumber": 53
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "WordBoundariesPolicy::Custom",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "HashSet::from",
+          "lineNumber": 55
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero())\n        .unwrap()\n        .with_policy(WordBoundariesPolicy::Custom(HashSet::from(['{', '}']))).collect",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero())\n        .unwrap().with_policy",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::zero()).unwrap",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_ends_from_offset_exclusive",
+          "lineNumber": 59
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::zero",
+          "lineNumber": 60
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "WordBoundariesPolicy::Custom",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "HashSet::from",
+          "lineNumber": 62
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_backward_from_offset_exclusive(Point::new(0, 42))\n        .unwrap().collect",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_backward_from_offset_exclusive(Point::new(0, 42)).unwrap",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_backward_from_offset_exclusive",
+          "lineNumber": 69
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::new",
+          "lineNumber": 70
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::new(0, 7))\n        .unwrap().collect",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_from_offset(Point::new(0, 7)).unwrap",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_from_offset",
+          "lineNumber": 84
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::new",
+          "lineNumber": 85
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::new(0, 6))\n        .unwrap().collect",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_exclusive(Point::new(0, 6)).unwrap",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_ends_from_offset_exclusive",
+          "lineNumber": 93
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::new",
+          "lineNumber": 94
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_backward_from_offset_exclusive(Point::new(0, 8))\n        .unwrap().collect",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_backward_from_offset_exclusive(Point::new(0, 8)).unwrap",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_backward_from_offset_exclusive",
+          "lineNumber": 107
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::new",
+          "lineNumber": 108
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_inclusive(Point::new(0, 6))\n        .unwrap().collect",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_ends_from_offset_inclusive(Point::new(0, 6)).unwrap",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_ends_from_offset_inclusive",
+          "lineNumber": 116
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::new",
+          "lineNumber": 117
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_backward_from_offset_inclusive(Point::new(0, 10))\n        .unwrap().collect",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer\n        .word_starts_backward_from_offset_inclusive(Point::new(0, 10)).unwrap",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "buffer.word_starts_backward_from_offset_inclusive",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_word_boundaries",
+          "callee": "Point::new",
+          "lineNumber": 132
+        },
+        {
+          "caller": "test_unicode_whitespace",
+          "callee": "text\n        .word_starts_from_offset(Point::zero())\n        .unwrap().collect",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_unicode_whitespace",
+          "callee": "text\n        .word_starts_from_offset(Point::zero()).unwrap",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_unicode_whitespace",
+          "callee": "text.word_starts_from_offset",
+          "lineNumber": 150
+        },
+        {
+          "caller": "test_unicode_whitespace",
+          "callee": "Point::zero",
+          "lineNumber": 151
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/ui_components/components_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "ui_element_style_merge_test",
+          "startLine": 4,
+          "endLine": 26,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Some",
+          "lineNumber": 6
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Default::default",
+          "lineNumber": 7
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Some",
+          "lineNumber": 10
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Some",
+          "lineNumber": 11
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Default::default",
+          "lineNumber": 12
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Some",
+          "lineNumber": 17
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Default::default",
+          "lineNumber": 18
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Some",
+          "lineNumber": 21
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Some",
+          "lineNumber": 22
+        },
+        {
+          "caller": "ui_element_style_merge_test",
+          "callee": "Default::default",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/util_tests.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "parse_invalid_u32",
+          "startLine": 4,
+          "endLine": 9,
+          "params": []
+        },
+        {
+          "name": "parse_valid_u32",
+          "startLine": 12,
+          "endLine": 15,
+          "params": []
+        },
+        {
+          "name": "parse_invalid_i32",
+          "startLine": 18,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "parse_valid_i32",
+          "startLine": 26,
+          "endLine": 30,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/test_data/animated.webp",
+      "language": "webp",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {}
+    }
+  ]
+}

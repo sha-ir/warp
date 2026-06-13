@@ -1,0 +1,700 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/warpui_core/src/fonts/metrics.rs",
+      "type": "file",
+      "name": "metrics.rs",
+      "filePath": "crates/warpui_core/src/fonts/metrics.rs",
+      "summary": "Defines the font-wide Metrics struct (units-per-em, ascent, descent, line gap) and a native-only conversion from font_kit metrics.",
+      "tags": ["data-model", "font", "type-definition", "metrics"],
+      "complexity": "simple",
+      "languageNotes": "The font_kit From impl is gated behind #[cfg(native)], so it only compiles on native (non-wasm) targets."
+    },
+    {
+      "id": "class:crates/warpui_core/src/fonts/metrics.rs:Metrics",
+      "type": "class",
+      "name": "Metrics",
+      "filePath": "crates/warpui_core/src/fonts/metrics.rs",
+      "lineRange": [3, 21],
+      "summary": "Font-wide metrics value type: units-per-em plus ascent, descent, and line-gap expressed in font units (descent typically negative per OpenType OS/2).",
+      "tags": ["data-model", "font", "metrics", "type-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "type": "file",
+      "name": "image_cache_tests.rs",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "summary": "Extensive unit-test suite for the image cache, covering asset-cache passthrough, SVG rasterization and intrinsic sizing, fit-type cache keying, animated first-frame previews, max-dimension clamping, and Arc eviction semantics.",
+      "tags": ["test", "image-cache", "rendering", "caching"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:get",
+      "type": "function",
+      "name": "get",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [16, 32],
+      "summary": "RustEmbed-style accessor on the test Assets type that returns bundled fixture bytes (gif/webp/png/svg) for a requested path.",
+      "tags": ["test", "fixture", "asset-loading"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:load_bundled_image",
+      "type": "function",
+      "name": "load_bundled_image",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [43, 64],
+      "summary": "Test helper that loads a bundled image through the ImageCache with a given bounds, fit type, and animated-image behavior.",
+      "tags": ["test", "helper", "image-cache"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_passes_through_asset_cache_original",
+      "type": "function",
+      "name": "test_passes_through_asset_cache_original",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [67, 102],
+      "summary": "Verifies an original-size image request reuses the asset-cache Arc directly instead of re-rendering into the rendered-image cache.",
+      "tags": ["test", "image-cache", "caching", "memory"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_caches_svg_rendered_at_intrinsic_size",
+      "type": "function",
+      "name": "test_caches_svg_rendered_at_intrinsic_size",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [145, 168],
+      "summary": "Asserts that an SVG asset is rendered and cached at its intrinsic size and that repeat requests hit the cache.",
+      "tags": ["test", "image-cache", "svg"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_different_fit_types_do_not_collide_in_rendered_image_cache",
+      "type": "function",
+      "name": "test_different_fit_types_do_not_collide_in_rendered_image_cache",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [171, 202],
+      "summary": "Ensures cover and stretch fit types produce distinct rendered-image cache entries rather than colliding on the same key.",
+      "tags": ["test", "image-cache", "fit-type", "caching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_respects_max_dimensions_for_cacheoption_original",
+      "type": "function",
+      "name": "test_respects_max_dimensions_for_cacheoption_original",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [205, 250],
+      "summary": "Checks that max-dimension clamping is applied for CacheOption::Original image requests.",
+      "tags": ["test", "image-cache", "clamping"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_first_frame_preview_returns_static_for_animated_gif",
+      "type": "function",
+      "name": "test_first_frame_preview_returns_static_for_animated_gif",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [253, 270],
+      "summary": "Verifies the first-frame-preview behavior yields a static single-frame image for an animated GIF.",
+      "tags": ["test", "image-cache", "animation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+      "type": "function",
+      "name": "test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [360, 403],
+      "summary": "Ensures preview (first-frame) and full-animation requests for the same source are cached as separate rendered-image entries.",
+      "tags": ["test", "image-cache", "animation", "caching"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_svg_text_rasterizes_with_loaded_system_fonts",
+      "type": "function",
+      "name": "test_svg_text_rasterizes_with_loaded_system_fonts",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [406, 465],
+      "summary": "Confirms SVG text content rasterizes using a discovered system font face, falling back across a known list of sans-serif families.",
+      "tags": ["test", "image-cache", "svg", "fonts"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/image_cache_tests.rs:test_evict_size_drops_arc_only_for_targeted_entry",
+      "type": "function",
+      "name": "test_evict_size_drops_arc_only_for_targeted_entry",
+      "filePath": "crates/warpui_core/src/image_cache_tests.rs",
+      "lineRange": [549, 617],
+      "summary": "Verifies evict_size drops the Arc only for the targeted sized cache entry while leaving other sized entries for the same source intact.",
+      "tags": ["test", "image-cache", "eviction", "memory"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/keymap_tests.rs",
+      "type": "file",
+      "name": "keymap_tests.rs",
+      "filePath": "crates/warpui_core/src/keymap_tests.rs",
+      "summary": "Unit tests for the keymap: keystroke parsing and normalization, editable/fixed binding registration and ordering, custom keystroke triggers, runtime-disabled bindings, and BindingDescription static/dynamic resolution.",
+      "tags": ["test", "keymap", "keybinding", "serialization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap_tests.rs:test_keystroke_parse",
+      "type": "function",
+      "name": "test_keystroke_parse",
+      "filePath": "crates/warpui_core/src/keymap_tests.rs",
+      "lineRange": [7, 81],
+      "summary": "Exhaustively tests Keystroke::parse across modifier combinations, named keys, and invalid inputs.",
+      "tags": ["test", "keymap", "keystroke", "parsing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap_tests.rs:test_keystroke_normalized",
+      "type": "function",
+      "name": "test_keystroke_normalized",
+      "filePath": "crates/warpui_core/src/keymap_tests.rs",
+      "lineRange": [84, 108],
+      "summary": "Verifies keystroke normalization, including modifier ordering and key casing rules.",
+      "tags": ["test", "keymap", "keystroke", "normalization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap_tests.rs:test_keymap_bindings_list",
+      "type": "function",
+      "name": "test_keymap_bindings_list",
+      "filePath": "crates/warpui_core/src/keymap_tests.rs",
+      "lineRange": [123, 238],
+      "summary": "Registers editable and fixed bindings and asserts the resolved binding iteration order and downcast TypedAction values.",
+      "tags": ["test", "keymap", "binding-registration"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap_tests.rs:test_custom_triggers",
+      "type": "function",
+      "name": "test_custom_triggers",
+      "filePath": "crates/warpui_core/src/keymap_tests.rs",
+      "lineRange": [253, 341],
+      "summary": "Tests overriding editable bindings with custom keystroke triggers and confirms both bindings and editable_bindings reflect the override.",
+      "tags": ["test", "keymap", "custom-trigger"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap_tests.rs:test_disabled_bindings",
+      "type": "function",
+      "name": "test_disabled_bindings",
+      "filePath": "crates/warpui_core/src/keymap_tests.rs",
+      "lineRange": [344, 403],
+      "summary": "Verifies that a binding gated by a runtime AtomicBool enabled-flag appears in or drops out of the resolved binding list as the flag toggles.",
+      "tags": ["test", "keymap", "disabled-bindings"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/keymap/context_tests.rs",
+      "type": "file",
+      "name": "context_tests.rs",
+      "filePath": "crates/warpui_core/src/keymap/context_tests.rs",
+      "summary": "Unit test for ContextPredicate evaluation against a Context, exercising identifier and equality predicates as set flags and map entries change.",
+      "tags": ["test", "keymap", "context", "predicate"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap/context_tests.rs:test_context_predicate_eval",
+      "type": "function",
+      "name": "test_context_predicate_eval",
+      "filePath": "crates/warpui_core/src/keymap/context_tests.rs",
+      "lineRange": [5, 26],
+      "summary": "Builds a Context and asserts identifier and equality predicate evaluation results as set flags and map key/value entries are added and removed.",
+      "tags": ["test", "keymap", "predicate", "context"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/keymap/context.rs",
+      "type": "file",
+      "name": "context.rs",
+      "filePath": "crates/warpui_core/src/keymap/context.rs",
+      "summary": "Defines the keybinding Context (active flags set plus key/value map) and the ContextPredicate boolean expression tree, with operator overloads and macros that build a small predicate DSL for deciding when bindings apply.",
+      "tags": ["keymap", "context", "predicate", "data-model"],
+      "complexity": "moderate",
+      "languageNotes": "Implements std::ops Not/BitAnd/BitOr on ContextPredicate and exposes macro_rules! (id!/eq!/ne!/always!) to form a predicate DSL."
+    },
+    {
+      "id": "class:crates/warpui_core/src/keymap/context.rs:Context",
+      "type": "class",
+      "name": "Context",
+      "filePath": "crates/warpui_core/src/keymap/context.rs",
+      "lineRange": [4, 7],
+      "summary": "Keybinding evaluation context holding a set of active string flags and a key-to-value map; extend merges another context into it.",
+      "tags": ["keymap", "context", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/warpui_core/src/keymap/context.rs:ContextPredicate",
+      "type": "class",
+      "name": "ContextPredicate",
+      "filePath": "crates/warpui_core/src/keymap/context.rs",
+      "lineRange": [10, 18],
+      "summary": "Boolean expression tree (Identifier, Equal, NotEqual, Not, And, Or, Just) describing the condition under which a keybinding is active.",
+      "tags": ["keymap", "predicate", "enum", "expression-tree"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/keymap/context.rs:eval",
+      "type": "function",
+      "name": "eval",
+      "filePath": "crates/warpui_core/src/keymap/context.rs",
+      "lineRange": [101, 119],
+      "summary": "Recursively evaluates a ContextPredicate against a Context, resolving identifier membership, key/value (in)equality, and boolean combinators.",
+      "tags": ["keymap", "predicate", "evaluation", "recursion"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/platform/file_picker_tests.rs",
+      "type": "file",
+      "name": "file_picker_tests.rs",
+      "filePath": "crates/warpui_core/src/platform/file_picker_tests.rs",
+      "summary": "Unit tests asserting file-type filters accept their expected extensions (yaml/yml and md/markdown).",
+      "tags": ["test", "platform", "file-picker", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/scene_tests.rs",
+      "type": "file",
+      "name": "scene_tests.rs",
+      "filePath": "crates/warpui_core/src/scene_tests.rs",
+      "summary": "Unit tests for the Scene renderer covering hit-rect recording across layers, nested clip-bounds intersection (with and without overlap), and click-through layer behavior.",
+      "tags": ["test", "scene", "rendering", "hit-testing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/scene_tests.rs:test_hit_rect_recording",
+      "type": "function",
+      "name": "test_hit_rect_recording",
+      "filePath": "crates/warpui_core/src/scene_tests.rs",
+      "lineRange": [7, 26],
+      "summary": "Draws hit-recorded rects across nested scene layers and verifies the recorded hit-testing geometry.",
+      "tags": ["test", "scene", "hit-testing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/scene_tests.rs:test_nested_clip_bounds_with_intersection",
+      "type": "function",
+      "name": "test_nested_clip_bounds_with_intersection",
+      "filePath": "crates/warpui_core/src/scene_tests.rs",
+      "lineRange": [29, 42],
+      "summary": "Verifies nested layer clip bounds intersect to the expected overlapping region.",
+      "tags": ["test", "scene", "clip-bounds"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/scene_tests.rs:test_nested_clip_bounds_with_no_intersection",
+      "type": "function",
+      "name": "test_nested_clip_bounds_with_no_intersection",
+      "filePath": "crates/warpui_core/src/scene_tests.rs",
+      "lineRange": [45, 59],
+      "summary": "Verifies disjoint nested layer clip bounds resolve to an empty intersection.",
+      "tags": ["test", "scene", "clip-bounds"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/text/mod_tests.rs",
+      "type": "file",
+      "name": "mod_tests.rs",
+      "filePath": "crates/warpui_core/src/text/mod_tests.rs",
+      "summary": "Unit tests for text module primitives: string-to-byte conversion, the string buffer wrapper, char-slice extraction, and unicode-aware char counting up to a byte offset.",
+      "tags": ["test", "text", "buffer", "unicode"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text/mod_tests.rs:test_str_buffer",
+      "type": "function",
+      "name": "test_str_buffer",
+      "filePath": "crates/warpui_core/src/text/mod_tests.rs",
+      "lineRange": [14, 26],
+      "summary": "Tests the string buffer wrapper's stored contents and indexing behavior.",
+      "tags": ["test", "text", "buffer"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text/mod_tests.rs:test_char_slice",
+      "type": "function",
+      "name": "test_char_slice",
+      "filePath": "crates/warpui_core/src/text/mod_tests.rs",
+      "lineRange": [29, 45],
+      "summary": "Tests extracting character slices from a text buffer at given ranges.",
+      "tags": ["test", "text", "slicing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text/mod_tests.rs:test_char_counts_up_to_byte",
+      "type": "function",
+      "name": "test_char_counts_up_to_byte",
+      "filePath": "crates/warpui_core/src/text/mod_tests.rs",
+      "lineRange": [48, 59],
+      "summary": "Tests counting the number of characters up to a given byte offset in a unicode-aware manner.",
+      "tags": ["test", "text", "unicode"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "type": "file",
+      "name": "word_boundaries_tests.rs",
+      "filePath": "crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "summary": "Unit tests for word-boundary iteration: forward/backward word-start and word-end detection under default, whitespace-only, and custom character policies, plus unicode whitespace handling.",
+      "tags": ["test", "text", "word-boundaries", "cursor-movement"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text/word_boundaries_tests.rs:test_word_boundaries",
+      "type": "function",
+      "name": "test_word_boundaries",
+      "filePath": "crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "lineRange": [4, 144],
+      "summary": "Exhaustively tests forward and backward word-start and word-end iteration with default, whitespace-only, and custom boundary-character policies at various offsets.",
+      "tags": ["test", "text", "word-boundaries", "cursor-movement"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/warpui_core/src/text/word_boundaries_tests.rs:test_unicode_whitespace",
+      "type": "function",
+      "name": "test_unicode_whitespace",
+      "filePath": "crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "lineRange": [147, 163],
+      "summary": "Verifies word-start detection correctly treats unicode whitespace characters as boundaries.",
+      "tags": ["test", "text", "unicode", "word-boundaries"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/ui_components/components_tests.rs",
+      "type": "file",
+      "name": "components_tests.rs",
+      "filePath": "crates/warpui_core/src/ui_components/components_tests.rs",
+      "summary": "Unit test for UI element style merge semantics, asserting explicit overrides win and unset fields fall back to defaults.",
+      "tags": ["test", "ui-components", "styling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/warpui_core/src/ui_components/components_tests.rs:ui_element_style_merge_test",
+      "type": "function",
+      "name": "ui_element_style_merge_test",
+      "filePath": "crates/warpui_core/src/ui_components/components_tests.rs",
+      "lineRange": [4, 26],
+      "summary": "Tests merging of UI element styles, confirming overriding values take precedence and defaults fill in unset fields.",
+      "tags": ["test", "ui-components", "styling"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/src/util_tests.rs",
+      "type": "file",
+      "name": "util_tests.rs",
+      "filePath": "crates/warpui_core/src/util_tests.rs",
+      "summary": "Unit tests for integer-parsing utility helpers, covering valid and invalid u32 and i32 inputs.",
+      "tags": ["test", "utility", "parsing", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/warpui_core/test_data/animated.webp",
+      "type": "file",
+      "name": "animated.webp",
+      "filePath": "crates/warpui_core/test_data/animated.webp",
+      "summary": "Binary animated WebP fixture used by the image-cache tests to verify animated-image handling and first-frame preview behavior.",
+      "tags": ["test-data", "image", "fixture", "binary"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/warpui_core/src/fonts/metrics.rs",
+      "target": "class:crates/warpui_core/src/fonts/metrics.rs:Metrics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts/metrics.rs",
+      "target": "class:crates/warpui_core/src/fonts/metrics.rs:Metrics",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:get",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:load_bundled_image",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_passes_through_asset_cache_original",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_caches_svg_rendered_at_intrinsic_size",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_different_fit_types_do_not_collide_in_rendered_image_cache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_respects_max_dimensions_for_cacheoption_original",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_first_frame_preview_returns_static_for_animated_gif",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_preview_and_full_animation_requests_do_not_collide_in_rendered_image_cache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_svg_text_rasterizes_with_loaded_system_fonts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "target": "function:crates/warpui_core/src/image_cache_tests.rs:test_evict_size_drops_arc_only_for_targeted_entry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/image_cache.rs",
+      "target": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/test_data/animated.webp",
+      "target": "file:crates/warpui_core/src/image_cache_tests.rs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap_tests.rs",
+      "target": "function:crates/warpui_core/src/keymap_tests.rs:test_keystroke_parse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap_tests.rs",
+      "target": "function:crates/warpui_core/src/keymap_tests.rs:test_keystroke_normalized",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap_tests.rs",
+      "target": "function:crates/warpui_core/src/keymap_tests.rs:test_keymap_bindings_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap_tests.rs",
+      "target": "function:crates/warpui_core/src/keymap_tests.rs:test_custom_triggers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap_tests.rs",
+      "target": "function:crates/warpui_core/src/keymap_tests.rs:test_disabled_bindings",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap.rs",
+      "target": "file:crates/warpui_core/src/keymap_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context_tests.rs",
+      "target": "function:crates/warpui_core/src/keymap/context_tests.rs:test_context_predicate_eval",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context.rs",
+      "target": "file:crates/warpui_core/src/keymap/context_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context.rs",
+      "target": "class:crates/warpui_core/src/keymap/context.rs:Context",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context.rs",
+      "target": "class:crates/warpui_core/src/keymap/context.rs:ContextPredicate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context.rs",
+      "target": "function:crates/warpui_core/src/keymap/context.rs:eval",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context.rs",
+      "target": "class:crates/warpui_core/src/keymap/context.rs:Context",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/keymap/context.rs",
+      "target": "class:crates/warpui_core/src/keymap/context.rs:ContextPredicate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/warpui_core/src/platform/file_picker.rs",
+      "target": "file:crates/warpui_core/src/platform/file_picker_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene_tests.rs",
+      "target": "function:crates/warpui_core/src/scene_tests.rs:test_hit_rect_recording",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene_tests.rs",
+      "target": "function:crates/warpui_core/src/scene_tests.rs:test_nested_clip_bounds_with_intersection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene_tests.rs",
+      "target": "function:crates/warpui_core/src/scene_tests.rs:test_nested_clip_bounds_with_no_intersection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/scene.rs",
+      "target": "file:crates/warpui_core/src/scene_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/mod_tests.rs",
+      "target": "function:crates/warpui_core/src/text/mod_tests.rs:test_str_buffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/mod_tests.rs",
+      "target": "function:crates/warpui_core/src/text/mod_tests.rs:test_char_slice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/mod_tests.rs",
+      "target": "function:crates/warpui_core/src/text/mod_tests.rs:test_char_counts_up_to_byte",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/mod.rs",
+      "target": "file:crates/warpui_core/src/text/mod_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "target": "function:crates/warpui_core/src/text/word_boundaries_tests.rs:test_word_boundaries",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "target": "function:crates/warpui_core/src/text/word_boundaries_tests.rs:test_unicode_whitespace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/text/word_boundaries.rs",
+      "target": "file:crates/warpui_core/src/text/word_boundaries_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components_tests.rs",
+      "target": "function:crates/warpui_core/src/ui_components/components_tests.rs:ui_element_style_merge_test",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/ui_components/components.rs",
+      "target": "file:crates/warpui_core/src/ui_components/components_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/util.rs",
+      "target": "file:crates/warpui_core/src/util_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "crates/editor/test_fixtures/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 22,
+      "nonEmptyLines": 14,
+      "sections": [
+        {
+          "heading": "Test Fixtures",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Images",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "ToC Navigation",
+          "level": 2,
+          "line": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "crates/editor/test_fixtures/mermaid_sample.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 299,
+      "nonEmptyLines": 256,
+      "sections": [
+        {
+          "heading": "Mermaid Render Test",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Flowchart: shapes",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Flowchart: styles",
+          "level": 2,
+          "line": 18
+        },
+        {
+          "heading": "Sequence diagram",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Class diagram",
+          "level": 2,
+          "line": 54
+        },
+        {
+          "heading": "Entity relationship diagram",
+          "level": 2,
+          "line": 74
+        },
+        {
+          "heading": "State diagram",
+          "level": 2,
+          "line": 96
+        },
+        {
+          "heading": "Journey diagram",
+          "level": 2,
+          "line": 120
+        },
+        {
+          "heading": "Gantt chart",
+          "level": 2,
+          "line": 135
+        },
+        {
+          "heading": "Pie chart",
+          "level": 2,
+          "line": 147
+        },
+        {
+          "heading": "Quadrant chart",
+          "level": 2,
+          "line": 156
+        },
+        {
+          "heading": "Timeline",
+          "level": 2,
+          "line": 170
+        },
+        {
+          "heading": "Mindmap",
+          "level": 2,
+          "line": 179
+        },
+        {
+          "heading": "Git graph",
+          "level": 2,
+          "line": 192
+        },
+        {
+          "heading": "Kanban board",
+          "level": 2,
+          "line": 204
+        },
+        {
+          "heading": "Sankey diagram",
+          "level": 2,
+          "line": 220
+        },
+        {
+          "heading": "XY chart",
+          "level": 2,
+          "line": 228
+        },
+        {
+          "heading": "Requirement diagram",
+          "level": 2,
+          "line": 237
+        },
+        {
+          "heading": "C4 context",
+          "level": 2,
+          "line": 257
+        },
+        {
+          "heading": "Block diagram",
+          "level": 2,
+          "line": 266
+        },
+        {
+          "heading": "Packet diagram",
+          "level": 2,
+          "line": 276
+        },
+        {
+          "heading": "Radar chart",
+          "level": 2,
+          "line": 284
+        },
+        {
+          "heading": "Info diagram",
+          "level": 2,
+          "line": 291
+        },
+        {
+          "heading": "Notes",
+          "level": 2,
+          "line": 296
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 24
+      }
+    },
+    {
+      "path": "crates/editor/test_fixtures/toc_anchor_test.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 29,
+      "nonEmptyLines": 16,
+      "sections": [
+        {
+          "heading": "Markdown ToC Manual Test",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Table of contents",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Basic heading",
+          "level": 2,
+          "line": 11
+        },
+        {
+          "heading": "Mixed CASE Heading",
+          "level": 2,
+          "line": 15
+        },
+        {
+          "heading": "Scroll padding section 1",
+          "level": 2,
+          "line": 19
+        },
+        {
+          "heading": "Scroll padding section 2",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Bottom target",
+          "level": 2,
+          "line": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    }
+  ]
+}

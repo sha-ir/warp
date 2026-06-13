@@ -1,0 +1,82 @@
+{
+ "projectRoot": "/home/mhb/warp",
+ "batchFiles": [
+  {
+   "path": "crates/warpui_core/src/integration/action_log.rs",
+   "language": "rust",
+   "sizeLines": 130,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/artifacts.rs",
+   "language": "rust",
+   "sizeLines": 34,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/capture_recorder.rs",
+   "language": "rust",
+   "sizeLines": 488,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/driver.rs",
+   "language": "rust",
+   "sizeLines": 760,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/mod.rs",
+   "language": "rust",
+   "sizeLines": 237,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/overlay.rs",
+   "language": "rust",
+   "sizeLines": 899,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/step.rs",
+   "language": "rust",
+   "sizeLines": 1066,
+   "fileCategory": "code"
+  },
+  {
+   "path": "crates/warpui_core/src/integration/video_recorder.rs",
+   "language": "rust",
+   "sizeLines": 392,
+   "fileCategory": "code"
+  }
+ ],
+ "batchImportData": {
+  "crates/warpui_core/src/integration/action_log.rs": [],
+  "crates/warpui_core/src/integration/artifacts.rs": [],
+  "crates/warpui_core/src/integration/capture_recorder.rs": [
+   "crates/warpui_core/src/platform/mod.rs"
+  ],
+  "crates/warpui_core/src/integration/driver.rs": [
+   "crates/warpui_core/src/integration/step.rs",
+   "crates/warpui_core/src/platform/mod.rs"
+  ],
+  "crates/warpui_core/src/integration/mod.rs": [
+   "crates/warpui_core/src/integration/action_log.rs",
+   "crates/warpui_core/src/integration/artifacts.rs",
+   "crates/warpui_core/src/integration/capture_recorder.rs",
+   "crates/warpui_core/src/integration/driver.rs",
+   "crates/warpui_core/src/integration/overlay.rs",
+   "crates/warpui_core/src/integration/step.rs",
+   "crates/warpui_core/src/integration/video_recorder.rs"
+  ],
+  "crates/warpui_core/src/integration/overlay.rs": [],
+  "crates/warpui_core/src/integration/step.rs": [
+   "crates/warpui_core/src/event.rs",
+   "crates/warpui_core/src/keymap.rs",
+   "crates/warpui_core/src/platform/mod.rs"
+  ],
+  "crates/warpui_core/src/integration/video_recorder.rs": [
+   "crates/warpui_core/src/platform/mod.rs"
+  ]
+ }
+}

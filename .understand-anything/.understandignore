@@ -1,0 +1,10 @@
+# Scope: limit /understand analysis to three keybinding-relevant crates only.
+# (allowlist pattern — exclude all, then re-include the three crate trees)
+/*
+!/crates/
+/crates/*
+!/crates/warpui_core/
+!/crates/editor/
+!/crates/vim/
+# within the kept crates, still skip generated/test-data noise
+crates/*/target/

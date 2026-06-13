@@ -1,0 +1,315 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {
+      "path": "crates/editor/src/content/undo_tests.rs",
+      "language": "rust",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/content/validation.rs",
+      "language": "rust",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/content/validation_tests.rs",
+      "language": "rust",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/content/version.rs",
+      "language": "rust",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/decoration/mod.rs",
+      "language": "rust",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/editor.rs",
+      "language": "rust",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/lib.rs",
+      "language": "rust",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/model.rs",
+      "language": "rust",
+      "sizeLines": 1218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/multiline.rs",
+      "language": "rust",
+      "sizeLines": 541,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/parallel_util.rs",
+      "language": "rust",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/broken_embedding.rs",
+      "language": "rust",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/empty.rs",
+      "language": "rust",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/header.rs",
+      "language": "rust",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/hidden_section.rs",
+      "language": "rust",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/horizontal_rule.rs",
+      "language": "rust",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/image.rs",
+      "language": "rust",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/lens_element.rs",
+      "language": "rust",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/mermaid.rs",
+      "language": "rust",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/mod.rs",
+      "language": "rust",
+      "sizeLines": 1286,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/ordered_list.rs",
+      "language": "rust",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/paint.rs",
+      "language": "rust",
+      "sizeLines": 337,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/paragraph.rs",
+      "language": "rust",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/placeholder.rs",
+      "language": "rust",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/runnable_command.rs",
+      "language": "rust",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/table.rs",
+      "language": "rust",
+      "sizeLines": 698,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/table_tests.rs",
+      "language": "rust",
+      "sizeLines": 448,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "crates/editor/src/content/undo_tests.rs": [
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/content/validation.rs": [
+      "crates/editor/src/content/cursor.rs",
+      "crates/editor/src/content/text.rs"
+    ],
+    "crates/editor/src/content/validation_tests.rs": [
+      "crates/editor/src/content/cursor.rs",
+      "crates/editor/src/content/text.rs"
+    ],
+    "crates/editor/src/content/version.rs": [],
+    "crates/editor/src/decoration/mod.rs": [
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/edit.rs",
+      "crates/editor/src/content/version.rs"
+    ],
+    "crates/editor/src/editor.rs": [
+      "crates/editor/src/content/version.rs",
+      "crates/editor/src/render/element/mod.rs"
+    ],
+    "crates/editor/src/lib.rs": [
+      "crates/editor/src/content/mod.rs",
+      "crates/editor/src/decoration/mod.rs",
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/model.rs",
+      "crates/editor/src/multiline.rs",
+      "crates/editor/src/parallel_util.rs",
+      "crates/editor/src/render/mod.rs",
+      "crates/editor/src/search.rs",
+      "crates/editor/src/selection.rs"
+    ],
+    "crates/editor/src/model.rs": [
+      "crates/editor/src/content/anchor.rs",
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/selection_model.rs",
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/content/version.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/selection.rs"
+    ],
+    "crates/editor/src/multiline.rs": [],
+    "crates/editor/src/parallel_util.rs": [],
+    "crates/editor/src/render/element/broken_embedding.rs": [
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/empty.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/header.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/hidden_section.rs": [
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/render/element/horizontal_rule.rs": [
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/image.rs": [
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/lens_element.rs": [
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/element/mod.rs",
+      "crates/editor/src/render/element/paragraph.rs",
+      "crates/editor/src/render/element/temporary_block.rs",
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/render/element/mermaid.rs": [
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/mod.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/mod.rs": [
+      "crates/editor/src/content/version.rs",
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/element/broken_embedding.rs",
+      "crates/editor/src/render/element/empty.rs",
+      "crates/editor/src/render/element/header.rs",
+      "crates/editor/src/render/element/hidden_section.rs",
+      "crates/editor/src/render/element/horizontal_rule.rs",
+      "crates/editor/src/render/element/image.rs",
+      "crates/editor/src/render/element/lens_element.rs",
+      "crates/editor/src/render/element/mermaid.rs",
+      "crates/editor/src/render/element/ordered_list.rs",
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/element/paragraph.rs",
+      "crates/editor/src/render/element/placeholder.rs",
+      "crates/editor/src/render/element/runnable_command.rs",
+      "crates/editor/src/render/element/table.rs",
+      "crates/editor/src/render/element/task_list.rs",
+      "crates/editor/src/render/element/temporary_block.rs",
+      "crates/editor/src/render/element/text_block.rs",
+      "crates/editor/src/render/element/unordered_list.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/ordered_list.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/layout.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/paint.rs": [
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/layout.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/saved_positions.rs"
+    ],
+    "crates/editor/src/render/element/paragraph.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/placeholder.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/element/paint.rs",
+      "crates/editor/src/render/layout.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/runnable_command.rs": [
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/mod.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/table.rs": [
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/table_offset_map.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/table_tests.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/element/table.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/table_offset_map.rs"
+    ]
+  }
+}

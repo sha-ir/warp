@@ -1,0 +1,6831 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 8,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "crates/warpui_core/src/integration/action_log.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "event_description",
+          "startLine": 21,
+          "endLine": 42,
+          "params": [
+            "event"
+          ]
+        },
+        {
+          "name": "new",
+          "startLine": 57,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "set_recording_start",
+          "startLine": 63,
+          "endLine": 65,
+          "params": [
+            "start"
+          ]
+        },
+        {
+          "name": "record",
+          "startLine": 68,
+          "endLine": 73,
+          "params": [
+            "description"
+          ]
+        },
+        {
+          "name": "write_to_file",
+          "startLine": 83,
+          "endLine": 119,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "get_action_log_mut",
+          "startLine": 123,
+          "endLine": 125,
+          "params": [
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "get_action_log",
+          "startLine": 128,
+          "endLine": 130,
+          "params": [
+            "step_data_map"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ActionEntry",
+          "startLine": 13,
+          "endLine": 18,
+          "methods": [],
+          "properties": [
+            "recorded_at",
+            "description"
+          ]
+        },
+        {
+          "name": "ActionLog",
+          "startLine": 51,
+          "endLine": 54,
+          "methods": [
+            "new",
+            "set_recording_start",
+            "record",
+            "write_to_file"
+          ],
+          "properties": [
+            "entries",
+            "recording_start"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ActionEntry",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "event_description",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "ActionLog",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "set_recording_start",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "record",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "write_to_file",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "get_action_log_mut",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "get_action_log",
+          "line": 128,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "event_description",
+          "callee": "\"LeftMouseDown\".to_string",
+          "lineNumber": 25
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"LeftMouseUp\".to_string",
+          "lineNumber": 26
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"LeftMouseDragged\".to_string",
+          "lineNumber": 27
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"RightMouseDown\".to_string",
+          "lineNumber": 28
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"MiddleMouseDown\".to_string",
+          "lineNumber": 29
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"MouseMoved\".to_string",
+          "lineNumber": 30
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"ScrollWheel\".to_string",
+          "lineNumber": 31
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"ModifierStateChanged\".to_string",
+          "lineNumber": 32
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"ModifierKeyChanged\".to_string",
+          "lineNumber": 33
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"DragAndDropFiles\".to_string",
+          "lineNumber": 34
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"DragFiles\".to_string",
+          "lineNumber": 35
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"DragFileExit\".to_string",
+          "lineNumber": 36
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"SetMarkedText\".to_string",
+          "lineNumber": 37
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"ClearMarkedText\".to_string",
+          "lineNumber": 38
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"ForwardMouseDown\".to_string",
+          "lineNumber": 39
+        },
+        {
+          "caller": "event_description",
+          "callee": "\"BackMouseDown\".to_string",
+          "lineNumber": 40
+        },
+        {
+          "caller": "new",
+          "callee": "Self::default",
+          "lineNumber": 58
+        },
+        {
+          "caller": "set_recording_start",
+          "callee": "Some",
+          "lineNumber": 64
+        },
+        {
+          "caller": "record",
+          "callee": "self.entries.push",
+          "lineNumber": 69
+        },
+        {
+          "caller": "record",
+          "callee": "Instant::now",
+          "lineNumber": 70
+        },
+        {
+          "caller": "record",
+          "callee": "description.into",
+          "lineNumber": 71
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "self.entries.is_empty",
+          "lineNumber": 84
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "Ok",
+          "lineNumber": 85
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "path.parent",
+          "lineNumber": 88
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 89
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "self.recording_start.unwrap_or",
+          "lineNumber": 92
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "std::fs::File::create",
+          "lineNumber": 94
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "std::io::BufWriter::new",
+          "lineNumber": 95
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "entry\n                .recorded_at\n                .checked_duration_since(base).unwrap_or",
+          "lineNumber": 98
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "entry\n                .recorded_at.checked_duration_since",
+          "lineNumber": 98
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "offset.as_secs",
+          "lineNumber": 102
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "offset.subsec_millis",
+          "lineNumber": 105
+        },
+        {
+          "caller": "write_to_file",
+          "callee": "Ok",
+          "lineNumber": 118
+        },
+        {
+          "caller": "get_action_log_mut",
+          "callee": "step_data_map.get_mut::<_, ActionLog>",
+          "lineNumber": 124
+        },
+        {
+          "caller": "get_action_log",
+          "callee": "step_data_map.get::<_, ActionLog>",
+          "lineNumber": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 7,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/artifacts.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "new",
+          "startLine": 12,
+          "endLine": 21,
+          "params": [
+            "test_name"
+          ]
+        },
+        {
+          "name": "dir",
+          "startLine": 23,
+          "endLine": 25,
+          "params": []
+        },
+        {
+          "name": "path",
+          "startLine": 27,
+          "endLine": 29,
+          "params": [
+            "filename"
+          ]
+        },
+        {
+          "name": "get_artifacts",
+          "startLine": 32,
+          "endLine": 34,
+          "params": [
+            "step_data_map"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TestArtifacts",
+          "startLine": 7,
+          "endLine": 9,
+          "methods": [
+            "new",
+            "dir",
+            "path"
+          ],
+          "properties": [
+            "dir"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TestArtifacts",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "dir",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "path",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "get_artifacts",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "new",
+          "callee": "std::env::var(ARTIFACTS_DIR_ENV_VAR)\n            .map(PathBuf::from).unwrap_or_else",
+          "lineNumber": 13
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::var(ARTIFACTS_DIR_ENV_VAR).map",
+          "lineNumber": 13
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::var",
+          "lineNumber": 13
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::temp_dir().join",
+          "lineNumber": 15
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::temp_dir",
+          "lineNumber": 15
+        },
+        {
+          "caller": "new",
+          "callee": "chrono::Local::now().format(\"%Y-%m-%dT%H-%M-%S\").to_string",
+          "lineNumber": 17
+        },
+        {
+          "caller": "new",
+          "callee": "chrono::Local::now().format",
+          "lineNumber": 17
+        },
+        {
+          "caller": "new",
+          "callee": "chrono::Local::now",
+          "lineNumber": 17
+        },
+        {
+          "caller": "new",
+          "callee": "root.join(test_name).join",
+          "lineNumber": 18
+        },
+        {
+          "caller": "new",
+          "callee": "root.join",
+          "lineNumber": 18
+        },
+        {
+          "caller": "new",
+          "callee": "std::fs::create_dir_all(&dir).ok",
+          "lineNumber": 19
+        },
+        {
+          "caller": "new",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 19
+        },
+        {
+          "caller": "path",
+          "callee": "self.dir.join",
+          "lineNumber": 28
+        },
+        {
+          "caller": "get_artifacts",
+          "callee": "step_data_map.get::<_, TestArtifacts>",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/capture_recorder.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 488,
+      "nonEmptyLines": 418,
+      "functions": [
+        {
+          "name": "default",
+          "startLine": 48,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "default",
+          "startLine": 72,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 81,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "start_recording",
+          "startLine": 85,
+          "endLine": 90,
+          "params": []
+        },
+        {
+          "name": "stop_recording",
+          "startLine": 92,
+          "endLine": 98,
+          "params": []
+        },
+        {
+          "name": "stop_capture_loop",
+          "startLine": 101,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "is_recording",
+          "startLine": 107,
+          "endLine": 112,
+          "params": []
+        },
+        {
+          "name": "recording_start",
+          "startLine": 114,
+          "endLine": 116,
+          "params": []
+        },
+        {
+          "name": "capture_loop_state",
+          "startLine": 118,
+          "endLine": 120,
+          "params": []
+        },
+        {
+          "name": "raw_frame_count",
+          "startLine": 122,
+          "endLine": 124,
+          "params": []
+        },
+        {
+          "name": "is_encoding",
+          "startLine": 126,
+          "endLine": 131,
+          "params": []
+        },
+        {
+          "name": "frame_count",
+          "startLine": 133,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "save_captured_frame_as_png",
+          "startLine": 452,
+          "endLine": 476,
+          "params": [
+            "frame",
+            "path"
+          ]
+        },
+        {
+          "name": "get_capture_recorder_mut",
+          "startLine": 479,
+          "endLine": 483,
+          "params": [
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "get_capture_recorder",
+          "startLine": 486,
+          "endLine": 488,
+          "params": [
+            "step_data_map"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RecorderState",
+          "startLine": 11,
+          "endLine": 15,
+          "methods": [],
+          "properties": [
+            "Idle",
+            "Recording",
+            "Stopping"
+          ]
+        },
+        {
+          "name": "TimestampedFrame",
+          "startLine": 29,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "frame",
+            "captured_at"
+          ]
+        },
+        {
+          "name": "SharedState",
+          "startLine": 38,
+          "endLine": 45,
+          "methods": [
+            "default"
+          ],
+          "properties": [
+            "recorder_state",
+            "raw_frames",
+            "h264_buf",
+            "encoded_frame_count",
+            "dimensions",
+            "encoding_in_progress"
+          ]
+        },
+        {
+          "name": "CaptureLoopState",
+          "startLine": 62,
+          "endLine": 62,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "CaptureRecorder",
+          "startLine": 66,
+          "endLine": 69,
+          "methods": [
+            "default",
+            "new",
+            "start_recording",
+            "stop_recording",
+            "stop_capture_loop",
+            "is_recording",
+            "recording_start",
+            "capture_loop_state",
+            "raw_frame_count",
+            "is_encoding",
+            "frame_count"
+          ],
+          "properties": [
+            "inner",
+            "recording_start"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CaptureLoopState",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "CaptureRecorder",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "start_recording",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "stop_recording",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "stop_capture_loop",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "is_recording",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "recording_start",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "capture_loop_state",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "raw_frame_count",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "is_encoding",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "frame_count",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "save_captured_frame_as_png",
+          "line": 452,
+          "isDefault": false
+        },
+        {
+          "name": "get_capture_recorder_mut",
+          "line": 479,
+          "isDefault": false
+        },
+        {
+          "name": "get_capture_recorder",
+          "line": 486,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "default",
+          "callee": "Vec::new",
+          "lineNumber": 51
+        },
+        {
+          "caller": "default",
+          "callee": "Vec::new",
+          "lineNumber": 52
+        },
+        {
+          "caller": "default",
+          "callee": "Arc::new",
+          "lineNumber": 74
+        },
+        {
+          "caller": "default",
+          "callee": "Mutex::new",
+          "lineNumber": 74
+        },
+        {
+          "caller": "default",
+          "callee": "SharedState::default",
+          "lineNumber": 74
+        },
+        {
+          "caller": "new",
+          "callee": "Self::default",
+          "lineNumber": 82
+        },
+        {
+          "caller": "start_recording",
+          "callee": "Some",
+          "lineNumber": 86
+        },
+        {
+          "caller": "start_recording",
+          "callee": "Instant::now",
+          "lineNumber": 86
+        },
+        {
+          "caller": "start_recording",
+          "callee": "self.inner.lock",
+          "lineNumber": 87
+        },
+        {
+          "caller": "stop_recording",
+          "callee": "self.inner.lock",
+          "lineNumber": 93
+        },
+        {
+          "caller": "stop_capture_loop",
+          "callee": "self.inner.lock",
+          "lineNumber": 102
+        },
+        {
+          "caller": "is_recording",
+          "callee": "self.inner\n            .lock()\n            .map(|s| s.recorder_state == RecorderState::Recording).unwrap_or",
+          "lineNumber": 108
+        },
+        {
+          "caller": "is_recording",
+          "callee": "self.inner\n            .lock().map",
+          "lineNumber": 108
+        },
+        {
+          "caller": "is_recording",
+          "callee": "self.inner.lock",
+          "lineNumber": 108
+        },
+        {
+          "caller": "capture_loop_state",
+          "callee": "CaptureLoopState",
+          "lineNumber": 119
+        },
+        {
+          "caller": "capture_loop_state",
+          "callee": "self.inner.clone",
+          "lineNumber": 119
+        },
+        {
+          "caller": "raw_frame_count",
+          "callee": "self.inner.lock().map(|s| s.raw_frames.len()).unwrap_or",
+          "lineNumber": 123
+        },
+        {
+          "caller": "raw_frame_count",
+          "callee": "self.inner.lock().map",
+          "lineNumber": 123
+        },
+        {
+          "caller": "raw_frame_count",
+          "callee": "self.inner.lock",
+          "lineNumber": 123
+        },
+        {
+          "caller": "raw_frame_count",
+          "callee": "s.raw_frames.len",
+          "lineNumber": 123
+        },
+        {
+          "caller": "is_encoding",
+          "callee": "self.inner\n            .lock()\n            .map(|s| s.encoding_in_progress).unwrap_or",
+          "lineNumber": 127
+        },
+        {
+          "caller": "is_encoding",
+          "callee": "self.inner\n            .lock().map",
+          "lineNumber": 127
+        },
+        {
+          "caller": "is_encoding",
+          "callee": "self.inner.lock",
+          "lineNumber": 127
+        },
+        {
+          "caller": "frame_count",
+          "callee": "self.inner\n            .lock()\n            .map(|s| s.encoded_frame_count as usize).unwrap_or",
+          "lineNumber": 134
+        },
+        {
+          "caller": "frame_count",
+          "callee": "self.inner\n            .lock().map",
+          "lineNumber": 134
+        },
+        {
+          "caller": "frame_count",
+          "callee": "self.inner.lock",
+          "lineNumber": 134
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "frame.clone",
+          "lineNumber": 453
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "frame.ensure_rgba",
+          "lineNumber": 454
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "path.parent",
+          "lineNumber": 455
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 456
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "std::fs::File::create",
+          "lineNumber": 459
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "std::io::BufWriter::new",
+          "lineNumber": 460
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "image::codecs::png::PngEncoder::new_with_quality",
+          "lineNumber": 462
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "encoder.write_image",
+          "lineNumber": 468
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "image::ColorType::Rgba8.into",
+          "lineNumber": 472
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "Ok",
+          "lineNumber": 475
+        },
+        {
+          "caller": "get_capture_recorder_mut",
+          "callee": "step_data_map.get_mut::<_, CaptureRecorder>",
+          "lineNumber": 482
+        },
+        {
+          "caller": "get_capture_recorder",
+          "callee": "step_data_map.get::<_, CaptureRecorder>",
+          "lineNumber": 487
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/driver.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 760,
+      "nonEmptyLines": 697,
+      "functions": [
+        {
+          "name": "new",
+          "startLine": 55,
+          "endLine": 74,
+          "params": [
+            "work_dir"
+          ]
+        },
+        {
+          "name": "set_should_run_test",
+          "startLine": 76,
+          "endLine": 82,
+          "params": [
+            "predicate"
+          ]
+        },
+        {
+          "name": "with_real_display",
+          "startLine": 84,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "with_step_group_name",
+          "startLine": 91,
+          "endLine": 94,
+          "params": [
+            "step_group_name"
+          ]
+        },
+        {
+          "name": "with_step",
+          "startLine": 96,
+          "endLine": 102,
+          "params": [
+            "step"
+          ]
+        },
+        {
+          "name": "with_steps",
+          "startLine": 104,
+          "endLine": 112,
+          "params": [
+            "steps"
+          ]
+        },
+        {
+          "name": "with_setup",
+          "startLine": 114,
+          "endLine": 124,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "with_static_persisted_data",
+          "startLine": 126,
+          "endLine": 129,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "with_cleanup",
+          "startLine": 131,
+          "endLine": 137,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "with_on_finish",
+          "startLine": 139,
+          "endLine": 150,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "with_timeout",
+          "startLine": 152,
+          "endLine": 155,
+          "params": [
+            "timeout"
+          ]
+        },
+        {
+          "name": "use_tmp_filesystem_for_test_root_directory",
+          "startLine": 159,
+          "endLine": 162,
+          "params": []
+        },
+        {
+          "name": "build",
+          "startLine": 164,
+          "endLine": 182,
+          "params": [
+            "test_name",
+            "create_temp_dir_for_test"
+          ]
+        },
+        {
+          "name": "into_root",
+          "startLine": 195,
+          "endLine": 205,
+          "params": [
+            "test_name"
+          ]
+        },
+        {
+          "name": "run_test_and_cleanup",
+          "startLine": 240,
+          "endLine": 290,
+          "params": [
+            "app"
+          ]
+        },
+        {
+          "name": "run_steps_and_determine_rerun",
+          "startLine": 292,
+          "endLine": 346,
+          "params": [
+            "app"
+          ]
+        },
+        {
+          "name": "configure_capture_recording",
+          "startLine": 347,
+          "endLine": 398,
+          "params": [
+            "app",
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "handle_post_step_capture",
+          "startLine": 400,
+          "endLine": 451,
+          "params": [
+            "app",
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "finalize_recording",
+          "startLine": 453,
+          "endLine": 487,
+          "params": [
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "setup",
+          "startLine": 488,
+          "endLine": 494,
+          "params": [
+            "create_temp_dir_for_test"
+          ]
+        },
+        {
+          "name": "cleanup",
+          "startLine": 496,
+          "endLine": 500,
+          "params": []
+        },
+        {
+          "name": "export_runtime_tags",
+          "startLine": 502,
+          "endLine": 516,
+          "params": []
+        },
+        {
+          "name": "run_on_finish_and_export_tags",
+          "startLine": 520,
+          "endLine": 526,
+          "params": [
+            "app",
+            "window_id"
+          ]
+        },
+        {
+          "name": "run_single_step_with_retries",
+          "startLine": 539,
+          "endLine": 712,
+          "params": [
+            "step",
+            "app",
+            "step_data_map",
+            "sigint_received"
+          ]
+        },
+        {
+          "name": "video_recording_enabled_for_test",
+          "startLine": 731,
+          "endLine": 743,
+          "params": [
+            "test_name"
+          ]
+        },
+        {
+          "name": "get_panic_message",
+          "startLine": 747,
+          "endLine": 760,
+          "params": [
+            "panic"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Builder",
+          "startLine": 38,
+          "endLine": 52,
+          "methods": [
+            "new",
+            "set_should_run_test",
+            "with_real_display",
+            "with_step_group_name",
+            "with_step",
+            "with_steps",
+            "with_setup",
+            "with_static_persisted_data",
+            "with_cleanup",
+            "with_on_finish",
+            "with_timeout",
+            "use_tmp_filesystem_for_test_root_directory",
+            "build"
+          ],
+          "properties": [
+            "use_real_display",
+            "steps",
+            "should_run_test",
+            "setup",
+            "cleanup",
+            "on_finish",
+            "timeout",
+            "root_dir",
+            "step_group_name_to_apply_to_new_steps",
+            "static_persisted_data"
+          ]
+        },
+        {
+          "name": "RootDirKind",
+          "startLine": 187,
+          "endLine": 192,
+          "methods": [
+            "into_root"
+          ],
+          "properties": [
+            "Named",
+            "TemporaryDirectory"
+          ]
+        },
+        {
+          "name": "TestDriver",
+          "startLine": 210,
+          "endLine": 223,
+          "methods": [
+            "run_test_and_cleanup",
+            "run_steps_and_determine_rerun",
+            "configure_capture_recording",
+            "handle_post_step_capture",
+            "finalize_recording",
+            "setup",
+            "cleanup",
+            "export_runtime_tags",
+            "run_on_finish_and_export_tags",
+            "run_single_step_with_retries"
+          ],
+          "properties": [
+            "steps",
+            "test_name",
+            "test_setup",
+            "should_run_test",
+            "setup",
+            "cleanup",
+            "on_finish",
+            "timeout",
+            "persisted_data"
+          ]
+        },
+        {
+          "name": "StepResult",
+          "startLine": 229,
+          "endLine": 232,
+          "methods": [],
+          "properties": [
+            "Success",
+            "PreconditionFailed"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Builder",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "set_should_run_test",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "with_real_display",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "with_step_group_name",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "with_step",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "with_steps",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "with_setup",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "with_static_persisted_data",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "with_cleanup",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "with_on_finish",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "with_timeout",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "use_tmp_filesystem_for_test_root_directory",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "build",
+          "line": 164,
+          "isDefault": false
+        },
+        {
+          "name": "RootDirKind",
+          "line": 187,
+          "isDefault": false
+        },
+        {
+          "name": "TestDriver",
+          "line": 210,
+          "isDefault": false
+        },
+        {
+          "name": "run_test_and_cleanup",
+          "line": 240,
+          "isDefault": false
+        },
+        {
+          "name": "setup",
+          "line": 488,
+          "isDefault": false
+        },
+        {
+          "name": "cleanup",
+          "line": 496,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "new",
+          "callee": "PersistedDataMap::default",
+          "lineNumber": 56
+        },
+        {
+          "caller": "new",
+          "callee": "persisted_data.insert",
+          "lineNumber": 57
+        },
+        {
+          "caller": "new",
+          "callee": "\"platform\".to_string",
+          "lineNumber": 57
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::consts::OS.to_string",
+          "lineNumber": 57
+        },
+        {
+          "caller": "new",
+          "callee": "persisted_data.insert",
+          "lineNumber": 58
+        },
+        {
+          "caller": "new",
+          "callee": "\"architecture\".to_string",
+          "lineNumber": 59
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::consts::ARCH.to_string",
+          "lineNumber": 60
+        },
+        {
+          "caller": "new",
+          "callee": "Default::default",
+          "lineNumber": 64
+        },
+        {
+          "caller": "new",
+          "callee": "Box::new",
+          "lineNumber": 65
+        },
+        {
+          "caller": "new",
+          "callee": "Box::new",
+          "lineNumber": 67
+        },
+        {
+          "caller": "set_should_run_test",
+          "callee": "Box::new",
+          "lineNumber": 80
+        },
+        {
+          "caller": "with_step_group_name",
+          "callee": "Some",
+          "lineNumber": 92
+        },
+        {
+          "caller": "with_step_group_name",
+          "callee": "step_group_name.to_string",
+          "lineNumber": 92
+        },
+        {
+          "caller": "with_step",
+          "callee": "step.step_group_name.is_none",
+          "lineNumber": 97
+        },
+        {
+          "caller": "with_step",
+          "callee": "self.step_group_name_to_apply_to_new_steps.clone",
+          "lineNumber": 98
+        },
+        {
+          "caller": "with_step",
+          "callee": "self.steps.push_back",
+          "lineNumber": 100
+        },
+        {
+          "caller": "with_steps",
+          "callee": "step.step_group_name.is_none",
+          "lineNumber": 106
+        },
+        {
+          "caller": "with_steps",
+          "callee": "self.step_group_name_to_apply_to_new_steps.clone",
+          "lineNumber": 107
+        },
+        {
+          "caller": "with_steps",
+          "callee": "self.steps.extend",
+          "lineNumber": 110
+        },
+        {
+          "caller": "with_setup",
+          "callee": "Some",
+          "lineNumber": 122
+        },
+        {
+          "caller": "with_setup",
+          "callee": "Box::new",
+          "lineNumber": 122
+        },
+        {
+          "caller": "with_static_persisted_data",
+          "callee": "self.static_persisted_data.extend",
+          "lineNumber": 127
+        },
+        {
+          "caller": "with_cleanup",
+          "callee": "Box::new",
+          "lineNumber": 135
+        },
+        {
+          "caller": "with_on_finish",
+          "callee": "Some",
+          "lineNumber": 148
+        },
+        {
+          "caller": "with_on_finish",
+          "callee": "Box::new",
+          "lineNumber": 148
+        },
+        {
+          "caller": "with_timeout",
+          "callee": "Some",
+          "lineNumber": 153
+        },
+        {
+          "caller": "build",
+          "callee": "TestSetupUtils::new",
+          "lineNumber": 165
+        },
+        {
+          "caller": "build",
+          "callee": "self.root_dir.into_root",
+          "lineNumber": 165
+        },
+        {
+          "caller": "build",
+          "callee": "test_name.to_string",
+          "lineNumber": 169
+        },
+        {
+          "caller": "build",
+          "callee": "self.setup.unwrap_or_else",
+          "lineNumber": 172
+        },
+        {
+          "caller": "build",
+          "callee": "Box::new",
+          "lineNumber": 172
+        },
+        {
+          "caller": "build",
+          "callee": "driver.setup",
+          "lineNumber": 179
+        },
+        {
+          "caller": "into_root",
+          "callee": "work_dir.push",
+          "lineNumber": 198
+        },
+        {
+          "caller": "into_root",
+          "callee": "RootDir::Path",
+          "lineNumber": 199
+        },
+        {
+          "caller": "into_root",
+          "callee": "RootDir::TempDir",
+          "lineNumber": 201
+        },
+        {
+          "caller": "into_root",
+          "callee": "tempfile::tempdir().expect",
+          "lineNumber": 202
+        },
+        {
+          "caller": "into_root",
+          "callee": "tempfile::tempdir",
+          "lineNumber": 202
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "(self.should_run_test)",
+          "lineNumber": 241
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "app.as_mut().terminate_app",
+          "lineNumber": 243
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "app.as_mut",
+          "lineNumber": 243
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "AssertUnwindSafe(self.run_steps_and_determine_rerun(&mut app)).catch_unwind",
+          "lineNumber": 250
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "AssertUnwindSafe",
+          "lineNumber": 250
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "self.run_steps_and_determine_rerun",
+          "lineNumber": 250
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "test_result\n            .as_ref().is_ok_and",
+          "lineNumber": 254
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "test_result.as_ref",
+          "lineNumber": 254
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "app.read",
+          "lineNumber": 258
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "ctx.windows",
+          "lineNumber": 259
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "windowing_state.active_window",
+          "lineNumber": 260
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "self.run_on_finish_and_export_tags",
+          "lineNumber": 263
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "self.cleanup",
+          "lineNumber": 270
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "std::process::exit",
+          "lineNumber": 275
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "app.as_mut().terminate_app",
+          "lineNumber": 277
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "app.as_mut",
+          "lineNumber": 277
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "get_panic_message",
+          "lineNumber": 282
+        },
+        {
+          "caller": "run_test_and_cleanup",
+          "callee": "std::process::exit",
+          "lineNumber": 287
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.steps.drain(..).collect",
+          "lineNumber": 293
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.steps.drain",
+          "lineNumber": 293
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "Arc::new",
+          "lineNumber": 297
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "AtomicBool::new",
+          "lineNumber": 297
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "sigint_received.clone",
+          "lineNumber": 299
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "ctrlc::set_handler(move || {\n            log::info!(\"Received Ctrl+C in test driver\");\n            sigint_received_clone.store(true, Ordering::Relaxed);\n        }).expect",
+          "lineNumber": 302
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "ctrlc::set_handler",
+          "lineNumber": 302
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "sigint_received_clone.store",
+          "lineNumber": 304
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "std::thread::Builder::new()\n                .name(\"test-timeout-watchdog\".to_string()).spawn",
+          "lineNumber": 314
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "std::thread::Builder::new().name",
+          "lineNumber": 314
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "std::thread::Builder::new",
+          "lineNumber": 314
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "\"test-timeout-watchdog\".to_string",
+          "lineNumber": 315
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "std::thread::sleep",
+          "lineNumber": 317
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "std::process::exit",
+          "lineNumber": 322
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "StepDataMap::default",
+          "lineNumber": 326
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.configure_capture_recording",
+          "lineNumber": 327
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.run_single_step_with_retries",
+          "lineNumber": 330
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.handle_post_step_capture",
+          "lineNumber": 335
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.finalize_recording",
+          "lineNumber": 338
+        },
+        {
+          "caller": "run_steps_and_determine_rerun",
+          "callee": "self.finalize_recording",
+          "lineNumber": 344
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "TestArtifacts::new",
+          "lineNumber": 350
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "step_data_map.insert",
+          "lineNumber": 355
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "step_data_map.insert",
+          "lineNumber": 356
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "VideoRecorder::new",
+          "lineNumber": 356
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "step_data_map.insert",
+          "lineNumber": 357
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "ActionLog::new",
+          "lineNumber": 357
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "step_data_map.insert",
+          "lineNumber": 358
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "OverlayLog::new",
+          "lineNumber": 358
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "video_recorder::get_recorder(step_data_map).map",
+          "lineNumber": 362
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "video_recorder::get_recorder",
+          "lineNumber": 362
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "recorder.capture_loop_state",
+          "lineNumber": 363
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "app.clone",
+          "lineNumber": 365
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "app.foreground_executor()\n                    .spawn(video_recorder::run_capture_loop(app_clone, state)).detach",
+          "lineNumber": 366
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "app.foreground_executor().spawn",
+          "lineNumber": 366
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "app.foreground_executor",
+          "lineNumber": 366
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "video_recorder::run_capture_loop",
+          "lineNumber": 367
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "app.read",
+          "lineNumber": 371
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "ctx.windows",
+          "lineNumber": 372
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "windows\n                    .active_window()\n                    .and_then(|id| windows.platform_window(id)).map",
+          "lineNumber": 373
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "windows\n                    .active_window().and_then",
+          "lineNumber": 373
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "windows.active_window",
+          "lineNumber": 373
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "windows.platform_window",
+          "lineNumber": 375
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "window.as_ctx().backing_scale_factor",
+          "lineNumber": 376
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "window.as_ctx",
+          "lineNumber": 376
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "super::overlay::get_overlay_log_mut",
+          "lineNumber": 378
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "overlay_log.set_scale_factor",
+          "lineNumber": 379
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "video_recording_enabled_for_test",
+          "lineNumber": 384
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "video_recorder::get_recorder_mut",
+          "lineNumber": 385
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "recorder.start_recording",
+          "lineNumber": 386
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 393
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "log.set_recording_start",
+          "lineNumber": 394
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "Instant::now",
+          "lineNumber": 394
+        },
+        {
+          "caller": "configure_capture_recording",
+          "callee": "log.record",
+          "lineNumber": 395
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "step_data_map\n            .get::<_, String>(video_recorder::SCREENSHOT_PATH_KEY).cloned",
+          "lineNumber": 401
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "step_data_map\n            .get::<_, String>",
+          "lineNumber": 401
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "screenshot_filename\n            .as_ref().is_some_and",
+          "lineNumber": 404
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "screenshot_filename.as_ref",
+          "lineNumber": 404
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "filename.is_empty",
+          "lineNumber": 406
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "app.read",
+          "lineNumber": 412
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "ctx.windows",
+          "lineNumber": 413
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "windowing_state.active_window",
+          "lineNumber": 414
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "wid.and_then",
+          "lineNumber": 415
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "windowing_state.platform_window",
+          "lineNumber": 415
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "futures::channel::oneshot::channel",
+          "lineNumber": 421
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "window\n            .as_ctx().request_frame_capture",
+          "lineNumber": 423
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "window.as_ctx",
+          "lineNumber": 423
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "Box::new",
+          "lineNumber": 425
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "tx.send",
+          "lineNumber": 426
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "window.as_ctx().request_redraw",
+          "lineNumber": 428
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "window.as_ctx",
+          "lineNumber": 428
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "rx.with_timeout",
+          "lineNumber": 429
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "Duration::from_secs",
+          "lineNumber": 429
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "screenshot_filename.filter",
+          "lineNumber": 437
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "filename.is_empty",
+          "lineNumber": 437
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "artifacts::get_artifacts(step_data_map)\n                .map(|artifacts| artifacts.path(&filename)).unwrap_or_else",
+          "lineNumber": 438
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "artifacts::get_artifacts(step_data_map).map",
+          "lineNumber": 438
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "artifacts::get_artifacts",
+          "lineNumber": 438
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "artifacts.path",
+          "lineNumber": 439
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "PathBuf::from",
+          "lineNumber": 440
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "video_recorder::save_captured_frame_as_png",
+          "lineNumber": 441
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "step_data_map.insert",
+          "lineNumber": 449
+        },
+        {
+          "caller": "handle_post_step_capture",
+          "callee": "String::new",
+          "lineNumber": 449
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "video_recorder::get_recorder",
+          "lineNumber": 456
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "recorder.stop_capture_loop",
+          "lineNumber": 457
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "Timer::at",
+          "lineNumber": 459
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "Instant::now",
+          "lineNumber": 459
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "std::time::Duration::from_millis",
+          "lineNumber": 459
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "artifacts::get_artifacts(step_data_map).map",
+          "lineNumber": 463
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "artifacts::get_artifacts",
+          "lineNumber": 463
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "artifacts.dir().to_path_buf",
+          "lineNumber": 463
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "artifacts.dir",
+          "lineNumber": 463
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "step_data_map.remove::<_, OverlayLog>",
+          "lineNumber": 466
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "video_recorder::get_recorder_mut",
+          "lineNumber": 467
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "recorder.stop_recording",
+          "lineNumber": 468
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "recorder.frame_count",
+          "lineNumber": 469
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "dir.join",
+          "lineNumber": 471
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "recorder.finalize",
+          "lineNumber": 472
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "overlay_log.as_ref",
+          "lineNumber": 472
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "dir.join",
+          "lineNumber": 480
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "action_log::get_action_log",
+          "lineNumber": 481
+        },
+        {
+          "caller": "finalize_recording",
+          "callee": "action_log.write_to_file",
+          "lineNumber": 482
+        },
+        {
+          "caller": "setup",
+          "callee": "self.test_setup.create_temp_dir_for_test",
+          "lineNumber": 490
+        },
+        {
+          "caller": "setup",
+          "callee": "self.test_setup.set_home_dir_for_test",
+          "lineNumber": 491
+        },
+        {
+          "caller": "setup",
+          "callee": "(self.setup)",
+          "lineNumber": 493
+        },
+        {
+          "caller": "cleanup",
+          "callee": "self.test_setup.cleanup_env",
+          "lineNumber": 497
+        },
+        {
+          "caller": "cleanup",
+          "callee": "self.test_setup.cleanup_dir",
+          "lineNumber": 498
+        },
+        {
+          "caller": "cleanup",
+          "callee": "(self.cleanup)",
+          "lineNumber": 499
+        },
+        {
+          "caller": "export_runtime_tags",
+          "callee": "std::env::var",
+          "lineNumber": 503
+        },
+        {
+          "caller": "export_runtime_tags",
+          "callee": "serde_json::to_string_pretty",
+          "lineNumber": 504
+        },
+        {
+          "caller": "export_runtime_tags",
+          "callee": "std::fs::write",
+          "lineNumber": 505
+        },
+        {
+          "caller": "run_on_finish_and_export_tags",
+          "callee": "(on_finish)",
+          "lineNumber": 522
+        },
+        {
+          "caller": "run_on_finish_and_export_tags",
+          "callee": "self.export_runtime_tags",
+          "lineNumber": 525
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "app.read",
+          "lineNumber": 546
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "ctx.windows",
+          "lineNumber": 547
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "windowing_state\n                .active_window().expect",
+          "lineNumber": 548
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "windowing_state.active_window",
+          "lineNumber": 548
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "windowing_state\n                .platform_window(window_id).expect",
+          "lineNumber": 551
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "windowing_state.platform_window",
+          "lineNumber": 551
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step.retries",
+          "lineNumber": 559
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step.retries",
+          "lineNumber": 564
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 580
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "log.record",
+          "lineNumber": 581
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "run_step",
+          "lineNumber": 584
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "window.as_ref",
+          "lineNumber": 588
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 605
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "log.record",
+          "lineNumber": 606
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "backtrace.status",
+          "lineNumber": 626
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "\"(Backtrace disabled; run with `RUST_BACKTRACE=1` environment variable to display a backtrace)\".into",
+          "lineNumber": 628
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step.step_group_name.as_deref().unwrap_or",
+          "lineNumber": 631
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step.step_group_name.as_deref",
+          "lineNumber": 631
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.persisted_data.insert",
+          "lineNumber": 632
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "RUNTIME_TAG_FAILED_STEP_GROUP_NAME.to_owned",
+          "lineNumber": 633
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step_group_name.to_owned",
+          "lineNumber": 634
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "failed_assertion_name.unwrap_or",
+          "lineNumber": 637
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "\"Unspecified\".to_owned",
+          "lineNumber": 637
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.persisted_data.insert",
+          "lineNumber": 638
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "RUNTIME_TAG_FAILED_ASSERTION_NAME.to_owned",
+          "lineNumber": 639
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.persisted_data.insert",
+          "lineNumber": 642
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "RUNTIME_TAG_FAILURE_REASON.to_owned",
+          "lineNumber": 643
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "message.clone",
+          "lineNumber": 643
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.run_on_finish_and_export_tags",
+          "lineNumber": 644
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "backtrace.status",
+          "lineNumber": 668
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "\"(Backtrace disabled; run with `RUST_BACKTRACE=1` environment variable to display a backtrace)\".into",
+          "lineNumber": 670
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step.step_group_name.as_deref().unwrap_or",
+          "lineNumber": 673
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step.step_group_name.as_deref",
+          "lineNumber": 673
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.persisted_data.insert",
+          "lineNumber": 674
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "RUNTIME_TAG_FAILED_STEP_GROUP_NAME.to_owned",
+          "lineNumber": 675
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "step_group_name.to_owned",
+          "lineNumber": 676
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "failed_assertion_name.unwrap_or",
+          "lineNumber": 679
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "\"Unspecified\".to_owned",
+          "lineNumber": 679
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.persisted_data.insert",
+          "lineNumber": 680
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "RUNTIME_TAG_FAILED_ASSERTION_NAME.to_owned",
+          "lineNumber": 681
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.persisted_data.insert",
+          "lineNumber": 684
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "RUNTIME_TAG_FAILURE_REASON.to_owned",
+          "lineNumber": 685
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "message.clone",
+          "lineNumber": 685
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.run_on_finish_and_export_tags",
+          "lineNumber": 686
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "self.run_on_finish_and_export_tags",
+          "lineNumber": 697
+        },
+        {
+          "caller": "run_single_step_with_retries",
+          "callee": "std::process::exit",
+          "lineNumber": 699
+        },
+        {
+          "caller": "video_recording_enabled_for_test",
+          "callee": "std::env::var",
+          "lineNumber": 732
+        },
+        {
+          "caller": "video_recording_enabled_for_test",
+          "callee": "value.trim",
+          "lineNumber": 735
+        },
+        {
+          "caller": "video_recording_enabled_for_test",
+          "callee": "value.is_empty",
+          "lineNumber": 736
+        },
+        {
+          "caller": "video_recording_enabled_for_test",
+          "callee": "value.split(',').any",
+          "lineNumber": 742
+        },
+        {
+          "caller": "video_recording_enabled_for_test",
+          "callee": "value.split",
+          "lineNumber": 742
+        },
+        {
+          "caller": "video_recording_enabled_for_test",
+          "callee": "name.trim",
+          "lineNumber": 742
+        },
+        {
+          "caller": "get_panic_message",
+          "callee": "panic\n        // If a panic or assert is invoked in a way that includes a format\n        // string and arguments, the panic data will be an owned string.\n        .downcast_ref::<String>()\n        .map(String::as_str).or_else",
+          "lineNumber": 748
+        },
+        {
+          "caller": "get_panic_message",
+          "callee": "panic\n        // If a panic or assert is invoked in a way that includes a format\n        // string and arguments, the panic data will be an owned string.\n        .downcast_ref::<String>().map",
+          "lineNumber": 748
+        },
+        {
+          "caller": "get_panic_message",
+          "callee": "panic\n        // If a panic or assert is invoked in a way that includes a format\n        // string and arguments, the panic data will be an owned string.\n        .downcast_ref::<String>",
+          "lineNumber": 748
+        },
+        {
+          "caller": "get_panic_message",
+          "callee": "panic\n                .downcast_ref::<&'static str>().map",
+          "lineNumber": 756
+        },
+        {
+          "caller": "get_panic_message",
+          "callee": "panic\n                .downcast_ref::<&'static str>",
+          "lineNumber": 756
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 19,
+        "functionCount": 26,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/mod.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 237,
+      "nonEmptyLines": 221,
+      "functions": [
+        {
+          "name": "new",
+          "startLine": 122,
+          "endLine": 127,
+          "params": [
+            "root_dir"
+          ]
+        },
+        {
+          "name": "test_dir",
+          "startLine": 130,
+          "endLine": 132,
+          "params": []
+        },
+        {
+          "name": "set_env",
+          "startLine": 134,
+          "endLine": 155,
+          "params": [
+            "key",
+            "value"
+          ]
+        },
+        {
+          "name": "cleanup_env",
+          "startLine": 157,
+          "endLine": 163,
+          "params": []
+        },
+        {
+          "name": "create_temp_dir_for_test",
+          "startLine": 167,
+          "endLine": 194,
+          "params": []
+        },
+        {
+          "name": "set_home_dir_for_test",
+          "startLine": 197,
+          "endLine": 214,
+          "params": []
+        },
+        {
+          "name": "cleanup_dir",
+          "startLine": 216,
+          "endLine": 220,
+          "params": []
+        },
+        {
+          "name": "as_path",
+          "startLine": 231,
+          "endLine": 236,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "TestSetupUtils",
+          "startLine": 116,
+          "endLine": 119,
+          "methods": [
+            "new",
+            "test_dir",
+            "set_env",
+            "cleanup_env",
+            "create_temp_dir_for_test",
+            "set_home_dir_for_test",
+            "cleanup_dir"
+          ],
+          "properties": [
+            "env_vars",
+            "root_dir"
+          ]
+        },
+        {
+          "name": "RootDir",
+          "startLine": 223,
+          "endLine": 228,
+          "methods": [
+            "as_path"
+          ],
+          "properties": [
+            "Path",
+            "TempDir"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TestSetupUtils",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "test_dir",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "set_env",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "cleanup_env",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "cleanup_dir",
+          "line": 216,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "new",
+          "callee": "HashSet::new",
+          "lineNumber": 124
+        },
+        {
+          "caller": "test_dir",
+          "callee": "self.root_dir.as_path().to_path_buf",
+          "lineNumber": 131
+        },
+        {
+          "caller": "test_dir",
+          "callee": "self.root_dir.as_path",
+          "lineNumber": 131
+        },
+        {
+          "caller": "set_env",
+          "callee": "key.into",
+          "lineNumber": 139
+        },
+        {
+          "caller": "set_env",
+          "callee": "env::set_var",
+          "lineNumber": 147
+        },
+        {
+          "caller": "set_env",
+          "callee": "self.env_vars.insert",
+          "lineNumber": 148
+        },
+        {
+          "caller": "set_env",
+          "callee": "env::remove_var",
+          "lineNumber": 152
+        },
+        {
+          "caller": "cleanup_env",
+          "callee": "env::remove_var",
+          "lineNumber": 160
+        },
+        {
+          "caller": "cleanup_env",
+          "callee": "HashSet::new",
+          "lineNumber": 162
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "self.root_dir.as_path",
+          "lineNumber": 168
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "fs::remove_dir_all",
+          "lineNumber": 171
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "err.kind",
+          "lineNumber": 175
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "test_dir.read_dir",
+          "lineNumber": 177
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "rd.flatten",
+          "lineNumber": 179
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "fs::create_dir_all",
+          "lineNumber": 188
+        },
+        {
+          "caller": "create_temp_dir_for_test",
+          "callee": "err_code.kind",
+          "lineNumber": 190
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "self.set_env",
+          "lineNumber": 199
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "dirs::home_dir",
+          "lineNumber": 199
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "self\n                .test_dir()\n                .canonicalize().unwrap_or_else",
+          "lineNumber": 208
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "self\n                .test_dir().canonicalize",
+          "lineNumber": 208
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "self.test_dir",
+          "lineNumber": 208
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "self.test_dir",
+          "lineNumber": 211
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "self.set_env",
+          "lineNumber": 212
+        },
+        {
+          "caller": "set_home_dir_for_test",
+          "callee": "Some",
+          "lineNumber": 212
+        },
+        {
+          "caller": "cleanup_dir",
+          "callee": "fs::remove_dir_all",
+          "lineNumber": 217
+        },
+        {
+          "caller": "cleanup_dir",
+          "callee": "self.root_dir.as_path",
+          "lineNumber": 217
+        },
+        {
+          "caller": "as_path",
+          "callee": "path.as_path",
+          "lineNumber": 233
+        },
+        {
+          "caller": "as_path",
+          "callee": "tempdir.path",
+          "lineNumber": 234
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 5,
+        "functionCount": 8,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/overlay.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 899,
+      "nonEmptyLines": 840,
+      "functions": [
+        {
+          "name": "new",
+          "startLine": 78,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "set_scale_factor",
+          "startLine": 85,
+          "endLine": 87,
+          "params": [
+            "factor"
+          ]
+        },
+        {
+          "name": "record",
+          "startLine": 89,
+          "endLine": 94,
+          "params": [
+            "kind"
+          ]
+        },
+        {
+          "name": "events",
+          "startLine": 96,
+          "endLine": 98,
+          "params": []
+        },
+        {
+          "name": "scale_factor",
+          "startLine": 100,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "get_overlay_log_mut",
+          "startLine": 105,
+          "endLine": 109,
+          "params": [
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "get_overlay_log",
+          "startLine": 111,
+          "endLine": 113,
+          "params": [
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "keystroke_display_text",
+          "startLine": 115,
+          "endLine": 150,
+          "params": [
+            "keystroke"
+          ]
+        },
+        {
+          "name": "default",
+          "startLine": 165,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 172,
+          "endLine": 182,
+          "params": []
+        },
+        {
+          "name": "advance_to",
+          "startLine": 184,
+          "endLine": 232,
+          "params": [
+            "timestamp",
+            "events"
+          ]
+        },
+        {
+          "name": "render_onto",
+          "startLine": 234,
+          "endLine": 285,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "timestamp",
+            "scale"
+          ]
+        },
+        {
+          "name": "blend_pixel",
+          "startLine": 289,
+          "endLine": 299,
+          "params": [
+            "buf",
+            "offset",
+            "r",
+            "g",
+            "b",
+            "a"
+          ]
+        },
+        {
+          "name": "draw_filled_circle",
+          "startLine": 302,
+          "endLine": 331,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "center",
+            "r",
+            "color",
+            "alpha_mult"
+          ]
+        },
+        {
+          "name": "draw_mouse_down_indicator",
+          "startLine": 334,
+          "endLine": 344,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "cx",
+            "cy"
+          ]
+        },
+        {
+          "name": "draw_drag_anchor",
+          "startLine": 347,
+          "endLine": 357,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "cx",
+            "cy",
+            "alpha_mult"
+          ]
+        },
+        {
+          "name": "draw_click_ring",
+          "startLine": 360,
+          "endLine": 394,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "cx",
+            "cy",
+            "progress"
+          ]
+        },
+        {
+          "name": "draw_drag_trail",
+          "startLine": 397,
+          "endLine": 410,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "points",
+            "scale",
+            "alpha_mult"
+          ]
+        },
+        {
+          "name": "draw_thick_line",
+          "startLine": 413,
+          "endLine": 463,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "start",
+            "end",
+            "alpha_mult"
+          ]
+        },
+        {
+          "name": "draw_key_overlay",
+          "startLine": 466,
+          "endLine": 531,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "text",
+            "progress",
+            "stack_index"
+          ]
+        },
+        {
+          "name": "draw_text",
+          "startLine": 534,
+          "endLine": 573,
+          "params": [
+            "buf",
+            "width",
+            "height",
+            "start_x",
+            "start_y",
+            "text",
+            "alpha_mult"
+          ]
+        },
+        {
+          "name": "rasterize_glyph",
+          "startLine": 576,
+          "endLine": 587,
+          "params": [
+            "ch"
+          ]
+        },
+        {
+          "name": "rasterize_glyph_pixel",
+          "startLine": 590,
+          "endLine": 611,
+          "params": [
+            "source",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "get_glyph",
+          "startLine": 614,
+          "endLine": 635,
+          "params": [
+            "ch"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "OverlayEvent",
+          "startLine": 59,
+          "endLine": 62,
+          "methods": [],
+          "properties": [
+            "recorded_at",
+            "kind"
+          ]
+        },
+        {
+          "name": "OverlayKind",
+          "startLine": 64,
+          "endLine": 69,
+          "methods": [],
+          "properties": [
+            "MouseDown",
+            "MouseMove",
+            "MouseUp",
+            "KeyPress"
+          ]
+        },
+        {
+          "name": "OverlayLog",
+          "startLine": 72,
+          "endLine": 75,
+          "methods": [
+            "new",
+            "set_scale_factor",
+            "record",
+            "events",
+            "scale_factor"
+          ],
+          "properties": [
+            "events",
+            "scale_factor"
+          ]
+        },
+        {
+          "name": "OverlayState",
+          "startLine": 153,
+          "endLine": 161,
+          "methods": [
+            "default",
+            "new",
+            "advance_to",
+            "render_onto"
+          ],
+          "properties": [
+            "event_cursor",
+            "mouse_held",
+            "held_pos",
+            "drag_trail",
+            "drag_ended_at",
+            "recent_mouse_ups",
+            "recent_keys"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "OverlayEvent",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "OverlayKind",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "OverlayLog",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "set_scale_factor",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "record",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "events",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "scale_factor",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "get_overlay_log_mut",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "get_overlay_log",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "keystroke_display_text",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "OverlayState",
+          "line": 153,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "advance_to",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "render_onto",
+          "line": 234,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "new",
+          "callee": "Vec::new",
+          "lineNumber": 80
+        },
+        {
+          "caller": "record",
+          "callee": "self.events.push",
+          "lineNumber": 90
+        },
+        {
+          "caller": "record",
+          "callee": "Instant::now",
+          "lineNumber": 91
+        },
+        {
+          "caller": "get_overlay_log_mut",
+          "callee": "step_data_map.get_mut::<_, OverlayLog>",
+          "lineNumber": 108
+        },
+        {
+          "caller": "get_overlay_log",
+          "callee": "step_data_map.get::<_, OverlayLog>",
+          "lineNumber": 112
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "String::new",
+          "lineNumber": 116
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 118
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 121
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 124
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 127
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "key.as_str",
+          "lineNumber": 130
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 131
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 132
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 133
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 134
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 135
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 136
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 137
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 138
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 139
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push",
+          "lineNumber": 140
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "other.len",
+          "lineNumber": 142
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 143
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "other.to_uppercase",
+          "lineNumber": 143
+        },
+        {
+          "caller": "keystroke_display_text",
+          "callee": "s.push_str",
+          "lineNumber": 145
+        },
+        {
+          "caller": "default",
+          "callee": "Self::new",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "Vec::new",
+          "lineNumber": 177
+        },
+        {
+          "caller": "new",
+          "callee": "Vec::new",
+          "lineNumber": 179
+        },
+        {
+          "caller": "new",
+          "callee": "Vec::new",
+          "lineNumber": 180
+        },
+        {
+          "caller": "advance_to",
+          "callee": "events.len",
+          "lineNumber": 185
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.drag_trail.clear",
+          "lineNumber": 194
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.drag_trail.push",
+          "lineNumber": 195
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.drag_trail.push",
+          "lineNumber": 201
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.drag_trail.is_empty",
+          "lineNumber": 207
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.drag_trail.push",
+          "lineNumber": 208
+        },
+        {
+          "caller": "advance_to",
+          "callee": "Some",
+          "lineNumber": 210
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.recent_mouse_ups.push",
+          "lineNumber": 211
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.recent_keys.push",
+          "lineNumber": 214
+        },
+        {
+          "caller": "advance_to",
+          "callee": "display_text.clone",
+          "lineNumber": 215
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.recent_mouse_ups.retain",
+          "lineNumber": 221
+        },
+        {
+          "caller": "advance_to",
+          "callee": "timestamp.duration_since",
+          "lineNumber": 222
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.recent_keys.retain",
+          "lineNumber": 223
+        },
+        {
+          "caller": "advance_to",
+          "callee": "timestamp.duration_since",
+          "lineNumber": 224
+        },
+        {
+          "caller": "advance_to",
+          "callee": "timestamp.duration_since",
+          "lineNumber": 227
+        },
+        {
+          "caller": "advance_to",
+          "callee": "self.drag_trail.clear",
+          "lineNumber": 228
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self.drag_trail.len",
+          "lineNumber": 242
+        },
+        {
+          "caller": "render_onto",
+          "callee": "timestamp.duration_since(end_t).as_secs_f32",
+          "lineNumber": 244
+        },
+        {
+          "caller": "render_onto",
+          "callee": "timestamp.duration_since",
+          "lineNumber": 244
+        },
+        {
+          "caller": "render_onto",
+          "callee": "DRAG_TRAIL_FADE_DURATION.as_secs_f32",
+          "lineNumber": 245
+        },
+        {
+          "caller": "render_onto",
+          "callee": "(1.0 - (elapsed / total)).clamp",
+          "lineNumber": 246
+        },
+        {
+          "caller": "render_onto",
+          "callee": "draw_drag_trail",
+          "lineNumber": 250
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self.drag_trail.first",
+          "lineNumber": 251
+        },
+        {
+          "caller": "render_onto",
+          "callee": "draw_drag_anchor",
+          "lineNumber": 252
+        },
+        {
+          "caller": "render_onto",
+          "callee": "draw_mouse_down_indicator",
+          "lineNumber": 259
+        },
+        {
+          "caller": "render_onto",
+          "callee": "timestamp.duration_since(t).as_secs_f32",
+          "lineNumber": 263
+        },
+        {
+          "caller": "render_onto",
+          "callee": "timestamp.duration_since",
+          "lineNumber": 263
+        },
+        {
+          "caller": "render_onto",
+          "callee": "CLICK_RING_DURATION.as_secs_f32",
+          "lineNumber": 264
+        },
+        {
+          "caller": "render_onto",
+          "callee": "(elapsed / total).clamp",
+          "lineNumber": 265
+        },
+        {
+          "caller": "render_onto",
+          "callee": "draw_click_ring",
+          "lineNumber": 268
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self.recent_keys.is_empty",
+          "lineNumber": 271
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self\n                .recent_keys\n                .iter()\n                .rev()\n                .take(MAX_VISIBLE_KEY_EVENTS).enumerate",
+          "lineNumber": 272
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self\n                .recent_keys\n                .iter()\n                .rev().take",
+          "lineNumber": 272
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self\n                .recent_keys\n                .iter().rev",
+          "lineNumber": 272
+        },
+        {
+          "caller": "render_onto",
+          "callee": "self\n                .recent_keys.iter",
+          "lineNumber": 272
+        },
+        {
+          "caller": "render_onto",
+          "callee": "timestamp.duration_since(*t).as_secs_f32",
+          "lineNumber": 279
+        },
+        {
+          "caller": "render_onto",
+          "callee": "timestamp.duration_since",
+          "lineNumber": 279
+        },
+        {
+          "caller": "render_onto",
+          "callee": "KEY_DISPLAY_DURATION.as_secs_f32",
+          "lineNumber": 280
+        },
+        {
+          "caller": "render_onto",
+          "callee": "(elapsed / total).clamp",
+          "lineNumber": 281
+        },
+        {
+          "caller": "render_onto",
+          "callee": "draw_key_overlay",
+          "lineNumber": 282
+        },
+        {
+          "caller": "blend_pixel",
+          "callee": "buf.len",
+          "lineNumber": 290
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "(cx - r - 1.0).max",
+          "lineNumber": 313
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "(cy - r - 1.0).max",
+          "lineNumber": 314
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "(cx + r + 1.0).min",
+          "lineNumber": 315
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "(cy + r + 1.0).min",
+          "lineNumber": 316
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "((r - d2.sqrt()) * 2.0).clamp",
+          "lineNumber": 324
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "d2.sqrt",
+          "lineNumber": 324
+        },
+        {
+          "caller": "draw_filled_circle",
+          "callee": "blend_pixel",
+          "lineNumber": 327
+        },
+        {
+          "caller": "draw_mouse_down_indicator",
+          "callee": "draw_filled_circle",
+          "lineNumber": 335
+        },
+        {
+          "caller": "draw_drag_anchor",
+          "callee": "draw_filled_circle",
+          "lineNumber": 348
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "(radius - half_thick).max",
+          "lineNumber": 365
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "(cx - outer - 1.0).max",
+          "lineNumber": 367
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "(cy - outer - 1.0).max",
+          "lineNumber": 368
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "(cx + outer + 1.0).min",
+          "lineNumber": 369
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "(cy + outer + 1.0).min",
+          "lineNumber": 370
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "(dx * dx + dy * dy).sqrt",
+          "lineNumber": 376
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "((outer - dist) * 2.0).clamp",
+          "lineNumber": 378
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "((dist - inner) * 2.0).clamp",
+          "lineNumber": 379
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "edge_outer.min",
+          "lineNumber": 380
+        },
+        {
+          "caller": "draw_click_ring",
+          "callee": "blend_pixel",
+          "lineNumber": 383
+        },
+        {
+          "caller": "draw_drag_trail",
+          "callee": "points.windows",
+          "lineNumber": 405
+        },
+        {
+          "caller": "draw_drag_trail",
+          "callee": "draw_thick_line",
+          "lineNumber": 408
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "(dx * dx + dy * dy).sqrt",
+          "lineNumber": 425
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "(cx - half_thick - 1.0).max",
+          "lineNumber": 437
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "(cy - half_thick - 1.0).max",
+          "lineNumber": 438
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "(cx + half_thick + 1.0).min",
+          "lineNumber": 439
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "(cy + half_thick + 1.0).min",
+          "lineNumber": 440
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "(ddx * ddx + ddy * ddy).sqrt",
+          "lineNumber": 446
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "((half_thick - dist) * 2.0).clamp",
+          "lineNumber": 448
+        },
+        {
+          "caller": "draw_thick_line",
+          "callee": "blend_pixel",
+          "lineNumber": 451
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "((1.0 - progress) / 0.3).clamp",
+          "lineNumber": 475
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "text.chars().count",
+          "lineNumber": 485
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "text.chars",
+          "lineNumber": 485
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "width.saturating_sub",
+          "lineNumber": 489
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "stack_index.saturating_mul",
+          "lineNumber": 490
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "height.saturating_sub",
+          "lineNumber": 491
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "corner_r.saturating_sub",
+          "lineNumber": 502
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "col.saturating_sub",
+          "lineNumber": 503
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "corner_r.saturating_sub",
+          "lineNumber": 504
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "row.saturating_sub",
+          "lineNumber": 505
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "dx_left.max",
+          "lineNumber": 506
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "dy_top.max",
+          "lineNumber": 507
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "((dx * dx + dy * dy) as f32).sqrt",
+          "lineNumber": 509
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "blend_pixel",
+          "lineNumber": 517
+        },
+        {
+          "caller": "draw_key_overlay",
+          "callee": "draw_text",
+          "lineNumber": 530
+        },
+        {
+          "caller": "draw_text",
+          "callee": "text.chars().enumerate",
+          "lineNumber": 545
+        },
+        {
+          "caller": "draw_text",
+          "callee": "text.chars",
+          "lineNumber": 545
+        },
+        {
+          "caller": "draw_text",
+          "callee": "rasterize_glyph",
+          "lineNumber": 546
+        },
+        {
+          "caller": "draw_text",
+          "callee": "blend_pixel",
+          "lineNumber": 561
+        },
+        {
+          "caller": "rasterize_glyph",
+          "callee": "get_glyph",
+          "lineNumber": 577
+        },
+        {
+          "caller": "rasterize_glyph",
+          "callee": "rasterize_glyph_pixel",
+          "lineNumber": 582
+        },
+        {
+          "caller": "rasterize_glyph_pixel",
+          "callee": "src_x.floor().min",
+          "lineNumber": 602
+        },
+        {
+          "caller": "rasterize_glyph_pixel",
+          "callee": "src_x.floor",
+          "lineNumber": 602
+        },
+        {
+          "caller": "rasterize_glyph_pixel",
+          "callee": "src_y.floor().min",
+          "lineNumber": 603
+        },
+        {
+          "caller": "rasterize_glyph_pixel",
+          "callee": "src_y.floor",
+          "lineNumber": 603
+        },
+        {
+          "caller": "get_glyph",
+          "callee": "(0x20..0x7F).contains",
+          "lineNumber": 616
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 24,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/step.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 1066,
+      "nonEmptyLines": 971,
+      "functions": [
+        {
+          "name": "get",
+          "startLine": 26,
+          "endLine": 33,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "get_mut",
+          "startLine": 35,
+          "endLine": 42,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "insert",
+          "startLine": 44,
+          "endLine": 50,
+          "params": [
+            "key",
+            "value"
+          ]
+        },
+        {
+          "name": "remove",
+          "startLine": 52,
+          "endLine": 59,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "insert_step_data",
+          "startLine": 61,
+          "endLine": 63,
+          "params": [
+            "step_data"
+          ]
+        },
+        {
+          "name": "record_overlay_kind",
+          "startLine": 66,
+          "endLine": 75,
+          "params": [
+            "kind",
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "new",
+          "startLine": 87,
+          "endLine": 97,
+          "params": [
+            "key",
+            "data"
+          ]
+        },
+        {
+          "name": "failure",
+          "startLine": 141,
+          "endLine": 147,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "immediate_failure",
+          "startLine": 149,
+          "endLine": 155,
+          "params": [
+            "message"
+          ]
+        },
+        {
+          "name": "as_failure_message",
+          "startLine": 157,
+          "endLine": 166,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 258,
+          "endLine": 287,
+          "params": [
+            "name"
+          ]
+        },
+        {
+          "name": "name",
+          "startLine": 289,
+          "endLine": 291,
+          "params": []
+        },
+        {
+          "name": "set_step_group_name",
+          "startLine": 293,
+          "endLine": 296,
+          "params": [
+            "name"
+          ]
+        },
+        {
+          "name": "add_named_assertion",
+          "startLine": 298,
+          "endLine": 308,
+          "params": [
+            "name",
+            "callback"
+          ]
+        },
+        {
+          "name": "add_named_assertion_with_data_from_prior_step",
+          "startLine": 311,
+          "endLine": 325,
+          "params": [
+            "name",
+            "callback"
+          ]
+        },
+        {
+          "name": "add_assertion",
+          "startLine": 327,
+          "endLine": 336,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "set_on_failure_handler",
+          "startLine": 338,
+          "endLine": 348,
+          "params": [
+            "name",
+            "callback"
+          ]
+        },
+        {
+          "name": "set_timeout",
+          "startLine": 350,
+          "endLine": 353,
+          "params": [
+            "timeout"
+          ]
+        },
+        {
+          "name": "set_post_step_pause",
+          "startLine": 355,
+          "endLine": 358,
+          "params": [
+            "pause"
+          ]
+        },
+        {
+          "name": "set_pause_on_failure",
+          "startLine": 360,
+          "endLine": 363,
+          "params": [
+            "pause"
+          ]
+        },
+        {
+          "name": "set_retries",
+          "startLine": 365,
+          "endLine": 368,
+          "params": [
+            "retries"
+          ]
+        },
+        {
+          "name": "retries",
+          "startLine": 370,
+          "endLine": 372,
+          "params": []
+        },
+        {
+          "name": "with_input_string",
+          "startLine": 374,
+          "endLine": 389,
+          "params": [
+            "input",
+            "extra_keystrokes"
+          ]
+        },
+        {
+          "name": "with_per_platform_keystroke",
+          "startLine": 391,
+          "endLine": 399,
+          "params": [
+            "keystrokes"
+          ]
+        },
+        {
+          "name": "with_keystrokes",
+          "startLine": 401,
+          "endLine": 429,
+          "params": [
+            "keystrokes"
+          ]
+        },
+        {
+          "name": "with_keystrokes_in_composing",
+          "startLine": 431,
+          "endLine": 450,
+          "params": [
+            "keystrokes"
+          ]
+        },
+        {
+          "name": "with_typed_characters",
+          "startLine": 452,
+          "endLine": 460,
+          "params": [
+            "characters"
+          ]
+        },
+        {
+          "name": "with_event",
+          "startLine": 462,
+          "endLine": 466,
+          "params": [
+            "event"
+          ]
+        },
+        {
+          "name": "with_event_fn",
+          "startLine": 468,
+          "endLine": 475,
+          "params": [
+            "event_fn"
+          ]
+        },
+        {
+          "name": "with_click_on_saved_position_fn",
+          "startLine": 477,
+          "endLine": 487,
+          "params": [
+            "position_fn"
+          ]
+        },
+        {
+          "name": "with_click_on_saved_position",
+          "startLine": 489,
+          "endLine": 496,
+          "params": [
+            "position_id"
+          ]
+        },
+        {
+          "name": "with_right_click_on_saved_position_fn",
+          "startLine": 498,
+          "endLine": 508,
+          "params": [
+            "position_fn"
+          ]
+        },
+        {
+          "name": "with_right_click_on_saved_position",
+          "startLine": 510,
+          "endLine": 517,
+          "params": [
+            "position_id"
+          ]
+        },
+        {
+          "name": "with_hover_on_saved_position_fn",
+          "startLine": 519,
+          "endLine": 529,
+          "params": [
+            "position_fn"
+          ]
+        },
+        {
+          "name": "with_hover_over_saved_position",
+          "startLine": 531,
+          "endLine": 538,
+          "params": [
+            "position_id"
+          ]
+        },
+        {
+          "name": "with_action",
+          "startLine": 540,
+          "endLine": 546,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "with_take_screenshot",
+          "startLine": 550,
+          "endLine": 555,
+          "params": [
+            "filename"
+          ]
+        },
+        {
+          "name": "with_start_recording",
+          "startLine": 558,
+          "endLine": 575,
+          "params": []
+        },
+        {
+          "name": "with_stop_recording",
+          "startLine": 578,
+          "endLine": 588,
+          "params": []
+        },
+        {
+          "name": "with_setup",
+          "startLine": 595,
+          "endLine": 601,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "run_step",
+          "startLine": 604,
+          "endLine": 984,
+          "params": [
+            "step",
+            "app",
+            "window_id",
+            "window",
+            "step_data_map",
+            "test_setup_utils",
+            "sigint_received"
+          ]
+        },
+        {
+          "name": "maybe_render_frame",
+          "startLine": 990,
+          "endLine": 1030,
+          "params": [
+            "app",
+            "window_id",
+            "deadline"
+          ]
+        },
+        {
+          "name": "frame_count",
+          "startLine": 1033,
+          "endLine": 1037,
+          "params": [
+            "app",
+            "window_id"
+          ]
+        },
+        {
+          "name": "record_overlay_event_for_event",
+          "startLine": 1039,
+          "endLine": 1066,
+          "params": [
+            "event",
+            "step_data_map"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "StepDataMap",
+          "startLine": 21,
+          "endLine": 23,
+          "methods": [
+            "get",
+            "get_mut",
+            "insert",
+            "remove",
+            "insert_step_data"
+          ],
+          "properties": [
+            "inner"
+          ]
+        },
+        {
+          "name": "StepData",
+          "startLine": 78,
+          "endLine": 84,
+          "methods": [
+            "new"
+          ],
+          "properties": [
+            "key",
+            "data"
+          ]
+        },
+        {
+          "name": "AssertionOutcome",
+          "startLine": 105,
+          "endLine": 137,
+          "methods": [
+            "failure",
+            "immediate_failure",
+            "as_failure_message"
+          ],
+          "properties": [
+            "Success",
+            "SuccessWithData",
+            "Failure",
+            "ImmediateFailure",
+            "PreconditionFailed",
+            "Canceled"
+          ]
+        },
+        {
+          "name": "CallbackType",
+          "startLine": 182,
+          "endLine": 185,
+          "methods": [],
+          "properties": [
+            "Assertion",
+            "AssertionWithData"
+          ]
+        },
+        {
+          "name": "Assertion",
+          "startLine": 187,
+          "endLine": 190,
+          "methods": [],
+          "properties": [
+            "name",
+            "callback"
+          ]
+        },
+        {
+          "name": "IntegrationTestEvent",
+          "startLine": 197,
+          "endLine": 209,
+          "methods": [],
+          "properties": [
+            "WithEvent",
+            "WithEventFn",
+            "WithSavedPosition",
+            "WithSavedPositionFn"
+          ]
+        },
+        {
+          "name": "MouseEvent",
+          "startLine": 211,
+          "endLine": 215,
+          "methods": [],
+          "properties": [
+            "ClickOnce",
+            "RightClickOnce",
+            "Hover"
+          ]
+        },
+        {
+          "name": "TestStep",
+          "startLine": 228,
+          "endLine": 251,
+          "methods": [
+            "new",
+            "name",
+            "set_step_group_name",
+            "add_named_assertion",
+            "add_named_assertion_with_data_from_prior_step",
+            "add_assertion",
+            "set_on_failure_handler",
+            "set_timeout",
+            "set_post_step_pause",
+            "set_pause_on_failure",
+            "set_retries",
+            "retries",
+            "with_input_string",
+            "with_per_platform_keystroke",
+            "with_keystrokes",
+            "with_keystrokes_in_composing",
+            "with_typed_characters",
+            "with_event",
+            "with_event_fn",
+            "with_click_on_saved_position_fn",
+            "with_click_on_saved_position",
+            "with_right_click_on_saved_position_fn",
+            "with_right_click_on_saved_position",
+            "with_hover_on_saved_position_fn",
+            "with_hover_over_saved_position",
+            "with_action",
+            "with_take_screenshot",
+            "with_start_recording",
+            "with_stop_recording",
+            "with_setup"
+          ],
+          "properties": [
+            "name",
+            "setup_functions",
+            "events",
+            "actions",
+            "assertions",
+            "timeout",
+            "post_step_pause",
+            "pause_on_failure",
+            "on_failure_handler",
+            "step_group_name",
+            "retries"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StepDataMap",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "get",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "get_mut",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "insert",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "remove",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "StepData",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "AssertionOutcome",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "failure",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "immediate_failure",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "as_failure_message",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "IntegrationTestEvent",
+          "line": 197,
+          "isDefault": false
+        },
+        {
+          "name": "MouseEvent",
+          "line": 211,
+          "isDefault": false
+        },
+        {
+          "name": "TestStep",
+          "line": 228,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 258,
+          "isDefault": false
+        },
+        {
+          "name": "name",
+          "line": 289,
+          "isDefault": false
+        },
+        {
+          "name": "set_step_group_name",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "add_named_assertion",
+          "line": 298,
+          "isDefault": false
+        },
+        {
+          "name": "add_named_assertion_with_data_from_prior_step",
+          "line": 311,
+          "isDefault": false
+        },
+        {
+          "name": "add_assertion",
+          "line": 327,
+          "isDefault": false
+        },
+        {
+          "name": "set_on_failure_handler",
+          "line": 338,
+          "isDefault": false
+        },
+        {
+          "name": "set_timeout",
+          "line": 350,
+          "isDefault": false
+        },
+        {
+          "name": "set_post_step_pause",
+          "line": 355,
+          "isDefault": false
+        },
+        {
+          "name": "set_pause_on_failure",
+          "line": 360,
+          "isDefault": false
+        },
+        {
+          "name": "set_retries",
+          "line": 365,
+          "isDefault": false
+        },
+        {
+          "name": "retries",
+          "line": 370,
+          "isDefault": false
+        },
+        {
+          "name": "with_input_string",
+          "line": 374,
+          "isDefault": false
+        },
+        {
+          "name": "with_per_platform_keystroke",
+          "line": 391,
+          "isDefault": false
+        },
+        {
+          "name": "with_keystrokes",
+          "line": 401,
+          "isDefault": false
+        },
+        {
+          "name": "with_keystrokes_in_composing",
+          "line": 431,
+          "isDefault": false
+        },
+        {
+          "name": "with_typed_characters",
+          "line": 452,
+          "isDefault": false
+        },
+        {
+          "name": "with_event",
+          "line": 462,
+          "isDefault": false
+        },
+        {
+          "name": "with_event_fn",
+          "line": 468,
+          "isDefault": false
+        },
+        {
+          "name": "with_click_on_saved_position_fn",
+          "line": 477,
+          "isDefault": false
+        },
+        {
+          "name": "with_click_on_saved_position",
+          "line": 489,
+          "isDefault": false
+        },
+        {
+          "name": "with_right_click_on_saved_position_fn",
+          "line": 498,
+          "isDefault": false
+        },
+        {
+          "name": "with_right_click_on_saved_position",
+          "line": 510,
+          "isDefault": false
+        },
+        {
+          "name": "with_hover_on_saved_position_fn",
+          "line": 519,
+          "isDefault": false
+        },
+        {
+          "name": "with_hover_over_saved_position",
+          "line": 531,
+          "isDefault": false
+        },
+        {
+          "name": "with_action",
+          "line": 540,
+          "isDefault": false
+        },
+        {
+          "name": "with_take_screenshot",
+          "line": 550,
+          "isDefault": false
+        },
+        {
+          "name": "with_start_recording",
+          "line": 558,
+          "isDefault": false
+        },
+        {
+          "name": "with_stop_recording",
+          "line": 578,
+          "isDefault": false
+        },
+        {
+          "name": "with_setup",
+          "line": 595,
+          "isDefault": false
+        },
+        {
+          "name": "run_step",
+          "line": 604,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get",
+          "callee": "self.inner.get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "get",
+          "callee": "key.as_ref",
+          "lineNumber": 31
+        },
+        {
+          "caller": "get",
+          "callee": "boxed.as_ref().downcast_ref::<V>",
+          "lineNumber": 32
+        },
+        {
+          "caller": "get",
+          "callee": "boxed.as_ref",
+          "lineNumber": 32
+        },
+        {
+          "caller": "get_mut",
+          "callee": "self.inner.get_mut",
+          "lineNumber": 40
+        },
+        {
+          "caller": "get_mut",
+          "callee": "key.as_ref",
+          "lineNumber": 40
+        },
+        {
+          "caller": "get_mut",
+          "callee": "boxed.as_mut().downcast_mut::<V>",
+          "lineNumber": 41
+        },
+        {
+          "caller": "get_mut",
+          "callee": "boxed.as_mut",
+          "lineNumber": 41
+        },
+        {
+          "caller": "insert",
+          "callee": "self.insert_step_data",
+          "lineNumber": 49
+        },
+        {
+          "caller": "insert",
+          "callee": "StepData::new",
+          "lineNumber": 49
+        },
+        {
+          "caller": "remove",
+          "callee": "self.inner.remove",
+          "lineNumber": 57
+        },
+        {
+          "caller": "remove",
+          "callee": "key.as_ref",
+          "lineNumber": 57
+        },
+        {
+          "caller": "remove",
+          "callee": "boxed.downcast::<V>().ok().map",
+          "lineNumber": 58
+        },
+        {
+          "caller": "remove",
+          "callee": "boxed.downcast::<V>().ok",
+          "lineNumber": 58
+        },
+        {
+          "caller": "remove",
+          "callee": "boxed.downcast::<V>",
+          "lineNumber": 58
+        },
+        {
+          "caller": "insert_step_data",
+          "callee": "self.inner.insert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "record_overlay_kind",
+          "callee": "super::video_recorder::get_recorder(step_data_map).is_some_and",
+          "lineNumber": 67
+        },
+        {
+          "caller": "record_overlay_kind",
+          "callee": "super::video_recorder::get_recorder",
+          "lineNumber": 67
+        },
+        {
+          "caller": "record_overlay_kind",
+          "callee": "overlay::get_overlay_log_mut",
+          "lineNumber": 72
+        },
+        {
+          "caller": "record_overlay_kind",
+          "callee": "ol.record",
+          "lineNumber": 73
+        },
+        {
+          "caller": "new",
+          "callee": "Box::new",
+          "lineNumber": 92
+        },
+        {
+          "caller": "new",
+          "callee": "key.into",
+          "lineNumber": 94
+        },
+        {
+          "caller": "failure",
+          "callee": "Backtrace::capture",
+          "lineNumber": 144
+        },
+        {
+          "caller": "immediate_failure",
+          "callee": "Backtrace::capture",
+          "lineNumber": 152
+        },
+        {
+          "caller": "as_failure_message",
+          "callee": "Some",
+          "lineNumber": 160
+        },
+        {
+          "caller": "as_failure_message",
+          "callee": "message.as_str",
+          "lineNumber": 160
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::var(\"WARPUI_PAUSE_INTEGRATION_TEST_ON_FAILURE\").is_ok",
+          "lineNumber": 260
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::var",
+          "lineNumber": 260
+        },
+        {
+          "caller": "new",
+          "callee": "Some",
+          "lineNumber": 262
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::var(\"WARPUI_PAUSE_INTEGRATION_TEST_AT_EVERY_STEP\").is_ok",
+          "lineNumber": 268
+        },
+        {
+          "caller": "new",
+          "callee": "std::env::var",
+          "lineNumber": 268
+        },
+        {
+          "caller": "new",
+          "callee": "Some",
+          "lineNumber": 269
+        },
+        {
+          "caller": "new",
+          "callee": "name.to_owned",
+          "lineNumber": 275
+        },
+        {
+          "caller": "new",
+          "callee": "Default::default",
+          "lineNumber": 276
+        },
+        {
+          "caller": "new",
+          "callee": "Default::default",
+          "lineNumber": 277
+        },
+        {
+          "caller": "new",
+          "callee": "Default::default",
+          "lineNumber": 278
+        },
+        {
+          "caller": "new",
+          "callee": "Default::default",
+          "lineNumber": 279
+        },
+        {
+          "caller": "set_step_group_name",
+          "callee": "Some",
+          "lineNumber": 294
+        },
+        {
+          "caller": "set_step_group_name",
+          "callee": "name.to_string",
+          "lineNumber": 294
+        },
+        {
+          "caller": "add_named_assertion",
+          "callee": "self.assertions.push",
+          "lineNumber": 303
+        },
+        {
+          "caller": "add_named_assertion",
+          "callee": "Some",
+          "lineNumber": 304
+        },
+        {
+          "caller": "add_named_assertion",
+          "callee": "name.into",
+          "lineNumber": 304
+        },
+        {
+          "caller": "add_named_assertion",
+          "callee": "CallbackType::Assertion",
+          "lineNumber": 305
+        },
+        {
+          "caller": "add_named_assertion",
+          "callee": "Box::new",
+          "lineNumber": 305
+        },
+        {
+          "caller": "add_named_assertion_with_data_from_prior_step",
+          "callee": "self.assertions.push",
+          "lineNumber": 320
+        },
+        {
+          "caller": "add_named_assertion_with_data_from_prior_step",
+          "callee": "Some",
+          "lineNumber": 321
+        },
+        {
+          "caller": "add_named_assertion_with_data_from_prior_step",
+          "callee": "name.into",
+          "lineNumber": 321
+        },
+        {
+          "caller": "add_named_assertion_with_data_from_prior_step",
+          "callee": "CallbackType::AssertionWithData",
+          "lineNumber": 322
+        },
+        {
+          "caller": "add_named_assertion_with_data_from_prior_step",
+          "callee": "Box::new",
+          "lineNumber": 322
+        },
+        {
+          "caller": "add_assertion",
+          "callee": "self.assertions.push",
+          "lineNumber": 331
+        },
+        {
+          "caller": "add_assertion",
+          "callee": "CallbackType::Assertion",
+          "lineNumber": 333
+        },
+        {
+          "caller": "add_assertion",
+          "callee": "Box::new",
+          "lineNumber": 333
+        },
+        {
+          "caller": "set_on_failure_handler",
+          "callee": "Some",
+          "lineNumber": 343
+        },
+        {
+          "caller": "set_on_failure_handler",
+          "callee": "Some",
+          "lineNumber": 344
+        },
+        {
+          "caller": "set_on_failure_handler",
+          "callee": "name.into",
+          "lineNumber": 344
+        },
+        {
+          "caller": "set_on_failure_handler",
+          "callee": "CallbackType::Assertion",
+          "lineNumber": 345
+        },
+        {
+          "caller": "set_on_failure_handler",
+          "callee": "Box::new",
+          "lineNumber": 345
+        },
+        {
+          "caller": "set_post_step_pause",
+          "callee": "Some",
+          "lineNumber": 356
+        },
+        {
+          "caller": "set_pause_on_failure",
+          "callee": "Some",
+          "lineNumber": 361
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "input\n            .chars()\n            .map(|x| {\n                if x.is_ascii_uppercase() {\n                    format!(\"shift-{x}\")\n                } else {\n                    x.to_string()\n                }\n            }).collect",
+          "lineNumber": 375
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "input\n            .chars().map",
+          "lineNumber": 375
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "input.chars",
+          "lineNumber": 375
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "x.is_ascii_uppercase",
+          "lineNumber": 378
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "x.to_string",
+          "lineNumber": 381
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "v.iter().map(|s| &**s).collect",
+          "lineNumber": 385
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "v.iter().map",
+          "lineNumber": 385
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "v.iter",
+          "lineNumber": 385
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "self.with_keystrokes(v2.as_slice()).with_keystrokes",
+          "lineNumber": 387
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "self.with_keystrokes",
+          "lineNumber": 387
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "v2.as_slice",
+          "lineNumber": 387
+        },
+        {
+          "caller": "with_input_string",
+          "callee": "extra_keystrokes.unwrap_or",
+          "lineNumber": 388
+        },
+        {
+          "caller": "with_per_platform_keystroke",
+          "callee": "OperatingSystem::get().is_mac",
+          "lineNumber": 392
+        },
+        {
+          "caller": "with_per_platform_keystroke",
+          "callee": "OperatingSystem::get",
+          "lineNumber": 392
+        },
+        {
+          "caller": "with_per_platform_keystroke",
+          "callee": "self.with_keystrokes",
+          "lineNumber": 398
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "keystrokes\n            .iter().map",
+          "lineNumber": 402
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "keystrokes.iter",
+          "lineNumber": 402
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "Keystroke::parse(keystroke).expect",
+          "lineNumber": 404
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "Keystroke::parse",
+          "lineNumber": 404
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "keystroke.key.as_str",
+          "lineNumber": 409
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\u{3}\".to_string",
+          "lineNumber": 410
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\r\".to_string",
+          "lineNumber": 411
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\u{19}\".to_string",
+          "lineNumber": 412
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\t\".to_string",
+          "lineNumber": 413
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\u{7f}\".to_string",
+          "lineNumber": 414
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\u{3}\".to_string",
+          "lineNumber": 415
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "\"\\u{1b}\".to_string",
+          "lineNumber": 416
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "keystroke.key.clone",
+          "lineNumber": 417
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "self.events.push_back",
+          "lineNumber": 420
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "IntegrationTestEvent::WithEvent",
+          "lineNumber": 421
+        },
+        {
+          "caller": "with_keystrokes",
+          "callee": "KeyEventDetails::default",
+          "lineNumber": 424
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "keystrokes\n            .iter().map",
+          "lineNumber": 432
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "keystrokes.iter",
+          "lineNumber": 432
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "Keystroke::parse(keystroke).expect",
+          "lineNumber": 434
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "Keystroke::parse",
+          "lineNumber": 434
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "keystroke.key.as_str",
+          "lineNumber": 436
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "\"\\u{3}\".to_string",
+          "lineNumber": 437
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "keystroke.key.clone",
+          "lineNumber": 439
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "self.events.push_back",
+          "lineNumber": 441
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "IntegrationTestEvent::WithEvent",
+          "lineNumber": 442
+        },
+        {
+          "caller": "with_keystrokes_in_composing",
+          "callee": "KeyEventDetails::default",
+          "lineNumber": 445
+        },
+        {
+          "caller": "with_typed_characters",
+          "callee": "characters.iter",
+          "lineNumber": 453
+        },
+        {
+          "caller": "with_typed_characters",
+          "callee": "self.events.push_back",
+          "lineNumber": 454
+        },
+        {
+          "caller": "with_typed_characters",
+          "callee": "IntegrationTestEvent::WithEvent",
+          "lineNumber": 455
+        },
+        {
+          "caller": "with_typed_characters",
+          "callee": "String::from",
+          "lineNumber": 456
+        },
+        {
+          "caller": "with_event",
+          "callee": "self.events.push_back",
+          "lineNumber": 463
+        },
+        {
+          "caller": "with_event",
+          "callee": "IntegrationTestEvent::WithEvent",
+          "lineNumber": 464
+        },
+        {
+          "caller": "with_event_fn",
+          "callee": "self.events.push_back",
+          "lineNumber": 472
+        },
+        {
+          "caller": "with_event_fn",
+          "callee": "IntegrationTestEvent::WithEventFn",
+          "lineNumber": 473
+        },
+        {
+          "caller": "with_event_fn",
+          "callee": "Box::new",
+          "lineNumber": 473
+        },
+        {
+          "caller": "with_click_on_saved_position_fn",
+          "callee": "self.events.push_back",
+          "lineNumber": 481
+        },
+        {
+          "caller": "with_click_on_saved_position_fn",
+          "callee": "IntegrationTestEvent::WithSavedPositionFn",
+          "lineNumber": 482
+        },
+        {
+          "caller": "with_click_on_saved_position_fn",
+          "callee": "Box::new",
+          "lineNumber": 483
+        },
+        {
+          "caller": "with_click_on_saved_position",
+          "callee": "self.events.push_back",
+          "lineNumber": 490
+        },
+        {
+          "caller": "with_click_on_saved_position",
+          "callee": "IntegrationTestEvent::WithSavedPosition",
+          "lineNumber": 491
+        },
+        {
+          "caller": "with_click_on_saved_position",
+          "callee": "position_id.into",
+          "lineNumber": 492
+        },
+        {
+          "caller": "with_right_click_on_saved_position_fn",
+          "callee": "self.events.push_back",
+          "lineNumber": 502
+        },
+        {
+          "caller": "with_right_click_on_saved_position_fn",
+          "callee": "IntegrationTestEvent::WithSavedPositionFn",
+          "lineNumber": 503
+        },
+        {
+          "caller": "with_right_click_on_saved_position_fn",
+          "callee": "Box::new",
+          "lineNumber": 504
+        },
+        {
+          "caller": "with_right_click_on_saved_position",
+          "callee": "self.events.push_back",
+          "lineNumber": 511
+        },
+        {
+          "caller": "with_right_click_on_saved_position",
+          "callee": "IntegrationTestEvent::WithSavedPosition",
+          "lineNumber": 512
+        },
+        {
+          "caller": "with_right_click_on_saved_position",
+          "callee": "position_id.into",
+          "lineNumber": 513
+        },
+        {
+          "caller": "with_hover_on_saved_position_fn",
+          "callee": "self.events.push_back",
+          "lineNumber": 523
+        },
+        {
+          "caller": "with_hover_on_saved_position_fn",
+          "callee": "IntegrationTestEvent::WithSavedPositionFn",
+          "lineNumber": 524
+        },
+        {
+          "caller": "with_hover_on_saved_position_fn",
+          "callee": "Box::new",
+          "lineNumber": 525
+        },
+        {
+          "caller": "with_hover_over_saved_position",
+          "callee": "self.events.push_back",
+          "lineNumber": 532
+        },
+        {
+          "caller": "with_hover_over_saved_position",
+          "callee": "IntegrationTestEvent::WithSavedPosition",
+          "lineNumber": 533
+        },
+        {
+          "caller": "with_hover_over_saved_position",
+          "callee": "position_id.into",
+          "lineNumber": 534
+        },
+        {
+          "caller": "with_action",
+          "callee": "self.actions.push_back",
+          "lineNumber": 544
+        },
+        {
+          "caller": "with_action",
+          "callee": "Box::new",
+          "lineNumber": 544
+        },
+        {
+          "caller": "with_take_screenshot",
+          "callee": "filename.into",
+          "lineNumber": 551
+        },
+        {
+          "caller": "with_take_screenshot",
+          "callee": "self.with_action",
+          "lineNumber": 552
+        },
+        {
+          "caller": "with_take_screenshot",
+          "callee": "step_data_map.insert",
+          "lineNumber": 553
+        },
+        {
+          "caller": "with_take_screenshot",
+          "callee": "filename.clone",
+          "lineNumber": 553
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "self.with_action",
+          "lineNumber": 559
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "super::video_recorder::get_recorder_mut",
+          "lineNumber": 560
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "recorder.start_recording",
+          "lineNumber": 561
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "recorder.recording_start",
+          "lineNumber": 564
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "super::action_log::get_action_log_mut",
+          "lineNumber": 567
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "log.set_recording_start",
+          "lineNumber": 569
+        },
+        {
+          "caller": "with_start_recording",
+          "callee": "log.record",
+          "lineNumber": 571
+        },
+        {
+          "caller": "with_stop_recording",
+          "callee": "self.with_action",
+          "lineNumber": 579
+        },
+        {
+          "caller": "with_stop_recording",
+          "callee": "super::video_recorder::get_recorder_mut",
+          "lineNumber": 580
+        },
+        {
+          "caller": "with_stop_recording",
+          "callee": "recorder.stop_recording",
+          "lineNumber": 581
+        },
+        {
+          "caller": "with_stop_recording",
+          "callee": "super::action_log::get_action_log_mut",
+          "lineNumber": 583
+        },
+        {
+          "caller": "with_stop_recording",
+          "callee": "log.record",
+          "lineNumber": 584
+        },
+        {
+          "caller": "with_setup",
+          "callee": "self.setup_functions.push_back",
+          "lineNumber": 599
+        },
+        {
+          "caller": "with_setup",
+          "callee": "Box::new",
+          "lineNumber": 599
+        },
+        {
+          "caller": "run_step",
+          "callee": "Instant::now",
+          "lineNumber": 613
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.presenter(window_id).expect",
+          "lineNumber": 616
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.presenter",
+          "lineNumber": 616
+        },
+        {
+          "caller": "run_step",
+          "callee": "presenter_rc.borrow",
+          "lineNumber": 617
+        },
+        {
+          "caller": "run_step",
+          "callee": "presenter.frame_count",
+          "lineNumber": 618
+        },
+        {
+          "caller": "run_step",
+          "callee": "step.setup_functions.iter",
+          "lineNumber": 628
+        },
+        {
+          "caller": "run_step",
+          "callee": "sigint_received.load",
+          "lineNumber": 629
+        },
+        {
+          "caller": "run_step",
+          "callee": "setup",
+          "lineNumber": 632
+        },
+        {
+          "caller": "run_step",
+          "callee": "sigint_received.load",
+          "lineNumber": 636
+        },
+        {
+          "caller": "run_step",
+          "callee": "e.clone",
+          "lineNumber": 644
+        },
+        {
+          "caller": "run_step",
+          "callee": "f",
+          "lineNumber": 646
+        },
+        {
+          "caller": "run_step",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 652
+        },
+        {
+          "caller": "run_step",
+          "callee": "log.record",
+          "lineNumber": 653
+        },
+        {
+          "caller": "run_step",
+          "callee": "record_overlay_event_for_event",
+          "lineNumber": 655
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.update",
+          "lineNumber": 657
+        },
+        {
+          "caller": "run_step",
+          "callee": "(window.callbacks().event_callback)",
+          "lineNumber": 657
+        },
+        {
+          "caller": "run_step",
+          "callee": "window.callbacks",
+          "lineNumber": 657
+        },
+        {
+          "caller": "run_step",
+          "callee": "event.clone",
+          "lineNumber": 657
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.update",
+          "lineNumber": 668
+        },
+        {
+          "caller": "run_step",
+          "callee": "(window.callbacks().event_callback)",
+          "lineNumber": 669
+        },
+        {
+          "caller": "run_step",
+          "callee": "window.callbacks",
+          "lineNumber": 669
+        },
+        {
+          "caller": "run_step",
+          "callee": "chars.clone",
+          "lineNumber": 671
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.presenter(window_id).expect",
+          "lineNumber": 682
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.presenter",
+          "lineNumber": 682
+        },
+        {
+          "caller": "run_step",
+          "callee": "position_id.to_string",
+          "lineNumber": 685
+        },
+        {
+          "caller": "run_step",
+          "callee": "position_id_fn",
+          "lineNumber": 688
+        },
+        {
+          "caller": "run_step",
+          "callee": "presenter.borrow",
+          "lineNumber": 695
+        },
+        {
+          "caller": "run_step",
+          "callee": "presenter_ref.position_cache().get_position",
+          "lineNumber": 696
+        },
+        {
+          "caller": "run_step",
+          "callee": "presenter_ref.position_cache",
+          "lineNumber": 696
+        },
+        {
+          "caller": "run_step",
+          "callee": "bounds.is_none",
+          "lineNumber": 701
+        },
+        {
+          "caller": "run_step",
+          "callee": "Timer::at",
+          "lineNumber": 708
+        },
+        {
+          "caller": "run_step",
+          "callee": "Instant::now",
+          "lineNumber": 708
+        },
+        {
+          "caller": "run_step",
+          "callee": "AssertionOutcome::failure",
+          "lineNumber": 710
+        },
+        {
+          "caller": "run_step",
+          "callee": "bounds.unwrap",
+          "lineNumber": 712
+        },
+        {
+          "caller": "run_step",
+          "callee": "bounds.center",
+          "lineNumber": 714
+        },
+        {
+          "caller": "run_step",
+          "callee": "record_overlay_kind",
+          "lineNumber": 717
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.x",
+          "lineNumber": 719
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.y",
+          "lineNumber": 720
+        },
+        {
+          "caller": "run_step",
+          "callee": "Default::default",
+          "lineNumber": 726
+        },
+        {
+          "caller": "run_step",
+          "callee": "Default::default",
+          "lineNumber": 732
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.update",
+          "lineNumber": 735
+        },
+        {
+          "caller": "run_step",
+          "callee": "(window.callbacks().event_callback)",
+          "lineNumber": 735
+        },
+        {
+          "caller": "run_step",
+          "callee": "window.callbacks",
+          "lineNumber": 735
+        },
+        {
+          "caller": "run_step",
+          "callee": "record_overlay_kind",
+          "lineNumber": 737
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.x",
+          "lineNumber": 739
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.y",
+          "lineNumber": 740
+        },
+        {
+          "caller": "run_step",
+          "callee": "record_overlay_kind",
+          "lineNumber": 746
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.x",
+          "lineNumber": 748
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.y",
+          "lineNumber": 749
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.update",
+          "lineNumber": 753
+        },
+        {
+          "caller": "run_step",
+          "callee": "(window.callbacks().event_callback)",
+          "lineNumber": 754
+        },
+        {
+          "caller": "run_step",
+          "callee": "window.callbacks",
+          "lineNumber": 754
+        },
+        {
+          "caller": "run_step",
+          "callee": "record_overlay_kind",
+          "lineNumber": 764
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.x",
+          "lineNumber": 766
+        },
+        {
+          "caller": "run_step",
+          "callee": "center.y",
+          "lineNumber": 767
+        },
+        {
+          "caller": "run_step",
+          "callee": "app.update",
+          "lineNumber": 773
+        },
+        {
+          "caller": "run_step",
+          "callee": "(window.callbacks().event_callback)",
+          "lineNumber": 774
+        },
+        {
+          "caller": "run_step",
+          "callee": "window.callbacks",
+          "lineNumber": 774
+        },
+        {
+          "caller": "run_step",
+          "callee": "maybe_render_frame",
+          "lineNumber": 789
+        },
+        {
+          "caller": "run_step",
+          "callee": "step.actions.iter",
+          "lineNumber": 794
+        },
+        {
+          "caller": "run_step",
+          "callee": "sigint_received.load",
+          "lineNumber": 795
+        },
+        {
+          "caller": "run_step",
+          "callee": "action",
+          "lineNumber": 799
+        },
+        {
+          "caller": "run_step",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 800
+        },
+        {
+          "caller": "run_step",
+          "callee": "log.record",
+          "lineNumber": 801
+        },
+        {
+          "caller": "run_step",
+          "callee": "maybe_render_frame",
+          "lineNumber": 804
+        },
+        {
+          "caller": "run_step",
+          "callee": "step.assertions.iter_mut",
+          "lineNumber": 811
+        },
+        {
+          "caller": "run_step",
+          "callee": "Instant::now",
+          "lineNumber": 817
+        },
+        {
+          "caller": "run_step",
+          "callee": "sigint_received.load",
+          "lineNumber": 819
+        },
+        {
+          "caller": "run_step",
+          "callee": "Timer::at",
+          "lineNumber": 830
+        },
+        {
+          "caller": "run_step",
+          "callee": "Instant::now",
+          "lineNumber": 830
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion\n                    .name\n                    .as_ref().map_or",
+          "lineNumber": 832
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion\n                    .name.as_ref",
+          "lineNumber": 832
+        },
+        {
+          "caller": "run_step",
+          "callee": "name.as_str",
+          "lineNumber": 835
+        },
+        {
+          "caller": "run_step",
+          "callee": "Some",
+          "lineNumber": 836
+        },
+        {
+          "caller": "run_step",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 838
+        },
+        {
+          "caller": "run_step",
+          "callee": "log.record",
+          "lineNumber": 839
+        },
+        {
+          "caller": "run_step",
+          "callee": "cb",
+          "lineNumber": 844
+        },
+        {
+          "caller": "run_step",
+          "callee": "cb",
+          "lineNumber": 845
+        },
+        {
+          "caller": "run_step",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 849
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion.name.as_deref().unwrap_or",
+          "lineNumber": 850
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion.name.as_deref",
+          "lineNumber": 850
+        },
+        {
+          "caller": "run_step",
+          "callee": "log.record",
+          "lineNumber": 851
+        },
+        {
+          "caller": "run_step",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 856
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion.name.as_deref().unwrap_or",
+          "lineNumber": 857
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion.name.as_deref",
+          "lineNumber": 857
+        },
+        {
+          "caller": "run_step",
+          "callee": "log.record",
+          "lineNumber": 858
+        },
+        {
+          "caller": "run_step",
+          "callee": "step_data_map.insert_step_data",
+          "lineNumber": 860
+        },
+        {
+          "caller": "run_step",
+          "callee": "AssertionOutcome::PreconditionFailed",
+          "lineNumber": 865
+        },
+        {
+          "caller": "run_step",
+          "callee": "Some",
+          "lineNumber": 872
+        },
+        {
+          "caller": "run_step",
+          "callee": "failed_assertion_name.or",
+          "lineNumber": 875
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion.name.clone",
+          "lineNumber": 875
+        },
+        {
+          "caller": "run_step",
+          "callee": "failed_assertion_name.or",
+          "lineNumber": 886
+        },
+        {
+          "caller": "run_step",
+          "callee": "assertion.name.clone",
+          "lineNumber": 886
+        },
+        {
+          "caller": "run_step",
+          "callee": "step.on_failure_handler.take",
+          "lineNumber": 897
+        },
+        {
+          "caller": "run_step",
+          "callee": "cb",
+          "lineNumber": 907
+        },
+        {
+          "caller": "run_step",
+          "callee": "cb",
+          "lineNumber": 908
+        },
+        {
+          "caller": "run_step",
+          "callee": "step_data_map.insert_step_data",
+          "lineNumber": 915
+        },
+        {
+          "caller": "run_step",
+          "callee": "AssertionOutcome::PreconditionFailed",
+          "lineNumber": 920
+        },
+        {
+          "caller": "run_step",
+          "callee": "Some",
+          "lineNumber": 927
+        },
+        {
+          "caller": "run_step",
+          "callee": "failed_assertion_name.or",
+          "lineNumber": 930
+        },
+        {
+          "caller": "run_step",
+          "callee": "final_assertion.name.clone",
+          "lineNumber": 931
+        },
+        {
+          "caller": "run_step",
+          "callee": "failed_assertion_name.or",
+          "lineNumber": 942
+        },
+        {
+          "caller": "run_step",
+          "callee": "final_assertion.name.clone",
+          "lineNumber": 943
+        },
+        {
+          "caller": "run_step",
+          "callee": "last_failure.expect",
+          "lineNumber": 953
+        },
+        {
+          "caller": "run_step",
+          "callee": "last_failure.as_failure_message().map",
+          "lineNumber": 954
+        },
+        {
+          "caller": "run_step",
+          "callee": "last_failure.as_failure_message",
+          "lineNumber": 954
+        },
+        {
+          "caller": "run_step",
+          "callee": "action_log::get_action_log_mut",
+          "lineNumber": 955
+        },
+        {
+          "caller": "run_step",
+          "callee": "last_assertion_name.unwrap_or",
+          "lineNumber": 956
+        },
+        {
+          "caller": "run_step",
+          "callee": "log.record",
+          "lineNumber": 957
+        },
+        {
+          "caller": "run_step",
+          "callee": "Timer::at",
+          "lineNumber": 969
+        },
+        {
+          "caller": "run_step",
+          "callee": "Instant::now",
+          "lineNumber": 969
+        },
+        {
+          "caller": "run_step",
+          "callee": "Timer::at",
+          "lineNumber": 981
+        },
+        {
+          "caller": "run_step",
+          "callee": "Instant::now",
+          "lineNumber": 981
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "frame_count",
+          "lineNumber": 995
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Ok",
+          "lineNumber": 998
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "app.has_window_invalidations",
+          "lineNumber": 1000
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Instant::now",
+          "lineNumber": 1005
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Timer::at",
+          "lineNumber": 1006
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Instant::now",
+          "lineNumber": 1006
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "frame_count",
+          "lineNumber": 1007
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Ok",
+          "lineNumber": 1011
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Err",
+          "lineNumber": 1021
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "AssertionOutcome::failure",
+          "lineNumber": 1021
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "\"Test step failed because no frames were rendered\".to_string",
+          "lineNumber": 1022
+        },
+        {
+          "caller": "maybe_render_frame",
+          "callee": "Ok",
+          "lineNumber": 1029
+        },
+        {
+          "caller": "frame_count",
+          "callee": "app.presenter",
+          "lineNumber": 1034
+        },
+        {
+          "caller": "frame_count",
+          "callee": "presenter_rc.borrow",
+          "lineNumber": 1035
+        },
+        {
+          "caller": "frame_count",
+          "callee": "Some",
+          "lineNumber": 1036
+        },
+        {
+          "caller": "frame_count",
+          "callee": "presenter.frame_count",
+          "lineNumber": 1036
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "Some",
+          "lineNumber": 1045
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "position.x",
+          "lineNumber": 1046
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "position.y",
+          "lineNumber": 1047
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "Some",
+          "lineNumber": 1049
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "position.x",
+          "lineNumber": 1050
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "position.y",
+          "lineNumber": 1051
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "Some",
+          "lineNumber": 1053
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "position.x",
+          "lineNumber": 1054
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "position.y",
+          "lineNumber": 1055
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "overlay::keystroke_display_text",
+          "lineNumber": 1058
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "Some",
+          "lineNumber": 1059
+        },
+        {
+          "caller": "record_overlay_event_for_event",
+          "callee": "record_overlay_kind",
+          "lineNumber": 1064
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 45,
+        "functionCount": 44,
+        "classCount": 8
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/integration/video_recorder.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 392,
+      "nonEmptyLines": 332,
+      "functions": [
+        {
+          "name": "default",
+          "startLine": 59,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 71,
+          "endLine": 73,
+          "params": []
+        },
+        {
+          "name": "start_recording",
+          "startLine": 75,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "stop_recording",
+          "startLine": 83,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "stop_capture_loop",
+          "startLine": 88,
+          "endLine": 90,
+          "params": []
+        },
+        {
+          "name": "is_recording",
+          "startLine": 92,
+          "endLine": 94,
+          "params": []
+        },
+        {
+          "name": "recording_start",
+          "startLine": 98,
+          "endLine": 100,
+          "params": []
+        },
+        {
+          "name": "capture_loop_state",
+          "startLine": 105,
+          "endLine": 111,
+          "params": []
+        },
+        {
+          "name": "frame_count",
+          "startLine": 114,
+          "endLine": 116,
+          "params": []
+        },
+        {
+          "name": "finalize",
+          "startLine": 120,
+          "endLine": 162,
+          "params": [
+            "output_path",
+            "overlay_log"
+          ]
+        },
+        {
+          "name": "encode_to_mp4",
+          "startLine": 168,
+          "endLine": 255,
+          "params": [
+            "output_path",
+            "frames",
+            "overlay_log"
+          ]
+        },
+        {
+          "name": "save_frames_as_pngs",
+          "startLine": 259,
+          "endLine": 281,
+          "params": [
+            "output_path",
+            "frames"
+          ]
+        },
+        {
+          "name": "run_capture_loop",
+          "startLine": 293,
+          "endLine": 331,
+          "params": [
+            "app",
+            "state"
+          ]
+        },
+        {
+          "name": "rgba_to_rgb",
+          "startLine": 334,
+          "endLine": 343,
+          "params": [
+            "rgba"
+          ]
+        },
+        {
+          "name": "save_captured_frame_as_png",
+          "startLine": 346,
+          "endLine": 370,
+          "params": [
+            "frame",
+            "path"
+          ]
+        },
+        {
+          "name": "output_dir",
+          "startLine": 374,
+          "endLine": 380,
+          "params": []
+        },
+        {
+          "name": "get_recorder_mut",
+          "startLine": 383,
+          "endLine": 387,
+          "params": [
+            "step_data_map"
+          ]
+        },
+        {
+          "name": "get_recorder",
+          "startLine": 390,
+          "endLine": 392,
+          "params": [
+            "step_data_map"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TimestampedFrame",
+          "startLine": 28,
+          "endLine": 32,
+          "methods": [],
+          "properties": [
+            "frame",
+            "captured_at"
+          ]
+        },
+        {
+          "name": "CaptureLoopState",
+          "startLine": 38,
+          "endLine": 42,
+          "methods": [],
+          "properties": [
+            "recording",
+            "stopped",
+            "frames"
+          ]
+        },
+        {
+          "name": "VideoRecorder",
+          "startLine": 46,
+          "endLine": 56,
+          "methods": [
+            "default",
+            "new",
+            "start_recording",
+            "stop_recording",
+            "stop_capture_loop",
+            "is_recording",
+            "recording_start",
+            "capture_loop_state",
+            "frame_count",
+            "finalize"
+          ],
+          "properties": [
+            "recording",
+            "stopped",
+            "frames",
+            "recording_start"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TimestampedFrame",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "CaptureLoopState",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "VideoRecorder",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "start_recording",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "stop_recording",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "stop_capture_loop",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "is_recording",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "recording_start",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "capture_loop_state",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "frame_count",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "finalize",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "run_capture_loop",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "save_captured_frame_as_png",
+          "line": 346,
+          "isDefault": false
+        },
+        {
+          "name": "output_dir",
+          "line": 374,
+          "isDefault": false
+        },
+        {
+          "name": "get_recorder_mut",
+          "line": 383,
+          "isDefault": false
+        },
+        {
+          "name": "get_recorder",
+          "line": 390,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "default",
+          "callee": "Arc::new",
+          "lineNumber": 61
+        },
+        {
+          "caller": "default",
+          "callee": "AtomicBool::new",
+          "lineNumber": 61
+        },
+        {
+          "caller": "default",
+          "callee": "Arc::new",
+          "lineNumber": 62
+        },
+        {
+          "caller": "default",
+          "callee": "AtomicBool::new",
+          "lineNumber": 62
+        },
+        {
+          "caller": "default",
+          "callee": "Arc::new",
+          "lineNumber": 63
+        },
+        {
+          "caller": "default",
+          "callee": "Mutex::new",
+          "lineNumber": 63
+        },
+        {
+          "caller": "default",
+          "callee": "Vec::new",
+          "lineNumber": 63
+        },
+        {
+          "caller": "new",
+          "callee": "Self::default",
+          "lineNumber": 72
+        },
+        {
+          "caller": "start_recording",
+          "callee": "Some",
+          "lineNumber": 78
+        },
+        {
+          "caller": "start_recording",
+          "callee": "Instant::now",
+          "lineNumber": 78
+        },
+        {
+          "caller": "start_recording",
+          "callee": "self.recording.store",
+          "lineNumber": 80
+        },
+        {
+          "caller": "stop_recording",
+          "callee": "self.recording.store",
+          "lineNumber": 84
+        },
+        {
+          "caller": "stop_capture_loop",
+          "callee": "self.stopped.store",
+          "lineNumber": 89
+        },
+        {
+          "caller": "is_recording",
+          "callee": "self.recording.load",
+          "lineNumber": 93
+        },
+        {
+          "caller": "capture_loop_state",
+          "callee": "self.recording.clone",
+          "lineNumber": 107
+        },
+        {
+          "caller": "capture_loop_state",
+          "callee": "self.stopped.clone",
+          "lineNumber": 108
+        },
+        {
+          "caller": "capture_loop_state",
+          "callee": "self.frames.clone",
+          "lineNumber": 109
+        },
+        {
+          "caller": "frame_count",
+          "callee": "self.frames.lock().map(|g| g.len()).unwrap_or",
+          "lineNumber": 115
+        },
+        {
+          "caller": "frame_count",
+          "callee": "self.frames.lock().map",
+          "lineNumber": 115
+        },
+        {
+          "caller": "frame_count",
+          "callee": "self.frames.lock",
+          "lineNumber": 115
+        },
+        {
+          "caller": "frame_count",
+          "callee": "g.len",
+          "lineNumber": 115
+        },
+        {
+          "caller": "finalize",
+          "callee": "self\n            .frames\n            .lock()\n            .map(|mut g| std::mem::take(&mut *g)).unwrap_or_default",
+          "lineNumber": 125
+        },
+        {
+          "caller": "finalize",
+          "callee": "self\n            .frames\n            .lock().map",
+          "lineNumber": 125
+        },
+        {
+          "caller": "finalize",
+          "callee": "self\n            .frames.lock",
+          "lineNumber": 125
+        },
+        {
+          "caller": "finalize",
+          "callee": "std::mem::take",
+          "lineNumber": 128
+        },
+        {
+          "caller": "finalize",
+          "callee": "frames.is_empty",
+          "lineNumber": 131
+        },
+        {
+          "caller": "finalize",
+          "callee": "Ok",
+          "lineNumber": 133
+        },
+        {
+          "caller": "finalize",
+          "callee": "output_path.parent",
+          "lineNumber": 136
+        },
+        {
+          "caller": "finalize",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 137
+        },
+        {
+          "caller": "finalize",
+          "callee": "encode_to_mp4",
+          "lineNumber": 141
+        },
+        {
+          "caller": "finalize",
+          "callee": "save_frames_as_pngs",
+          "lineNumber": 151
+        },
+        {
+          "caller": "finalize",
+          "callee": "save_frames_as_pngs",
+          "lineNumber": 158
+        },
+        {
+          "caller": "finalize",
+          "callee": "Ok",
+          "lineNumber": 161
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Encoder::new().map_err",
+          "lineNumber": 187
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Encoder::new",
+          "lineNumber": 187
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "OverlayState::new",
+          "lineNumber": 189
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_log.map(|ol| ol.events()).unwrap_or",
+          "lineNumber": 190
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_log.map",
+          "lineNumber": 190
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "ol.events",
+          "lineNumber": 190
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_log.map(|ol| ol.scale_factor()).unwrap_or",
+          "lineNumber": 191
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_log.map",
+          "lineNumber": 191
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "ol.scale_factor",
+          "lineNumber": 191
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_events.is_empty",
+          "lineNumber": 192
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Vec::new",
+          "lineNumber": 194
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "frames.len",
+          "lineNumber": 197
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_state.advance_to",
+          "lineNumber": 201
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "ts_frame.frame.data.clone",
+          "lineNumber": 202
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "overlay_state.render_onto",
+          "lineNumber": 203
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "rgba_to_rgb",
+          "lineNumber": 210
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "rgba_to_rgb",
+          "lineNumber": 212
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "RgbSliceU8::new",
+          "lineNumber": 215
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "YUVBuffer::from_rgb_source",
+          "lineNumber": 216
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "frames.len",
+          "lineNumber": 218
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "frames[i + 1]\n                .captured_at\n                .duration_since(ts_frame.captured_at).as_millis",
+          "lineNumber": 219
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "frames[i + 1]\n                .captured_at.duration_since",
+          "lineNumber": 219
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "(gap_ms / FRAME_DURATION_MS).max",
+          "lineNumber": 223
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "encoder\n                .encode(&yuv).map_err",
+          "lineNumber": 229
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "encoder.encode",
+          "lineNumber": 229
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "bitstream.write_vec",
+          "lineNumber": 232
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Cursor::new",
+          "lineNumber": 242
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Vec::new",
+          "lineNumber": 242
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Mp4Muxer::new",
+          "lineNumber": 243
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "muxer.init_video",
+          "lineNumber": 244
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "muxer.write_video_with_fps",
+          "lineNumber": 250
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "muxer.close",
+          "lineNumber": 251
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "std::fs::write",
+          "lineNumber": 253
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "mp4_buf.into_inner",
+          "lineNumber": 253
+        },
+        {
+          "caller": "encode_to_mp4",
+          "callee": "Ok",
+          "lineNumber": 254
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "output_path\n        .file_stem()\n        .and_then(|s| s.to_str()).unwrap_or",
+          "lineNumber": 260
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "output_path\n        .file_stem().and_then",
+          "lineNumber": 260
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "output_path.file_stem",
+          "lineNumber": 260
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "s.to_str",
+          "lineNumber": 262
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "output_path\n        .parent()\n        .unwrap_or_else(|| Path::new(\".\")).join",
+          "lineNumber": 264
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "output_path\n        .parent().unwrap_or_else",
+          "lineNumber": 264
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "output_path.parent",
+          "lineNumber": 264
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "Path::new",
+          "lineNumber": 266
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 268
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "frames.iter().enumerate",
+          "lineNumber": 270
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "frames.iter",
+          "lineNumber": 270
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "dir.join",
+          "lineNumber": 271
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "save_captured_frame_as_png",
+          "lineNumber": 272
+        },
+        {
+          "caller": "save_frames_as_pngs",
+          "callee": "Ok",
+          "lineNumber": 280
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "Timer::after",
+          "lineNumber": 299
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "Duration::from_millis",
+          "lineNumber": 299
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "state.stopped.load",
+          "lineNumber": 301
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "state.recording.load",
+          "lineNumber": 305
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "app.read",
+          "lineNumber": 309
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "ctx.windows",
+          "lineNumber": 310
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "windowing_state\n                .active_window().and_then",
+          "lineNumber": 311
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "windowing_state.active_window",
+          "lineNumber": 311
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "windowing_state.platform_window",
+          "lineNumber": 313
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "state.frames.clone",
+          "lineNumber": 320
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "window\n            .as_ctx().request_frame_capture",
+          "lineNumber": 321
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "window.as_ctx",
+          "lineNumber": 321
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "Box::new",
+          "lineNumber": 323
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "Instant::now",
+          "lineNumber": 324
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "frames.lock",
+          "lineNumber": 325
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "guard.push",
+          "lineNumber": 326
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "window.as_ctx().request_redraw",
+          "lineNumber": 329
+        },
+        {
+          "caller": "run_capture_loop",
+          "callee": "window.as_ctx",
+          "lineNumber": 329
+        },
+        {
+          "caller": "rgba_to_rgb",
+          "callee": "rgba.len",
+          "lineNumber": 335
+        },
+        {
+          "caller": "rgba_to_rgb",
+          "callee": "Vec::with_capacity",
+          "lineNumber": 336
+        },
+        {
+          "caller": "rgba_to_rgb",
+          "callee": "rgba.chunks_exact",
+          "lineNumber": 337
+        },
+        {
+          "caller": "rgba_to_rgb",
+          "callee": "rgb.push",
+          "lineNumber": 338
+        },
+        {
+          "caller": "rgba_to_rgb",
+          "callee": "rgb.push",
+          "lineNumber": 339
+        },
+        {
+          "caller": "rgba_to_rgb",
+          "callee": "rgb.push",
+          "lineNumber": 340
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "frame.clone",
+          "lineNumber": 347
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "frame.ensure_rgba",
+          "lineNumber": 348
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "path.parent",
+          "lineNumber": 349
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 350
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "std::fs::File::create",
+          "lineNumber": 353
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "std::io::BufWriter::new",
+          "lineNumber": 354
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "image::codecs::png::PngEncoder::new_with_quality",
+          "lineNumber": 356
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "encoder.write_image",
+          "lineNumber": 362
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "image::ColorType::Rgba8.into",
+          "lineNumber": 366
+        },
+        {
+          "caller": "save_captured_frame_as_png",
+          "callee": "Ok",
+          "lineNumber": 369
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::env::var(VIDEO_DIR_ENV_VAR)\n        .map(PathBuf::from).unwrap_or_else",
+          "lineNumber": 375
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::env::var(VIDEO_DIR_ENV_VAR).map",
+          "lineNumber": 375
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::env::var",
+          "lineNumber": 375
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::env::temp_dir().join",
+          "lineNumber": 377
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::env::temp_dir",
+          "lineNumber": 377
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::fs::create_dir_all(&dir).ok",
+          "lineNumber": 378
+        },
+        {
+          "caller": "output_dir",
+          "callee": "std::fs::create_dir_all",
+          "lineNumber": 378
+        },
+        {
+          "caller": "get_recorder_mut",
+          "callee": "step_data_map.get_mut::<_, VideoRecorder>",
+          "lineNumber": 386
+        },
+        {
+          "caller": "get_recorder",
+          "callee": "step_data_map.get::<_, VideoRecorder>",
+          "lineNumber": 391
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 17,
+        "functionCount": 18,
+        "classCount": 3
+      }
+    }
+  ]
+}

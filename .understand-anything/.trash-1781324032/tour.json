@@ -1,0 +1,142 @@
+[
+  {
+    "order": 1,
+    "title": "Orientation: Three Crates",
+    "description": "Start here to see the shape of the whole stack. warpui_core is Warp's bespoke, GPUI-like UI framework and keymap engine; the editor crate is a rich-text editing engine; and the vim crate is a standalone modal-editing library. The three Cargo manifests encode the dependency direction that drives this entire tour: the vim manifest depends on warp_core and warpui_core, and the editor manifest builds on the same UI runtime, so both higher-level crates point down at warpui_core rather than the other way around.",
+    "nodeIds": [
+      "document:crates/warpui_core/README.md",
+      "config:crates/warpui_core/Cargo.toml",
+      "config:crates/editor/Cargo.toml",
+      "config:crates/vim/Cargo.toml"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Crate Entry Points",
+    "description": "Each crate's lib.rs is its public front door, declaring submodules and re-exporting the types that the rest of the workspace consumes. warpui_core/src/lib.rs wires up actions, elements, keymap, platform, and rendering; editor/src/lib.rs exposes the content, render, and selection layers; and vim/src/lib.rs surfaces the motion, text-object, and FSA APIs. Reading these three roots side by side gives you the table of contents for everything that follows.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/lib.rs",
+      "file:crates/editor/src/lib.rs",
+      "file:crates/vim/src/lib.rs"
+    ],
+    "languageLesson": "In Rust a crate root (lib.rs) uses `mod` to declare submodules and `pub use` to re-export their items, building a curated public API surface. A `mod foo;` declaration is structural ownership (the file is part of this crate), which is distinct from a `use` import that merely references another module's items."
+  },
+  {
+    "order": 3,
+    "title": "The Framework Runtime",
+    "description": "This is the reactive substrate everything else dispatches through. AppContext in core/app.rs owns all models, views, windows, ref-counts, and executors, while core/mod.rs defines the foundational Handle, Effect, and Subscription types and the model/view submodules supply the entity-and-handle reactivity. The presenter then drives the per-frame lifecycle, building a Scene from the view tree and dispatching events and actions into it. Every keystroke, edit, and repaint you will trace later flows through this loop.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/core/mod.rs",
+      "file:crates/warpui_core/src/core/app.rs",
+      "file:crates/warpui_core/src/core/model/mod.rs",
+      "file:crates/warpui_core/src/core/view/mod.rs",
+      "file:crates/warpui_core/src/presenter.rs"
+    ],
+    "languageLesson": "WarpUI uses the entity/handle pattern: state lives in a central AppContext arena and code holds lightweight, ref-counted Handles rather than owning the data directly. This sidesteps Rust's borrow-checker friction for graph-shaped UI state while keeping mutation centralized and observable."
+  },
+  {
+    "order": 4,
+    "title": "Input Events & Actions",
+    "description": "Before keybindings can mean anything, the framework needs a vocabulary of raw input and dispatchable intent. event.rs defines the Event enum (key, mouse, scroll, drag, IME) plus modifier and key state, while actions.rs declares the StandardAction set of OS-level commands and core/action.rs provides the dynamic, downcastable Action trait. The keymap engine in the next steps exists precisely to translate Events from this layer into Actions that the presenter from Step 3 dispatches.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/event.rs",
+      "file:crates/warpui_core/src/actions.rs",
+      "file:crates/warpui_core/src/core/action.rs"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "The Keymap Engine: Bindings",
+    "description": "This is the spine of the tour. keymap.rs defines the core keybinding model: keystrokes, the distinction between fixed (built-in) and editable (user-customizable) bindings, triggers, binding descriptions, and the Keymap registry used to look up and override bindings. Understanding the fixed-versus-editable split here is the foundation for any work on a more configurable engine or a better keybinding settings UI, since editable bindings are exactly what a settings surface would mutate.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/keymap.rs"
+    ],
+    "languageLesson": "The fixed-vs-editable binding split is a deliberate configurability seam: fixed bindings ship with the app and cannot be overridden, while editable bindings layer user customization on top. A configurable keybinding engine grows by widening the editable set and giving it a stable serialization format that a settings UI can read and write."
+  },
+  {
+    "order": 6,
+    "title": "Context Predicates & the Matcher",
+    "description": "Bindings only fire in the right situation, and this is where that decision is made. keymap/context.rs defines the Context (active flags plus a key/value map) and the ContextPredicate boolean expression tree, with operator overloads and macros forming a small predicate DSL for when a binding applies. keymap/matcher.rs is the state machine that registers bindings, resolves pending multi-key sequences, validates bindings per context, and maps keystrokes to standard or custom actions. This matcher is the single most important file for the project's goal of pluggable modal modes — vim, helix, or kakoune layers ultimately register and resolve through here.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/keymap/context.rs",
+      "file:crates/warpui_core/src/keymap/matcher.rs"
+    ],
+    "languageLesson": "The matcher is a keystroke state machine: a multi-key chord like `g d` leaves the matcher in a pending state after the first key, waiting to either complete a binding or time out and replay the buffered keys. Context predicates gate which bindings are even eligible, so the same keystroke can resolve to different actions depending on focus and mode — the exact mechanism a pluggable modal scheme rides on."
+  },
+  {
+    "order": 7,
+    "title": "Text Primitives & Layout",
+    "description": "With input handled, we turn to the text it operates on. text/mod.rs defines the TextBuffer trait that abstracts char/point/offset navigation and selection classification, the shared vocabulary used across both the UI framework and the editor. text_layout.rs is the shaping and layout engine that turns styled content into laid-out Lines and TextFrames with glyph runs, caret positioning, and clipping, backed by a content-and-style-keyed LayoutCache. Together they are the bridge between abstract document positions and pixels on screen.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/text/mod.rs",
+      "file:crates/warpui_core/src/text_layout.rs"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "The Input UI Surface",
+    "description": "Now we see where input and text become a visible widget. elements/mod.rs defines the foundational Element and ParentElement traits plus geometry primitives that every concrete element composes from, ui_components/text_input.rs wraps the editor element as a styled single- or multi-line input, and ui_components/keyboard_shortcut.rs renders key chords as platform-appropriate key caps. The keyboard_shortcut component is the visual counterpart to the keymap engine from Steps 5-6 — it is how a settings UI would display the very bindings the matcher resolves.",
+    "nodeIds": [
+      "file:crates/warpui_core/src/elements/mod.rs",
+      "file:crates/warpui_core/src/ui_components/text_input.rs",
+      "file:crates/warpui_core/src/ui_components/keyboard_shortcut.rs"
+    ]
+  },
+  {
+    "order": 9,
+    "title": "The Editor Content Model",
+    "description": "Crossing into the editor crate, this is the data model that holds and mutates document state. content/buffer.rs is the central rich-text buffer engine, owning a sum-tree text store, selections, undo, and styling and emitting BufferEvents; content/text.rs is the underlying BufferText sum-tree of styled block items. selection_model.rs maps anchor-backed selections to and from buffer offsets and merges overlaps, while undo.rs groups edits into reversible, time-bounded atomic steps. These are the structures that vim motions and operators will eventually drive.",
+    "nodeIds": [
+      "file:crates/editor/src/content/mod.rs",
+      "file:crates/editor/src/content/buffer.rs",
+      "file:crates/editor/src/content/text.rs",
+      "file:crates/editor/src/content/selection_model.rs",
+      "file:crates/editor/src/content/undo.rs"
+    ],
+    "languageLesson": "The buffer is backed by a sum-tree (a balanced B-tree over text with cached summaries), which makes positional queries and edits logarithmic rather than linear over a large document. Summaries let the editor answer questions like \"what offset is this line/point at?\" without scanning the whole buffer."
+  },
+  {
+    "order": 10,
+    "title": "Anchors & the Editor Model",
+    "description": "Building on the buffer from Step 9, this step covers how positions stay stable and how editing behavior specializes. content/anchor.rs defines text anchors that track stable positions across edits via a sum-tree, with an Anchors registry keeping live handles in sync as the buffer mutates — the mechanism that keeps cursors and selections correct after an insert or delete. editor/model.rs layers CoreEditorModel over the buffer to drive edits, selections, and cursor movement, with PlainTextEditorModel and RichTextEditorModel specializing plain versus markdown editing. multiline.rs keeps CR/LF/CRLF handling correct across all of it.",
+    "nodeIds": [
+      "file:crates/editor/src/content/anchor.rs",
+      "file:crates/editor/src/model.rs",
+      "file:crates/editor/src/multiline.rs"
+    ]
+  },
+  {
+    "order": 11,
+    "title": "Editor Rendering",
+    "description": "This is how the content model becomes painted output through warpui_core. render/model/mod.rs holds the central RenderState plus the laid-out block, paragraph, and table types, rich-text styles, viewport ranges, and autoscroll handling; render/layout.rs resolves fonts and style runs into laid-out text frames; and render/element/mod.rs is the rich-text rendering element that owns the block layout/paint pipeline, hit-testing, mouse/keyboard dispatch, and cursor blink. editor.rs ties these into the public EditorView surface. This cluster is the most tightly coupled subsystem in the editor and is best read together.",
+    "nodeIds": [
+      "file:crates/editor/src/render/mod.rs",
+      "file:crates/editor/src/render/model/mod.rs",
+      "file:crates/editor/src/render/element/mod.rs",
+      "file:crates/editor/src/render/layout.rs",
+      "file:crates/editor/src/editor.rs"
+    ]
+  },
+  {
+    "order": 12,
+    "title": "The Vim Modal Engine",
+    "description": "Now we reach how a modal scheme layers on top of everything below it. vim/src/vim.rs is the core of the engine: it defines the mode, motion, operator, and event-type vocabulary, the VimFSA keystroke state machine, and the VimModel/VimHandler that translate keystrokes into concrete editor events. Crucially, vim does not own the buffer — it consumes the editor's content model from Steps 9-10 and emits editor events, while its keystrokes ultimately enter through the keymap matcher from Step 6. This separation is exactly the seam where future modal modes like helix or kakoune would plug in.",
+    "nodeIds": [
+      "file:crates/vim/src/lib.rs",
+      "file:crates/vim/src/vim.rs"
+    ],
+    "languageLesson": "VimFSA is a finite state machine that accumulates a pending command — count, operator, and motion (as in `2dw`) — across multiple keystrokes before producing an editor event. Modeling modal editing as an explicit FSA, separate from the keymap matcher, is what makes the scheme swappable: a different mode supplies a different state machine over the same editor event surface."
+  },
+  {
+    "order": 13,
+    "title": "Vim Motions, Text Objects & Wiring",
+    "description": "This final step fills in the modal engine's building blocks and closes the loop. find_char.rs implements f/F/t/T on-line search, word_iterator.rs yields word boundaries for w/b/e motions, matching_brackets.rs finds bracket pairs, text_objects/mod.rs aggregates the word/paragraph/quote/block text objects, and register.rs defines register-name validation and the black-hole register. Standing back: raw events (Step 4) are resolved by the keymap matcher (Step 6) into actions, a modal FSA (Step 12) interprets them using these primitives, and they mutate the buffer (Steps 9-10) which the render pipeline (Step 11) paints. A new pluggable modal mode would reuse these motion primitives and editor events while registering its own bindings and FSA through the keymap engine.",
+    "nodeIds": [
+      "file:crates/vim/src/find_char.rs",
+      "file:crates/vim/src/word_iterator.rs",
+      "file:crates/vim/src/matching_brackets.rs",
+      "file:crates/vim/src/text_objects/mod.rs",
+      "file:crates/vim/src/register.rs"
+    ]
+  }
+]

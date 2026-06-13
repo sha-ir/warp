@@ -1,0 +1,388 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {
+      "path": "crates/warpui_core/src/elements/align.rs",
+      "language": "rust",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/clipped.rs",
+      "language": "rust",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/constrained_box.rs",
+      "language": "rust",
+      "sizeLines": 168,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/container.rs",
+      "language": "rust",
+      "sizeLines": 423,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/dismiss.rs",
+      "language": "rust",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/empty.rs",
+      "language": "rust",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/flex/mod.rs",
+      "language": "rust",
+      "sizeLines": 1000,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/flex/wrap.rs",
+      "language": "rust",
+      "sizeLines": 609,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/formatted_text_element.rs",
+      "language": "rust",
+      "sizeLines": 2601,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/hoverable.rs",
+      "language": "rust",
+      "sizeLines": 832,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/live.rs",
+      "language": "rust",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/min_size.rs",
+      "language": "rust",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+      "language": "rust",
+      "sizeLines": 909,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+      "language": "rust",
+      "sizeLines": 1590,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs",
+      "language": "rust",
+      "sizeLines": 1448,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+      "language": "rust",
+      "sizeLines": 422,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/new_scrollable/util.rs",
+      "language": "rust",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/selectable_area.rs",
+      "language": "rust",
+      "sizeLines": 757,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/shared_scrollbar.rs",
+      "language": "rust",
+      "sizeLines": 180,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/size_constraint_switch.rs",
+      "language": "rust",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/stack/mod.rs",
+      "language": "rust",
+      "sizeLines": 445,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/stack/overlay.rs",
+      "language": "rust",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/stack/positioned.rs",
+      "language": "rust",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/stack/save_position.rs",
+      "language": "rust",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/table/mod.rs",
+      "language": "rust",
+      "sizeLines": 1714,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/text.rs",
+      "language": "rust",
+      "sizeLines": 1448,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/uniform_list.rs",
+      "language": "rust",
+      "sizeLines": 330,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/elements/viewported_list.rs",
+      "language": "rust",
+      "sizeLines": 777,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/event.rs",
+      "language": "rust",
+      "sizeLines": 416,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text/header.rs",
+      "language": "rust",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text/mod.rs",
+      "language": "rust",
+      "sizeLines": 312,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text/point.rs",
+      "language": "rust",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text/word_boundaries.rs",
+      "language": "rust",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/text/words.rs",
+      "language": "rust",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/units.rs",
+      "language": "rust",
+      "sizeLines": 224,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "crates/warpui_core/src/elements/align.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/clipped.rs": [
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/constrained_box.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/container.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/dismiss.rs": [
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/empty.rs": [
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/flex/mod.rs": [
+      "crates/warpui_core/src/elements/flex/wrap.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/flex/wrap.rs": [
+      "crates/warpui_core/src/elements/flex/mod.rs",
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/formatted_text_element.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/text_layout.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/hoverable.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/live.rs": [
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/min_size.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/elements/new_scrollable/mod.rs",
+      "crates/warpui_core/src/elements/new_scrollable/util.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/new_scrollable/mod.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/elements/new_scrollable/dual_axis_config.rs",
+      "crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs",
+      "crates/warpui_core/src/elements/new_scrollable/util.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/new_scrollable/scrollable_tests.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/new_scrollable/single_axis_config.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/elements/new_scrollable/util.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/new_scrollable/util.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/selectable_area.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/shared_scrollbar.rs": [
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/size_constraint_switch.rs": [
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/stack/mod.rs": [
+      "crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "crates/warpui_core/src/elements/stack/overlay.rs",
+      "crates/warpui_core/src/elements/stack/positioned.rs",
+      "crates/warpui_core/src/elements/stack/save_position.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/stack/overlay.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs"
+    ],
+    "crates/warpui_core/src/elements/stack/positioned.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/stack/save_position.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/table/mod.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/scene.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/text.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/fonts.rs",
+      "crates/warpui_core/src/platform/mod.rs",
+      "crates/warpui_core/src/text_layout.rs",
+      "crates/warpui_core/src/text_selection_utils.rs",
+      "crates/warpui_core/src/text/mod.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs"
+    ],
+    "crates/warpui_core/src/elements/uniform_list.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/elements/viewported_list.rs": [
+      "crates/warpui_core/src/units.rs"
+    ],
+    "crates/warpui_core/src/event.rs": [
+      "crates/warpui_core/src/elements/mod.rs",
+      "crates/warpui_core/src/keymap.rs",
+      "crates/warpui_core/src/platform/keyboard.rs",
+      "crates/warpui_core/src/zoom.rs"
+    ],
+    "crates/warpui_core/src/text/header.rs": [],
+    "crates/warpui_core/src/text/mod.rs": [
+      "crates/warpui_core/src/event.rs",
+      "crates/warpui_core/src/text/header.rs",
+      "crates/warpui_core/src/text/point.rs",
+      "crates/warpui_core/src/text/word_boundaries.rs",
+      "crates/warpui_core/src/text/words.rs"
+    ],
+    "crates/warpui_core/src/text/point.rs": [],
+    "crates/warpui_core/src/text/word_boundaries.rs": [],
+    "crates/warpui_core/src/text/words.rs": [],
+    "crates/warpui_core/src/units.rs": []
+  }
+}

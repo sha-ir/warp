@@ -1,0 +1,1369 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/editor/src/render/model/location.rs",
+      "type": "file",
+      "name": "location.rs",
+      "filePath": "crates/editor/src/render/model/location.rs",
+      "summary": "Hit-testing for the render model: defines the Location enum (block vs text position) and converts render/viewport x,y coordinates into a concrete document location.",
+      "tags": [
+        "data-model",
+        "hit-testing",
+        "geometry",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/location.rs:Location",
+      "type": "class",
+      "name": "Location",
+      "filePath": "crates/editor/src/render/model/location.rs",
+      "lineRange": [
+        19,
+        43
+      ],
+      "summary": "Enum describing a hit-tested position as either a Block location or a Text offset within the rendered document.",
+      "tags": [
+        "data-model",
+        "hit-testing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/location.rs:coordinates_to_location",
+      "type": "function",
+      "name": "coordinates_to_location",
+      "filePath": "crates/editor/src/render/model/location.rs",
+      "lineRange": [
+        144,
+        229
+      ],
+      "summary": "Core hit-test: resolves an (x, y) render coordinate to a Location by walking blocks and paragraphs, honoring hit-test options.",
+      "tags": [
+        "hit-testing",
+        "geometry",
+        "algorithm"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/location.rs:render_coordinates_to_location",
+      "type": "function",
+      "name": "render_coordinates_to_location",
+      "filePath": "crates/editor/src/render/model/location.rs",
+      "lineRange": [
+        99,
+        124
+      ],
+      "summary": "Public hit-test entry converting render-space coordinates into a Location.",
+      "tags": [
+        "hit-testing",
+        "geometry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/location.rs:location_in_paragraph_block",
+      "type": "function",
+      "name": "location_in_paragraph_block",
+      "filePath": "crates/editor/src/render/model/location.rs",
+      "lineRange": [
+        231,
+        255
+      ],
+      "summary": "Resolves the text location within a paragraph block for a given coordinate.",
+      "tags": [
+        "hit-testing",
+        "geometry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/location_tests.rs",
+      "type": "file",
+      "name": "location_tests.rs",
+      "filePath": "crates/editor/src/render/model/location_tests.rs",
+      "summary": "Tests for coordinate-to-location hit-testing across tables, lists, code blocks, soft-wrapped lines, scrolling, and mermaid blocks.",
+      "tags": [
+        "test",
+        "hit-testing",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/mod.rs",
+      "type": "file",
+      "name": "mod.rs",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "summary": "Core render model of the editor: the central RenderState plus the laid-out block/paragraph/table types, rich-text styles, selections, decorations, viewport char ranges, autoscroll and layout-action handling.",
+      "tags": [
+        "data-model",
+        "rendering",
+        "state-management",
+        "core"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Very large module (~4800 lines) aggregating the entire render-side data model; RenderState is the central stateful struct with ~90 methods."
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:RenderState",
+      "type": "class",
+      "name": "RenderState",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        385,
+        435
+      ],
+      "summary": "Central render-side state for an editor view: owns content, selections, decorations, viewport, styles and pending edits, and drives layout, scrolling, autoscroll and hit-testing.",
+      "tags": [
+        "data-model",
+        "state-management",
+        "core",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:RichTextStyles",
+      "type": "class",
+      "name": "RichTextStyles",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        451,
+        492
+      ],
+      "summary": "Aggregate style configuration for rendered rich text: fonts, colors, code/table/checkbox/horizontal-rule styling and block spacings.",
+      "tags": [
+        "data-model",
+        "styling",
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:BlockItem",
+      "type": "class",
+      "name": "BlockItem",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        748,
+        802
+      ],
+      "summary": "Enum of all renderable block kinds (paragraph, header, code block, table, task/unordered/ordered list, image, mermaid, horizontal rule, embedded, hidden, trailing newline).",
+      "tags": [
+        "data-model",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:Paragraph",
+      "type": "class",
+      "name": "Paragraph",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        960,
+        973
+      ],
+      "summary": "A laid-out paragraph: its text frame, offset map, sizing, detected URL and spacing, with helpers for character bounds and soft-wrap conversion.",
+      "tags": [
+        "data-model",
+        "text-layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:ParagraphBlock",
+      "type": "class",
+      "name": "ParagraphBlock",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        880,
+        882
+      ],
+      "summary": "A block composed of one or more laid-out paragraphs, exposing combined sizing and line access.",
+      "tags": [
+        "data-model",
+        "text-layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:LaidOutTable",
+      "type": "class",
+      "name": "LaidOutTable",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        1200,
+        1220
+      ],
+      "summary": "A fully laid-out markdown table with per-cell layouts, row/column geometry, horizontal scrolling state and hit-testing/offset mapping.",
+      "tags": [
+        "data-model",
+        "table",
+        "scrolling",
+        "hit-testing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:CellLayout",
+      "type": "class",
+      "name": "CellLayout",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        1063,
+        1069
+      ],
+      "summary": "Per-cell layout within a table: line heights, y-offsets, char ranges, widths and caret positions, with line/char hit-testing helpers.",
+      "tags": [
+        "data-model",
+        "table",
+        "text-layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:SoftWrapPoint",
+      "type": "class",
+      "name": "SoftWrapPoint",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        690,
+        713
+      ],
+      "summary": "A (row, column) position within a soft-wrapped paragraph, with navigation between wrapped rows.",
+      "tags": [
+        "data-model",
+        "text-layout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:RenderedSelection",
+      "type": "class",
+      "name": "RenderedSelection",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        4527,
+        4532
+      ],
+      "summary": "A rendered selection range (head/tail plus cursor bias) used to draw cursors and highlights.",
+      "tags": [
+        "data-model",
+        "selection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:RenderedSelectionSet",
+      "type": "class",
+      "name": "RenderedSelectionSet",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        4611,
+        4613
+      ],
+      "summary": "Ordered collection of rendered selections supporting iteration, sorting and mapping.",
+      "tags": [
+        "data-model",
+        "selection",
+        "collection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:HiddenBlockConfig",
+      "type": "class",
+      "name": "HiddenBlockConfig",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        1598,
+        1604
+      ],
+      "summary": "Configuration for a collapsed/hidden block region, tracking line count, content length and expansion gutter buttons.",
+      "tags": [
+        "data-model",
+        "folding"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:Decoration",
+      "type": "class",
+      "name": "Decoration",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        4731,
+        4739
+      ],
+      "summary": "A text decoration range (background fill and/or dashed underline) applied during rendering.",
+      "tags": [
+        "data-model",
+        "decoration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:LayoutAction",
+      "type": "class",
+      "name": "LayoutAction",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        3315,
+        3335
+      ],
+      "summary": "Enum of layout-mutating actions (selection/decoration change, buffer edit, temporary block, autoscroll, scroll-to) processed by RenderState.",
+      "tags": [
+        "data-model",
+        "state-management",
+        "command"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/mod.rs:AutoScrollMode",
+      "type": "class",
+      "name": "AutoScrollMode",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        3282,
+        3297
+      ],
+      "summary": "Enum of autoscroll strategies (into-viewport, exact-vertical, to-selections, center-offset).",
+      "tags": [
+        "data-model",
+        "scrolling"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:handle_layout_action",
+      "type": "function",
+      "name": "handle_layout_action",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        2329,
+        2435
+      ],
+      "summary": "Dispatches a LayoutAction against RenderState, applying selection/decoration/edit/scroll changes and scheduling relayout.",
+      "tags": [
+        "state-management",
+        "command",
+        "rendering"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:layout_pending_edit",
+      "type": "function",
+      "name": "layout_pending_edit",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        2599,
+        2740
+      ],
+      "summary": "Re-lays out the portion of the document affected by a pending edit, splicing new block items into the existing layout.",
+      "tags": [
+        "rendering",
+        "text-layout",
+        "algorithm"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:autoscroll",
+      "type": "function",
+      "name": "autoscroll",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        2817,
+        2889
+      ],
+      "summary": "Adjusts the viewport scroll offsets to satisfy a requested AutoScrollMode (reveal offsets, center, follow selections).",
+      "tags": [
+        "scrolling",
+        "rendering",
+        "algorithm"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:blocks_in_line_range",
+      "type": "function",
+      "name": "blocks_in_line_range",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        1969,
+        2036
+      ],
+      "summary": "Returns the laid-out block items intersecting a given line range, used for incremental rendering.",
+      "tags": [
+        "rendering",
+        "query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:dedupe_hidden_ranges",
+      "type": "function",
+      "name": "dedupe_hidden_ranges",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        2743,
+        2809
+      ],
+      "summary": "Merges adjacent/overlapping hidden line ranges so collapsed regions render as single blocks.",
+      "tags": [
+        "folding",
+        "algorithm"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:multiselect_autoscroll_bounding_box",
+      "type": "function",
+      "name": "multiselect_autoscroll_bounding_box",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        2947,
+        3034
+      ],
+      "summary": "Computes the bounding box covering all selection heads to drive autoscroll for multiple cursors.",
+      "tags": [
+        "scrolling",
+        "selection",
+        "geometry"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:set_viewport_size",
+      "type": "function",
+      "name": "set_viewport_size",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        2143,
+        2165
+      ],
+      "summary": "Updates the viewport size on RenderState and triggers any layout needed for the new dimensions.",
+      "tags": [
+        "state-management",
+        "rendering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:draw_selection",
+      "type": "function",
+      "name": "draw_selection",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        4034,
+        4073
+      ],
+      "summary": "Draws the active selection (cursors and highlight ranges) for a render model into the context.",
+      "tags": [
+        "rendering",
+        "selection",
+        "paint"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:draw_cursor",
+      "type": "function",
+      "name": "draw_cursor",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        4075,
+        4121
+      ],
+      "summary": "Draws a single cursor at a character offset with the configured cursor styling and bias.",
+      "tags": [
+        "rendering",
+        "paint",
+        "cursor"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/mod.rs:draw_charwise_highlight",
+      "type": "function",
+      "name": "draw_charwise_highlight",
+      "filePath": "crates/editor/src/render/model/mod.rs",
+      "lineRange": [
+        4217,
+        4269
+      ],
+      "summary": "Draws a character-wise selection highlight spanning a start/end offset across possibly soft-wrapped lines.",
+      "tags": [
+        "rendering",
+        "paint",
+        "selection"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/mod_tests.rs",
+      "type": "file",
+      "name": "mod_tests.rs",
+      "filePath": "crates/editor/src/render/model/mod_tests.rs",
+      "summary": "Unit tests for the render model: sizing, soft-wrap points, character bounds, ordered-list counting, autoscroll bounding boxes, hidden-range deduping, and table cell/offset hit-testing.",
+      "tags": [
+        "test",
+        "rendering",
+        "data-model"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/offset_map.rs",
+      "type": "file",
+      "name": "offset_map.rs",
+      "filePath": "crates/editor/src/render/model/offset_map.rs",
+      "summary": "OffsetMap mapping between content (document) offsets and frame (rendered) offsets via selectable text runs, accounting for placeholders.",
+      "tags": [
+        "data-model",
+        "offset-mapping",
+        "text-layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/offset_map.rs:OffsetMap",
+      "type": "class",
+      "name": "OffsetMap",
+      "filePath": "crates/editor/src/render/model/offset_map.rs",
+      "lineRange": [
+        28,
+        31
+      ],
+      "summary": "Maps content offsets to frame offsets (and back) through a list of selectable text runs.",
+      "tags": [
+        "data-model",
+        "offset-mapping"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/offset_map.rs:translate",
+      "type": "function",
+      "name": "translate",
+      "filePath": "crates/editor/src/render/model/offset_map.rs",
+      "lineRange": [
+        87,
+        130
+      ],
+      "summary": "Translates an offset across the run list, handling placeholder/non-selectable runs between content and frame coordinates.",
+      "tags": [
+        "offset-mapping",
+        "algorithm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/offset_map_tests.rs",
+      "type": "file",
+      "name": "offset_map_tests.rs",
+      "filePath": "crates/editor/src/render/model/offset_map_tests.rs",
+      "summary": "Tests for OffsetMap content/frame translation including placeholder runs and an end-to-end mapping scenario.",
+      "tags": [
+        "test",
+        "offset-mapping"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/positioned.rs",
+      "type": "file",
+      "name": "positioned.rs",
+      "filePath": "crates/editor/src/render/model/positioned.rs",
+      "summary": "Positioned<T> wrapper that assigns a start char offset, line and y-offset (plus style) to each block item, with constructors for every block kind and bounds helpers.",
+      "tags": [
+        "data-model",
+        "layout",
+        "positioning"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/positioned.rs:Positioned",
+      "type": "class",
+      "name": "Positioned",
+      "filePath": "crates/editor/src/render/model/positioned.rs",
+      "lineRange": [
+        20,
+        36
+      ],
+      "summary": "Generic wrapper attaching start char-offset, line, y-offset and style to a laid-out block item, exposing content/visible/reserved origins.",
+      "tags": [
+        "data-model",
+        "positioning",
+        "geometry"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/saved_positions.rs",
+      "type": "file",
+      "name": "saved_positions.rs",
+      "filePath": "crates/editor/src/render/model/saved_positions.rs",
+      "summary": "Generates stable per-model identifiers for the cursor, text selection and hovered block-start positions.",
+      "tags": [
+        "data-model",
+        "identifiers",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/saved_positions.rs:SavedPositions",
+      "type": "class",
+      "name": "SavedPositions",
+      "filePath": "crates/editor/src/render/model/saved_positions.rs",
+      "lineRange": [
+        6,
+        10
+      ],
+      "summary": "Holds a model id and derives stable IDs for cursor, text-selection and hovered-block positions.",
+      "tags": [
+        "data-model",
+        "identifiers"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "type": "file",
+      "name": "table_offset_map.rs",
+      "filePath": "crates/editor/src/render/model/table_offset_map.rs",
+      "summary": "Offset mapping for markdown tables: maps linear offsets to cell/row/column positions and converts between source markdown offsets and rendered cell offsets.",
+      "tags": [
+        "data-model",
+        "table",
+        "offset-mapping"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/table_offset_map.rs:TableOffsetMap",
+      "type": "class",
+      "name": "TableOffsetMap",
+      "filePath": "crates/editor/src/render/model/table_offset_map.rs",
+      "lineRange": [
+        18,
+        25
+      ],
+      "summary": "Maps a linear character offset within a table to its cell/row/column and back, tracking cell ranges and separator positions.",
+      "tags": [
+        "data-model",
+        "table",
+        "offset-mapping"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:crates/editor/src/render/model/table_offset_map.rs:TableCellOffsetMap",
+      "type": "class",
+      "name": "TableCellOffsetMap",
+      "filePath": "crates/editor/src/render/model/table_offset_map.rs",
+      "lineRange": [
+        73,
+        77
+      ],
+      "summary": "Maps between a table cell's rendered offsets and its source markdown offsets via fragment ranges.",
+      "tags": [
+        "data-model",
+        "table",
+        "offset-mapping"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/table_offset_map.rs:new",
+      "type": "function",
+      "name": "new",
+      "filePath": "crates/editor/src/render/model/table_offset_map.rs",
+      "lineRange": [
+        92,
+        140
+      ],
+      "summary": "Builds a TableOffsetMap from per-cell lengths, computing cumulative cell and row ranges and the row/col index.",
+      "tags": [
+        "factory",
+        "table",
+        "offset-mapping"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/table_offset_map.rs:position_at_offset",
+      "type": "function",
+      "name": "position_at_offset",
+      "filePath": "crates/editor/src/render/model/table_offset_map.rs",
+      "lineRange": [
+        148,
+        186
+      ],
+      "summary": "Resolves a linear table offset to a TablePosition (in-cell, on-tab separator, or on-newline).",
+      "tags": [
+        "table",
+        "offset-mapping",
+        "algorithm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:crates/editor/src/render/model/table_offset_map.rs:from_inline_and_source",
+      "type": "function",
+      "name": "from_inline_and_source",
+      "filePath": "crates/editor/src/render/model/table_offset_map.rs",
+      "lineRange": [
+        296,
+        373
+      ],
+      "summary": "Builds a TableCellOffsetMap by aligning a cell's rendered inline content with its source markdown fragments.",
+      "tags": [
+        "table",
+        "offset-mapping",
+        "markdown"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "class:crates/editor/src/render/model/location.rs:Location",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "function:crates/editor/src/render/model/location.rs:coordinates_to_location",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "function:crates/editor/src/render/model/location.rs:render_coordinates_to_location",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "function:crates/editor/src/render/model/location.rs:location_in_paragraph_block",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "class:crates/editor/src/render/model/location.rs:Location",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "function:crates/editor/src/render/model/location.rs:render_coordinates_to_location",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RenderState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RichTextStyles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:BlockItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:Paragraph",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:ParagraphBlock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:LaidOutTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:CellLayout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:SoftWrapPoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RenderedSelection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RenderedSelectionSet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:HiddenBlockConfig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:Decoration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:LayoutAction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:AutoScrollMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:handle_layout_action",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:layout_pending_edit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:autoscroll",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:blocks_in_line_range",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:dedupe_hidden_ranges",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:multiselect_autoscroll_bounding_box",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:set_viewport_size",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:draw_selection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:draw_cursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "function:crates/editor/src/render/model/mod.rs:draw_charwise_highlight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RenderState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RichTextStyles",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:BlockItem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:Paragraph",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:ParagraphBlock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:LaidOutTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:CellLayout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:SoftWrapPoint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RenderedSelection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:RenderedSelectionSet",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:HiddenBlockConfig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:Decoration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:LayoutAction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "class:crates/editor/src/render/model/mod.rs:AutoScrollMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/offset_map.rs",
+      "target": "class:crates/editor/src/render/model/offset_map.rs:OffsetMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/offset_map.rs",
+      "target": "function:crates/editor/src/render/model/offset_map.rs:translate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/offset_map.rs",
+      "target": "class:crates/editor/src/render/model/offset_map.rs:OffsetMap",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/positioned.rs",
+      "target": "class:crates/editor/src/render/model/positioned.rs:Positioned",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/positioned.rs",
+      "target": "class:crates/editor/src/render/model/positioned.rs:Positioned",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/saved_positions.rs",
+      "target": "class:crates/editor/src/render/model/saved_positions.rs:SavedPositions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/saved_positions.rs",
+      "target": "class:crates/editor/src/render/model/saved_positions.rs:SavedPositions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "class:crates/editor/src/render/model/table_offset_map.rs:TableOffsetMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "class:crates/editor/src/render/model/table_offset_map.rs:TableCellOffsetMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "function:crates/editor/src/render/model/table_offset_map.rs:new",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "function:crates/editor/src/render/model/table_offset_map.rs:position_at_offset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "function:crates/editor/src/render/model/table_offset_map.rs:from_inline_and_source",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "class:crates/editor/src/render/model/table_offset_map.rs:TableOffsetMap",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "class:crates/editor/src/render/model/table_offset_map.rs:TableCellOffsetMap",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location_tests.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location_tests.rs",
+      "target": "file:crates/editor/src/render/model/location.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location_tests.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location_tests.rs",
+      "target": "file:crates/editor/src/render/model/test_utils.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/content/edit.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/content/hidden_lines_model.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/content/markdown.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/content/version.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/editor.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/element/broken_embedding.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/element/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/bounds.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/debug.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/location.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/offset_map.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/positioned.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/saved_positions.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/test_utils.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/viewport.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod_tests.rs",
+      "target": "file:crates/editor/src/content/edit.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod_tests.rs",
+      "target": "file:crates/editor/src/content/text.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod_tests.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod_tests.rs",
+      "target": "file:crates/editor/src/render/model/test_utils.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/offset_map_tests.rs",
+      "target": "file:crates/editor/src/render/model/mod.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/positioned.rs",
+      "target": "file:crates/editor/src/render/layout.rs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/model/mod_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/render/model/mod.rs",
+      "target": "file:crates/editor/src/render/mod_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/render/model/location.rs",
+      "target": "file:crates/editor/src/render/model/location_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/render/model/offset_map.rs",
+      "target": "file:crates/editor/src/render/model/offset_map_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

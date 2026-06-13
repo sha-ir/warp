@@ -1,0 +1,49 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {
+      "path": "crates/warpui_core/src/async/mod.rs",
+      "language": "rust",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/async/native/executor.rs",
+      "language": "rust",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/async/native/mod.rs",
+      "language": "rust",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/async/wasm/executor.rs",
+      "language": "rust",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/warpui_core/src/async/wasm/mod.rs",
+      "language": "rust",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "crates/warpui_core/src/async/mod.rs": [
+      "crates/warpui_core/src/async/native/mod.rs",
+      "crates/warpui_core/src/async/wasm/mod.rs"
+    ],
+    "crates/warpui_core/src/async/native/executor.rs": [],
+    "crates/warpui_core/src/async/native/mod.rs": [
+      "crates/warpui_core/src/async/native/executor.rs"
+    ],
+    "crates/warpui_core/src/async/wasm/executor.rs": [],
+    "crates/warpui_core/src/async/wasm/mod.rs": [
+      "crates/warpui_core/src/async/wasm/executor.rs"
+    ]
+  }
+}

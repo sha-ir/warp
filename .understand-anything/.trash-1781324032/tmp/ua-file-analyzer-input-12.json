@@ -1,0 +1,13 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {"path": "crates/editor/test_fixtures/README.md", "language": "markdown", "sizeLines": 22, "fileCategory": "docs"},
+    {"path": "crates/editor/test_fixtures/mermaid_sample.md", "language": "markdown", "sizeLines": 299, "fileCategory": "docs"},
+    {"path": "crates/editor/test_fixtures/toc_anchor_test.md", "language": "markdown", "sizeLines": 29, "fileCategory": "docs"}
+  ],
+  "batchImportData": {
+    "crates/editor/test_fixtures/README.md": [],
+    "crates/editor/test_fixtures/mermaid_sample.md": [],
+    "crates/editor/test_fixtures/toc_anchor_test.md": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "Merge 'Fixed' section is reasonable: 64 dropped tested_by edges are all orphan/same-polarity pairs (no test<->prod link to keep); 0 tested_by edges remain in the graph. Import recovery 'recovered 0' is correct -- independently re-derived all 792 importMap pairs and every one already has a matching file->file imports edge, with all referenced files present as nodes.",
+    "Integrity is clean: 973 nodes / 2214 edges; 0 duplicate node IDs, 0 missing IDs, 0 dangling edges, 0 duplicate (source,target,type) edges, 0 self edges. No 'Could not fix' items were present in the report and none surfaced in the data.",
+    "Node types all valid (class 397, file 293, function 273, document 7, config 3); every ID prefix matches its node type and file IDs equal filePath while class/function IDs are filePath-prefixed. Complexity is well-distributed across only the three valid values (moderate 444, complex 274, simple 255) -- no unknown values.",
+    "All 973 nodes have non-empty summaries and tags; no placeholder/'No summary available' or ['untagged'] nodes. All 293 file-node paths exist on disk (0 hallucinated paths). Graph correctly scoped to warpui_core (192 files), editor (82), vim (19).",
+    "Sanity-checked the 213 post-merge cross-crate augmentation edges: crate-pair breakdown matches the stated editor->warpui_core 198 / vim->warpui_core 12 / editor->vim 3, and spot-checks resolve to real symbols (buffer.rs->list.rs via ListIndentLevel, ->fonts.rs via Weight, ->point.rs via Point; editor render -> vim.rs). Left these edges intact as instructed.",
+    "Normalization applied: the 213 augmentation edges were missing the 'direction' field that all other 2001 edges carry. Set direction='forward' on them (imports is inherently forward, weight 0.7 unchanged) so the whole graph is uniformly directed. This is a schema-consistency fill, not a correction of the edges' semantics.",
+    "Minor, non-blocking analyzer granularity quirks left as-is (all endpoints exist, relationships plausible): 1 'calls' edge is file->function (integration/driver.rs -> run_step) rather than function->function; 4 'depends_on' edges are file->class (e.g. icon.rs/image.rs -> AssetCache). Not obviously wrong, so not modified.",
+    "Edge weights all present and within [0,1] (min 0.5, max 1.0). Edge-type vs node-type combinations are all semantically consistent (imports file->file, contains/exports file->class|function, implements class->class, etc.)."
+  ]
+}

@@ -1,0 +1,947 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "type": "file",
+   "name": "viewported_list.rs",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "summary": "Virtualized variable-height list element with incremental height measurement, scroll preservation across content changes, and scroll-to-index with offsets.",
+   "tags": [
+    "ui-element",
+    "list",
+    "virtualization",
+    "scroll-preservation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/event.rs",
+   "type": "file",
+   "name": "event.rs",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "summary": "Input event model for warpui: defines the Event enum (key, mouse, scroll, drag, IME) plus modifier/key state and a DispatchedEvent carrier with z-index-aware coordinate handling and DPI scaling.",
+   "tags": [
+    "event-model",
+    "input",
+    "mouse",
+    "keyboard"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/text/header.rs",
+   "type": "file",
+   "name": "header.rs",
+   "filePath": "crates/warpui_core/src/text/header.rs",
+   "summary": "Markdown block heading sizes (H1-H6) with font-size multipliers, weights and labels, plus conversions to/from heading levels.",
+   "tags": [
+    "text",
+    "markdown",
+    "headings",
+    "enum"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/text/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "summary": "Text-selection and buffer abstractions: selection type/direction classification, a TextBuffer trait over char/point/offset navigation, and char-indexing utilities for UTF-8 strings.",
+   "tags": [
+    "text",
+    "selection",
+    "buffer",
+    "utility"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/text/point.rs",
+   "type": "file",
+   "name": "point.rs",
+   "filePath": "crates/warpui_core/src/text/point.rs",
+   "summary": "Row/column Point type for text coordinates with arithmetic, ordering and zero/initialization helpers.",
+   "tags": [
+    "text",
+    "geometry",
+    "coordinates",
+    "value-type"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "file",
+   "name": "word_boundaries.rs",
+   "filePath": "crates/warpui_core/src/text/word_boundaries.rs",
+   "summary": "Word-boundary detection over a TextBuffer: an iterator that walks forward/backward to word starts and ends under configurable boundary policies (default, whitespace-only, custom).",
+   "tags": [
+    "text",
+    "word-boundaries",
+    "iterator",
+    "selection"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/text/words.rs",
+   "type": "file",
+   "name": "words.rs",
+   "filePath": "crates/warpui_core/src/text/words.rs",
+   "summary": "Small word-splitting helpers: find the next word start in a string and classify word/subword boundary characters.",
+   "tags": [
+    "text",
+    "word-boundaries",
+    "utility"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/warpui_core/src/units.rs",
+   "type": "file",
+   "name": "units.rs",
+   "filePath": "crates/warpui_core/src/units.rs",
+   "summary": "Typed length units for the layout system: Lines and Pixels newtypes with conversions (via line height), arithmetic, comparison and IntoPixels/IntoLines traits.",
+   "tags": [
+    "units",
+    "geometry",
+    "value-type",
+    "layout"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Newtype wrappers around f32/f64 with operator overloads and approx-eq, preventing accidental mixing of line- and pixel-space measurements."
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/viewported_list.rs:List",
+   "type": "class",
+   "name": "List",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "lineRange": [
+    175,
+    180
+   ],
+   "summary": "Virtualized variable-height list element rendering only items within the viewport.",
+   "tags": [
+    "ui-element",
+    "list",
+    "virtualization"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/viewported_list.rs:ListState",
+   "type": "class",
+   "name": "ListState",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "lineRange": [
+    55,
+    55
+   ],
+   "summary": "Shared handle over a viewported list's content, scroll position and measurement state.",
+   "tags": [
+    "list",
+    "state",
+    "handle"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/viewported_list.rs:ListStateInner",
+   "type": "class",
+   "name": "ListStateInner",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "lineRange": [
+    543,
+    563
+   ],
+   "summary": "Inner list state: item content, measured heights, viewport height, scroll preservation and scroll channel.",
+   "tags": [
+    "list",
+    "state-management",
+    "virtualization"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/viewported_list.rs:ScrollOffset",
+   "type": "class",
+   "name": "ScrollOffset",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "lineRange": [
+    22,
+    27
+   ],
+   "summary": "Scroll position expressed as a list-item index plus a pixel offset from that item's start.",
+   "tags": [
+    "list",
+    "scrolling",
+    "value-type"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/elements/viewported_list.rs:ScrollPreservation",
+   "type": "class",
+   "name": "ScrollPreservation",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "lineRange": [
+    44,
+    51
+   ],
+   "summary": "Policy holding an adjustment function to preserve scroll position across content changes.",
+   "tags": [
+    "list",
+    "scroll-preservation",
+    "policy"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/event.rs:Event",
+   "type": "class",
+   "name": "Event",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "lineRange": [
+    93,
+    213
+   ],
+   "summary": "Enum of all input events: key down, scroll wheel, mouse buttons/drag/move, modifiers, typed characters, drag-and-drop and IME marked text.",
+   "tags": [
+    "enum",
+    "event-model",
+    "input"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/event.rs:DispatchedEvent",
+   "type": "class",
+   "name": "DispatchedEvent",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "lineRange": [
+    13,
+    15
+   ],
+   "summary": "Carrier wrapping a raw Event with z-index-aware dispatch context during event propagation.",
+   "tags": [
+    "event-model",
+    "dispatch"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/event.rs:ModifiersState",
+   "type": "class",
+   "name": "ModifiersState",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "lineRange": [
+    73,
+    82
+   ],
+   "summary": "Bitset-like state of active keyboard modifiers (alt, cmd, shift, ctrl, func).",
+   "tags": [
+    "event-model",
+    "keyboard",
+    "state"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/event.rs:KeyEventDetails",
+   "type": "class",
+   "name": "KeyEventDetails",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "lineRange": [
+    64,
+    70
+   ],
+   "summary": "Detailed key-event info distinguishing left/right alt and the key without modifiers.",
+   "tags": [
+    "event-model",
+    "keyboard",
+    "value-type"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/event.rs:InBoundsExt",
+   "type": "class",
+   "name": "InBoundsExt",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "lineRange": [
+    251,
+    254
+   ],
+   "summary": "Extension trait adding in_bounds bounds-checking to event/position types.",
+   "tags": [
+    "trait",
+    "event-model",
+    "geometry"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/header.rs:BlockHeaderSize",
+   "type": "class",
+   "name": "BlockHeaderSize",
+   "filePath": "crates/warpui_core/src/text/header.rs",
+   "lineRange": [
+    6,
+    13
+   ],
+   "summary": "Enum of markdown heading levels (Header1-6) with font-size multipliers, weights, labels and conversions.",
+   "tags": [
+    "enum",
+    "markdown",
+    "headings"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/mod.rs:SelectionType",
+   "type": "class",
+   "name": "SelectionType",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "lineRange": [
+    17,
+    23
+   ],
+   "summary": "Enum classifying a selection as Simple, Semantic, Lines or Rect, derived from click count/modifiers.",
+   "tags": [
+    "enum",
+    "selection",
+    "text"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/mod.rs:SelectionDirection",
+   "type": "class",
+   "name": "SelectionDirection",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "lineRange": [
+    68,
+    72
+   ],
+   "summary": "Enum of selection direction: Forward or Backward.",
+   "tags": [
+    "enum",
+    "selection"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/mod.rs:TextBuffer",
+   "type": "class",
+   "name": "TextBuffer",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "lineRange": [
+    76,
+    190
+   ],
+   "summary": "Trait abstracting a text buffer with char/point/offset navigation and word-boundary queries.",
+   "tags": [
+    "trait",
+    "text",
+    "buffer",
+    "navigation"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/mod.rs:IsRect",
+   "type": "class",
+   "name": "IsRect",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "lineRange": [
+    61,
+    65
+   ],
+   "summary": "Boolean-like enum (True/False) flagging whether a selection is a rectangular selection.",
+   "tags": [
+    "enum",
+    "selection"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/point.rs:Point",
+   "type": "class",
+   "name": "Point",
+   "filePath": "crates/warpui_core/src/text/point.rs",
+   "lineRange": [
+    7,
+    10
+   ],
+   "summary": "Row/column text coordinate with arithmetic, ordering and zero helpers.",
+   "tags": [
+    "text",
+    "coordinates",
+    "value-type"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/word_boundaries.rs:WordBoundaries",
+   "type": "class",
+   "name": "WordBoundaries",
+   "filePath": "crates/warpui_core/src/text/word_boundaries.rs",
+   "lineRange": [
+    31,
+    39
+   ],
+   "summary": "Iterator over word boundaries in a TextBuffer, walking to word starts/ends per a boundary policy.",
+   "tags": [
+    "text",
+    "word-boundaries",
+    "iterator"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/text/word_boundaries.rs:WordBoundariesPolicy",
+   "type": "class",
+   "name": "WordBoundariesPolicy",
+   "filePath": "crates/warpui_core/src/text/word_boundaries.rs",
+   "lineRange": [
+    14,
+    21
+   ],
+   "summary": "Enum of word-boundary policies: Default, Custom or OnlyWhitespace.",
+   "tags": [
+    "enum",
+    "text",
+    "word-boundaries"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/units.rs:Lines",
+   "type": "class",
+   "name": "Lines",
+   "filePath": "crates/warpui_core/src/units.rs",
+   "lineRange": [
+    30,
+    30
+   ],
+   "summary": "Newtype length in text lines with conversion to pixels (via line height), arithmetic and comparison.",
+   "tags": [
+    "units",
+    "value-type",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/units.rs:Pixels",
+   "type": "class",
+   "name": "Pixels",
+   "filePath": "crates/warpui_core/src/units.rs",
+   "lineRange": [
+    137,
+    137
+   ],
+   "summary": "Newtype length in pixels with conversion to lines (via line height), arithmetic and comparison.",
+   "tags": [
+    "units",
+    "value-type",
+    "layout"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/elements/viewported_list.rs:absolute_pixels_to_scroll_offset",
+   "type": "function",
+   "name": "absolute_pixels_to_scroll_offset",
+   "filePath": "crates/warpui_core/src/elements/viewported_list.rs",
+   "lineRange": [
+    611,
+    650
+   ],
+   "summary": "Converts an absolute pixel scroll position into an item-index-plus-offset ScrollOffset using measured heights.",
+   "tags": [
+    "list",
+    "scrolling",
+    "measurement"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/event.rs:scale_up",
+   "type": "function",
+   "name": "scale_up",
+   "filePath": "crates/warpui_core/src/event.rs",
+   "lineRange": [
+    281,
+    415
+   ],
+   "summary": "Scales an event's coordinates by a zoom factor, producing a DPI/zoom-adjusted event.",
+   "tags": [
+    "event-model",
+    "geometry",
+    "scaling"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "function:crates/warpui_core/src/text/mod.rs:char_slice",
+   "type": "function",
+   "name": "char_slice",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "lineRange": [
+    274,
+    300
+   ],
+   "summary": "Returns the substring of a string between character (not byte) start/end indices, handling UTF-8.",
+   "tags": [
+    "text",
+    "utility",
+    "utf-8"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/text/mod.rs:count_chars_up_to_byte",
+   "type": "function",
+   "name": "count_chars_up_to_byte",
+   "filePath": "crates/warpui_core/src/text/mod.rs",
+   "lineRange": [
+    302,
+    308
+   ],
+   "summary": "Counts the number of characters before a given byte offset in a UTF-8 string.",
+   "tags": [
+    "text",
+    "utility",
+    "utf-8"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "function:crates/warpui_core/src/text/words.rs:split_at_next_word_start",
+   "type": "function",
+   "name": "split_at_next_word_start",
+   "filePath": "crates/warpui_core/src/text/words.rs",
+   "lineRange": [
+    15,
+    30
+   ],
+   "summary": "Splits a string at the start of the next word, returning the leading segment and remainder.",
+   "tags": [
+    "text",
+    "word-boundaries",
+    "utility"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:List",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:List",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ListState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ListState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ListStateInner",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ScrollOffset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ScrollOffset",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ScrollPreservation",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "class:crates/warpui_core/src/elements/viewported_list.rs:ScrollPreservation",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:Event",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:Event",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:DispatchedEvent",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:DispatchedEvent",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:ModifiersState",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:ModifiersState",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:KeyEventDetails",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:KeyEventDetails",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:InBoundsExt",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "class:crates/warpui_core/src/event.rs:InBoundsExt",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/header.rs",
+   "target": "class:crates/warpui_core/src/text/header.rs:BlockHeaderSize",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/header.rs",
+   "target": "class:crates/warpui_core/src/text/header.rs:BlockHeaderSize",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:SelectionType",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:SelectionType",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:SelectionDirection",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:SelectionDirection",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:TextBuffer",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:TextBuffer",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:IsRect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "class:crates/warpui_core/src/text/mod.rs:IsRect",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/point.rs",
+   "target": "class:crates/warpui_core/src/text/point.rs:Point",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/point.rs",
+   "target": "class:crates/warpui_core/src/text/point.rs:Point",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "target": "class:crates/warpui_core/src/text/word_boundaries.rs:WordBoundaries",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "target": "class:crates/warpui_core/src/text/word_boundaries.rs:WordBoundaries",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "target": "class:crates/warpui_core/src/text/word_boundaries.rs:WordBoundariesPolicy",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "target": "class:crates/warpui_core/src/text/word_boundaries.rs:WordBoundariesPolicy",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/units.rs",
+   "target": "class:crates/warpui_core/src/units.rs:Lines",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/units.rs",
+   "target": "class:crates/warpui_core/src/units.rs:Lines",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/units.rs",
+   "target": "class:crates/warpui_core/src/units.rs:Pixels",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/units.rs",
+   "target": "class:crates/warpui_core/src/units.rs:Pixels",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "function:crates/warpui_core/src/elements/viewported_list.rs:absolute_pixels_to_scroll_offset",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "function:crates/warpui_core/src/event.rs:scale_up",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "function:crates/warpui_core/src/text/mod.rs:char_slice",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "function:crates/warpui_core/src/text/mod.rs:char_slice",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "function:crates/warpui_core/src/text/mod.rs:count_chars_up_to_byte",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "function:crates/warpui_core/src/text/mod.rs:count_chars_up_to_byte",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/words.rs",
+   "target": "function:crates/warpui_core/src/text/words.rs:split_at_next_word_start",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/words.rs",
+   "target": "function:crates/warpui_core/src/text/words.rs:split_at_next_word_start",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/elements/viewported_list.rs",
+   "target": "file:crates/warpui_core/src/units.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "file:crates/warpui_core/src/keymap.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "file:crates/warpui_core/src/platform/keyboard.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/event.rs",
+   "target": "file:crates/warpui_core/src/zoom.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "file:crates/warpui_core/src/text/header.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "file:crates/warpui_core/src/text/point.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "file:crates/warpui_core/src/text/word_boundaries.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/text/mod.rs",
+   "target": "file:crates/warpui_core/src/text/words.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "class:crates/warpui_core/src/elements/viewported_list.rs:List",
+   "target": "class:crates/warpui_core/src/elements/mod.rs:Element",
+   "type": "implements",
+   "direction": "forward",
+   "weight": 0.9
+  }
+ ]
+}

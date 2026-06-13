@@ -1,0 +1,1406 @@
+{
+ "nodes": [
+  {
+   "id": "file:crates/warpui_core/src/core/app.rs",
+   "type": "file",
+   "name": "app.rs",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Heart of the framework: AppContext owns models, views, windows, ref-counts, executors, and the dispatch/subscription machinery; App is the public facade over it.",
+   "tags": [
+    "core",
+    "entry-point",
+    "app-context",
+    "service"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Massive central context type; uses interior mutability, foreground/background executors, and an effect-flush event loop driving view/model notifications."
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/app.rs:AppContext",
+   "type": "class",
+   "name": "AppContext",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "The central mutable application context holding models, singleton models, windows, ref-counts, executors, and platform delegate; coordinates dispatch, subscriptions, spawning, and window lifecycle.",
+   "tags": [
+    "core",
+    "app-context",
+    "service",
+    "singleton"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    569,
+    712
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/app.rs:App",
+   "type": "class",
+   "name": "App",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Public facade wrapping AppContext, exposing window bounds, focus, presenter, executors, and high-level dispatch entry points.",
+   "tags": [
+    "core",
+    "facade",
+    "entry-point",
+    "app-context"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    71,
+    71
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:new",
+   "type": "function",
+   "name": "new",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Constructs an AppContext with platform delegate, executors, font sources, and empty model/view/window registries.",
+   "tags": [
+    "core",
+    "app-context",
+    "constructor"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    101,
+    115
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:with_foreground_executor",
+   "type": "function",
+   "name": "with_foreground_executor",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Runs a closure with the foreground executor bound, draining pending effects and flushing notifications afterward.",
+   "tags": [
+    "core",
+    "app-context",
+    "scheduling"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    743,
+    829
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:dispatch_action",
+   "type": "function",
+   "name": "dispatch_action",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Routes a dynamically-typed action to the focused view's handler chain, bubbling up ancestors until handled.",
+   "tags": [
+    "core",
+    "actions",
+    "dispatch",
+    "event-handler"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    189,
+    203
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:add_typed_action",
+   "type": "function",
+   "name": "add_typed_action",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Registers a strongly-typed action handler with keymap binding and accessibility metadata.",
+   "tags": [
+    "core",
+    "actions",
+    "registration"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    1213,
+    1264
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:add_action",
+   "type": "function",
+   "name": "add_action",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Registers a dynamic action handler keyed by action type for later dispatch.",
+   "tags": [
+    "core",
+    "actions",
+    "registration"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    170,
+    178
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:register_global_shortcut",
+   "type": "function",
+   "name": "register_global_shortcut",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Registers an OS-level global shortcut mapping a keystroke to an action with the platform.",
+   "tags": [
+    "core",
+    "keybinding",
+    "platform"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    1119,
+    1144
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:subscribe_to_view",
+   "type": "function",
+   "name": "subscribe_to_view",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Subscribes an observer to a view's notifications, returning a Subscription that auto-unsubscribes on drop.",
+   "tags": [
+    "core",
+    "subscription",
+    "event-handler"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    1039,
+    1066
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:add_window_with_bounds",
+   "type": "function",
+   "name": "add_window_with_bounds",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Creates a new platform window at the given bounds/style and registers its root view.",
+   "tags": [
+    "core",
+    "window",
+    "platform"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    297,
+    315
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/app.rs:show_native_platform_modal",
+   "type": "function",
+   "name": "show_native_platform_modal",
+   "filePath": "crates/warpui_core/src/core/app.rs",
+   "summary": "Presents a native OS modal dialog and wires its response back through the app's effect loop.",
+   "tags": [
+    "core",
+    "platform",
+    "modal"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    873,
+    896
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/core/autotracking/mod.rs",
+   "summary": "Automatic dependency tracking for rendering: records which views/values a render reads so re-renders can be invalidated precisely.",
+   "tags": [
+    "core",
+    "reactivity",
+    "autotracking",
+    "invalidation"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/autotracking/mod.rs:render_view",
+   "type": "function",
+   "name": "render_view",
+   "filePath": "crates/warpui_core/src/core/autotracking/mod.rs",
+   "summary": "Renders a view while recording its read dependencies into the tracking cache for later invalidation.",
+   "tags": [
+    "core",
+    "reactivity",
+    "autotracking"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    174,
+    192
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/autotracking/mod.rs:track_read",
+   "type": "function",
+   "name": "track_read",
+   "filePath": "crates/warpui_core/src/core/autotracking/mod.rs",
+   "summary": "Records a read of a tracked value/view against the currently-rendering view's dependency set.",
+   "tags": [
+    "core",
+    "reactivity",
+    "autotracking"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    272,
+    287
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/autotracking/mod.rs:close_window",
+   "type": "function",
+   "name": "close_window",
+   "filePath": "crates/warpui_core/src/core/autotracking/mod.rs",
+   "summary": "Clears tracking state associated with a window when it is closed.",
+   "tags": [
+    "core",
+    "autotracking",
+    "cleanup"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    229,
+    244
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/autotracking/tracked.rs",
+   "type": "file",
+   "name": "tracked.rs",
+   "filePath": "crates/warpui_core/src/core/autotracking/tracked.rs",
+   "summary": "Defines Tracked<T>, a wrapper whose reads are recorded by the autotracking system, plus a monotonic TrackedId allocator.",
+   "tags": [
+    "core",
+    "reactivity",
+    "autotracking",
+    "type-definition"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/autotracking/tracked.rs:Tracked",
+   "type": "class",
+   "name": "Tracked",
+   "filePath": "crates/warpui_core/src/core/autotracking/tracked.rs",
+   "summary": "Wrapper around a value that registers a dependency every time it is read under autotracking.",
+   "tags": [
+    "reactivity",
+    "autotracking",
+    "data-model"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    19,
+    23
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/entity.rs",
+   "type": "file",
+   "name": "entity.rs",
+   "filePath": "crates/warpui_core/src/core/entity.rs",
+   "summary": "Core entity identity: EntityId plus the Entity/SingletonEntity marker traits and singleton-model accessor traits.",
+   "tags": [
+    "core",
+    "type-definition",
+    "entity",
+    "trait"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/entity.rs:EntityId",
+   "type": "class",
+   "name": "EntityId",
+   "filePath": "crates/warpui_core/src/core/entity.rs",
+   "summary": "Opaque unique identifier for a model or view entity.",
+   "tags": [
+    "core",
+    "entity",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    13,
+    13
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Core module root: declares the framework's foundational types \u2014 AnyView, Effect, Handle, RefCounts, Subscription/Observation, retry strategy, and window/display ids \u2014 and wires submodules.",
+   "tags": [
+    "core",
+    "barrel",
+    "type-definition",
+    "reactivity"
+   ],
+   "complexity": "complex",
+   "languageNotes": "Central type hub for the bespoke retained-mode UI runtime; defines the effect/subscription model and ref-counting for entities."
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/mod.rs:AnyView",
+   "type": "class",
+   "name": "AnyView",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Type-erased view trait exposing rendering, focus/blur, keymap context, cursor position, and accessibility hooks.",
+   "tags": [
+    "core",
+    "trait",
+    "view",
+    "type-definition"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    233,
+    279
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/mod.rs:Effect",
+   "type": "class",
+   "name": "Effect",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Enum of deferred effects (events, model/view notifications, focus changes, typed/global actions) processed by the app's flush loop.",
+   "tags": [
+    "core",
+    "enum",
+    "reactivity",
+    "event-handler"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    205,
+    231
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/mod.rs:RefCounts",
+   "type": "class",
+   "name": "RefCounts",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Tracks entity reference counts and collects dropped models/views for cleanup.",
+   "tags": [
+    "core",
+    "memory",
+    "reactivity"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    394,
+    397
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/mod.rs:RetryOption",
+   "type": "class",
+   "name": "RetryOption",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Configurable retry policy (linear/exponential backoff with jitter) used by spawn-with-retry helpers.",
+   "tags": [
+    "core",
+    "retry",
+    "scheduling"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    582,
+    590
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/mod.rs:Subscription",
+   "type": "class",
+   "name": "Subscription",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Enum representing an active subscription from a model, view, or app, carrying its unsubscribe key.",
+   "tags": [
+    "core",
+    "subscription",
+    "reactivity"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    479,
+    495
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/mod.rs:Handle",
+   "type": "class",
+   "name": "Handle",
+   "filePath": "crates/warpui_core/src/core/mod.rs",
+   "summary": "Trait for entity handles exposing id and source-location identity.",
+   "tags": [
+    "core",
+    "trait",
+    "type-definition"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    382,
+    385
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/mod_tests.rs",
+   "type": "file",
+   "name": "mod_tests.rs",
+   "filePath": "crates/warpui_core/src/core/mod_tests.rs",
+   "summary": "Extensive integration-style tests for the core runtime: view nesting, focus/blur, subscriptions, notifications, and effect dispatch using a NestedView harness.",
+   "tags": [
+    "test",
+    "core",
+    "reactivity"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/model/context.rs",
+   "type": "file",
+   "name": "context.rs",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "ModelContext: the per-model handle into the app, providing subscribe/observe/notify and a family of spawn (local/abortable/stream/retry) task helpers.",
+   "tags": [
+    "core",
+    "model",
+    "context",
+    "async"
+   ],
+   "complexity": "complex"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/model/context.rs:ModelContext",
+   "type": "class",
+   "name": "ModelContext",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Context passed to model update closures, exposing the owning app plus subscription, observation, notification, and task-spawning APIs scoped to the model.",
+   "tags": [
+    "core",
+    "model",
+    "context",
+    "service"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    28,
+    32
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/model/context.rs:spawn_local",
+   "type": "function",
+   "name": "spawn_local",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Spawns a model-scoped local future whose result is delivered back into the model on the foreground executor.",
+   "tags": [
+    "core",
+    "async",
+    "model",
+    "scheduling"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    260,
+    292
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/model/context.rs:spawn_abortable",
+   "type": "function",
+   "name": "spawn_abortable",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Spawns an abortable model-scoped task, returning a handle that cancels the future when dropped.",
+   "tags": [
+    "core",
+    "async",
+    "model",
+    "scheduling"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    413,
+    460
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/model/context.rs:spawn_with_retry_on_error_when",
+   "type": "function",
+   "name": "spawn_with_retry_on_error_when",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Spawns a model task that retries on error according to a RetryOption while a predicate holds.",
+   "tags": [
+    "core",
+    "async",
+    "model",
+    "retry"
+   ],
+   "complexity": "complex",
+   "lineRange": [
+    320,
+    361
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/model/context.rs:subscribe_to_model",
+   "type": "function",
+   "name": "subscribe_to_model",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Subscribes this model to another model's notifications, returning an auto-cleaning Subscription.",
+   "tags": [
+    "core",
+    "model",
+    "subscription"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    67,
+    86
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/model/context.rs:unsubscribe_from_model",
+   "type": "function",
+   "name": "unsubscribe_from_model",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Tears down a model subscription, removing observer bookkeeping from the app.",
+   "tags": [
+    "core",
+    "model",
+    "subscription"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    88,
+    127
+   ]
+  },
+  {
+   "id": "function:crates/warpui_core/src/core/model/context.rs:notify",
+   "type": "function",
+   "name": "notify",
+   "filePath": "crates/warpui_core/src/core/model/context.rs",
+   "summary": "Queues a notification effect so observers of this model are informed on the next flush.",
+   "tags": [
+    "core",
+    "model",
+    "reactivity"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    234,
+    248
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/model/handle.rs",
+   "type": "file",
+   "name": "handle.rs",
+   "filePath": "crates/warpui_core/src/core/model/handle.rs",
+   "summary": "Model handles: strong ModelHandle<T>, type-erased AnyModelHandle, and WeakModelHandle, plus Read/UpdateModel access traits with ref-count integration.",
+   "tags": [
+    "core",
+    "model",
+    "handle",
+    "type-definition"
+   ],
+   "complexity": "moderate"
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/model/handle.rs:ModelHandle",
+   "type": "class",
+   "name": "ModelHandle",
+   "filePath": "crates/warpui_core/src/core/model/handle.rs",
+   "summary": "Strongly-typed reference-counted handle to a model entity.",
+   "tags": [
+    "core",
+    "model",
+    "handle"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    19,
+    23
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/model/handle.rs:AnyModelHandle",
+   "type": "class",
+   "name": "AnyModelHandle",
+   "filePath": "crates/warpui_core/src/core/model/handle.rs",
+   "summary": "Type-erased model handle supporting downcast and reference-count lifecycle management.",
+   "tags": [
+    "core",
+    "model",
+    "handle"
+   ],
+   "complexity": "moderate",
+   "lineRange": [
+    134,
+    138
+   ]
+  },
+  {
+   "id": "class:crates/warpui_core/src/core/model/handle.rs:WeakModelHandle",
+   "type": "class",
+   "name": "WeakModelHandle",
+   "filePath": "crates/warpui_core/src/core/model/handle.rs",
+   "summary": "Non-owning weak reference to a model that can be upgraded if still alive.",
+   "tags": [
+    "core",
+    "model",
+    "handle"
+   ],
+   "complexity": "simple",
+   "lineRange": [
+    207,
+    210
+   ]
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/model/mod.rs",
+   "type": "file",
+   "name": "mod.rs",
+   "filePath": "crates/warpui_core/src/core/model/mod.rs",
+   "summary": "Model submodule barrel: re-exports ModelContext and the handle types and declares the AnyModel trait.",
+   "tags": [
+    "barrel",
+    "core",
+    "model",
+    "entry-point"
+   ],
+   "complexity": "simple"
+  },
+  {
+   "id": "file:crates/warpui_core/src/core/ref_count_tests.rs",
+   "type": "file",
+   "name": "ref_count_tests.rs",
+   "filePath": "crates/warpui_core/src/core/ref_count_tests.rs",
+   "summary": "Tests verifying entity reference counting: models and views are dropped exactly when their last handle is released.",
+   "tags": [
+    "test",
+    "core",
+    "memory"
+   ],
+   "complexity": "moderate"
+  }
+ ],
+ "edges": [
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "class:crates/warpui_core/src/core/app.rs:AppContext",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "class:crates/warpui_core/src/core/app.rs:AppContext",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "class:crates/warpui_core/src/core/app.rs:App",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "class:crates/warpui_core/src/core/app.rs:App",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:new",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:new",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:with_foreground_executor",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:dispatch_action",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:dispatch_action",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:add_typed_action",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:add_action",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:add_action",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:register_global_shortcut",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:register_global_shortcut",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:subscribe_to_view",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:subscribe_to_view",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:add_window_with_bounds",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:add_window_with_bounds",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:show_native_platform_modal",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "function:crates/warpui_core/src/core/app.rs:show_native_platform_modal",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "target": "function:crates/warpui_core/src/core/autotracking/mod.rs:render_view",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "target": "function:crates/warpui_core/src/core/autotracking/mod.rs:render_view",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "target": "function:crates/warpui_core/src/core/autotracking/mod.rs:track_read",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "target": "function:crates/warpui_core/src/core/autotracking/mod.rs:close_window",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "target": "function:crates/warpui_core/src/core/autotracking/mod.rs:close_window",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/tracked.rs",
+   "target": "class:crates/warpui_core/src/core/autotracking/tracked.rs:Tracked",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/tracked.rs",
+   "target": "class:crates/warpui_core/src/core/autotracking/tracked.rs:Tracked",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/entity.rs",
+   "target": "class:crates/warpui_core/src/core/entity.rs:EntityId",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/entity.rs",
+   "target": "class:crates/warpui_core/src/core/entity.rs:EntityId",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:AnyView",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:AnyView",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:Effect",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:Effect",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:RefCounts",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:RetryOption",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:RetryOption",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:Subscription",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:Handle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "class:crates/warpui_core/src/core/mod.rs:Handle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "class:crates/warpui_core/src/core/model/context.rs:ModelContext",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "class:crates/warpui_core/src/core/model/context.rs:ModelContext",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:spawn_local",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:spawn_local",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:spawn_abortable",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:spawn_abortable",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:spawn_with_retry_on_error_when",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:spawn_with_retry_on_error_when",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:subscribe_to_model",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:subscribe_to_model",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:unsubscribe_from_model",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:unsubscribe_from_model",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:notify",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "function:crates/warpui_core/src/core/model/context.rs:notify",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "class:crates/warpui_core/src/core/model/handle.rs:ModelHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "class:crates/warpui_core/src/core/model/handle.rs:ModelHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "class:crates/warpui_core/src/core/model/handle.rs:AnyModelHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "class:crates/warpui_core/src/core/model/handle.rs:AnyModelHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "class:crates/warpui_core/src/core/model/handle.rs:WeakModelHandle",
+   "type": "contains",
+   "direction": "forward",
+   "weight": 1.0
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "class:crates/warpui_core/src/core/model/handle.rs:WeakModelHandle",
+   "type": "exports",
+   "direction": "forward",
+   "weight": 0.8
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/accessibility.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/actions.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/app_focus_telemetry.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/assets/asset_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/assets/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/core/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/event.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/fonts.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/image_cache.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/keymap.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/modals.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/notification.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/platform/app.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/platform/file_picker.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/platform/keyboard.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/platform/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/presenter.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/util.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/app.rs",
+   "target": "file:crates/warpui_core/src/windowing/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "target": "file:crates/warpui_core/src/core/autotracking/tracked.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/action.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/app.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/autotracking/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/entity.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/model/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/view/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/window.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/platform/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/rendering/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod_tests.rs",
+   "target": "file:crates/warpui_core/src/core/ref_count_tests.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod_tests.rs",
+   "target": "file:crates/warpui_core/src/core/transfer_view_tests.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod_tests.rs",
+   "target": "file:crates/warpui_core/src/elements/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod_tests.rs",
+   "target": "file:crates/warpui_core/src/keymap.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "file:crates/warpui_core/src/accessibility.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "file:crates/warpui_core/src/core/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/context.rs",
+   "target": "file:crates/warpui_core/src/windowing/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/handle.rs",
+   "target": "file:crates/warpui_core/src/core/mod.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/mod.rs",
+   "target": "file:crates/warpui_core/src/core/model/context.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/model/mod.rs",
+   "target": "file:crates/warpui_core/src/core/model/handle.rs",
+   "type": "imports",
+   "direction": "forward",
+   "weight": 0.7
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/mod_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/ref_count_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  },
+  {
+   "source": "file:crates/warpui_core/src/core/mod.rs",
+   "target": "file:crates/warpui_core/src/core/transfer_view_tests.rs",
+   "type": "tested_by",
+   "direction": "forward",
+   "weight": 0.5
+  }
+ ]
+}

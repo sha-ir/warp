@@ -1,0 +1,274 @@
+{
+  "projectRoot": "/home/mhb/warp",
+  "batchFiles": [
+    {
+      "path": "crates/editor/src/render/element/task_list.rs",
+      "language": "rust",
+      "sizeLines": 182,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/temporary_block.rs",
+      "language": "rust",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/text_block.rs",
+      "language": "rust",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/element/unordered_list.rs",
+      "language": "rust",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/layout.rs",
+      "language": "rust",
+      "sizeLines": 313,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/mod.rs",
+      "language": "rust",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/mod_tests.rs",
+      "language": "rust",
+      "sizeLines": 586,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/bounds.rs",
+      "language": "rust",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/debug.rs",
+      "language": "rust",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/location.rs",
+      "language": "rust",
+      "sizeLines": 262,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/location_tests.rs",
+      "language": "rust",
+      "sizeLines": 705,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/mod.rs",
+      "language": "rust",
+      "sizeLines": 4813,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/mod_tests.rs",
+      "language": "rust",
+      "sizeLines": 1424,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/offset_map.rs",
+      "language": "rust",
+      "sizeLines": 172,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/offset_map_tests.rs",
+      "language": "rust",
+      "sizeLines": 284,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/positioned.rs",
+      "language": "rust",
+      "sizeLines": 243,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/saved_positions.rs",
+      "language": "rust",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/table_offset_map.rs",
+      "language": "rust",
+      "sizeLines": 424,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/test_utils.rs",
+      "language": "rust",
+      "sizeLines": 321,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/viewport.rs",
+      "language": "rust",
+      "sizeLines": 440,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/render/model/viewport_tests.rs",
+      "language": "rust",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/search.rs",
+      "language": "rust",
+      "sizeLines": 405,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/search_tests.rs",
+      "language": "rust",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/selection.rs",
+      "language": "rust",
+      "sizeLines": 1042,
+      "fileCategory": "code"
+    },
+    {
+      "path": "crates/editor/src/selection_tests.rs",
+      "language": "rust",
+      "sizeLines": 1014,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "crates/editor/src/render/element/task_list.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/temporary_block.rs": [
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/text_block.rs": [
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/element/unordered_list.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/layout.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/model.rs"
+    ],
+    "crates/editor/src/render/mod.rs": [
+      "crates/editor/src/render/element/mod.rs",
+      "crates/editor/src/render/layout.rs",
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/render/mod_tests.rs": [
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/selection_model.rs",
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/content/version.rs",
+      "crates/editor/src/model.rs"
+    ],
+    "crates/editor/src/render/model/bounds.rs": [],
+    "crates/editor/src/render/model/debug.rs": [],
+    "crates/editor/src/render/model/location.rs": [],
+    "crates/editor/src/render/model/location_tests.rs": [
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/location.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/test_utils.rs"
+    ],
+    "crates/editor/src/render/model/mod.rs": [
+      "crates/editor/src/content/edit.rs",
+      "crates/editor/src/content/hidden_lines_model.rs",
+      "crates/editor/src/content/markdown.rs",
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/content/version.rs",
+      "crates/editor/src/editor.rs",
+      "crates/editor/src/render/element/broken_embedding.rs",
+      "crates/editor/src/render/element/mod.rs",
+      "crates/editor/src/render/layout.rs",
+      "crates/editor/src/render/model/bounds.rs",
+      "crates/editor/src/render/model/debug.rs",
+      "crates/editor/src/render/model/location.rs",
+      "crates/editor/src/render/model/offset_map.rs",
+      "crates/editor/src/render/model/positioned.rs",
+      "crates/editor/src/render/model/saved_positions.rs",
+      "crates/editor/src/render/model/table_offset_map.rs",
+      "crates/editor/src/render/model/test_utils.rs",
+      "crates/editor/src/render/model/viewport.rs"
+    ],
+    "crates/editor/src/render/model/mod_tests.rs": [
+      "crates/editor/src/content/edit.rs",
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/test_utils.rs"
+    ],
+    "crates/editor/src/render/model/offset_map.rs": [],
+    "crates/editor/src/render/model/offset_map_tests.rs": [
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/render/model/positioned.rs": [
+      "crates/editor/src/render/layout.rs"
+    ],
+    "crates/editor/src/render/model/saved_positions.rs": [],
+    "crates/editor/src/render/model/table_offset_map.rs": [],
+    "crates/editor/src/render/model/test_utils.rs": [
+      "crates/editor/src/content/text.rs"
+    ],
+    "crates/editor/src/render/model/viewport.rs": [
+      "crates/editor/src/render/element/mod.rs"
+    ],
+    "crates/editor/src/render/model/viewport_tests.rs": [
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/test_utils.rs"
+    ],
+    "crates/editor/src/search.rs": [
+      "crates/editor/src/content/anchor.rs",
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/find.rs",
+      "crates/editor/src/content/selection_model.rs",
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/search_tests.rs": [
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/find.rs",
+      "crates/editor/src/content/selection_model.rs",
+      "crates/editor/src/content/text.rs"
+    ],
+    "crates/editor/src/selection.rs": [
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/hidden_lines_model.rs",
+      "crates/editor/src/content/selection_model.rs",
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/mod.rs"
+    ],
+    "crates/editor/src/selection_tests.rs": [
+      "crates/editor/src/content/buffer.rs",
+      "crates/editor/src/content/selection_model.rs",
+      "crates/editor/src/content/text.rs",
+      "crates/editor/src/render/model/mod.rs",
+      "crates/editor/src/render/model/test_utils.rs",
+      "crates/editor/src/selection.rs"
+    ]
+  }
+}

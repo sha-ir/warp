@@ -1,0 +1,1275 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "crates/warpui_core/src/async/mod.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 120,
+      "functions": [
+        {
+          "name": "new",
+          "startLine": 40,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "abort",
+          "startLine": 57,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "abort_handle",
+          "startLine": 61,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "future_id",
+          "startLine": 67,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 71,
+          "endLine": 76,
+          "params": [
+            "abort_handle",
+            "future_id"
+          ]
+        },
+        {
+          "name": "into_future",
+          "startLine": 86,
+          "endLine": 88,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 90,
+          "endLine": 92,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_obj",
+          "startLine": 97,
+          "endLine": 103,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "status",
+          "startLine": 105,
+          "endLine": 107,
+          "params": []
+        },
+        {
+          "name": "with_timeout",
+          "startLine": 128,
+          "endLine": 141,
+          "params": [
+            "timeout"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FutureId",
+          "startLine": 34,
+          "endLine": 34,
+          "methods": [
+            "new"
+          ],
+          "properties": []
+        },
+        {
+          "name": "SpawnedFutureHandle",
+          "startLine": 50,
+          "endLine": 53,
+          "methods": [
+            "abort",
+            "abort_handle",
+            "future_id",
+            "new"
+          ],
+          "properties": [
+            "abort_handle",
+            "future_id"
+          ]
+        },
+        {
+          "name": "SpawnedLocalStream",
+          "startLine": 79,
+          "endLine": 82,
+          "methods": [
+            "into_future",
+            "new"
+          ],
+          "properties": [
+            "future"
+          ]
+        },
+        {
+          "name": "TimeoutError",
+          "startLine": 112,
+          "endLine": 112,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "FutureExt",
+          "startLine": 114,
+          "endLine": 125,
+          "methods": [
+            "with_timeout"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "FutureId",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "SpawnedFutureHandle",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "abort",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "abort_handle",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "future_id",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "SpawnedLocalStream",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "into_future",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "TimeoutError",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "FutureExt",
+          "line": 114,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "new",
+          "callee": "NEXT_FUTURE_ID.fetch_add",
+          "lineNumber": 41
+        },
+        {
+          "caller": "new",
+          "callee": "FutureId",
+          "lineNumber": 42
+        },
+        {
+          "caller": "abort",
+          "callee": "self.abort_handle.abort",
+          "lineNumber": 58
+        },
+        {
+          "caller": "abort_handle",
+          "callee": "self.abort_handle.clone",
+          "lineNumber": 62
+        },
+        {
+          "caller": "spawn_obj",
+          "callee": "self.spawn(future).detach",
+          "lineNumber": 101
+        },
+        {
+          "caller": "spawn_obj",
+          "callee": "self.spawn",
+          "lineNumber": 101
+        },
+        {
+          "caller": "spawn_obj",
+          "callee": "Ok",
+          "lineNumber": 102
+        },
+        {
+          "caller": "status",
+          "callee": "Ok",
+          "lineNumber": 106
+        },
+        {
+          "caller": "with_timeout",
+          "callee": "self.fuse",
+          "lineNumber": 132
+        },
+        {
+          "caller": "with_timeout",
+          "callee": "Timer::after(timeout).fuse",
+          "lineNumber": 135
+        },
+        {
+          "caller": "with_timeout",
+          "callee": "Timer::after",
+          "lineNumber": 135
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 12,
+        "functionCount": 10,
+        "classCount": 5
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/async/native/executor.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 219,
+      "nonEmptyLines": 195,
+      "functions": [
+        {
+          "name": "abort",
+          "startLine": 24,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "detach",
+          "startLine": 30,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "poll",
+          "startLine": 39,
+          "endLine": 44,
+          "params": [
+            "self",
+            "cx"
+          ]
+        },
+        {
+          "name": "platform",
+          "startLine": 58,
+          "endLine": 67,
+          "params": [
+            "delegate"
+          ]
+        },
+        {
+          "name": "test",
+          "startLine": 69,
+          "endLine": 73,
+          "params": []
+        },
+        {
+          "name": "spawn",
+          "startLine": 78,
+          "endLine": 80,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_boxed",
+          "startLine": 88,
+          "endLine": 103,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_abortable",
+          "startLine": 109,
+          "endLine": 116,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 118,
+          "endLine": 126,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "drop",
+          "startLine": 134,
+          "endLine": 139,
+          "params": []
+        },
+        {
+          "name": "default",
+          "startLine": 143,
+          "endLine": 158,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 162,
+          "endLine": 180,
+          "params": [
+            "num_threads",
+            "name_fn"
+          ]
+        },
+        {
+          "name": "spawn",
+          "startLine": 185,
+          "endLine": 187,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_boxed",
+          "startLine": 195,
+          "endLine": 205,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_abortable",
+          "startLine": 211,
+          "endLine": 218,
+          "params": [
+            "future"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BackgroundTask",
+          "startLine": 19,
+          "endLine": 21,
+          "methods": [
+            "abort",
+            "detach",
+            "poll"
+          ],
+          "properties": [
+            "inner"
+          ]
+        },
+        {
+          "name": "Foreground",
+          "startLine": 47,
+          "endLine": 55,
+          "methods": [
+            "platform",
+            "test",
+            "spawn",
+            "spawn_boxed",
+            "spawn_abortable",
+            "run"
+          ],
+          "properties": [
+            "Platform",
+            "Test"
+          ]
+        },
+        {
+          "name": "Background",
+          "startLine": 129,
+          "endLine": 131,
+          "methods": [
+            "drop",
+            "default",
+            "new",
+            "spawn",
+            "spawn_boxed",
+            "spawn_abortable"
+          ],
+          "properties": [
+            "runtime"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BackgroundTask",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "abort",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "detach",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "Foreground",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "platform",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "test",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "spawn",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_boxed",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_abortable",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "Background",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "spawn",
+          "line": 185,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_boxed",
+          "line": 195,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_abortable",
+          "line": 211,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "abort",
+          "callee": "inner.abort",
+          "lineNumber": 26
+        },
+        {
+          "caller": "poll",
+          "callee": "inner.poll_unpin",
+          "lineNumber": 41
+        },
+        {
+          "caller": "platform",
+          "callee": "delegate.is_main_thread",
+          "lineNumber": 59
+        },
+        {
+          "caller": "platform",
+          "callee": "Ok",
+          "lineNumber": 60
+        },
+        {
+          "caller": "platform",
+          "callee": "Err",
+          "lineNumber": 65
+        },
+        {
+          "caller": "test",
+          "callee": "LocalExecutor::new",
+          "lineNumber": 71
+        },
+        {
+          "caller": "spawn",
+          "callee": "self.spawn_boxed",
+          "lineNumber": 79
+        },
+        {
+          "caller": "spawn",
+          "callee": "future.boxed_local",
+          "lineNumber": 79
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "future.instrument",
+          "lineNumber": 89
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "tracing::Span::current",
+          "lineNumber": 89
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "platform.clone",
+          "lineNumber": 95
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "platform.run_on_main_thread",
+          "lineNumber": 96
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "async_task::spawn_local",
+          "lineNumber": 97
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "runnable.schedule",
+          "lineNumber": 98
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "executor.spawn",
+          "lineNumber": 101
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "AbortHandle::new_pair",
+          "lineNumber": 113
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "self.spawn",
+          "lineNumber": 114
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new(future, registration).map",
+          "lineNumber": 114
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new",
+          "lineNumber": 114
+        },
+        {
+          "caller": "run",
+          "callee": "executor.run",
+          "lineNumber": 124
+        },
+        {
+          "caller": "drop",
+          "callee": "self.runtime.take",
+          "lineNumber": 135
+        },
+        {
+          "caller": "drop",
+          "callee": "runtime.shutdown_background",
+          "lineNumber": 137
+        },
+        {
+          "caller": "default",
+          "callee": "num_cpus::get",
+          "lineNumber": 154
+        },
+        {
+          "caller": "default",
+          "callee": "Self::new",
+          "lineNumber": 157
+        },
+        {
+          "caller": "new",
+          "callee": "tokio::runtime::Builder::new_multi_thread()\n            .worker_threads(num_threads)\n            .thread_name_fn(move || {\n                static ATOMIC_ID: AtomicUsize = AtomicUsize::new(0);\n                let id = ATOMIC_ID.fetch_add(1, Ordering::SeqCst);\n                name_fn(id)\n            })\n            .enable_all()\n            .build().expect",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "tokio::runtime::Builder::new_multi_thread()\n            .worker_threads(num_threads)\n            .thread_name_fn(move || {\n                static ATOMIC_ID: AtomicUsize = AtomicUsize::new(0);\n                let id = ATOMIC_ID.fetch_add(1, Ordering::SeqCst);\n                name_fn(id)\n            })\n            .enable_all().build",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "tokio::runtime::Builder::new_multi_thread()\n            .worker_threads(num_threads)\n            .thread_name_fn(move || {\n                static ATOMIC_ID: AtomicUsize = AtomicUsize::new(0);\n                let id = ATOMIC_ID.fetch_add(1, Ordering::SeqCst);\n                name_fn(id)\n            }).enable_all",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "tokio::runtime::Builder::new_multi_thread()\n            .worker_threads(num_threads).thread_name_fn",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "tokio::runtime::Builder::new_multi_thread().worker_threads",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "tokio::runtime::Builder::new_multi_thread",
+          "lineNumber": 166
+        },
+        {
+          "caller": "new",
+          "callee": "AtomicUsize::new",
+          "lineNumber": 169
+        },
+        {
+          "caller": "new",
+          "callee": "ATOMIC_ID.fetch_add",
+          "lineNumber": 170
+        },
+        {
+          "caller": "new",
+          "callee": "name_fn",
+          "lineNumber": 171
+        },
+        {
+          "caller": "new",
+          "callee": "Some",
+          "lineNumber": 178
+        },
+        {
+          "caller": "spawn",
+          "callee": "self.spawn_boxed",
+          "lineNumber": 186
+        },
+        {
+          "caller": "spawn",
+          "callee": "future.boxed",
+          "lineNumber": 186
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "future.instrument",
+          "lineNumber": 196
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "tracing::Span::current",
+          "lineNumber": 196
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "Some",
+          "lineNumber": 198
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "runtime.spawn",
+          "lineNumber": 198
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "AbortHandle::new_pair",
+          "lineNumber": 215
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "self.spawn",
+          "lineNumber": 216
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new(future, registration).map",
+          "lineNumber": 216
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new",
+          "lineNumber": 216
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/async/native/mod.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/async/wasm/executor.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "detach",
+          "startLine": 17,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "detach",
+          "startLine": 28,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "platform",
+          "startLine": 35,
+          "endLine": 37,
+          "params": [
+            "_delegate"
+          ]
+        },
+        {
+          "name": "test",
+          "startLine": 39,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "spawn",
+          "startLine": 46,
+          "endLine": 48,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_boxed",
+          "startLine": 56,
+          "endLine": 59,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_abortable",
+          "startLine": 65,
+          "endLine": 72,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "run",
+          "startLine": 74,
+          "endLine": 76,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "default",
+          "startLine": 86,
+          "endLine": 88,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 92,
+          "endLine": 94,
+          "params": []
+        },
+        {
+          "name": "spawn",
+          "startLine": 99,
+          "endLine": 101,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_boxed",
+          "startLine": 109,
+          "endLine": 112,
+          "params": [
+            "future"
+          ]
+        },
+        {
+          "name": "spawn_abortable",
+          "startLine": 118,
+          "endLine": 125,
+          "params": [
+            "future"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ForegroundTask",
+          "startLine": 13,
+          "endLine": 13,
+          "methods": [
+            "detach"
+          ],
+          "properties": []
+        },
+        {
+          "name": "BackgroundTask",
+          "startLine": 24,
+          "endLine": 24,
+          "methods": [
+            "detach"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Foreground",
+          "startLine": 32,
+          "endLine": 32,
+          "methods": [
+            "platform",
+            "test",
+            "spawn",
+            "spawn_boxed",
+            "spawn_abortable",
+            "run"
+          ],
+          "properties": []
+        },
+        {
+          "name": "Background",
+          "startLine": 83,
+          "endLine": 83,
+          "methods": [
+            "default",
+            "new",
+            "spawn",
+            "spawn_boxed",
+            "spawn_abortable"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ForegroundTask",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "detach",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "BackgroundTask",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "detach",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "Foreground",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "platform",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "test",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "spawn",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_boxed",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_abortable",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "run",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "Background",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "new",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "spawn",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_boxed",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "spawn_abortable",
+          "line": 118,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "platform",
+          "callee": "Ok",
+          "lineNumber": 36
+        },
+        {
+          "caller": "spawn",
+          "callee": "self.spawn_boxed",
+          "lineNumber": 47
+        },
+        {
+          "caller": "spawn",
+          "callee": "future.boxed_local",
+          "lineNumber": 47
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "spawn_local",
+          "lineNumber": 57
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "future.instrument",
+          "lineNumber": 57
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "tracing::Span::current",
+          "lineNumber": 57
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "AbortHandle::new_pair",
+          "lineNumber": 69
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "self.spawn",
+          "lineNumber": 70
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new(future, registration).map",
+          "lineNumber": 70
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new",
+          "lineNumber": 70
+        },
+        {
+          "caller": "default",
+          "callee": "Self::new",
+          "lineNumber": 87
+        },
+        {
+          "caller": "spawn",
+          "callee": "self.spawn_boxed",
+          "lineNumber": 100
+        },
+        {
+          "caller": "spawn",
+          "callee": "future.boxed_local",
+          "lineNumber": 100
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "spawn_local",
+          "lineNumber": 110
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "future.instrument",
+          "lineNumber": 110
+        },
+        {
+          "caller": "spawn_boxed",
+          "callee": "tracing::Span::current",
+          "lineNumber": 110
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "AbortHandle::new_pair",
+          "lineNumber": 122
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "self.spawn",
+          "lineNumber": 123
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new(future, registration).map",
+          "lineNumber": 123
+        },
+        {
+          "caller": "spawn_abortable",
+          "callee": "Abortable::new",
+          "lineNumber": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 16,
+        "functionCount": 13,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "crates/warpui_core/src/async/wasm/mod.rs",
+      "language": "rust",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "after",
+          "startLine": 53,
+          "endLine": 55,
+          "params": [
+            "duration"
+          ]
+        },
+        {
+          "name": "at",
+          "startLine": 57,
+          "endLine": 60,
+          "params": [
+            "instant"
+          ]
+        },
+        {
+          "name": "never",
+          "startLine": 62,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "new",
+          "startLine": 69,
+          "endLine": 79,
+          "params": [
+            "duration",
+            "instant"
+          ]
+        },
+        {
+          "name": "poll",
+          "startLine": 85,
+          "endLine": 87,
+          "params": [
+            "self",
+            "cx"
+          ]
+        },
+        {
+          "name": "poll_next",
+          "startLine": 93,
+          "endLine": 101,
+          "params": [
+            "self",
+            "cx"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Unrestricted",
+          "startLine": 16,
+          "endLine": 16,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Timer",
+          "startLine": 42,
+          "endLine": 50,
+          "methods": [
+            "after",
+            "at",
+            "never",
+            "new",
+            "poll",
+            "poll_next"
+          ],
+          "properties": [
+            "inner",
+            "stream_exhausted"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Timer",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "after",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "at",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "never",
+          "line": 62,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "after",
+          "callee": "Self::new",
+          "lineNumber": 54
+        },
+        {
+          "caller": "after",
+          "callee": "Instant::now",
+          "lineNumber": 54
+        },
+        {
+          "caller": "at",
+          "callee": "instant::Instant::now",
+          "lineNumber": 58
+        },
+        {
+          "caller": "at",
+          "callee": "Self::new",
+          "lineNumber": 59
+        },
+        {
+          "caller": "never",
+          "callee": "futures_lite::future::pending().boxed",
+          "lineNumber": 64
+        },
+        {
+          "caller": "never",
+          "callee": "futures_lite::future::pending",
+          "lineNumber": 64
+        },
+        {
+          "caller": "new",
+          "callee": "TimeoutFuture::new",
+          "lineNumber": 72
+        },
+        {
+          "caller": "new",
+          "callee": "duration.as_millis",
+          "lineNumber": 72
+        },
+        {
+          "caller": "new",
+          "callee": "Box::pin",
+          "lineNumber": 76
+        },
+        {
+          "caller": "poll",
+          "callee": "self.inner.poll",
+          "lineNumber": 86
+        },
+        {
+          "caller": "poll_next",
+          "callee": "Poll::Ready",
+          "lineNumber": 95
+        },
+        {
+          "caller": "poll_next",
+          "callee": "self.inner.poll(cx).map",
+          "lineNumber": 97
+        },
+        {
+          "caller": "poll_next",
+          "callee": "self.inner.poll",
+          "lineNumber": 97
+        },
+        {
+          "caller": "poll_next",
+          "callee": "Some",
+          "lineNumber": 99
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 6,
+        "classCount": 2
+      }
+    }
+  ]
+}

@@ -1,0 +1,1384 @@
+{
+  "nodes": [
+    {
+      "id": "file:crates/editor/benches/buffer_bench.rs",
+      "type": "file",
+      "name": "buffer_bench.rs",
+      "filePath": "crates/editor/benches/buffer_bench.rs",
+      "summary": "Criterion benchmark suite for the editor Buffer measuring buffer creation, full-text read, incremental edits, and styling over progressively larger inputs.",
+      "tags": [
+        "benchmark",
+        "test",
+        "editor",
+        "performance",
+        "buffer"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:crates/editor/Cargo.toml",
+      "type": "config",
+      "name": "Cargo.toml",
+      "filePath": "crates/editor/Cargo.toml",
+      "summary": "Cargo manifest for the warp_editor crate declaring text-editing dependencies (markdown/HTML parsing, sum_tree, regex) and the buffer_bench Criterion benchmark.",
+      "tags": [
+        "configuration",
+        "cargo",
+        "rust",
+        "build-system",
+        "dependencies"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/editor/src/content/text_tests.rs",
+      "type": "file",
+      "name": "text_tests.rs",
+      "filePath": "crates/editor/src/content/text_tests.rs",
+      "summary": "Unit tests for editor content text styling and formatted-table/image markdown handling, covering TextStyle XOR composition, table round-tripping, and image markdown title preservation.",
+      "tags": [
+        "test",
+        "editor",
+        "text",
+        "markdown",
+        "styling"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/multiline_tests.rs",
+      "type": "file",
+      "name": "multiline_tests.rs",
+      "filePath": "crates/editor/src/multiline_tests.rs",
+      "summary": "Unit tests for line-ending inference and normalization (LF/CR/CRLF) across MultilineStr construction and apply operations.",
+      "tags": [
+        "test",
+        "editor",
+        "line-endings",
+        "multiline",
+        "text"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/editor/src/render/model/table_offset_map_tests.rs",
+      "type": "file",
+      "name": "table_offset_map_tests.rs",
+      "filePath": "crates/editor/src/render/model/table_offset_map_tests.rs",
+      "summary": "Unit tests for the markdown table cell offset map, validating cell lookup by offset, range queries, separator detection, and style-span handling (bold, links, escapes, nested styles).",
+      "tags": [
+        "test",
+        "editor",
+        "table",
+        "offset-map",
+        "markdown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/editor/test_data/test_rust_file.rs",
+      "type": "file",
+      "name": "test_rust_file.rs",
+      "filePath": "crates/editor/test_data/test_rust_file.rs",
+      "summary": "Large vendored copy of the Rust standard library's std::io and String source used as an 8.7k-line fixture for exercising the editor's parsing, rendering, and benchmark workloads.",
+      "tags": [
+        "test-fixture",
+        "test-data",
+        "rust",
+        "large-file",
+        "editor"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Not project code: a verbatim std-library snapshot embedded as editor test data and excluded from the crate via the Cargo `exclude` key. Its hundreds of internal std symbols are intentionally not modeled as project nodes."
+    },
+    {
+      "id": "document:crates/editor/test_fixtures/images/image_test.md",
+      "type": "document",
+      "name": "image_test.md",
+      "filePath": "crates/editor/test_fixtures/images/image_test.md",
+      "summary": "Markdown fixture exercising image rendering paths (JPEG/PNG, relative and parent-directory paths, alt/title text) for the editor's markdown image support.",
+      "tags": [
+        "test-fixture",
+        "markdown",
+        "image",
+        "editor"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:crates/editor/test_fixtures/images/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "crates/editor/test_fixtures/images/README.md",
+      "summary": "Describes the image test fixtures directory, cataloguing sample images and the rendering aspects (formats, dimensions, transparency, relative paths) they validate.",
+      "tags": [
+        "documentation",
+        "test-fixture",
+        "image",
+        "editor"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:crates/vim/Cargo.toml",
+      "type": "config",
+      "name": "Cargo.toml",
+      "filePath": "crates/vim/Cargo.toml",
+      "summary": "Cargo manifest for the vim crate declaring its dependence on warp_core and warpui_core plus text utilities used for modal editing.",
+      "tags": [
+        "configuration",
+        "cargo",
+        "rust",
+        "dependencies",
+        "vim"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:crates/vim/src/matching_brackets_tests.rs",
+      "type": "file",
+      "name": "matching_brackets_tests.rs",
+      "filePath": "crates/vim/src/matching_brackets_tests.rs",
+      "summary": "Unit tests for vim matching-bracket navigation, asserting the matched-bracket position for each bracket pair across a sample buffer.",
+      "tags": [
+        "test",
+        "vim",
+        "brackets",
+        "navigation",
+        "text-objects"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/vim/src/paragraph_iterator_tests.rs",
+      "type": "file",
+      "name": "paragraph_iterator_tests.rs",
+      "filePath": "crates/vim/src/paragraph_iterator_tests.rs",
+      "summary": "Unit tests for the vim paragraph iterator, covering previous/next paragraph traversal across single, multiple, and blank-line-separated paragraphs.",
+      "tags": [
+        "test",
+        "vim",
+        "paragraph",
+        "iterator",
+        "navigation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/vim/src/text_objects/block_tests.rs",
+      "type": "file",
+      "name": "block_tests.rs",
+      "filePath": "crates/vim/src/text_objects/block_tests.rs",
+      "summary": "Unit tests for vim block text objects (a-block and inner-block), validating bracket-delimited selection ranges including nested cases.",
+      "tags": [
+        "test",
+        "vim",
+        "text-objects",
+        "block",
+        "selection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/vim/src/text_objects/paragraph_tests.rs",
+      "type": "file",
+      "name": "paragraph_tests.rs",
+      "filePath": "crates/vim/src/text_objects/paragraph_tests.rs",
+      "summary": "Unit tests for vim paragraph text objects (inner-paragraph and a-paragraph) across empty buffers, multiple paragraphs, and blank-line handling.",
+      "tags": [
+        "test",
+        "vim",
+        "text-objects",
+        "paragraph",
+        "selection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/vim/src/text_objects/word_tests.rs",
+      "type": "file",
+      "name": "word_tests.rs",
+      "filePath": "crates/vim/src/text_objects/word_tests.rs",
+      "summary": "Unit tests for vim word text objects covering inner/a word and inner/a bigword selection across punctuation, whitespace, and symbol boundaries.",
+      "tags": [
+        "test",
+        "vim",
+        "text-objects",
+        "word",
+        "selection"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/vim/src/word_iterator_tests.rs",
+      "type": "file",
+      "name": "word_iterator_tests.rs",
+      "filePath": "crates/vim/src/word_iterator_tests.rs",
+      "summary": "Unit tests for the vim word iterator, exhaustively covering forward/backward traversal of word heads and tails with and without symbol boundaries, plus out-of-bounds error handling.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "iterator",
+        "navigation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/build.rs",
+      "type": "file",
+      "name": "build.rs",
+      "filePath": "crates/warpui_core/build.rs",
+      "summary": "Cargo build script for warpui_core defining cfg aliases (macos, native) used for platform-conditional compilation.",
+      "tags": [
+        "build-system",
+        "build-script",
+        "configuration",
+        "cfg-aliases",
+        "rust"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:crates/warpui_core/Cargo.toml",
+      "type": "config",
+      "name": "Cargo.toml",
+      "filePath": "crates/warpui_core/Cargo.toml",
+      "summary": "Cargo manifest for the warpui_core crate (the bespoke WarpUI framework), declaring rendering, font, and platform dependencies plus the cfg_aliases build dependency.",
+      "tags": [
+        "configuration",
+        "cargo",
+        "rust",
+        "dependencies",
+        "build-system"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:crates/warpui_core/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "crates/warpui_core/README.md",
+      "summary": "Whirlwind-tour overview of the WarpUI framework explaining the global App object, entities and handles, app contexts, elements, actions, and views.",
+      "tags": [
+        "documentation",
+        "overview",
+        "warpui",
+        "architecture",
+        "framework"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/core/model/context_tests.rs",
+      "type": "file",
+      "name": "context_tests.rs",
+      "filePath": "crates/warpui_core/src/core/model/context_tests.rs",
+      "summary": "Unit tests for the WarpUI model context/spawner, verifying model spawning and behavior when a spawned model is dropped.",
+      "tags": [
+        "test",
+        "warpui",
+        "model",
+        "context",
+        "spawner"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:crates/warpui_core/src/elements/flex/WARP.md",
+      "type": "document",
+      "name": "WARP.md",
+      "filePath": "crates/warpui_core/src/elements/flex/WARP.md",
+      "summary": "Debugging guide for WarpUI Flex layout panics, mapping common infinite-constraint error messages to fixes and explaining flexible vs non-flexible children.",
+      "tags": [
+        "documentation",
+        "debugging",
+        "warpui",
+        "flex",
+        "layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/image_tests.rs",
+      "type": "file",
+      "name": "image_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/image_tests.rs",
+      "summary": "Unit tests for the WarpUI image element, covering NaN-origin handling, failure/fallback element selection, and loading-timeout behavior across rebuilds, using a TestElement stub.",
+      "tags": [
+        "test",
+        "warpui",
+        "image",
+        "element",
+        "loading"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "type": "file",
+      "name": "util_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "summary": "Unit tests for new_scrollable scroll-delta utilities, verifying the scroll offsets needed to bring elements fully or partially into view along an axis.",
+      "tags": [
+        "test",
+        "warpui",
+        "scrolling",
+        "scrollable",
+        "layout"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "type": "file",
+      "name": "offset_positioning_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "summary": "Extensive unit tests for stack offset element positioning, validating absolute placement of anchored child elements when bound to parent, window, or unbounded, including overflow handling.",
+      "tags": [
+        "test",
+        "warpui",
+        "positioning",
+        "anchor",
+        "layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/elements/table/mod_tests.rs",
+      "type": "file",
+      "name": "mod_tests.rs",
+      "filePath": "crates/warpui_core/src/elements/table/mod_tests.rs",
+      "summary": "Unit tests for the WarpUI table element covering column-width computation (fixed/flex/fraction/intrinsic), sumtree row-height tracking, scroll offsets, and viewport height estimation.",
+      "tags": [
+        "test",
+        "warpui",
+        "table",
+        "layout",
+        "sumtree"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:crates/warpui_core/src/fonts_tests.rs",
+      "type": "file",
+      "name": "fonts_tests.rs",
+      "filePath": "crates/warpui_core/src/fonts_tests.rs",
+      "summary": "Unit test for subpixel glyph alignment computation in the WarpUI font subsystem.",
+      "tags": [
+        "test",
+        "warpui",
+        "fonts",
+        "subpixel",
+        "rendering"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:crates/editor/benches/buffer_bench.rs:mock_buffer",
+      "type": "function",
+      "name": "mock_buffer",
+      "filePath": "crates/editor/benches/buffer_bench.rs",
+      "summary": "Constructs a test Buffer populated with the given text inside a WarpUI app context for benchmarking.",
+      "tags": [
+        "benchmark",
+        "helper",
+        "buffer",
+        "setup"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        16,
+        33
+      ]
+    },
+    {
+      "id": "function:crates/editor/benches/buffer_bench.rs:edit_text",
+      "type": "function",
+      "name": "edit_text",
+      "filePath": "crates/editor/benches/buffer_bench.rs",
+      "summary": "Benchmark workload that applies incremental edits to a buffer to measure edit throughput.",
+      "tags": [
+        "benchmark",
+        "buffer",
+        "editing",
+        "performance"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        48,
+        65
+      ]
+    },
+    {
+      "id": "function:crates/editor/benches/buffer_bench.rs:style_text",
+      "type": "function",
+      "name": "style_text",
+      "filePath": "crates/editor/benches/buffer_bench.rs",
+      "summary": "Benchmark workload that applies styling spans across a buffer to measure styling cost.",
+      "tags": [
+        "benchmark",
+        "buffer",
+        "styling",
+        "performance"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        67,
+        86
+      ]
+    },
+    {
+      "id": "function:crates/editor/benches/buffer_bench.rs:criterion_benchmark",
+      "type": "function",
+      "name": "criterion_benchmark",
+      "filePath": "crates/editor/benches/buffer_bench.rs",
+      "summary": "Criterion benchmark group registering buffer creation, read, edit, and style benchmarks over varying input sizes.",
+      "tags": [
+        "benchmark",
+        "criterion",
+        "entry-point",
+        "performance"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        88,
+        96
+      ]
+    },
+    {
+      "id": "function:crates/editor/src/content/text_tests.rs:test_text_style_xor",
+      "type": "function",
+      "name": "test_text_style_xor",
+      "filePath": "crates/editor/src/content/text_tests.rs",
+      "summary": "Verifies XOR composition of TextStyle flags, asserting correct toggling of styling attributes across combinations.",
+      "tags": [
+        "test",
+        "text",
+        "styling",
+        "xor"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        11,
+        72
+      ]
+    },
+    {
+      "id": "function:crates/editor/src/render/model/table_offset_map_tests.rs:test_simple_table",
+      "type": "function",
+      "name": "test_simple_table",
+      "filePath": "crates/editor/src/render/model/table_offset_map_tests.rs",
+      "summary": "Builds a basic markdown table and asserts the cell offset map yields correct cell boundaries and contents.",
+      "tags": [
+        "test",
+        "table",
+        "offset-map",
+        "markdown"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        7,
+        41
+      ]
+    },
+    {
+      "id": "function:crates/editor/src/render/model/table_offset_map_tests.rs:test_table_cell_offset_map_handles_bold_and_links",
+      "type": "function",
+      "name": "test_table_cell_offset_map_handles_bold_and_links",
+      "filePath": "crates/editor/src/render/model/table_offset_map_tests.rs",
+      "summary": "Validates that the table cell offset map correctly maps character offsets through bold and link style spans.",
+      "tags": [
+        "test",
+        "table",
+        "offset-map",
+        "styling"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        148,
+        207
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/matching_brackets_tests.rs:test_vim_find_matching_bracket",
+      "type": "function",
+      "name": "test_vim_find_matching_bracket",
+      "filePath": "crates/vim/src/matching_brackets_tests.rs",
+      "summary": "Drives the vim matching-bracket finder across all bracket pairs in a sample buffer, asserting each match position.",
+      "tags": [
+        "test",
+        "vim",
+        "brackets",
+        "navigation"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        10,
+        63
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/block_tests.rs:test_vim_a_block",
+      "type": "function",
+      "name": "test_vim_a_block",
+      "filePath": "crates/vim/src/text_objects/block_tests.rs",
+      "summary": "Asserts the a-block text object selects the full bracket-delimited range including the delimiters.",
+      "tags": [
+        "test",
+        "vim",
+        "block",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        29,
+        73
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/block_tests.rs:test_vim_inner_block",
+      "type": "function",
+      "name": "test_vim_inner_block",
+      "filePath": "crates/vim/src/text_objects/block_tests.rs",
+      "summary": "Asserts the inner-block text object selects the bracket-delimited range excluding delimiters across nested cases.",
+      "tags": [
+        "test",
+        "vim",
+        "block",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        76,
+        148
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/paragraph_tests.rs:vim_inner_paragraph_three_paragraphs",
+      "type": "function",
+      "name": "vim_inner_paragraph_three_paragraphs",
+      "filePath": "crates/vim/src/text_objects/paragraph_tests.rs",
+      "summary": "Verifies inner-paragraph selection boundaries with three paragraphs separated by blank lines.",
+      "tags": [
+        "test",
+        "vim",
+        "paragraph",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        61,
+        95
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/paragraph_tests.rs:vim_a_paragraph_three_paragraphs",
+      "type": "function",
+      "name": "vim_a_paragraph_three_paragraphs",
+      "filePath": "crates/vim/src/text_objects/paragraph_tests.rs",
+      "summary": "Verifies a-paragraph selection including trailing blank lines across three paragraphs.",
+      "tags": [
+        "test",
+        "vim",
+        "paragraph",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        122,
+        157
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_inner_word",
+      "type": "function",
+      "name": "test_vim_inner_word",
+      "filePath": "crates/vim/src/text_objects/word_tests.rs",
+      "summary": "Exhaustively asserts inner-word selection boundaries across letters, punctuation, and whitespace.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        4,
+        90
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_a_word",
+      "type": "function",
+      "name": "test_vim_a_word",
+      "filePath": "crates/vim/src/text_objects/word_tests.rs",
+      "summary": "Exhaustively asserts a-word selection (word plus surrounding whitespace) across many cursor positions.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "text-objects"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        93,
+        252
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_inner_bigword",
+      "type": "function",
+      "name": "test_vim_inner_bigword",
+      "filePath": "crates/vim/src/text_objects/word_tests.rs",
+      "summary": "Asserts inner-bigword selection treating punctuation as part of the word across boundaries.",
+      "tags": [
+        "test",
+        "vim",
+        "bigword",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        255,
+        339
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_a_bigword",
+      "type": "function",
+      "name": "test_vim_a_bigword",
+      "filePath": "crates/vim/src/text_objects/word_tests.rs",
+      "summary": "Asserts a-bigword selection including surrounding whitespace across boundaries.",
+      "tags": [
+        "test",
+        "vim",
+        "bigword",
+        "text-objects"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        342,
+        451
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/word_iterator_tests.rs:test_word_forward_heads",
+      "type": "function",
+      "name": "test_word_forward_heads",
+      "filePath": "crates/vim/src/word_iterator_tests.rs",
+      "summary": "Verifies forward iteration over word head positions across a sample buffer.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "iterator"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        9,
+        78
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/word_iterator_tests.rs:test_word_backward_heads",
+      "type": "function",
+      "name": "test_word_backward_heads",
+      "filePath": "crates/vim/src/word_iterator_tests.rs",
+      "summary": "Verifies backward iteration over word head positions across a sample buffer.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "iterator"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        148,
+        217
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/word_iterator_tests.rs:test_word_forward_tails",
+      "type": "function",
+      "name": "test_word_forward_tails",
+      "filePath": "crates/vim/src/word_iterator_tests.rs",
+      "summary": "Verifies forward iteration over word tail (end) positions across a sample buffer.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "iterator"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        287,
+        356
+      ]
+    },
+    {
+      "id": "function:crates/vim/src/word_iterator_tests.rs:test_word_backward_tails",
+      "type": "function",
+      "name": "test_word_backward_tails",
+      "filePath": "crates/vim/src/word_iterator_tests.rs",
+      "summary": "Verifies backward iteration over word tail positions across a sample buffer.",
+      "tags": [
+        "test",
+        "vim",
+        "word",
+        "iterator"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        426,
+        495
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/build.rs:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "crates/warpui_core/build.rs",
+      "summary": "Build-script entry that registers cfg aliases (macos, native) for platform-conditional compilation.",
+      "tags": [
+        "build-script",
+        "entry-point",
+        "cfg-aliases"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        8,
+        13
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/core/model/context_tests.rs:test_model_spawner",
+      "type": "function",
+      "name": "test_model_spawner",
+      "filePath": "crates/warpui_core/src/core/model/context_tests.rs",
+      "summary": "Verifies that the model spawner creates and tracks a model accessible via its handle within the app context.",
+      "tags": [
+        "test",
+        "warpui",
+        "model",
+        "spawner"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        5,
+        50
+      ]
+    },
+    {
+      "id": "class:crates/warpui_core/src/elements/image_tests.rs:TestElement",
+      "type": "class",
+      "name": "TestElement",
+      "filePath": "crates/warpui_core/src/elements/image_tests.rs",
+      "summary": "Stub Element implementation used by the image tests, providing trivial layout/paint/size/origin/event hooks for driving image-element behavior.",
+      "tags": [
+        "test",
+        "warpui",
+        "element",
+        "stub",
+        "mock"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        3,
+        3
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/new_scrollable/util_tests.rs:test_scroll_delta_for_axis_fully_into_view",
+      "type": "function",
+      "name": "test_scroll_delta_for_axis_fully_into_view",
+      "filePath": "crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "summary": "Asserts the scroll delta required to bring a target element fully into the viewport along an axis.",
+      "tags": [
+        "test",
+        "warpui",
+        "scrolling",
+        "layout"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        4,
+        51
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/new_scrollable/util_tests.rs:test_scroll_delta_for_axis_top_into_view",
+      "type": "function",
+      "name": "test_scroll_delta_for_axis_top_into_view",
+      "filePath": "crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "summary": "Asserts scroll-delta computation for aligning an element's top edge into view across many cases.",
+      "tags": [
+        "test",
+        "warpui",
+        "scrolling",
+        "layout"
+      ],
+      "complexity": "complex",
+      "lineRange": [
+        54,
+        154
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:parent_anchor_point",
+      "type": "function",
+      "name": "parent_anchor_point",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "summary": "Test helper computing a parent rectangle's anchor point for a given anchor enum value.",
+      "tags": [
+        "test",
+        "helper",
+        "positioning",
+        "anchor"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        56,
+        81
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:positioned_element_anchor_point",
+      "type": "function",
+      "name": "positioned_element_anchor_point",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "summary": "Test helper computing a positioned element's anchor point for a given anchor enum value.",
+      "tags": [
+        "test",
+        "helper",
+        "positioning",
+        "anchor"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        85,
+        110
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:get_absolute_x_y_position_for_child_element",
+      "type": "function",
+      "name": "get_absolute_x_y_position_for_child_element",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "summary": "Test helper computing the absolute x/y placement of a child element from parent rect and the positioned/child anchor pair.",
+      "tags": [
+        "test",
+        "helper",
+        "positioning",
+        "layout"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        114,
+        145
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:test_offset_from_parent_unbounded",
+      "type": "function",
+      "name": "test_offset_from_parent_unbounded",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "summary": "Verifies child element offset relative to the parent when no boundary constraints are applied.",
+      "tags": [
+        "test",
+        "warpui",
+        "positioning",
+        "layout"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        148,
+        215
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:test_offset_from_positioned_element_unbounded",
+      "type": "function",
+      "name": "test_offset_from_positioned_element_unbounded",
+      "filePath": "crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "summary": "Verifies child element offset relative to a positioned element when no boundary constraints are applied.",
+      "tags": [
+        "test",
+        "warpui",
+        "positioning",
+        "layout"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        546,
+        618
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/table/mod_tests.rs:test_compute_column_widths_mixed",
+      "type": "function",
+      "name": "test_compute_column_widths_mixed",
+      "filePath": "crates/warpui_core/src/elements/table/mod_tests.rs",
+      "summary": "Verifies column width computation for a table mixing fixed, flex, and fractional column sizing.",
+      "tags": [
+        "test",
+        "warpui",
+        "table",
+        "layout"
+      ],
+      "complexity": "simple",
+      "lineRange": [
+        82,
+        94
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/table/mod_tests.rs:test_sumtree_row_height_invalidation",
+      "type": "function",
+      "name": "test_sumtree_row_height_invalidation",
+      "filePath": "crates/warpui_core/src/elements/table/mod_tests.rs",
+      "summary": "Verifies sumtree-backed row heights are invalidated and recomputed when a row's measured height changes.",
+      "tags": [
+        "test",
+        "warpui",
+        "table",
+        "sumtree"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        221,
+        245
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/elements/table/mod_tests.rs:test_max_scroll_offset_respects_viewport",
+      "type": "function",
+      "name": "test_max_scroll_offset_respects_viewport",
+      "filePath": "crates/warpui_core/src/elements/table/mod_tests.rs",
+      "summary": "Verifies the table's maximum scroll offset is clamped to account for the viewport height.",
+      "tags": [
+        "test",
+        "warpui",
+        "table",
+        "scrolling"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        325,
+        344
+      ]
+    },
+    {
+      "id": "function:crates/warpui_core/src/fonts_tests.rs:test_subpixel_alignment_computation",
+      "type": "function",
+      "name": "test_subpixel_alignment_computation",
+      "filePath": "crates/warpui_core/src/fonts_tests.rs",
+      "summary": "Verifies subpixel glyph alignment offset computation used for font rendering.",
+      "tags": [
+        "test",
+        "warpui",
+        "fonts",
+        "subpixel"
+      ],
+      "complexity": "moderate",
+      "lineRange": [
+        4,
+        42
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:crates/editor/benches/buffer_bench.rs",
+      "target": "function:crates/editor/benches/buffer_bench.rs:mock_buffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/benches/buffer_bench.rs",
+      "target": "function:crates/editor/benches/buffer_bench.rs:edit_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/benches/buffer_bench.rs",
+      "target": "function:crates/editor/benches/buffer_bench.rs:style_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/benches/buffer_bench.rs",
+      "target": "function:crates/editor/benches/buffer_bench.rs:criterion_benchmark",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/content/text_tests.rs",
+      "target": "function:crates/editor/src/content/text_tests.rs:test_text_style_xor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map_tests.rs",
+      "target": "function:crates/editor/src/render/model/table_offset_map_tests.rs:test_simple_table",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map_tests.rs",
+      "target": "function:crates/editor/src/render/model/table_offset_map_tests.rs:test_table_cell_offset_map_handles_bold_and_links",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/matching_brackets_tests.rs",
+      "target": "function:crates/vim/src/matching_brackets_tests.rs:test_vim_find_matching_bracket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/block_tests.rs",
+      "target": "function:crates/vim/src/text_objects/block_tests.rs:test_vim_a_block",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/block_tests.rs",
+      "target": "function:crates/vim/src/text_objects/block_tests.rs:test_vim_inner_block",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/paragraph_tests.rs",
+      "target": "function:crates/vim/src/text_objects/paragraph_tests.rs:vim_inner_paragraph_three_paragraphs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/paragraph_tests.rs",
+      "target": "function:crates/vim/src/text_objects/paragraph_tests.rs:vim_a_paragraph_three_paragraphs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/word_tests.rs",
+      "target": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_inner_word",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/word_tests.rs",
+      "target": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_a_word",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/word_tests.rs",
+      "target": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_inner_bigword",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/word_tests.rs",
+      "target": "function:crates/vim/src/text_objects/word_tests.rs:test_vim_a_bigword",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/word_iterator_tests.rs",
+      "target": "function:crates/vim/src/word_iterator_tests.rs:test_word_forward_heads",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/word_iterator_tests.rs",
+      "target": "function:crates/vim/src/word_iterator_tests.rs:test_word_backward_heads",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/word_iterator_tests.rs",
+      "target": "function:crates/vim/src/word_iterator_tests.rs:test_word_forward_tails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/vim/src/word_iterator_tests.rs",
+      "target": "function:crates/vim/src/word_iterator_tests.rs:test_word_backward_tails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/build.rs",
+      "target": "function:crates/warpui_core/build.rs:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/core/model/context_tests.rs",
+      "target": "function:crates/warpui_core/src/core/model/context_tests.rs:test_model_spawner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/image_tests.rs",
+      "target": "class:crates/warpui_core/src/elements/image_tests.rs:TestElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/new_scrollable/util_tests.rs:test_scroll_delta_for_axis_fully_into_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/new_scrollable/util_tests.rs:test_scroll_delta_for_axis_top_into_view",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:parent_anchor_point",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:positioned_element_anchor_point",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:get_absolute_x_y_position_for_child_element",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:test_offset_from_parent_unbounded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs:test_offset_from_positioned_element_unbounded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/table/mod_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/table/mod_tests.rs:test_compute_column_widths_mixed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/table/mod_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/table/mod_tests.rs:test_sumtree_row_height_invalidation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/table/mod_tests.rs",
+      "target": "function:crates/warpui_core/src/elements/table/mod_tests.rs:test_max_scroll_offset_respects_viewport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts_tests.rs",
+      "target": "function:crates/warpui_core/src/fonts_tests.rs:test_subpixel_alignment_computation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:crates/editor/src/content/text.rs",
+      "target": "file:crates/editor/src/content/text_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/multiline.rs",
+      "target": "file:crates/editor/src/multiline_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/editor/src/render/model/table_offset_map.rs",
+      "target": "file:crates/editor/src/render/model/table_offset_map_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/vim/src/matching_brackets.rs",
+      "target": "file:crates/vim/src/matching_brackets_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/vim/src/paragraph_iterator.rs",
+      "target": "file:crates/vim/src/paragraph_iterator_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/block.rs",
+      "target": "file:crates/vim/src/text_objects/block_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/paragraph.rs",
+      "target": "file:crates/vim/src/text_objects/paragraph_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/vim/src/text_objects/word.rs",
+      "target": "file:crates/vim/src/text_objects/word_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/vim/src/word_iterator.rs",
+      "target": "file:crates/vim/src/word_iterator_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/core/model/context.rs",
+      "target": "file:crates/warpui_core/src/core/model/context_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/image.rs",
+      "target": "file:crates/warpui_core/src/elements/image_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/new_scrollable/util.rs",
+      "target": "file:crates/warpui_core/src/elements/new_scrollable/util_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/stack/offset_positioning.rs",
+      "target": "file:crates/warpui_core/src/elements/stack/offset_positioning_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/elements/table/mod.rs",
+      "target": "file:crates/warpui_core/src/elements/table/mod_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:crates/warpui_core/src/fonts.rs",
+      "target": "file:crates/warpui_core/src/fonts_tests.rs",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:crates/warpui_core/README.md",
+      "target": "file:crates/warpui_core/src/core/model/context.rs",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:crates/warpui_core/src/elements/flex/WARP.md",
+      "target": "file:crates/warpui_core/src/elements/flex/mod.rs",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:crates/editor/test_fixtures/images/README.md",
+      "target": "document:crates/editor/test_fixtures/images/image_test.md",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:crates/editor/test_fixtures/images/image_test.md",
+      "target": "file:crates/editor/src/content/text_tests.rs",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:crates/editor/Cargo.toml",
+      "target": "file:crates/editor/benches/buffer_bench.rs",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:crates/warpui_core/Cargo.toml",
+      "target": "file:crates/warpui_core/build.rs",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:crates/vim/Cargo.toml",
+      "target": "file:crates/vim/src/word_iterator.rs",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}
