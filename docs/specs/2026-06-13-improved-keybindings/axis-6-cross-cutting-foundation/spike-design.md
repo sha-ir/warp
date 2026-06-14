@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](./README.md)
+[← Back to Spike Designs index](../README.md)
 
 ## Axis 6 — Cross-cutting foundation (platform-in-data-model)
 

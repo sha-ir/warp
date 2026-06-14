@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X7](../cross-axis-sequencing.md#x7--redesigned--time-box-hours)
+[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X7](../cross-axis-sequencing/spike-design.md#x7--redesigned--time-box-hours)
 
 # X7 — ContextPredicate leaf → `Cow<'static, str>` · spike results
 

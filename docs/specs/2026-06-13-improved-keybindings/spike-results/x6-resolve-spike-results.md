@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X6](../cross-axis-sequencing.md) · [Builds on: X9 tombstone](./x9-tombstone-spike-results.md) · [Leaf type: X7 leaf-Cow](./x7-leaf-cow-spike-results.md)
+[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X6](../cross-axis-sequencing/spike-design.md) · [Builds on: X9 tombstone](./x9-tombstone-spike-results.md) · [Leaf type: X7 leaf-Cow](./x7-leaf-cow-spike-results.md)
 
 # X6 — Unified scope-tagged `resolve()` walk over `keymap.bindings()` · spike results
 

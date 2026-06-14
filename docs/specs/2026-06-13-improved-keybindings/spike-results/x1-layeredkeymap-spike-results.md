@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X1](../cross-axis-sequencing.md) · [Builds on: X9 tombstone](./x9-tombstone-spike-results.md) · [Unified resolver: X6 resolve()](./x6-resolve-spike-results.md) · [Perf sibling: A3-Q20](./a3-q20-matcher-perf-spike-results.md) · [Gate: X13 snapshot](./x13-resolution-snapshot-spike-results.md)
+[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X1](../cross-axis-sequencing/spike-design.md) · [Builds on: X9 tombstone](./x9-tombstone-spike-results.md) · [Unified resolver: X6 resolve()](./x6-resolve-spike-results.md) · [Perf sibling: A3-Q20](./a3-q20-matcher-perf-spike-results.md) · [Gate: X13 snapshot](./x13-resolution-snapshot-spike-results.md)
 
 # X1 — `LayeredKeymap` engine capstone (single store + indexed-Unbound suppression + write-fan-out) · spike results
 

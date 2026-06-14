@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](./README.md) · [Spec: Axis 2 — A2-Q4](./axis-2-scope-and-context-control.md)
+[← Back to Spike Designs index](./README.md) · [Spec: Axis 2 — A2-Q4](../axis-2-scope-and-context-control/spike-design.md)
 
 # A2-Q4 — Adversarial spike results
 

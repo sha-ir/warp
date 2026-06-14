@@ -1,4 +1,4 @@
-[← Back to index](./README.md)
+[← Back to index](../README.md)
 
 ## Axis 2 — Scope & context control
 
@@ -342,7 +342,7 @@ The answer's citations actions.rs:329 (=editor_view:up) and :504 (=editor_view:d
 
 5) BindingId exists but is unused for override/revert routing. `BindingId(pub usize)` (keymap.rs:262), `BindingId::new()` allocates from a global `AtomicUsize` (264-272), and `EditableBinding.id: BindingId` (keymap.rs:303). `update_custom_trigger` never consults it; routing is name-string only. CONFIRMED. (Its atomic-counter origin means ids are regenerated per registration/run, so stability as a persistence key is unproven — correctly flagged in residual_unknowns.)
 
-6) Hot-reload reset set undesigned; file schema name-keyed. Persisted schema `CustomKeybindings(HashMap<String, PersistedTrigger>)` (app/src/keyboard.rs:169) where `PersistedTrigger(String)` (174) — no context field. `load_custom_keybindings` (keyboard.rs:37-57) iterates `(name, trigger)` and calls `app.set_custom_trigger(name, ...)` (Trigger::Empty for the Removed sentinel, 44). `remove_custom_keybinding` (keyboard.rs:79-93) does `map.0.remove(name.as_ref())`. Keybindings hot-reload is NOT implemented: I independently confirmed `load_custom_keybindings` is called exactly once at startup (app/src/lib.rs:2557) and found NO keybindings file watcher/subscribe; only settings.toml has a reload watcher (app/src/settings/init.rs:205-217, `handle_warp_config_change` -> `reload_all_public_settings` at 245-246). The "currently-applied custom names" set is an explicit Axis-1 deferred item (docs/specs/2026-06-13-improved-keybindings-end-goals-design.md:151-152). CONFIRMED.
+6) Hot-reload reset set undesigned; file schema name-keyed. Persisted schema `CustomKeybindings(HashMap<String, PersistedTrigger>)` (app/src/keyboard.rs:169) where `PersistedTrigger(String)` (174) — no context field. `load_custom_keybindings` (keyboard.rs:37-57) iterates `(name, trigger)` and calls `app.set_custom_trigger(name, ...)` (Trigger::Empty for the Removed sentinel, 44). `remove_custom_keybinding` (keyboard.rs:79-93) does `map.0.remove(name.as_ref())`. Keybindings hot-reload is NOT implemented: I independently confirmed `load_custom_keybindings` is called exactly once at startup (app/src/lib.rs:2557) and found NO keybindings file watcher/subscribe; only settings.toml has a reload watcher (app/src/settings/init.rs:205-217, `handle_warp_config_change` -> `reload_all_public_settings` at 245-246). The "currently-applied custom names" set is an explicit Axis-1 deferred item (docs/specs/2026-06-13-improved-keybindings/end-goals.md:151-152). CONFIRMED.
 
 7) No same-name multi-context revert test. keymap_tests.rs:255-319 registers two DIFFERENT names ("first"/"second"), overrides "first", asserts subset isolation, then reverts "first" via `update_custom_trigger("first", None)` (319). No test with two same-name bindings under different contexts asserting subset revert. CONFIRMED.
 

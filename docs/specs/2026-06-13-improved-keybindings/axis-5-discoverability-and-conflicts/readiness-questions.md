@@ -1,4 +1,4 @@
-[← Back to index](./README.md)
+[← Back to index](../README.md)
 
 ## Axis 5 — Discoverability & truthful conflicts
 

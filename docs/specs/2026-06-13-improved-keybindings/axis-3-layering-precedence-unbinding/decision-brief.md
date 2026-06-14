@@ -1,4 +1,4 @@
-[← Back to index](./README.md)
+[← Back to index](../README.md)
 
 ## Axis 3 — Layering, precedence & unbinding
 

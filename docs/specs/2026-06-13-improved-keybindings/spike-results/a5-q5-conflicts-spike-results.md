@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Axis 5 design](../axis-5-discoverability-and-conflicts.md)
+[← Back to Spike Designs index](../README.md) · [Axis 5 design](../axis-5-discoverability-and-conflicts/spike-design.md)
 
 # A5-Q5 — truthful-conflict definition (a vs b vs c) + identifier-exclusion dependency · spike results
 

@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Spec: Axis 6 — A6-Q3](../axis-6-cross-cutting-foundation.md#a6-q3--redesigned--time-box-1-2-days)
+[← Back to Spike Designs index](../README.md) · [Spec: Axis 6 — A6-Q3](../axis-6-cross-cutting-foundation/spike-design.md#a6-q3--redesigned--time-box-1-2-days)
 
 # A6-Q3 (merged A6-Q14 / A6-Q16) — platform-in-data-model canonical type · spike results
 

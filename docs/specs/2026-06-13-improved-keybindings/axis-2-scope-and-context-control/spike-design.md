@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](./README.md)
+[← Back to Spike Designs index](../README.md)
 
 ## Axis 2 — Scope & context control
 

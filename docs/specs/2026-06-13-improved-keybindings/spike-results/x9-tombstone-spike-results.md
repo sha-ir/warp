@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X9](../cross-axis-sequencing.md) · [Gate: X13 resolution snapshot](./x13-resolution-snapshot-spike-results.md)
+[← Back to Spike Designs index](../README.md) · [Spec: Cross-axis — X9](../cross-axis-sequencing/spike-design.md) · [Gate: X13 resolution snapshot](./x13-resolution-snapshot-spike-results.md)
 
 # X9 — First-class `Unbound` tombstone short-circuit · spike results
 

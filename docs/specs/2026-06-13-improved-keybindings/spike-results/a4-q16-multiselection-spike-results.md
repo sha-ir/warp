@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](../README.md) · [Contract: Axis-4 modality (pluggable)](../axis-4-modality-pluggable.md)
+[← Back to Spike Designs index](../README.md) · [Contract: Axis-4 modality (pluggable)](../axis-4-modality-pluggable/spike-design.md)
 
 # A4-Q16 — multi-selection keystroke / overlap regime · spike results
 

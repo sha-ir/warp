@@ -1,4 +1,4 @@
-[← Back to Spike Designs index](./README.md) · [Spec: Axis 1 — A1-Q6](./axis-1-config-portable-live-data.md)
+[← Back to Spike Designs index](./README.md) · [Spec: Axis 1 — A1-Q6](../axis-1-config-portable-live-data/spike-design.md)
 
 # A1-Q6 — Adversarial spike results
 

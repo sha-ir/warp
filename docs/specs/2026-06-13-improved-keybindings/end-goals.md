@@ -11,7 +11,7 @@
 This document decomposes the umbrella goal **"Improved keybindings"** into concrete,
 user-facing end goals. It is the product of a brainstorming session and is grounded in the
 adversarial architecture report at
-[`.understand-anything/keybindings-architecture-report.md`](../../.understand-anything/keybindings-architecture-report.md)
+[`.understand-anything/keybindings-architecture-report.md`](../../../.understand-anything/keybindings-architecture-report.md)
 (42 agents, 34/35 claims survived adversarial verification, 2026-06-12).
 
 Each leaf goal is annotated with its report anchor (`R#` = recommendation, `L#` = engine
