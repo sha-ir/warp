@@ -50,6 +50,11 @@ pub enum MatchResult {
     None,
     Pending,
     Action(Arc<dyn Action>),
+    /// The highest-precedence binding matching the query is an Unbound
+    /// tombstone. The key/action is explicitly unbound in this context; the scan
+    /// short-circuits here and NO lower-precedence binding fires. Distinct from
+    /// `None` (no binding matched at all).
+    Unbound,
 }
 
 impl Matcher {
@@ -260,6 +265,17 @@ impl Matcher {
             })
             // And then filter against the current context and return the first match
             .find(move |binding| binding.context_predicate.eval(context))
+            // This macOS-menu path reads a different source
+            // (`custom_action_bindings()`) and carries the same original_trigger
+            // dual-check, so it must honor tombstones too: if the highest-precedence
+            // match is an Unbound tombstone, the action is unbound in this context, so
+            // return None (the menu shows no keybinding). It shares the ONE
+            // `is_tombstone` predicate, but because this surface returns
+            // `Option<BindingLens>` (not `MatchResult`) it cannot call the
+            // MatchResult-returning `resolve_matched_binding` helper — a documented
+            // divergence in short-circuit SHAPE (partial finding), not a hidden
+            // special-case in the tombstone decision.
+            .filter(|binding| !binding.is_tombstone())
     }
 
     pub fn default_keystroke_trigger_for_custom_action(
@@ -304,6 +320,35 @@ impl Matcher {
         self.keymap.bindings()
     }
 
+    /// Inject a single editable binding at the highest precedence.
+    ///
+    /// Used to express an *override* or an *Unbound tombstone* without mutating an
+    /// existing binding. Clears pending state (like the other registration paths)
+    /// and delegates to [`Keymap::inject_binding`], which keeps the dual Tracked
+    /// lists consistent.
+    pub fn inject_binding(&mut self, binding: EditableBinding) {
+        self.pending.clear();
+        self.keymap.inject_binding(binding);
+    }
+
+    /// Shared tombstone short-circuit helper.
+    ///
+    /// Wired into all three `MatchResult`-returning match paths — `push_keystroke`,
+    /// `match_standard`, and `match_custom` (including its `original_trigger`
+    /// dual-check). Given a binding whose trigger AND context have already matched
+    /// the active query, it decides the result uniformly: an Unbound tombstone
+    /// short-circuits with [`MatchResult::Unbound`] (suppressing any
+    /// lower-precedence binding on the same key/action); otherwise the binding's
+    /// action wins. match_custom's dual `trigger`/`original_trigger` check does NOT
+    /// force a second code path here — both branches call this one helper.
+    fn resolve_matched_binding(binding: &BindingLens) -> MatchResult {
+        if binding.is_tombstone() {
+            MatchResult::Unbound
+        } else {
+            MatchResult::Action(binding.action.clone())
+        }
+    }
+
     pub fn push_keystroke(
         &mut self,
         keystroke: Keystroke,
@@ -328,7 +373,7 @@ impl Matcher {
                 {
                     if keystrokes.len() == pending.keystrokes.len() {
                         self.pending.remove(&view_id);
-                        return MatchResult::Action(binding.action.clone());
+                        return Self::resolve_matched_binding(&binding);
                     } else {
                         retain_pending = true;
                         pending.context = Some(ctx.clone());
@@ -351,7 +396,7 @@ impl Matcher {
         for binding in self.keymap.bindings() {
             if let Trigger::Standard(triggeract) = binding.trigger {
                 if *triggeract == action && binding.context_predicate.eval(ctx) {
-                    return MatchResult::Action(binding.action.clone());
+                    return Self::resolve_matched_binding(&binding);
                 }
             }
         }
@@ -364,12 +409,15 @@ impl Matcher {
         for binding in self.keymap.bindings() {
             if let Trigger::Custom(tag) = binding.trigger {
                 if *tag == action && binding.context_predicate.eval(ctx) {
-                    return MatchResult::Action(binding.action.clone());
+                    return Self::resolve_matched_binding(&binding);
                 }
             }
+            // The "match_custom leak" dual-check: also match the ORIGINAL custom
+            // trigger of a binding whose trigger was overridden. Routes through the
+            // SAME shared helper, so a tombstone suppresses here too.
             if let Some(Trigger::Custom(tag)) = binding.original_trigger {
                 if *tag == action && binding.context_predicate.eval(ctx) {
-                    return MatchResult::Action(binding.action.clone());
+                    return Self::resolve_matched_binding(&binding);
                 }
             }
         }

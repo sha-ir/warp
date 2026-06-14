@@ -1,3 +1,4 @@
+use std::borrow::Cow;
 use std::collections::{HashMap, HashSet};
 
 #[derive(Clone, Debug, Default, Eq, PartialEq)]
@@ -8,9 +9,9 @@ pub struct Context {
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub enum ContextPredicate {
-    Identifier(&'static str),
-    Equal(&'static str, &'static str),
-    NotEqual(&'static str, &'static str),
+    Identifier(Cow<'static, str>),
+    Equal(Cow<'static, str>, Cow<'static, str>),
+    NotEqual(Cow<'static, str>, Cow<'static, str>),
     Not(Box<ContextPredicate>),
     And(Box<ContextPredicate>, Box<ContextPredicate>),
     Or(Box<ContextPredicate>, Box<ContextPredicate>),
@@ -22,10 +23,10 @@ pub mod macros {
     #[macro_export]
     macro_rules! id {
         ($val:literal) => {
-            $crate::keymap::ContextPredicate::Identifier($val)
+            $crate::keymap::ContextPredicate::Identifier($val.into())
         };
         ($val:expr) => {
-            $crate::keymap::ContextPredicate::Identifier($val)
+            $crate::keymap::ContextPredicate::Identifier($val.into())
         };
     }
     pub use id;
@@ -35,7 +36,10 @@ pub mod macros {
     #[macro_export]
     macro_rules! eq {
         ($a:literal, $b:literal) => {
-            $crate::keymap::ContextPredicate::Equal($a, $b)
+            $crate::keymap::ContextPredicate::Equal($a.into(), $b.into())
+        };
+        ($a:expr, $b:expr) => {
+            $crate::keymap::ContextPredicate::Equal($a.into(), $b.into())
         };
     }
     pub use eq;
@@ -45,7 +49,10 @@ pub mod macros {
     #[macro_export]
     macro_rules! ne {
         ($a:literal, $b:literal) => {
-            $crate::keymap::ContextPredicate::NotEqual($a, $b)
+            $crate::keymap::ContextPredicate::NotEqual($a.into(), $b.into())
+        };
+        ($a:expr, $b:expr) => {
+            $crate::keymap::ContextPredicate::NotEqual($a.into(), $b.into())
         };
     }
     pub use ne;
@@ -100,16 +107,16 @@ impl Context {
 impl ContextPredicate {
     pub fn eval(&self, ctx: &Context) -> bool {
         match self {
-            Self::Identifier(name) => ctx.set.contains(*name),
+            Self::Identifier(name) => ctx.set.contains(&**name),
             Self::Equal(left, right) => ctx
                 .map
-                .get(left)
-                .map(|value| value == right)
+                .get(&**left)
+                .map(|value| *value == &**right)
                 .unwrap_or(false),
             Self::NotEqual(left, right) => ctx
                 .map
-                .get(left)
-                .map(|value| value != right)
+                .get(&**left)
+                .map(|value| *value != &**right)
                 .unwrap_or(true),
             Self::Not(pred) => !pred.eval(ctx),
             Self::And(left, right) => left.eval(ctx) && right.eval(ctx),

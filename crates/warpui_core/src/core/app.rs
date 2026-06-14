@@ -1708,7 +1708,9 @@ impl AppContext {
     /// without needing a live window/view.
     #[cfg(feature = "test-util")]
     pub fn bindings_for_context_snapshot(&self, context: Context) -> Vec<BindingLens<'_>> {
-        self.keystroke_matcher.bindings_for_context(context).collect()
+        self.keystroke_matcher
+            .bindings_for_context(context)
+            .collect()
     }
 
     /// Returns the first registered binding with the given name, if one exists.
@@ -2042,6 +2044,15 @@ impl AppContext {
                     action.as_ref(),
                     log::Level::Info,
                 ),
+                // X9 spike: an Unbound tombstone suppressed every binding for this
+                // key in this link's context (no action fired — that is the
+                // suppression the kernel proves at the matcher level). Treated as
+                // not-handled here, matching the existing `MatchResult::None`
+                // dispatch behavior. NOTE: whether an unbound key should be
+                // *consumed* (stop the responder chain) or *fall through* to a
+                // parent link is a product policy OUTSIDE this matcher kernel; this
+                // arm is a non-invasive placeholder.
+                MatchResult::Unbound => false,
             };
 
             if handled {

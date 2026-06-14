@@ -226,6 +226,271 @@ fn test_bindings_for_context() {
     assert_eq!(ctx_b_bindings, vec!["c", "b"]);
 }
 
+// ----------------------------------------------------------------------------
+// X9 spike: Unbound tombstone kernel
+// ----------------------------------------------------------------------------
+
+fn assert_unbound(result: MatchResult, path: &str) {
+    assert!(
+        matches!(result, MatchResult::Unbound),
+        "{path}: expected MatchResult::Unbound (tombstone short-circuit)"
+    );
+}
+
+fn assert_is_action(result: MatchResult, path: &str) {
+    assert!(
+        matches!(result, MatchResult::Action(_)),
+        "{path}: expected MatchResult::Action (baseline, before tombstone)"
+    );
+}
+
+fn expect_action(result: MatchResult, path: &str) -> Arc<dyn Action> {
+    match result {
+        MatchResult::Action(action) => action,
+        _ => panic!("{path}: expected MatchResult::Action"),
+    }
+}
+
+/// X9 (A) — keystroke path: an injected Unbound tombstone on `ctrl-c` suppresses a
+/// SEPARATE lower-precedence `ctrl-c` binding through `push_keystroke`, returning
+/// `MatchResult::Unbound` via the ONE shared `resolve_matched_binding` helper.
+#[test]
+fn test_tombstone_suppresses_keystroke_via_shared_helper() {
+    #[derive(Debug, PartialEq)]
+    enum Action {
+        Copy,
+    }
+
+    let keymap = Keymap::new(vec![FixedBinding::new("ctrl-c", Action::Copy, always!())]);
+    let mut matcher = Matcher::new(keymap);
+    let view_id = EntityId::new();
+    let ctx = Context::default();
+
+    // Baseline: ctrl-c resolves to the lower-precedence fixed Copy action.
+    assert_is_action(
+        matcher.push_keystroke(Keystroke::parse("ctrl-c").unwrap(), view_id, &ctx),
+        "push_keystroke baseline",
+    );
+
+    // Inject an Unbound tombstone on ctrl-c at the highest precedence.
+    matcher.inject_binding(
+        EditableBinding::new("unbind_copy", "", Action::Copy)
+            .with_key_binding("ctrl-c")
+            .with_context_predicate(always!())
+            .as_tombstone(),
+    );
+
+    // Now ctrl-c is suppressed: Unbound, NOT the separate lower-precedence binding.
+    assert_unbound(
+        matcher.push_keystroke(Keystroke::parse("ctrl-c").unwrap(), view_id, &ctx),
+        "push_keystroke after tombstone",
+    );
+}
+
+/// X9 (A) — standard path: the SAME shared helper routes `match_standard` to
+/// `Unbound` when a tombstone outranks a separate lower-precedence standard binding.
+#[test]
+fn test_tombstone_suppresses_standard_via_shared_helper() {
+    #[derive(Debug, PartialEq)]
+    enum Action {
+        Close,
+    }
+
+    let keymap = Keymap::new(vec![FixedBinding::standard(
+        StandardAction::Close,
+        Action::Close,
+        always!(),
+    )]);
+    let mut matcher = Matcher::new(keymap);
+    let ctx = Context::default();
+
+    // Baseline.
+    assert_is_action(
+        matcher.match_standard(StandardAction::Close, &ctx),
+        "match_standard baseline",
+    );
+
+    matcher.inject_binding(
+        EditableBinding::new("unbind_close", "", Action::Close)
+            .with_standard_action(StandardAction::Close)
+            .with_context_predicate(always!())
+            .as_tombstone(),
+    );
+
+    assert_unbound(
+        matcher.match_standard(StandardAction::Close, &ctx),
+        "match_standard after tombstone",
+    );
+}
+
+/// X9 (A) — custom path (PRIMARY trigger) plus the SECOND macOS-menu surface:
+/// a custom-triggered tombstone suppresses both `match_custom` AND
+/// `binding_for_custom_action_in_context`.
+#[test]
+fn test_tombstone_suppresses_custom_primary_and_second_surface() {
+    #[derive(Debug, PartialEq)]
+    enum Action {
+        Real,
+    }
+    const TAG: CustomTag = 7;
+
+    // Register the fixed binding via the Matcher so `fixed_custom_action_bindings`
+    // (the dual list read by the second surface) is populated.
+    let mut matcher = Matcher::new(Keymap::default());
+    matcher.register_fixed_bindings([FixedBinding::custom(TAG, Action::Real, "Real", always!())]);
+    let ctx = Context::default();
+
+    // Baseline: both surfaces resolve the action.
+    assert_is_action(matcher.match_custom(TAG, &ctx), "match_custom baseline");
+    assert!(
+        matcher
+            .binding_for_custom_action_in_context(TAG, &ctx)
+            .is_some(),
+        "second-surface baseline should resolve"
+    );
+
+    matcher.inject_binding(
+        EditableBinding::new("unbind_real", "", Action::Real)
+            .with_custom_action(TAG)
+            .with_context_predicate(always!())
+            .as_tombstone(),
+    );
+
+    // match_custom (primary `Trigger::Custom` arm) short-circuits to Unbound.
+    assert_unbound(
+        matcher.match_custom(TAG, &ctx),
+        "match_custom after tombstone",
+    );
+    // SECOND SURFACE: macOS-menu lookup now returns None (action is unbound).
+    assert!(
+        matcher
+            .binding_for_custom_action_in_context(TAG, &ctx)
+            .is_none(),
+        "second surface must honor the tombstone and return None"
+    );
+}
+
+/// X9 (A) — custom path via the `original_trigger` DUAL-CHECK (matcher.rs:370-373,
+/// the "match_custom leak"): a tombstone whose current trigger was overridden to a
+/// keystroke still suppresses the custom action through the SAME shared helper, and
+/// the second surface honors it too.
+#[test]
+fn test_tombstone_suppresses_custom_via_original_trigger_dual_check() {
+    #[derive(Debug, PartialEq)]
+    enum Action {
+        Real,
+    }
+    const TAG: CustomTag = 9;
+
+    let mut matcher = Matcher::new(Keymap::default());
+    matcher.register_fixed_bindings([FixedBinding::custom(TAG, Action::Real, "Real", always!())]);
+    let ctx = Context::default();
+
+    assert_is_action(matcher.match_custom(TAG, &ctx), "match_custom baseline");
+
+    // Inject a custom-triggered tombstone, then override its trigger to a keystroke.
+    // `as_lens` then exposes trigger=Keystrokes, original_trigger=Some(Custom(TAG)),
+    // so only the dual-check arm can match TAG.
+    matcher.inject_binding(
+        EditableBinding::new("unbind9", "", Action::Real)
+            .with_custom_action(TAG)
+            .with_context_predicate(always!())
+            .as_tombstone(),
+    );
+    matcher.set_custom_trigger(
+        "unbind9".to_string(),
+        Trigger::Keystrokes(vec![Keystroke::parse("z").unwrap()]),
+    );
+
+    // Primary arm no longer matches (trigger is now a keystroke); the original_trigger
+    // dual-check matches and routes through the SAME helper to Unbound.
+    assert_unbound(
+        matcher.match_custom(TAG, &ctx),
+        "match_custom via original_trigger dual-check",
+    );
+    assert!(
+        matcher
+            .binding_for_custom_action_in_context(TAG, &ctx)
+            .is_none(),
+        "second surface must honor the tombstone via original_trigger too"
+    );
+}
+
+/// X9 (B) — CONSISTENCY GATE: after an inject OVERRIDE of `copy` (not a tombstone),
+/// the matcher, the name-keyed reader `get_binding_by_name`, and the dual
+/// custom-action list `binding_for_custom_action_in_context` all return the SAME
+/// overridden action — proving inject is a FULL override, not a matcher-only
+/// half-override. (Requires the `get_binding_by_name` reverse-ordering reader
+/// plumbing; see the comment on that method.)
+#[test]
+fn test_inject_override_consistency_gate() {
+    #[derive(Debug, PartialEq)]
+    enum Copy {
+        Original,
+        Override,
+    }
+    const TAG: CustomTag = 42;
+
+    let mut matcher = Matcher::new(Keymap::default());
+    matcher.register_editable_bindings([EditableBinding::new("copy", "Copy", Copy::Original)
+        .with_custom_action(TAG)
+        .with_context_predicate(always!())]);
+    let ctx = Context::default();
+
+    // Baseline: all three readers agree on the ORIGINAL before any override.
+    let baseline = expect_action(matcher.match_custom(TAG, &ctx), "baseline matcher");
+    assert_eq!(baseline.as_action::<Copy>(), &Copy::Original);
+    assert_eq!(
+        matcher
+            .get_binding_by_name("copy")
+            .unwrap()
+            .action
+            .as_action::<Copy>(),
+        &Copy::Original
+    );
+    assert_eq!(
+        matcher
+            .binding_for_custom_action_in_context(TAG, &ctx)
+            .unwrap()
+            .action
+            .as_action::<Copy>(),
+        &Copy::Original
+    );
+
+    // Inject an OVERRIDE (a real binding, NOT a tombstone) at highest precedence.
+    matcher.inject_binding(
+        EditableBinding::new("copy", "Copy", Copy::Override)
+            .with_custom_action(TAG)
+            .with_context_predicate(always!()),
+    );
+
+    // CONSISTENCY GATE: matcher, name-reader, and macOS-menu surface must all agree.
+    let matcher_action = expect_action(matcher.match_custom(TAG, &ctx), "override matcher");
+    assert_eq!(
+        matcher_action.as_action::<Copy>(),
+        &Copy::Override,
+        "matcher must resolve the override (LIFO precedence)"
+    );
+    assert_eq!(
+        matcher
+            .get_binding_by_name("copy")
+            .unwrap()
+            .action
+            .as_action::<Copy>(),
+        &Copy::Override,
+        "get_binding_by_name must agree with the matcher (no name-reader half-override)"
+    );
+    assert_eq!(
+        matcher
+            .binding_for_custom_action_in_context(TAG, &ctx)
+            .unwrap()
+            .action
+            .as_action::<Copy>(),
+        &Copy::Override,
+        "binding_for_custom_action_in_context (macOS menu) must agree with the matcher"
+    );
+}
+
 impl Matcher {
     fn test_keystroke(
         &mut self,
@@ -247,268 +512,5 @@ trait AsAction {
 impl AsAction for Arc<dyn Action> {
     fn as_action<A: Action>(&self) -> &A {
         self.as_ref().as_any().downcast_ref::<A>().unwrap()
-    }
-}
-
-/// A3-Q20 (merged X12) — matcher-scan perf bench. Throwaway `--release` microbench that
-/// settles whether the R4 per-context trie is needed for Axis-3 PERF, or stays deferred.
-///
-/// Separates the two costs the spec conflates:
-///   (a)  PRODUCTION scan  — real `push_keystroke` over `Tracked` editable bindings,
-///        so the per-deref `with_cache` TLS tax is counted (a `Vec<FixedBinding>` would
-///        false-green it to ~0).
-///   (a') PLAIN scan       — identical logic over a plain `Vec`, isolating the algorithm
-///        from the TLS tax so (b)/(c) compare apples-to-apples.
-///   (b)  PREBUILT index   — `HashMap<FirstKeystroke, Vec<idx>>` built once; per-keystroke
-///        evals only candidates. The >2x-crossover question.
-///   (c)  layered ENVELOPE — collect ALL prefix+context matches, sort by (layer,recency),
-///        scan an Unbound layer, NO early return. SYNTHETIC upper bound (the real
-///        Unbound/(layer,recency) primitives do not exist yet); load-bearing kill clause.
-///   P2   plain-MISS floor — a key matching nothing (cheap n*starts_with, 0 evals).
-///   P5   variant-c        — per-binding platform-resolution String alloc; an A6-Q4/R5
-///        guardrail ("don't parse per-binding on the hot path"), NOT an R4 verdict.
-///
-/// Worst case (forces the full no-early-return scan): a 2-key vim-pack of chords sharing
-/// leader `g`; pressing `g` (len 1) never exact-matches a len-2 chord, so the scan runs
-/// full and retains pending while evaluating every prefix-matching predicate.
-///
-/// Run: cargo test -p warpui_core --release -- --ignored --nocapture bench_push_keystroke
-#[test]
-#[ignore = "A3-Q20 (merged X12) matcher-scan perf bench; --release only, run explicitly"]
-fn bench_push_keystroke() {
-    use std::collections::{HashMap, HashSet};
-    use std::hint::black_box;
-    use std::time::{Duration, Instant};
-
-    use crate::keymap::ContextPredicate;
-
-    #[derive(Debug)]
-    struct BenchAction(#[allow(dead_code)] u32);
-
-    struct Synth {
-        keys: Vec<Keystroke>,
-        pred: ContextPredicate,
-        layer: u8,
-        recency: u32,
-    }
-
-    fn id_p(s: &'static str) -> ContextPredicate {
-        ContextPredicate::Identifier(s)
-    }
-
-    // Deep "ctrl-g"-shaped predicate (11 combinators / 12 leaves); evaluates true in the bench ctx.
-    fn deep_predicate() -> ContextPredicate {
-        (id_p("Terminal") & !id_p("IMEOpen") & (id_p("LRC") | id_p("Alt")) & id_p("F1") & id_p("F2"))
-            | (id_p("EditorView") & !id_p("IMEOpen") & id_p("F3"))
-            | (id_p("Terminal") & !id_p("IMEOpen") & id_p("F3"))
-    }
-
-    // Reproduce the real predicate-depth histogram (depth0 ~54%, depth1 ~35%, tail to ~4,
-    // ~1% deep). All evaluate TRUE in the bench ctx so the worst-case scan does full work.
-    fn make_predicate(i: usize) -> ContextPredicate {
-        const POS: [&str; 8] = ["Terminal", "EditorView", "LRC", "Alt", "F1", "F2", "F3", "ViewTag"];
-        let p = POS[i % POS.len()];
-        let q = POS[(i / POS.len()) % POS.len()];
-        match i % 100 {
-            0..=53 => id_p(p),
-            54..=88 => id_p(p) & !id_p("IMEOpen"),
-            89..=96 => id_p(p) & !id_p("IMEOpen") & id_p(q),
-            97..=98 => id_p(p) & !id_p("IMEOpen") & id_p(q) & id_p("F1") & id_p("F2"),
-            _ => deep_predicate(),
-        }
-    }
-
-    fn build(n: usize, vim: usize) -> (Matcher, Vec<Synth>, Keystroke, Context) {
-        const FILLER: [&str; 9] = ["a", "b", "c", "d", "e", "f", "h", "i", "j"]; // single keys, never "g"
-        let mut editables = Vec::with_capacity(n);
-        let mut synth = Vec::with_capacity(n);
-        for i in 0..n {
-            let pred = make_predicate(i);
-            let (chord, keys) = if i < vim {
-                (
-                    "g a".to_string(),
-                    vec![Keystroke::parse("g").unwrap(), Keystroke::parse("a").unwrap()],
-                )
-            } else {
-                let k = FILLER[i % FILLER.len()];
-                (k.to_string(), vec![Keystroke::parse(k).unwrap()])
-            };
-            let name: &'static str = Box::leak(format!("b{i}").into_boxed_str());
-            editables.push(
-                EditableBinding::new(name, "bench", BenchAction(i as u32))
-                    .with_key_binding(&chord)
-                    .with_context_predicate(pred.clone()),
-            );
-            synth.push(Synth { keys, pred, layer: (i % 2) as u8, recency: i as u32 });
-        }
-        let mut keymap = Keymap::default();
-        keymap.register_editable_bindings(editables);
-        let matcher = Matcher::new(keymap);
-
-        let leader = Keystroke::parse("g").unwrap();
-        let mut ctx = Context::default();
-        for tag in ["Terminal", "EditorView", "LRC", "Alt", "F1", "F2", "F3", "ViewTag"] {
-            ctx.set.insert(tag);
-        }
-        (matcher, synth, leader, ctx)
-    }
-
-    fn pct(sorted: &[Duration], q: f64) -> Duration {
-        let idx = (((sorted.len() as f64) * q) as usize).min(sorted.len() - 1);
-        sorted[idx]
-    }
-    fn report(label: &str, n: usize, mut s: Vec<Duration>) {
-        s.sort_unstable();
-        println!(
-            "  N={n:<5} {label:<22} p50={:.2?}  p99={:.2?}  max={:.2?}",
-            pct(&s, 0.50),
-            pct(&s, 0.99),
-            *s.last().unwrap(),
-        );
-    }
-
-    assert!(
-        !cfg!(debug_assertions),
-        "bench_push_keystroke MUST run in --release (debug autotracking/HashMap is 10-50x slower and inverts the result)"
-    );
-
-    let leader_miss = Keystroke::parse("z").unwrap(); // prefix-matches nothing
-
-    println!("\nbench_push_keystroke (release) — worst case: leader 'g' shared by a held-pending vim-pack");
-    for &n in &[500usize, 835, 2000, 5000] {
-        let vim = (n / 2).min(250).max(1);
-        let (mut matcher, synth, leader, ctx) = build(n, vim);
-        let view = EntityId::new();
-        let iters: usize = if n >= 5000 { 50_000 } else { 200_000 };
-
-        // Sanity: the worst-case key must prefix+context-match the full vim-pack (full eval).
-        let cand = synth
-            .iter()
-            .filter(|s| s.keys.starts_with(std::slice::from_ref(&leader)) && s.pred.eval(&ctx))
-            .count();
-        assert_eq!(cand, vim, "worst-case key must prefix+context-match the whole vim-pack");
-
-        println!("--- N={n} (vim-pack={vim}, iters={iters}) ---");
-
-        // (a) PRODUCTION SCAN — real push_keystroke over Tracked bindings (counts TLS tax).
-        {
-            let mut t = Vec::with_capacity(iters);
-            for _ in 0..iters {
-                matcher.pending.clear();
-                let start = Instant::now();
-                let r = matcher.push_keystroke(leader.clone(), view, &ctx);
-                t.push(start.elapsed());
-                black_box(matches!(r, MatchResult::Pending));
-            }
-            report("a: prod scan (Tracked)", n, t);
-        }
-
-        // (a') PLAIN SCAN — same logic over a plain Vec (no Tracked) — isolates the algorithm.
-        {
-            let mut t = Vec::with_capacity(iters);
-            for _ in 0..iters {
-                let start = Instant::now();
-                let mut retain = false;
-                for sb in &synth {
-                    if sb.keys.starts_with(std::slice::from_ref(&leader)) && sb.pred.eval(&ctx) {
-                        if sb.keys.len() == 1 {
-                            retain = false;
-                            break;
-                        }
-                        retain = true;
-                    }
-                }
-                t.push(start.elapsed());
-                black_box(retain);
-            }
-            report("a': plain scan", n, t);
-        }
-
-        // P2 PLAIN-MISS floor — a key that prefix-matches nothing (0 evals).
-        {
-            let mut t = Vec::with_capacity(iters);
-            for _ in 0..iters {
-                let start = Instant::now();
-                let mut hit = false;
-                for sb in &synth {
-                    if sb.keys.starts_with(std::slice::from_ref(&leader_miss)) && sb.pred.eval(&ctx) {
-                        hit = true;
-                    }
-                }
-                t.push(start.elapsed());
-                black_box(hit);
-            }
-            report("P2: plain-MISS floor", n, t);
-        }
-
-        // (b) PREBUILT first-keystroke index — built once; per-keystroke evals only candidates.
-        {
-            let mut index: HashMap<Keystroke, Vec<usize>> = HashMap::new();
-            for (i, sb) in synth.iter().enumerate() {
-                index.entry(sb.keys[0].clone()).or_default().push(i);
-            }
-            let mut t = Vec::with_capacity(iters);
-            for _ in 0..iters {
-                let start = Instant::now();
-                let mut retain = false;
-                if let Some(cands) = index.get(&leader) {
-                    for &i in cands {
-                        let sb = &synth[i];
-                        if sb.pred.eval(&ctx) {
-                            if sb.keys.len() == 1 {
-                                retain = false;
-                                break;
-                            }
-                            retain = true;
-                        }
-                    }
-                }
-                t.push(start.elapsed());
-                black_box(retain);
-            }
-            report("b: prebuilt index", n, t);
-        }
-
-        // (c) WORST-CASE LAYERED ENVELOPE — collect ALL matches, sort by (layer,recency),
-        // scan an Unbound layer, NO early return. Synthetic upper bound.
-        {
-            let unbound: HashSet<usize> = HashSet::new();
-            let mut t = Vec::with_capacity(iters);
-            for _ in 0..iters {
-                let start = Instant::now();
-                let mut matches: Vec<(u8, std::cmp::Reverse<u32>, usize)> = Vec::new();
-                for (i, sb) in synth.iter().enumerate() {
-                    if sb.keys.starts_with(std::slice::from_ref(&leader)) && sb.pred.eval(&ctx) {
-                        matches.push((sb.layer, std::cmp::Reverse(sb.recency), i));
-                    }
-                }
-                matches.sort_unstable();
-                let winner = matches
-                    .iter()
-                    .find(|&&(_, _, i)| !unbound.contains(&i))
-                    .map(|&(_, _, i)| i);
-                t.push(start.elapsed());
-                black_box(winner);
-            }
-            report("c: layered ENVELOPE", n, t);
-        }
-
-        // P5 VARIANT-C guardrail (A6-Q4/R5, NOT an R4 verdict) — per-binding String alloc.
-        {
-            let mut t = Vec::with_capacity(iters);
-            for _ in 0..iters {
-                let start = Instant::now();
-                let mut retain = false;
-                for sb in &synth {
-                    let _resolved = black_box(format!("{}", sb.keys[0].key));
-                    if sb.keys.starts_with(std::slice::from_ref(&leader)) && sb.pred.eval(&ctx) {
-                        retain = true;
-                    }
-                }
-                t.push(start.elapsed());
-                black_box(retain);
-            }
-            report("P5: variant-c +alloc", n, t);
-        }
     }
 }

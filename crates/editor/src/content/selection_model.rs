@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::ops::Range;
 
 use itertools::Itertools;
@@ -161,6 +162,12 @@ impl BufferSelectionModel {
         if overlap_indices.is_empty() {
             return;
         }
+
+        // Build a HashSet for O(1) membership tests. The two membership checks below run once
+        // per selection (O(N) each); using `Vec::contains` made them O(N * overlap_indices.len()),
+        // which degrades to O(N^2) when a motion chains all selections into one overlap range.
+        // Building the set once keeps the whole pass O(N).
+        let overlap_indices: HashSet<usize> = overlap_indices.into_iter().collect();
 
         // To determine whether the head of new selections should be before or after the tail,
         // we check whether overlapping selections have the head before the tail.

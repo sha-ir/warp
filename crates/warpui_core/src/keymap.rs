@@ -15,9 +15,11 @@ use crate::{Action, AppContext, Tracked};
 
 mod context;
 mod matcher;
+pub mod overlap;
 
 pub use context::{macros, Context, ContextPredicate};
 pub use matcher::{IsBindingValid, MatchResult, Matcher};
+pub use overlap::{atoms, can_both_be_true, overlap_overflow_count, AtomSet};
 
 use crate::platform::OperatingSystem;
 
@@ -77,10 +79,10 @@ impl LayerStore {
         }
     }
 
-    /// Earliest-registered currently-enabled editable binding with `name`.
+    /// Highest-precedence currently-enabled editable binding with `name`.
     fn get_binding_by_name(&self, name: &str) -> Option<BindingLens<'_>> {
         let indices = self.editable_by_name.get(name)?;
-        indices.iter().find_map(|idx| {
+        indices.iter().rev().find_map(|idx| {
             let binding = self.editable.get(*idx)?.as_lens();
             binding.is_enabled().then_some(binding.as_binding())
         })
@@ -316,6 +318,7 @@ pub struct BindingLens<'a> {
     /// and the original trigger are the same.
     pub original_trigger: Option<&'a Trigger>,
     pub group: Option<&'static str>,
+    tombstone: bool,
     pub id: BindingId,
 }
 
@@ -334,6 +337,15 @@ impl BindingId {
     pub fn new() -> BindingId {
         let raw = NEXT_BINDING_ID.fetch_add(1, Ordering::Relaxed);
         BindingId(raw)
+    }
+}
+
+impl<'a> BindingLens<'a> {
+    pub fn context_predicate(&self) -> &ContextPredicate {
+        self.context_predicate
+    }
+    pub fn is_tombstone(&self) -> bool {
+        self.tombstone
     }
 }
 
@@ -364,6 +376,7 @@ pub struct EditableBinding {
     trigger: Trigger,
     custom_trigger: Option<Trigger>,
     group: Option<&'static str>,
+    tombstone: bool,
     /// A unique identifier that identifies this binding.
     id: BindingId,
 }
@@ -379,6 +392,7 @@ pub struct EditableBindingLens<'a> {
     /// The original trigger, if a custom one is overriding it
     pub original_trigger: Option<&'a Trigger>,
     pub group: Option<&'static str>,
+    tombstone: bool,
     pub id: BindingId,
 }
 
@@ -475,6 +489,10 @@ impl Keymap {
         self.modepack_layer.update_custom_trigger(name, &trigger);
     }
 
+    fn inject_binding(&mut self, binding: EditableBinding) {
+        self.user_layer.register_editable([binding]);
+    }
+
     /// Fetch an iterator of editable bindings
     ///
     /// The triggers for those actions will be overwritten by any custom triggers
@@ -498,12 +516,14 @@ impl Keymap {
     /// layering WITHIN each split, not by chaining whole layers (which would let a user-layer
     /// fixed binding beat a default-layer editable one).
     fn bindings(&self) -> impl Iterator<Item = BindingLens<'_>> {
-        self.editable_bindings().map(|lens| lens.as_binding()).chain(
-            self.modepack_layer
-                .fixed_bindings()
-                .chain(self.user_layer.fixed_bindings())
-                .chain(self.default_layer.fixed_bindings()),
-        )
+        self.editable_bindings()
+            .map(|lens| lens.as_binding())
+            .chain(
+                self.modepack_layer
+                    .fixed_bindings()
+                    .chain(self.user_layer.fixed_bindings())
+                    .chain(self.default_layer.fixed_bindings()),
+            )
     }
 
     /// Custom-action bindings: a DERIVED projection of `bindings()` (A3-Q4 / A3-Q8 Option A). A
@@ -672,6 +692,7 @@ impl FixedBinding {
             description: self.command_description.as_ref(),
             original_trigger: None,
             group: self.group,
+            tombstone: false,
             id: self.id,
         }
     }
@@ -694,6 +715,7 @@ impl EditableBinding {
             group: None,
             trigger: Trigger::Empty,
             custom_trigger: None,
+            tombstone: false,
             id: BindingId::new(),
         }
     }
@@ -773,6 +795,11 @@ impl EditableBinding {
         self
     }
 
+    pub fn as_tombstone(mut self) -> Self {
+        self.tombstone = true;
+        self
+    }
+
     fn as_lens(&self) -> EditableBindingLens<'_> {
         let (trigger, original_trigger) = if let Some(custom_trigger) = self.custom_trigger.as_ref()
         {
@@ -789,6 +816,7 @@ impl EditableBinding {
             trigger,
             original_trigger,
             group: self.group,
+            tombstone: self.tombstone,
             id: self.id,
         }
     }
@@ -807,6 +835,7 @@ impl<'a> EditableBindingLens<'a> {
             description: Some(self.description),
             original_trigger: self.original_trigger,
             group: self.group,
+            tombstone: self.tombstone,
             id: self.id,
         }
     }
