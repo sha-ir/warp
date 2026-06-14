@@ -56,12 +56,12 @@ Results docs live on each spike's branch (downstream branches inherit upstream d
 - A4-Q16 paint of N quads (unmeasured); regime is fixture-sensitive; CI hardware shifts the crossover N.
 - X9/X6 second macOS-menu surface keeps its own Option-shaped short-circuit (predicate shared, shape diverges); dynamic Modal vocabulary is faked (no FromStr/interning — see X7).
 - A5-Q5 reachability unmodeled (logical overlap ≠ reachable); production graduation needs Axis-2 to thread `ContextPredicate` into the settings `ConflictMap`.
-- X1: ModePack-vs-UserOverride precedence (Axis-4 product call); the **X13 production-scale diff with `--features layered_spike` was NOT run** (app build exceeded the time-box; golden is ready) — `matcher_tests` parity stands in for resolution preservation but the full 472-binding feature-on diff is the recommended next check.
+- X1: ModePack-vs-UserOverride precedence (Axis-4 product call). The **X13 production-scale diff with `--features layered_spike` is now RUN → ✅ Clean-confirmed** (`6391c43f`): 0 winner flips over all 452 golden rows (BLESS off, feature-ON vs feature-OFF golden), with routing PROVEN both ways — a cfg-feature hit-counter (fired 12×, one LayeredKeymap walk per fixture) and a mutation control (`entries.iter().rev()` → ~27 flips/RED, then revert → green). No matcher wiring needed (the repoint is at the `BackingKeymap` type-alias shared by `bindings_for_context`; no old-matcher fallback). **Residual = coverage breadth**: the golden covers a ~266-binding subset (winners over the 12 curated contexts), not the full ~472 registration population; still Linux-only, chord-blind (except `cmdorctrl-r w`), flattened single-Context, in-memory — so macOS / live chords / responder cascade / running app remain separate, pre-existing X13 limits.
 - Nothing has been merged to `sha-ir/keybindings-draft`; every spike is isolated and reversible. The X13 gate remains intact.
 
 ## Recommended next steps
 
 1. Land the two no-brainer PRs: the **A4-Q16 HashSet fix** and the **X7 leaf-`Cow`** type.
-2. Run the deferred **X1 feature-on X13 production diff** to close the last resolution-preservation gap before committing to the LayeredKeymap.
+2. ~~Run the deferred X1 feature-on X13 production diff~~ — **DONE, Clean-confirmed** (`6391c43f`). Resolution preservation holds for the covered population → **green light to build the non-feature-gated LayeredKeymap migration** against the golden. Later hardening: widen the golden toward the full ~472-binding population + add a macOS capture (Mac runner or the A6-Q14 OS-injection seam).
 3. Take the two product decisions: **exclusion-groups** primitive (A5-Q5) and the **write-fan-out granularity + preview debounce** (X1).
 4. Sequence the engine unification (X6 resolver + X9 tombstone + X1 store) as shared Phase-2 infra; keep R5 on the split path; keep the trie deferred.
