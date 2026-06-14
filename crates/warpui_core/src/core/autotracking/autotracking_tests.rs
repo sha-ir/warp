@@ -289,3 +289,84 @@ fn test_model_updates_multiple_views() {
         assert_eq!(second_render_counter.load(Ordering::Relaxed), 3);
     });
 }
+
+// ---- A3-Q4 / A3-Q7: live-apply invalidation identity ----------------------------------
+//
+// After the per-layer refactor, does editing a binding's override still invalidate a view that
+// read it via get_binding_by_name at render time? It does IFF get_binding_by_name resolves the
+// SAME Tracked<EditableBinding> that update_custom_trigger mutates. A single re-render (count == 2)
+// is the identity witness; a split base/override design would leave the view never invalidated
+// (count stuck at 1).
+
+struct BindingView {
+    counter: Arc<AtomicUsize>,
+}
+
+impl Entity for BindingView {
+    type Event = ();
+}
+
+impl View for BindingView {
+    fn ui_name() -> &'static str {
+        "BindingView"
+    }
+
+    fn render(&self, app: &AppContext) -> Box<dyn Element> {
+        // Reading the binding by name during render derefs its Tracked, recording a dependency
+        // edge on that TrackedId (rendering_view == Some here).
+        if let Some(binding) = app.get_binding_by_name("a3q4.test") {
+            let _ = binding.trigger;
+        }
+        self.counter.fetch_add(1, Ordering::Relaxed);
+        Empty::new().finish()
+    }
+}
+
+impl TypedActionView for BindingView {
+    type Action = ();
+}
+
+#[test]
+fn a3q4_live_apply_invalidation_identity() {
+    use crate::keymap::macros::*;
+    use crate::keymap::{EditableBinding, Keystroke, Trigger};
+
+    App::test((), |mut app| async move {
+        // Register an editable binding and establish a user override BEFORE subscribing, so the
+        // test exercises the post-move "override in place" state, not the pre-edit baseline.
+        app.update(|ctx| {
+            ctx.register_editable_bindings([EditableBinding::new("a3q4.test", "A3Q4 test", ())
+                .with_key_binding("ctrl-a")
+                .with_context_predicate(id!("c"))]);
+            ctx.set_custom_trigger(
+                "a3q4.test".to_string(),
+                Trigger::Keystrokes(vec![Keystroke::parse("ctrl-b").unwrap()]),
+            );
+        });
+
+        let counter = Arc::new(AtomicUsize::new(0));
+        let (_, view_handle) = app.add_window(WindowStyle::NotStealFocus, |_| BindingView {
+            counter: counter.clone(),
+        });
+
+        // First render subscribes the view to the binding's TrackedId.
+        view_handle.update(&mut app, |_, _| {});
+        assert_eq!(counter.load(Ordering::Relaxed), 1, "initial render");
+
+        // Edit the override OUTSIDE render. If get_binding_by_name resolved the SAME Tracked the
+        // edit mutates, the view is invalidated and re-renders exactly once.
+        app.update(|ctx| {
+            ctx.set_custom_trigger(
+                "a3q4.test".to_string(),
+                Trigger::Keystrokes(vec![Keystroke::parse("ctrl-c").unwrap()]),
+            );
+        });
+        view_handle.update(&mut app, |_, _| {});
+
+        assert_eq!(
+            counter.load(Ordering::Relaxed),
+            2,
+            "live-apply: editing the override must invalidate the render-subscribed view exactly once"
+        );
+    });
+}

@@ -1700,6 +1700,17 @@ impl AppContext {
         self.keystroke_matcher.get_bindings()
     }
 
+    /// Test-only: resolve every binding whose context predicate matches `context`,
+    /// in precedence order (so the first lens for a given trigger is the winner that
+    /// `push_keystroke` would fire). Used by the X13 keymap-resolution-snapshot harness
+    /// to freeze a `(context, trigger, OS) -> winning action` golden before any
+    /// `bindings()` reorder. Mirrors the per-context half of `key_bindings_for_view`
+    /// without needing a live window/view.
+    #[cfg(feature = "test-util")]
+    pub fn bindings_for_context_snapshot(&self, context: Context) -> Vec<BindingLens<'_>> {
+        self.keystroke_matcher.bindings_for_context(context).collect()
+    }
+
     /// Returns the first registered binding with the given name, if one exists.
     pub fn get_binding_by_name(&self, name: &str) -> Option<BindingLens<'_>> {
         self.keystroke_matcher.get_binding_by_name(name)

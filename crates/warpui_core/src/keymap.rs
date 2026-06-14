@@ -21,20 +21,85 @@ pub use matcher::{IsBindingValid, MatchResult, Matcher};
 
 use crate::platform::OperatingSystem;
 
+/// One precedence layer's worth of bindings. A3-Q4 (variant b): this is the former flat `Keymap`
+/// body, scoped to a single layer. Whole-keymap precedence is built by chaining layers (highest
+/// first) WITHIN each of the editable/fixed splits — see [`Keymap::bindings`].
+#[derive(Default)]
+struct LayerStore {
+    fixed: Vec<FixedBinding>,
+    editable: Vec<Tracked<EditableBinding>>,
+    /// name -> indices into `editable`, in the order they were registered.
+    editable_by_name: HashMap<&'static str, Vec<usize>>,
+}
+
+impl LayerStore {
+    fn register_fixed(&mut self, bindings: impl IntoIterator<Item = FixedBinding>) {
+        self.fixed.extend(bindings);
+    }
+
+    fn register_editable(&mut self, actions: impl IntoIterator<Item = EditableBinding>) {
+        let start = self.editable.len();
+        self.editable.extend(actions.into_iter().map(Tracked::new));
+        for (idx, binding) in self.editable.iter().enumerate().skip(start) {
+            self.editable_by_name
+                .entry(binding.name)
+                .or_default()
+                .push(idx);
+        }
+    }
+
+    /// Editable bindings, highest-precedence (most recently registered) first.
+    fn editable_bindings(&self) -> impl Iterator<Item = EditableBindingLens<'_>> {
+        self.editable
+            .iter()
+            .rev()
+            .map(|binding| binding.as_lens())
+            .filter(|binding| binding.is_enabled())
+    }
+
+    /// Fixed bindings, highest-precedence (most recently registered) first.
+    fn fixed_bindings(&self) -> impl Iterator<Item = BindingLens<'_>> {
+        self.fixed
+            .iter()
+            .rev()
+            .filter(|binding| binding.is_enabled())
+            .map(FixedBinding::as_lens)
+    }
+
+    /// In-place custom-trigger override on the editable binding(s) named `name`. Mutates the SAME
+    /// `Tracked` instance that [`LayerStore::get_binding_by_name`] resolves, which is what preserves
+    /// live-apply invalidation identity (A3-Q7): the render-time read and the edit hit one
+    /// `TrackedId`. (Splitting base/override into two `Tracked` instances would break this — see the
+    /// results doc.)
+    fn update_custom_trigger(&mut self, name: &str, trigger: &Option<Trigger>) {
+        for binding in self.editable.iter_mut().filter(|b| b.name == name) {
+            binding.custom_trigger = trigger.clone();
+        }
+    }
+
+    /// Earliest-registered currently-enabled editable binding with `name`.
+    fn get_binding_by_name(&self, name: &str) -> Option<BindingLens<'_>> {
+        let indices = self.editable_by_name.get(name)?;
+        indices.iter().find_map(|idx| {
+            let binding = self.editable.get(*idx)?.as_lens();
+            binding.is_enabled().then_some(binding.as_binding())
+        })
+    }
+}
+
+/// The keymap, as an ordered set of precedence layers (A3-Q4, variant b). Replaces the former flat
+/// field set. The shadow custom-action collections are GONE: `custom_action_bindings()` is now a
+/// derived projection of `bindings()` (Option A), so the menu/UI and dispatch surfaces cannot
+/// desync (A3-Q8), and there is a single `Tracked` source of truth per binding.
 #[derive(Default)]
 pub struct Keymap {
-    fixed_bindings: Vec<FixedBinding>,
-    editable_bindings: Vec<Tracked<EditableBinding>>,
-    /// A mapping from binding name to indices in `editable_bindings` of bindings with
-    /// that name, stored in the order they were registered.
-    editable_bindings_by_name: HashMap<&'static str, Vec<usize>>,
-
-    // We store a copy of the bindings, filtered down to only ones that are
-    // triggered by a custom action.  This is done to optimize the lookups
-    // of custom action bindings that are performed on macOS in response to
-    // a `[WarpDelegate menuNeedsUpdate]` selector.
-    fixed_custom_action_bindings: Vec<FixedBinding>,
-    editable_custom_action_bindings: Vec<Tracked<EditableBinding>>,
+    /// Built-in bindings (lowest precedence).
+    default_layer: LayerStore,
+    /// User overrides / user-added bindings (higher precedence than defaults).
+    user_layer: LayerStore,
+    /// Axis-4 mode-packs (vim/helix/kakoune) — EXPLICIT STUB: constructed empty and chained at
+    /// highest precedence so the N-layer chain shape is exercised, but never populated yet.
+    modepack_layer: LayerStore,
 }
 
 // Custom actions should be identified by a unique integer called their tag.
@@ -369,33 +434,28 @@ where
 impl Keymap {
     #[cfg(test)]
     pub fn new(fixed_bindings: Vec<FixedBinding>) -> Self {
-        Self {
-            fixed_bindings,
-            ..Default::default()
-        }
+        let mut keymap = Self::default();
+        keymap.default_layer.register_fixed(fixed_bindings);
+        keymap
     }
 
-    /// Returns the earliest-registered currently-enabled binding with the given name.
+    fn layers_high_to_low(&self) -> [&LayerStore; 3] {
+        [&self.modepack_layer, &self.user_layer, &self.default_layer]
+    }
+
+    /// Returns the earliest-registered currently-enabled binding with the given name, searching
+    /// layers from highest to lowest precedence.
     pub fn get_binding_by_name(&self, name: &str) -> Option<BindingLens<'_>> {
-        let indices = self.editable_bindings_by_name.get(name)?;
-        indices.iter().find_map(|idx| {
-            let binding = self.editable_bindings.get(*idx)?;
-            let binding = binding.as_lens();
-            binding.is_enabled().then_some(binding.as_binding())
-        })
+        self.layers_high_to_low()
+            .into_iter()
+            .find_map(|layer| layer.get_binding_by_name(name))
     }
 
     /// Add new fixed bindings to the keymap
     ///
     /// These bindings are internal and cannot be changed once they are added
     fn register_fixed_bindings<T: IntoIterator<Item = FixedBinding>>(&mut self, bindings: T) {
-        let start_idx = self.fixed_bindings.len();
-        self.fixed_bindings.extend(bindings);
-        for binding in &self.fixed_bindings[start_idx..] {
-            if matches!(binding.trigger(), Trigger::Custom(_)) {
-                self.fixed_custom_action_bindings.push(binding.clone());
-            }
-        }
+        self.default_layer.register_fixed(bindings);
     }
 
     /// Add editable bindings to the keymap
@@ -403,33 +463,16 @@ impl Keymap {
     /// Editable Bindings have a name identifier which can be used to override their key bindings
     /// via the `set_custom_trigger` method.
     fn register_editable_bindings<A: IntoIterator<Item = EditableBinding>>(&mut self, actions: A) {
-        let start_idx = self.editable_bindings.len();
-        self.editable_bindings
-            .extend(actions.into_iter().map(Tracked::new));
-        for (idx, binding) in self.editable_bindings.iter().enumerate().skip(start_idx) {
-            if matches!(binding.trigger, Trigger::Custom(_)) {
-                self.editable_custom_action_bindings
-                    .push(Tracked::new((*binding).clone()));
-            }
-            self.editable_bindings_by_name
-                .entry(binding.name)
-                .or_default()
-                .push(idx);
-        }
+        self.default_layer.register_editable(actions);
     }
 
-    /// Updates the custom trigger for a given editable binding.
+    /// Updates the custom trigger for a given editable binding, in place on whichever layer holds
+    /// it (today: the default layer). Mutating the same `Tracked` `get_binding_by_name` resolves is
+    /// what preserves live-apply invalidation identity (A3-Q7).
     fn update_custom_trigger(&mut self, name: &str, trigger: Option<Trigger>) {
-        for binding in self
-            .editable_custom_action_bindings
-            .iter_mut()
-            .filter(|b| b.name == name)
-        {
-            binding.custom_trigger = trigger.clone();
-        }
-        for binding in self.editable_bindings.iter_mut().filter(|b| b.name == name) {
-            binding.custom_trigger = trigger.clone();
-        }
+        self.default_layer.update_custom_trigger(name, &trigger);
+        self.user_layer.update_custom_trigger(name, &trigger);
+        self.modepack_layer.update_custom_trigger(name, &trigger);
     }
 
     /// Fetch an iterator of editable bindings
@@ -439,11 +482,10 @@ impl Keymap {
     /// Items will be returned in the reverse order they were registered, the most recently
     /// registered editable binding will have the highest precedence
     fn editable_bindings(&self) -> impl Iterator<Item = EditableBindingLens<'_>> {
-        self.editable_bindings
-            .iter()
-            .rev()
-            .map(|binding| binding.as_lens())
-            .filter(|binding| binding.is_enabled())
+        self.modepack_layer
+            .editable_bindings()
+            .chain(self.user_layer.editable_bindings())
+            .chain(self.default_layer.editable_bindings())
     }
 
     /// Fetch an iterator of `BindingLens` objects, with the editable key bindings
@@ -451,36 +493,29 @@ impl Keymap {
     ///
     /// Editable bindings will be returned first, followed by any fixed bindings in the reverse
     /// order they were added.
+    /// All bindings in precedence order. Preserves the historical GLOBAL ordering — ALL editable
+    /// (highest-precedence layer first) THEN ALL fixed (highest-precedence layer first) — by
+    /// layering WITHIN each split, not by chaining whole layers (which would let a user-layer
+    /// fixed binding beat a default-layer editable one).
     fn bindings(&self) -> impl Iterator<Item = BindingLens<'_>> {
-        self.editable_bindings()
-            .map(|lens| lens.as_binding())
-            .chain(
-                self.fixed_bindings
-                    .iter()
-                    .rev()
-                    .filter(|binding| binding.is_enabled())
-                    .map(FixedBinding::as_lens),
-            )
+        self.editable_bindings().map(|lens| lens.as_binding()).chain(
+            self.modepack_layer
+                .fixed_bindings()
+                .chain(self.user_layer.fixed_bindings())
+                .chain(self.default_layer.fixed_bindings()),
+        )
     }
 
-    fn editable_custom_action_bindings(&self) -> impl Iterator<Item = EditableBindingLens<'_>> {
-        self.editable_custom_action_bindings
-            .iter()
-            .rev()
-            .map(|binding| binding.as_lens())
-            .filter(|binding| binding.is_enabled())
-    }
-
+    /// Custom-action bindings: a DERIVED projection of `bindings()` (A3-Q4 / A3-Q8 Option A). A
+    /// binding is "custom" if its current trigger OR its original (pre-override) trigger is a
+    /// `Trigger::Custom`, matching `match_custom`'s dispatch filter — so this menu/UI surface and
+    /// the dispatch surface can never disagree on the winner. Replaces the former hand-maintained
+    /// shadow collections + dual-write.
     pub(crate) fn custom_action_bindings(&self) -> impl Iterator<Item = BindingLens<'_>> {
-        self.editable_custom_action_bindings()
-            .map(|lens| lens.as_binding())
-            .chain(
-                self.fixed_custom_action_bindings
-                    .iter()
-                    .rev()
-                    .filter(|binding| binding.is_enabled())
-                    .map(FixedBinding::as_lens),
-            )
+        self.bindings().filter(|binding| {
+            matches!(binding.trigger, Trigger::Custom(_))
+                || matches!(binding.original_trigger, Some(Trigger::Custom(_)))
+        })
     }
 }
 

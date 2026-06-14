@@ -41,6 +41,8 @@ mod global_resource_handles;
 mod gpu_state;
 mod input_classifier;
 mod interval_timer;
+#[cfg(test)]
+mod keymap_resolution_snapshot_tests;
 mod linear;
 #[cfg(not(target_family = "wasm"))]
 mod local_control;
@@ -1080,6 +1082,60 @@ fn run_internal(mut launch_mode: LaunchMode) -> Result<()> {
 
 pub struct UpdateQuakeModeEventArg {
     active_window_id: Option<WindowId>,
+}
+
+/// X13 spike (test-only): replays the production keybinding-init block (the
+/// "Register initial keybindings prior to creating menus" list inside
+/// `initialize_app`) against a headless test `AppContext`. Lives here at the crate
+/// root so every `module::init` path resolves exactly as in production. Excludes
+/// `workspace::init` (already run by `workspace::view::tests::initialize_app`, whose
+/// cascade — modal/native_modal/notebooks/settings — is disjoint from this list).
+#[cfg(test)]
+pub(crate) fn x13_register_keybinding_inits(ctx: &mut warpui::AppContext) {
+    ai::init(ctx);
+    app_services::init(ctx);
+    #[cfg(not(target_family = "wasm"))]
+    code::editor::find::view::init(ctx);
+    // workspace::init(ctx) — already run by view::tests::initialize_app
+    pane_group::init(ctx);
+    terminal::init(ctx);
+    input::init(ctx);
+    editor::init(ctx);
+    onboarding::init(ctx);
+    menu::init(ctx);
+    tips::tip_view::init(ctx);
+    launch_configs::init(ctx);
+    workflows::init(ctx);
+    themes::theme_chooser::init(ctx);
+    themes::theme_creator_modal::init(ctx);
+    themes::theme_deletion_modal::init(ctx);
+    root_view::init(ctx);
+    voltron::init(ctx);
+    auth::init(ctx);
+    reward_view::init(ctx);
+    crate::view_components::find::init(ctx);
+    prompt::editor_modal::init(ctx);
+    ai::blocklist::agent_view::editor::init(ctx);
+    undo_close::init(ctx);
+    billing::shared_objects_creation_denied_modal::init(ctx);
+    tab_configs::new_worktree_modal::init(ctx);
+    tab_configs::params_modal::init(ctx);
+    ai::blocklist::init(ctx);
+    ai::blocklist::block::status_bar::init(ctx);
+    drive::index::init(ctx);
+    drive::sharing::dialog::init(ctx);
+    ai_assistant::panel::init(ctx);
+    settings_view::update_environment_form::init(ctx);
+    env_vars::env_var_collection_block::init(ctx);
+    context_chips::display_menu::init(ctx);
+    context_chips::node_version_popup::init(ctx);
+    env_vars::view::env_var_collection::init(ctx);
+    ai::agent::todos::popup::init(ctx);
+    terminal::view::init_environment::mode_selector::init(ctx);
+    coding_entrypoints::project_buttons::init(ctx);
+    if FeatureFlag::CodeReviewSaveChanges.is_enabled() {
+        code_review::init(ctx);
+    }
 }
 
 #[::tracing::instrument(skip_all, fields(tags.cloud_agent = true))]

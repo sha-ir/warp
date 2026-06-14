@@ -527,3 +527,77 @@ fn test_binding_description_resolve_dynamic_override_falls_back_to_custom_contex
         assert_eq!(resolved, "menu-static");
     });
 }
+
+// ---- A3-Q4 (per-layer-chained store) -------------------------------------------------
+
+#[test]
+fn a3q4_shadow_coherence_derived() {
+    use crate::keymap::macros::*;
+    #[derive(Debug, PartialEq)]
+    enum A {
+        Cut,
+    }
+
+    let mut keymap = Keymap::default();
+    // A Custom-triggered editable binding — the surface that the former shadow collections
+    // tracked, and that the existing tests never exercised.
+    keymap.register_editable_bindings([EditableBinding::new("cut", "Cut", A::Cut)
+        .with_custom_action(5_isize)
+        .with_context_predicate(id!("ctx"))]);
+
+    let tag: CustomTag = 5;
+    let is_tag = |b: &BindingLens| {
+        matches!(b.trigger, Trigger::Custom(t) if *t == tag)
+            || matches!(b.original_trigger, Some(Trigger::Custom(t)) if *t == tag)
+    };
+    // Menu/UI surface (custom_action_bindings) vs dispatch surface (bindings) — must agree.
+    let via_custom = |km: &Keymap| km.custom_action_bindings().find(|b| is_tag(b)).map(|b| b.id);
+    let via_full = |km: &Keymap| km.bindings().find(|b| is_tag(b)).map(|b| b.id);
+
+    assert!(via_custom(&keymap).is_some(), "custom-triggered binding present");
+    assert_eq!(via_custom(&keymap), via_full(&keymap), "surfaces agree before override");
+
+    // Override to a keystroke trigger; original_trigger keeps it Custom(5).
+    keymap.update_custom_trigger(
+        "cut",
+        Some(Trigger::Keystrokes(vec![Keystroke::parse("ctrl-x").unwrap()])),
+    );
+    assert_eq!(via_custom(&keymap), via_full(&keymap), "surfaces agree after override");
+    assert!(via_custom(&keymap).is_some(), "overridden custom binding still resolvable by tag");
+
+    // Remove the override.
+    keymap.update_custom_trigger("cut", None);
+    assert_eq!(via_custom(&keymap), via_full(&keymap), "surfaces agree after removal");
+}
+
+#[test]
+fn a3q4_ordering_editable_beats_fixed_across_layers() {
+    use crate::keymap::macros::*;
+    #[derive(Debug, PartialEq)]
+    enum A {
+        Editable,
+        Fixed,
+    }
+
+    let mut keymap = Keymap::default();
+    // default-layer EDITABLE on trigger "a"
+    keymap.default_layer.register_editable([EditableBinding::new("ed", "ed", A::Editable)
+        .with_key_binding("a")
+        .with_context_predicate(id!("c"))]);
+    // user-layer FIXED on the SAME trigger "a" (a HIGHER-precedence layer)
+    keymap
+        .user_layer
+        .register_fixed([FixedBinding::new("a", A::Fixed, id!("c"))]);
+
+    // bindings() must yield the EDITABLE first: ALL editable beat ALL fixed GLOBALLY, even when
+    // the fixed binding lives in a higher-precedence layer (the within-split layering rule).
+    let first = keymap
+        .bindings()
+        .find(|b| matches!(b.trigger, Trigger::Keystrokes(ks) if ks.len() == 1 && ks[0].key == "a"))
+        .expect("a binding for 'a'");
+    assert_eq!(
+        first.action.as_ref().as_any().downcast_ref::<A>(),
+        Some(&A::Editable),
+        "editable must beat fixed even when the fixed binding is in a higher-precedence layer"
+    );
+}
