@@ -287,7 +287,7 @@ Expected: unchanged from Task 1.
 ### Task 3: Record Step B results in the results doc
 
 **Files:**
-- Modify: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A1-Q6-spike-results.md` (the `## Step B` → `**Result.**` block)
+- Modify: `docs/specs/2026-06-13-improved-keybindings/spike-results/A1-Q6-spike-results.md` (the `## Step B` → `**Result.**` block)
 
 - [ ] **Step 1: Fill the Step B result with the real numbers**
 
@@ -300,7 +300,7 @@ Replace the `_(filled during execution)_` block under Step B with the actual pla
 The drafts already exist in the doc; this task verifies each cited fact still matches the code and corrects any drift.
 
 **Files:**
-- Modify: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A1-Q6-spike-results.md`
+- Modify: `docs/specs/2026-06-13-improved-keybindings/spike-results/A1-Q6-spike-results.md`
 
 - [ ] **Step 1: Re-verify the Step A precedent-transfer citations**
 
@@ -323,7 +323,7 @@ Append a one-line "verified against code on 2026-06-13" note to each of Steps A 
 Each standing finding must survive an independent skeptic. This is the ultracode-budget step.
 
 **Files:**
-- Modify: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A1-Q6-spike-results.md` (the `## Adversarial verification pass` block)
+- Modify: `docs/specs/2026-06-13-improved-keybindings/spike-results/A1-Q6-spike-results.md` (the `## Adversarial verification pass` block)
 
 - [ ] **Step 1: Dispatch one refuter per finding, in parallel**
 
@@ -341,7 +341,7 @@ A finding that is refuted with code evidence gets corrected or downgraded; one t
 ### Task 6: Final verdict + commit
 
 **Files:**
-- Modify: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A1-Q6-spike-results.md` (the `## Final verdict` block)
+- Modify: `docs/specs/2026-06-13-improved-keybindings/spike-results/A1-Q6-spike-results.md` (the `## Final verdict` block)
 
 - [ ] **Step 1: Write the final verdict**
 
@@ -352,7 +352,7 @@ State the resolved answer (expected: "echo-TOLERANCE via write-free idempotent r
 Per the working agreement, do not commit until the user says so. When approved:
 
 ```bash
-git add app/examples/keybindings_torn_read.rs docs/specs/2026-06-13-improved-keybindings-spike-designs/A1-Q6-spike-results.md docs/superpowers/plans/2026-06-13-a1-q6-torn-read-spike.md
+git add app/examples/keybindings_torn_read.rs docs/specs/2026-06-13-improved-keybindings/spike-results/A1-Q6-spike-results.md docs/superpowers/plans/2026-06-13-a1-q6-torn-read-spike.md
 git commit -m "spike(keybindings): A1-Q6 adversarial torn-read repro + echo-tolerance findings"
 ```
 

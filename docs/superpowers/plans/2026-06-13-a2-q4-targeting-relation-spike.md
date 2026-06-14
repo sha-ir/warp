@@ -60,7 +60,7 @@ Expected: clean commit on `sha-ir/spike-a2-q4-targeting-relation`.
 ## Task 1: Draft the paper decision-memo (the 2.5 code-settled relations)
 
 **Files:**
-- Create: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A2-Q4-spike-results.md`
+- Create: `docs/specs/2026-06-13-improved-keybindings/spike-results/A2-Q4-spike-results.md`
 
 This is **Deliverable A**. Draft now; the verdict + refutation outcomes + final test output are folded in by Tasks 6–7. The paper relations are settled from already-read code and do **not** depend on the test.
 
@@ -83,7 +83,7 @@ Create `A2-Q4-spike-results.md` with these sections (fill the verified facts abo
 - [ ] **Step 2: Commit the memo draft**
 
 ```bash
-git add docs/specs/2026-06-13-improved-keybindings-spike-designs/A2-Q4-spike-results.md
+git add docs/specs/2026-06-13-improved-keybindings/spike-results/A2-Q4-spike-results.md
 git commit -m "spike(keybindings): A2-Q4 memo draft — 2.5 relations settled on paper
 
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
@@ -594,7 +594,7 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 ## Task 5: Adversarial verification pass (3 independent refutation skeptics)
 
 **Files:**
-- Modify: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A2-Q4-spike-results.md` (Adversarial verification + Corrections sections)
+- Modify: `docs/specs/2026-06-13-improved-keybindings/spike-results/A2-Q4-spike-results.md` (Adversarial verification + Corrections sections)
 
 Dispatch three independent subagents, each mandated to **refute** one load-bearing claim by reading the real code (default to "refuted" if uncertain). Run them concurrently (this is the ultracode fan-out step — use the Workflow tool or three parallel `Agent` calls).
 
@@ -615,7 +615,7 @@ In `A2-Q4-spike-results.md`, write an **Adversarial verification pass** section:
 - [ ] **Step 3: Commit**
 
 ```bash
-git add docs/specs/2026-06-13-improved-keybindings-spike-designs/A2-Q4-spike-results.md
+git add docs/specs/2026-06-13-improved-keybindings/spike-results/A2-Q4-spike-results.md
 git commit -m "spike(keybindings): A2-Q4 adversarial verification pass + spec corrections
 
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
@@ -626,7 +626,7 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 ## Task 6: Finalize the memo verdict with captured evidence
 
 **Files:**
-- Modify: `docs/specs/2026-06-13-improved-keybindings-spike-designs/A2-Q4-spike-results.md`
+- Modify: `docs/specs/2026-06-13-improved-keybindings/spike-results/A2-Q4-spike-results.md`
 
 - [ ] **Step 1: Paste the real test output and write the final verdict**
 
@@ -643,7 +643,7 @@ Expected: PASS (no regressions from the throwaway additions).
 - [ ] **Step 3: Commit**
 
 ```bash
-git add docs/specs/2026-06-13-improved-keybindings-spike-designs/A2-Q4-spike-results.md
+git add docs/specs/2026-06-13-improved-keybindings/spike-results/A2-Q4-spike-results.md
 git commit -m "spike(keybindings): A2-Q4 final verdict — author-assigned id; subsumption implementable-but-fragile
 
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"

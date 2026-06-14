@@ -1,5 +1,5 @@
 # Keybindings spike results index
-This folder contains all result artifacts for `2026-06-13-improved-keybindings-spike-designs`.
+This folder contains all result artifacts for the spike designs (see each axis's `spike-design.md` and [`../cross-axis-sequencing/spike-design.md`](../cross-axis-sequencing/spike-design.md)).
 
 ## Engine and resolution
 - `a3-q4-layered-store-spike-results.md` — Canonical LayerStore engine outcome (A3-Q4).
